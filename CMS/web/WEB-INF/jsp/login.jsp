@@ -21,13 +21,13 @@
                 <input type="submit" value="Wyloguj"/>
             </form>
         </c:if>
-        <h4>
+        <h2>
             ${helloUser}
-        </h4>
+        </h2>
         <c:if test="${user == null}">
             <form action="/CMS/login.htm" method="POST">
                 Login <input type="text" name="login"/>
-                Hasło <input type="text" name="password"/>
+                Hasło <input type="password" name="password"/>
                 <input type="submit" value="Zaloguj"/>
             </form>
         </c:if>
