@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import controllers.general.BaseController;
 import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/home")
-public class HomeController {
+public class HomeController extends BaseController{
     
     
     @RequestMapping(method = RequestMethod.GET)
@@ -30,19 +31,6 @@ public class HomeController {
     public String customHome(ModelMap model, @RequestParam String id) {
         System.out.println("load Page");
         return "home";
-    }
+    }    
     
-    @RequestMapping(method = RequestMethod.POST)
-    public String login(ModelMap model, @RequestParam("login") String login, @RequestParam("password") String password) {
-        
-        User u = new User();
-        if(u.loadObject("login='"+login+"' AND password='"+password+"'")) {
-            model.put("helloUser", "Witaj "+u.getName()+"!");
-        } else {
-            model.put("helloUser", "Złe dane logowania");
-        }
-        
-        return "home";
-        
-    }
 }

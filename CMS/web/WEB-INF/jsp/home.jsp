@@ -20,13 +20,5 @@
             <a href="/CMS/home/${page}.htm">Strona id: ${page}</a> |
         </c:forEach>
             
-            <h4>
-                ${helloUser}
-            </h4>
-            <form action="/CMS/home.htm" method="POST">
-                Login <input type="text" name="login"/>
-                Hasło <input type="text" name="password"/>
-                <input type="submit"/>
-            </form>
     </body>
 </html>

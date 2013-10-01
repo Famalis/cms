@@ -21,6 +21,8 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="home.htm">homeController</prop>
                 <prop key="home/{id}.htm">homeController</prop>
+                <prop key="login.htm">loginController</prop>
+                <prop key="login/logout.htm">loginController</prop>
             </props>
         </property>
     </bean>
@@ -32,6 +34,9 @@
     
     <bean name="homeController"
           class="controllers.HomeController"/>
+    
+    <bean name="loginController"
+          class="controllers.LoginController"/>
 
     <!--
     The index controller.
