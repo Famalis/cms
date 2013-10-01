@@ -41,12 +41,12 @@ public class LoginController extends BaseController{
         return "login";
         
     }
-    @RequestMapping(value = "/login/logout", method = RequestMethod.POST)
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(ModelMap model) {
         
         currentUser = null;
         model.put("user", this.currentUser);
-        return "login";
+        return "logout";
         
     }
 }

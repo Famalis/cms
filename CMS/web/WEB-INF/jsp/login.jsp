@@ -17,7 +17,7 @@
             <p>
                 Zalogowany jako ${user.login}
             </p>
-            <form action="/CMS/login/logout.htm" method="POST">
+            <form action="/CMS/logout.htm" method="POST">
                 <input type="submit" value="Wyloguj"/>
             </form>
         </c:if>
