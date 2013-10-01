@@ -4,13 +4,11 @@
  */
 package model.general;
 
-import model.Saveable;
-
 /**
  *
  * @author Sergio
  */
-public class WebPage extends Saveable{
+public class WebPage{
     
     protected String content;
     

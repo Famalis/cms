@@ -4,10 +4,6 @@
  */
 package controllers;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import model.HomePage;
-import model.Saveable;
 import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,22 +22,13 @@ public class HomeController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
-        Saveable.Load();
-        Enumeration e = Saveable.getTable(HomePage.class).elements();
-        ArrayList<Long> ids = new ArrayList<>();
-        while(e.hasMoreElements()) {
-            HomePage hp = (HomePage) e.nextElement();
-            ids.add(hp.getId());
-        }
-        model.put("list", ids);
+        
         return "home";
     }
     
     @RequestMapping(value = "/home/{id}", method = RequestMethod.GET, params = "id")
     public String customHome(ModelMap model, @RequestParam String id) {
         System.out.println("load Page");
-        HomePage hp = (HomePage) Saveable.loadObjecT(HomePage.class, 1L);
-        model.put("content", hp.getContent());
         return "home";
     }
     
