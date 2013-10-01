@@ -12,9 +12,10 @@ import utils.ConnectionManager;
 /**
  * Klasa będąca podstawą dla wszystkich klas modeli zawartych w bazie danych
  * (obiektów w bazie danych); Klasy dziedziczące po tej muszą mieć konstuktor, w
- * którym podaje się nazwę tabeli oraz kolumn w bazie danych; Klasa zawieta
- * metody pozwalające na zapis obiektu w bazie danych, jego modyfikację i
- * usunięcie;
+ * którym podaje się nazwę tabeli; Nazwy atrybutów klas dziedziczących muszą
+ * być takie same jak nazwy kolumn w odpowiedniej tabeli w bazie danych; 
+ * Klasa zawieta metody pozwalające na zapis obiektu w bazie danych, jego 
+ * modyfikację i usunięcie;
  *
  * @author Sergio
  */
