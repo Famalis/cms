@@ -4,7 +4,9 @@
  */
 package controllers.general;
 
+import javax.inject.Inject;
 import model.User;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  *
@@ -12,5 +14,11 @@ import model.User;
  */
 public class BaseController {
     
+    /**
+     *Zalogowany użytkownik
+     */
+    @Inject
     protected User currentUser;
+    
+    
 }
