@@ -15,10 +15,15 @@
     <body>
         <h1>Hello World!</h1>
         <h4>${content}</h4>
-        
+        <c:if test="${user.name != null}" > 
+            <h1>
+                Witaj ${user.name}!
+            </h1>
+        </c:if>
+
         <c:forEach items="${list}" var="page">
             <a href="/CMS/home/${page}.htm">Strona id: ${page}</a> |
         </c:forEach>
-            
+
     </body>
 </html>

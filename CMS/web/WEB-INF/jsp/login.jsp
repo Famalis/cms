@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${user != null}">
+        <c:if test="${user.name != null}">
             <p>
                 Zalogowany jako ${user.login}
             </p>
@@ -24,7 +24,7 @@
         <h2>
             ${helloUser}
         </h2>
-        <c:if test="${user == null}">
+        <c:if test="${user.name == null}">
             <form action="/CMS/login.htm" method="POST">
                 Login <input type="text" name="login"/>
                 Hasło <input type="password" name="password"/>
