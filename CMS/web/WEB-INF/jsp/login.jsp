@@ -14,11 +14,15 @@
     </head>
     <body>
         <c:if test="${user.name != null}">
-            <p>
+            <p style="background-color: ${userConfig.backgroundColor}">
                 Zalogowany jako ${user.login}
             </p>
             <form action="/CMS/logout.htm" method="POST">
-                <input type="submit" value="Wyloguj"/>
+                <input type="submit" name="logoutButton" value="Wyloguj"/>
+            </form>
+            <form action="/CMS/bgcolor.htm" method="GET">
+                Kolor tła: <input type="text" value="${userConfig.backgroundColor}" name="color"/>
+                <input type="submit" name="bgcolorButton"/>
             </form>
         </c:if>
         <h2>
@@ -28,8 +32,9 @@
             <form action="/CMS/login.htm" method="POST">
                 Login <input type="text" name="login"/>
                 Hasło <input type="password" name="password"/>
-                <input type="submit" value="Zaloguj"/>
+                <input type="submit" name="loginButton" value="Zaloguj"/>
             </form>
         </c:if>
+        <a href="/CMS/home.htm">Strona Główna</a>
     </body>
 </html>

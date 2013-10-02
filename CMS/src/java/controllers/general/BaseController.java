@@ -6,8 +6,7 @@ package controllers.general;
 
 import javax.inject.Inject;
 import model.User;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import model.UserConfiguration;
 
 /**
  *
@@ -20,8 +19,12 @@ public class BaseController {
     @Inject
     protected User currentUser;
     
+    @Inject
+    protected UserConfiguration userConfig;
+    
     public BaseController(){
         currentUser = new User();
+        userConfig = new UserConfiguration();
     }
     
     

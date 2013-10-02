@@ -21,7 +21,7 @@ import utils.ConnectionManager;
  *
  * @author Sergio
  */
-public class DatabaseObject {
+public class DatabaseObject<T> {
 
     private String tableName;
     protected Long id;

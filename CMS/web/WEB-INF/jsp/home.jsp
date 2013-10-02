@@ -16,14 +16,10 @@
         <h1>Hello World!</h1>
         <h4>${content}</h4>
         <c:if test="${user.name != null}" > 
-            <h1>
+            <h1 style="background-color: ${userConfig.backgroundColor}">
                 Witaj ${user.name}!
             </h1>
         </c:if>
-
-        <c:forEach items="${list}" var="page">
-            <a href="/CMS/home/${page}.htm">Strona id: ${page}</a> |
-        </c:forEach>
-
+        <a href="/CMS/login.htm">Zarządzanie kontem</a>
     </body>
 </html>

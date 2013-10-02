@@ -21,12 +21,10 @@ import model.general.DatabaseObject;
 public class GenericDao<T extends DatabaseObject> {
 
     private T objectInstance;
-    private Class clazz;
 
     public GenericDao(Class<T> c) {
         try {
-            objectInstance = (T) c.newInstance();
-            this.clazz = c;
+            objectInstance = c.newInstance();
         } catch (InstantiationException ex) {
             ex.printStackTrace();
         } catch (IllegalAccessException ex) {
@@ -85,7 +83,7 @@ public class GenericDao<T extends DatabaseObject> {
             }
             ResultSet resultSet = ConnectionManager.select(query);
             while (resultSet.next()) {
-                T obj = (T) clazz.newInstance();
+                T obj = (T) objectInstance.getClass().newInstance();
                 Field[] fields = obj.getClass().getDeclaredFields();
                 for (Field f : fields) {
                     String fieldValue = "";
