@@ -7,6 +7,8 @@ package model.general;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import utils.ConnectionManager;
 
 /**
@@ -31,6 +33,40 @@ public class DatabaseObject {
     public DatabaseObject(String tableName) {
         super();
         this.tableName = tableName;
+    }
+    
+    public String getTableName(){
+        return tableName;
+    }
+    /**
+     * Metoda zwraca nazwy kolumn (atrybuty obiektu) w formie listy stringów.
+     * @return 
+     */
+    public List<String> getColumnNames() {
+        List<String> columns = new ArrayList<String>();
+        Field[] fields = this.getClass().getDeclaredFields();
+        for (Field f : fields) {
+            columns.add(f.getName());
+        }
+        return columns;
+    }
+    
+    /**
+     * Metoda zwraca nazwy kolumn (atrybuty obiektu) w formie linijki tekstu;
+     * Przykład: name, surname, email
+     * @return 
+     */
+    public String getColumnString() {
+        //List<String> columns = new ArrayList<String>();
+        String columnString = "";
+        Field[] fields = this.getClass().getDeclaredFields();
+        for (int i = 0; i<fields.length; i++) {
+            columnString+=fields[i].getName();
+            if(i<fields.length-1){
+                columnString+=", ";
+            }
+        }
+        return columnString;
     }
 
     /**
