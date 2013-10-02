@@ -14,10 +14,10 @@
     </head>
     <body>
         <h1>
-            <c:if test="${user == null}">
+            <c:if test="${user.name == null}">
                 Wylogowanie powiodło się
             </c:if>
-            <c:if test="${user != null}">
+            <c:if test="${user.name != null}">
                 Wylogowanie nie powiodło się
             </c:if>
         </h1>
