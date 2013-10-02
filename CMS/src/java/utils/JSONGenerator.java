@@ -5,8 +5,6 @@
 package utils;
 
 import java.lang.reflect.Field;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.general.DatabaseObject;
 import net.sf.json.JSONObject;
 
