@@ -13,13 +13,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${user == null}">
+        <c:if test="${user.name == null}">
             Załóż konto
             <form action="/CMS/newUser.htm" action="POST">
-                
+                Login: <input type="text" name="login"/>
+                Hasło: <input type="password" name="password"/>
+                Imię: <input type="text" name="name"/>
+                Nazwisko: <input type="text" name="surname"/>
+                Email: <input type="text" name="email"/>
+                <input type="submit"/>
             </form>
         </c:if>
-        <c:if test="${user != null}">
+        <c:if test="${user.name != null}">
             Zalogowany
         </c:if>
     </body>
