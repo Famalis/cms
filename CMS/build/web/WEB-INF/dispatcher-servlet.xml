@@ -21,6 +21,10 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="home.htm">homeController</prop>
                 <prop key="home/{id}.htm">homeController</prop>
+                <prop key="login.htm">loginController</prop>
+                <prop key="logout.htm">loginController</prop>
+                <prop key="bgcolor.htm">loginController</prop>
+                <prop key="newUser.htm">newUserController</prop>
             </props>
         </property>
     </bean>
@@ -31,7 +35,11 @@
           p:suffix=".jsp" />
     
     <bean name="homeController"
-          class="controllers.HomeController"/>
+          class="controllers.HomeController"/>    
+    <bean name="loginController"
+          class="controllers.LoginController"/>
+    <bean name="newUserController"
+          class="controllers.NewUserController"/>
 
     <!--
     The index controller.

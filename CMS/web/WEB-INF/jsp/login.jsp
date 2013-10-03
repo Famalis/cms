@@ -36,5 +36,6 @@
             </form>
         </c:if>
         <a href="/CMS/home.htm">Strona Główna</a>
+        <a href="/CMS/newUser.htm">Załóż konto</a>
     </body>
 </html>

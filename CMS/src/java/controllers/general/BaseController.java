@@ -7,6 +7,7 @@ package controllers.general;
 import javax.inject.Inject;
 import model.User;
 import model.UserConfiguration;
+import utils.GenericDao;
 
 /**
  *
@@ -21,6 +22,9 @@ public class BaseController {
     
     @Inject
     protected UserConfiguration userConfig;
+    
+    @Inject
+    protected GenericDao genericDao;
     
     public BaseController(){
         currentUser = new User();

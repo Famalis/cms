@@ -79,14 +79,14 @@ public class DatabaseObject<T> {
         try {
             String query = "INSERT INTO " + tableName + " (";
             Field[] fields = this.getClass().getDeclaredFields();
-            for (int i = 1; i < fields.length; i++) {
+            for (int i = 0; i < fields.length; i++) {
                 query += fields[i].getName();
                 if (i < fields.length - 1) {
                     query += ", ";
                 }
             }
             query += ") VALUES (";
-            for (int i = 1; i < fields.length; i++) {
+            for (int i = 0; i < fields.length; i++) {
                 String fieldValue = "";
                 fields[i].setAccessible(true);
                 fieldValue = (String) fields[i].get(this);

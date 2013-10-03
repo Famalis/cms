@@ -13,11 +13,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
         <h4>${content}</h4>
         <c:if test="${user.name != null}" > 
             <h1 style="background-color: ${userConfig.backgroundColor}">
                 Witaj ${user.name}!
+            </h1>
+        </c:if>
+        <c:if test="${user.name == null}" > 
+            <h1 style="background-color: ${userConfig.backgroundColor}">
+                Witaj Gościu!
             </h1>
         </c:if>
         <a href="/CMS/login.htm">Zarządzanie kontem</a>

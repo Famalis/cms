@@ -15,7 +15,7 @@
     <body>
         <c:if test="${user.name == null}">
             Załóż konto
-            <form action="/CMS/newUser.htm" action="POST">
+            <form action="/CMS/newUser.htm" method="POST">
                 Login: <input type="text" name="login"/>
                 Hasło: <input type="password" name="password"/>
                 Imię: <input type="text" name="name"/>
@@ -27,5 +27,9 @@
         <c:if test="${user.name != null}">
             Zalogowany
         </c:if>
+        <h3>
+            ${error}
+        </h3>
+        <a href="/CMS/login.htm">Zarządzanie kontem</a>
     </body>
 </html>

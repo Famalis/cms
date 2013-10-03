@@ -13,20 +13,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
         <h4>${content}</h4>
-        
-        <c:forEach items="${list}" var="page">
-            <a href="/CMS/home/${page}.htm">Strona id: ${page}</a> |
-        </c:forEach>
-            
-            <h4>
-                ${helloUser}
-            </h4>
-            <form action="/CMS/home.htm" method="POST">
-                Login <input type="text" name="login"/>
-                Hasło <input type="text" name="password"/>
-                <input type="submit"/>
-            </form>
+        <c:if test="${user.name != null}" > 
+            <h1 style="background-color: ${userConfig.backgroundColor}">
+                Witaj ${user.name}!
+            </h1>
+        </c:if>
+        <c:if test="${user.name == null}" > 
+            <h1 style="background-color: ${userConfig.backgroundColor}">
+                Witaj Gościu!
+            </h1>
+        </c:if>
+        <a href="/CMS/login.htm">Zarządzanie kontem</a>
     </body>
 </html>
