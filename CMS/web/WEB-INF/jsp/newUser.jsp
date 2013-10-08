@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,23 +14,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${user.name == null}">
-            Załóż konto
-            <form action="/CMS/newUser.htm" method="POST">
-                Login: <input type="text" name="login"/>
-                Hasło: <input type="password" name="password"/>
-                Imię: <input type="text" name="name"/>
-                Nazwisko: <input type="text" name="surname"/>
-                Email: <input type="text" name="email"/>
-                <input type="submit"/>
-            </form>
-        </c:if>
-        <c:if test="${user.name != null}">
-            Zalogowany
-        </c:if>
-        <h3>
-            ${error}
-        </h3>
-        <a href="/CMS/login.htm">Zarządzanie kontem</a>
+        <t:genericTemplate>
+            <jsp:body>
+                <c:if test="${user.name == null}">
+                    Załóż konto
+                    <form action="/CMS/newUser.htm" method="POST">
+                        Login: <input type="text" name="login"/>
+                        Hasło: <input type="password" name="password"/>
+                        Imię: <input type="text" name="name"/>
+                        Nazwisko: <input type="text" name="surname"/>
+                        Email: <input type="text" name="email"/>
+                        <input type="submit"/>
+                    </form>
+                </c:if>
+                <c:if test="${user.name != null}">
+                    Zalogowany
+                </c:if>
+                <h3>
+                    ${error}
+                </h3>
+                <a href="/CMS/login.htm">Zarządzanie kontem</a>
+            </jsp:body>
+        </t:genericTemplate>
     </body>
 </html>
