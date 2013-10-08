@@ -5,6 +5,8 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.UserDao;
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import model.User;
 import model.UserConfiguration;

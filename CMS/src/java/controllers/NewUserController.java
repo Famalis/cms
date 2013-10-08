@@ -5,7 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
-import java.util.List;
+import dao.UserDao;
 import model.User;
 import model.UserConfiguration;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import utils.GenericDao;
+import javax.inject.Inject;
 
 /**
  *
@@ -22,7 +22,6 @@ import utils.GenericDao;
 @Controller
 @RequestMapping("/newUser")
 public class NewUserController extends BaseController {
-
     
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
@@ -37,8 +36,9 @@ public class NewUserController extends BaseController {
             @RequestParam String name,
             @RequestParam String surname) {
 
-        genericDao = new GenericDao(User.class);
-        if(genericDao.select("login='"+login+"'").size()>0) {
+        //GenericDao genericDao = new GenericDao(User.class);
+        UserDao userDao = new UserDao();
+        if(userDao.select("login='"+login+"'").size()>0) {
             model.put("error", "Podany login został już użyty");
             return "newUser";
         }

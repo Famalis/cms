@@ -17,7 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import utils.GenericDao;
+import dao.GenericDao;
+import dao.UserConfigurationDao;
 
 /**
  *
@@ -36,7 +37,7 @@ public class UserListController extends BaseController{
     @RequestMapping("/userList/users")
     public @ResponseBody String requestJsons(HttpSession session) {
         //System.out.println("requestJsons");
-        GenericDao userConfigDao = new GenericDao(UserConfiguration.class);
+        UserConfigurationDao userConfigDao = new UserConfigurationDao();
         List<UserConfiguration> configs = userConfigDao.select();
         List<UserDTO> userDtos = new ArrayList<>();
         for (UserConfiguration uc : configs) {

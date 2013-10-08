@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package dao;
 
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.general.DatabaseObject;
+import utils.ConnectionManager;
 
 /**
  * Klasa której instancja pozwala na wykonywania operacji na wielu wpisach na
