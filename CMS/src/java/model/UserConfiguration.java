@@ -14,6 +14,7 @@ public class UserConfiguration extends DatabaseObject{
     
     private String userId;
     private String backgroundColor;
+    private String groupId;
 
     public String getUserId() {
         return userId;
@@ -30,7 +31,15 @@ public class UserConfiguration extends DatabaseObject{
     public void setBackgroundColor(String backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
-    
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+        
     public UserConfiguration() {
         super("user_configuration");
     }

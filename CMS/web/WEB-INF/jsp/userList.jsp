@@ -4,6 +4,7 @@
     Author     : Sergio
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html ng-app>
@@ -14,13 +15,48 @@
         <title>JSP Page</title>
     </head>
     <body ng-controller="UserListCtrl">
-        <div>
-        ${json}<br/>
-        ${someVar}<br/>
-        <p ng-repeat="user in users">
-            {{user.id}} {{user.name}}
-        </p>
-        {{testVar}}
-        </div>
+        <c:if test="${userConfig.groupId == 1}">
+            <div>
+                {{status}}
+                <table border="1px" style="width: 100%;">
+                    <tr>
+                        <td>
+                            Nazwisko
+                        </td>
+                        <td>
+                            Imię
+                        </td>
+                        <td>
+                            Kolor tła
+                        </td>
+                        <td>
+                            Grupa
+                        </td>
+                    </tr>
+                    <tr ng-repeat="user in users">
+                        <td>
+                            {{user.surname}}
+                        </td>
+                        <td>
+                            {{user.name}}
+                        </td>
+                        <td>
+                            {{user.bgcolor}}
+                        </td>
+                        <td>
+                            {{user.groupId}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </c:if>
+        <c:if test="${userConfig.groupId != 1}">
+            <div>
+                <p>
+                    Brak uprawnień
+                </p>
+            </div>
+        </c:if>
+        <a href="/CMS/login.htm">Powrót</a>
     </body>
 </html>

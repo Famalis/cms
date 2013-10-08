@@ -1,10 +1,10 @@
 function UserListCtrl($scope, $http) {
-    $scope.testVar = "to jest test";
-    $scope.osoba;
-    $scope.testVar2;    
+    $scope.status = "<h1>Ładowanie danych</h1>";
     $http.get('/CMS/userList/users.htm').success(function(data) {
         $scope.users = data;
+        $scope.status = null;
     }).error(function(error) {
-        $scope.testVar = error;
+        $scope.status = "Błąd";
+        $scope.error = error;
     });
 }
