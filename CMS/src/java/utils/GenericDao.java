@@ -22,10 +22,15 @@ import model.general.DatabaseObject;
 public class GenericDao<T extends DatabaseObject> {
 
     private T objectInstance;
+    private ConnectionManager connectionManager;
 
     public GenericDao(Class<T> c) {
         try {
             objectInstance = c.newInstance();
+            connectionManager = ConnectionManager.getConnectionManager(
+                    "cms", 
+                    "G9Dua8d5tnGvda3J", 
+                    "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8");
         } catch (InstantiationException ex) {
             ex.printStackTrace();
         } catch (IllegalAccessException ex) {
@@ -46,7 +51,7 @@ public class GenericDao<T extends DatabaseObject> {
     public boolean delete(String conditions) {
         String query = "DELETE FROM " + objectInstance.getTableName()
                 + " WHERE " + conditions;
-        return ConnectionManager.update(query);
+        return connectionManager.update(query);
     }
 
     /**
@@ -67,7 +72,7 @@ public class GenericDao<T extends DatabaseObject> {
             }
         }
         query += " WHERE " + conditions;
-        return ConnectionManager.update(query);
+        return connectionManager.update(query);
     }
 
     /**
@@ -90,7 +95,7 @@ public class GenericDao<T extends DatabaseObject> {
                 }
             }
             query += ")";
-            if (ConnectionManager.update(query)) {
+            if (connectionManager.update(query)) {
                 return true;
             } else {
                 return false;
@@ -131,7 +136,7 @@ public class GenericDao<T extends DatabaseObject> {
             if (conditions.length() > 0) {
                 query += " WHERE " + conditions;
             }
-            ResultSet resultSet = ConnectionManager.select(query);
+            ResultSet resultSet = connectionManager.select(query);
             while (resultSet.next()) {
                 T obj = (T) objectInstance.getClass().newInstance();
                 Field[] fields = obj.getClass().getDeclaredFields();

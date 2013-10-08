@@ -25,6 +25,7 @@ public class DatabaseObject<T> {
 
     private String tableName;
     protected Long id;
+    private ConnectionManager connectionManager;
 
     public Long getId() {
         return id;
@@ -32,6 +33,10 @@ public class DatabaseObject<T> {
 
     public DatabaseObject(String tableName) {
         super();
+        connectionManager = ConnectionManager.getConnectionManager(
+                    "cms", 
+                    "G9Dua8d5tnGvda3J", 
+                    "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8");
         this.tableName = tableName;
     }
     
@@ -96,7 +101,7 @@ public class DatabaseObject<T> {
                 }
             }
             query += ") ";
-            if (ConnectionManager.update(query)) {
+            if (connectionManager.update(query)) {
                 return true;
             } else {
                 return false;
@@ -128,7 +133,7 @@ public class DatabaseObject<T> {
                 }
             }
             query += "WHERE ID=" + this.getId();
-            if (ConnectionManager.update(query)) {
+            if (connectionManager.update(query)) {
                 return true;
             } else {
                 return false;
@@ -150,7 +155,7 @@ public class DatabaseObject<T> {
             }
         }
         query += " FROM " + tableName + " WHERE " + conditions;
-        ResultSet resultSet = ConnectionManager.select(query);
+        ResultSet resultSet = connectionManager.select(query);
         return resultSet;
     }
 
@@ -195,7 +200,7 @@ public class DatabaseObject<T> {
      */
     public boolean delete() {
         String query = "DELETE FROM " + tableName + " WHERE ID=" + this.getId();
-        if (ConnectionManager.update(query)) {
+        if (connectionManager.update(query)) {
             return true;
         } else {
             return false;

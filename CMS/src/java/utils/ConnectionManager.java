@@ -9,21 +9,54 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Klasa zarządzająca połączeniem z bazą danych; Aby wykonywać połączenia z 
  * bazą danych należy korzystać z zwawrtych w niej metod.
  * @author sergi_000
  */
-public abstract class ConnectionManager {
+public class ConnectionManager {
 
-    private static String url = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8";
-    private static String login = "cms";
-    private static String pass = "G9Dua8d5tnGvda3J";
-    private static Connection connection;
+    private String url = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8";
+    private String login = "cms";
+    private String pass = "G9Dua8d5tnGvda3J";
+    private Connection connection;
+    private static Map<String, ConnectionManager> activeConnections = new HashMap<>();
 
-    public static void newConnection() {
+    
+    public void setDBUrl(String url) {
+        this.url = url;
+    }
+    
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
+    public void setPassword(String password) {
+        pass = password;
+    }
+    
+    protected ConnectionManager() {
+        
+    }
+    
+    public static ConnectionManager getConnectionManager(String login, String password, String url) {
+        if(activeConnections.containsKey(login)){
+            return activeConnections.get(login);
+        } else {
+            ConnectionManager cm = new ConnectionManager();
+            cm.setLogin(login);
+            cm.setDBUrl(url);
+            cm.setPassword(password);
+            activeConnections.put(login, cm);
+            return activeConnections.get(login);
+        }
+        
+    }
+    
+    public void newConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (Exception e) {
@@ -41,7 +74,7 @@ public abstract class ConnectionManager {
         connection = c;
     }
 
-    public static boolean closeConnection() {
+    public boolean closeConnection() {
 
         try {
             connection.close();
@@ -54,7 +87,7 @@ public abstract class ConnectionManager {
 
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
                 newConnection();
@@ -73,7 +106,7 @@ public abstract class ConnectionManager {
      * @param query
      * @return 
      */
-    public static ResultSet select(String query) {
+    public ResultSet select(String query) {
         ResultSet rs = null;
         System.out.println("DEBUG: Execute query - "+query);
         try {
@@ -91,7 +124,7 @@ public abstract class ConnectionManager {
      * @param query
      * @return 
      */
-    public static boolean update(String query) {
+    public boolean update(String query) {
         System.out.println("DEBUG: Execute query - "+query);
         try {
             Statement s = getConnection().createStatement();

@@ -25,6 +25,7 @@
                 <prop key="logout.htm">loginController</prop>
                 <prop key="bgcolor.htm">loginController</prop>
                 <prop key="newUser.htm">newUserController</prop>
+                <prop key="userList.htm">userListrController</prop>
             </props>
         </property>
     </bean>
@@ -40,6 +41,8 @@
           class="controllers.LoginController"/>
     <bean name="newUserController"
           class="controllers.NewUserController"/>
+    <bean name="userListrController"
+          class="controllers.UserListController"/>
 
     <!--
     The index controller.
