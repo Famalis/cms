@@ -26,6 +26,8 @@
                 <prop key="bgcolor.htm">loginController</prop>
                 <prop key="newUser.htm">newUserController</prop>
                 <prop key="userList.htm">userListrController</prop>
+                <prop key="userList/user.htm">userListrController</prop>
+                <prop key="userList/users.htm">userListrController</prop>
             </props>
         </property>
     </bean>

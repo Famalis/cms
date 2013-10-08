@@ -30,6 +30,10 @@ public class DatabaseObject<T> {
     public Long getId() {
         return id;
     }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public DatabaseObject(String tableName) {
         super();

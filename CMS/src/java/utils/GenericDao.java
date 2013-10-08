@@ -131,7 +131,7 @@ public class GenericDao<T extends DatabaseObject> {
     public List<T> select(String conditions) {
         List<T> resultList = new ArrayList<T>();
         try {
-            String query = "SELECT " + objectInstance.getColumnString();
+            String query = "SELECT id, " + objectInstance.getColumnString();
             query += " FROM " + objectInstance.getTableName();
             if (conditions.length() > 0) {
                 query += " WHERE " + conditions;
@@ -147,6 +147,7 @@ public class GenericDao<T extends DatabaseObject> {
                     f.set(obj, fieldValue);
 
                 }
+                obj.setId(resultSet.getLong("id"));
                 resultList.add(obj);
             }
         } catch (Exception e) {
