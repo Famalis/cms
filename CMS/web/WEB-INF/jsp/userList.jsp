@@ -17,7 +17,7 @@
     <body ng-controller="UserListCtrl">
         <c:if test="${userConfig.groupId == 1}">
             <div>
-                {{status}}
+                <h1 ng-show="status != ''">{{status}}</h1>
                 <table border="1px" style="width: 100%;">
                     <tr>
                         <td>
