@@ -30,6 +30,7 @@
                 <prop key="articleCreation.htm">articleController</prop>
                 <prop key="article/{id}.htm">articleController</prop>
                 <prop key="article/save/:article.htm">articleController</prop>
+                <prop key="articles.htm">articleController</prop>
             </props>
         </property>
     </bean>

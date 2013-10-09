@@ -5,6 +5,8 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.ArticleDao;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import model.ArticlePage;
 import model.User;
@@ -25,9 +27,18 @@ import utils.Utils;
 public class ArticleController extends BaseController{
     
     @RequestMapping("/articleCreation")
-    public String home(ModelMap model) {
+    public String creation(ModelMap model) {
         
         return "articleCreation";
+    }
+    
+    @RequestMapping("/articles")
+    public String list(ModelMap model) {
+        
+        ArticleDao articleDao = new ArticleDao();
+        List<ArticlePage> articles = articleDao.select();
+        model.put("articles", articles);
+        return "articleList";
     }
     
     @RequestMapping(value = "article/save/:article.htm", method = RequestMethod.POST, produces = "boolean")

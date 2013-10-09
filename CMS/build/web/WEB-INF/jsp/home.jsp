@@ -21,5 +21,6 @@
                 </h1>
             </c:if>
             <a href="/CMS/login.htm">Zarządzanie kontem</a>
+            <a href="/CMS/articles.htm">Lista artykułów</a>
         </jsp:body>
     </t:genericTemplate>
