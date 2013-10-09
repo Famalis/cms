@@ -52,6 +52,7 @@ public class NewUserController extends BaseController {
             UserConfiguration uc = new UserConfiguration();
             u.loadObject("login='"+u.getLogin()+"'");
             uc.setUserId(u.getId()+"");
+            uc.setGroupId("2");
             uc.insert();
             uc.loadObject("userId="+u.getId());
         }

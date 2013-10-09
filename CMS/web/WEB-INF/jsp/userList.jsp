@@ -16,8 +16,8 @@
                     <h1 style="text-align: center" ng-show="status != ''">
                         {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
                     </h1>                        
-                    <table border="1px" style="width: 100%;">
-                        <tr style="background-color: grey">
+                    <table border="1px" style="width: 100%; text-">
+                        <tr style="background-color: grey; color: lightgrey; font-weight: bold">
                             <td>
 
                             </td>
@@ -26,6 +26,9 @@
                             </td>
                             <td>
                                 Imię
+                            </td>
+                            <td>
+                                Login
                             </td>
                             <td>
                                 Kolor tła
@@ -43,6 +46,9 @@
                             </td>
                             <td>
                                 {{user.name}}
+                            </td>
+                            <td>
+                                {{user.login}}
                             </td>
                             <td>
                                 {{user.bgcolor}}

@@ -14,7 +14,7 @@ import model.UserConfiguration;
 public class UserDTO {
     
     private Long id;
-    private String name, surname, bgcolor, groupId;
+    private String name, surname, bgcolor, groupId, login, password, groupName;
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.name = user.getName();
@@ -28,6 +28,30 @@ public class UserDTO {
         
     }
 
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+    
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public Long getId() {
         return id;
     }

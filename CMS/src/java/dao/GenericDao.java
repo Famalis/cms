@@ -23,7 +23,7 @@ import utils.ConnectionManager;
 public class GenericDao<T extends DatabaseObject> {
 
     private T objectInstance;
-    private ConnectionManager connectionManager;
+    protected ConnectionManager connectionManager;
 
     public GenericDao(Class<T> c) {
         try {

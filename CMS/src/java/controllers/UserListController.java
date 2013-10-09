@@ -56,17 +56,9 @@ public class UserListController extends BaseController{
     @RequestMapping(value = "/userList/users")
     public @ResponseBody String requestJsons() {
         System.out.println("requestJsons");
-        UserConfigurationDao userConfigDao = new UserConfigurationDao();
+        //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
-        List<UserConfiguration> configs = userConfigDao.select();
-        List<User> users = userDao.select();
-        List<UserDTO> userDtos = new ArrayList<>();
-        for (UserConfiguration uc : configs) {
-            for (User u : users) {
-                if(u.getId() == Long.parseLong(uc.getUserId()))
-                    userDtos.add(new UserDTO(u, uc));
-            }
-        }        
+        List<UserDTO> userDtos = userDao.getUserWithConfig();
         ObjectMapper mapper = new ObjectMapper();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] data;
