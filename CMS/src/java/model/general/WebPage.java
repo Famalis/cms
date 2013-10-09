@@ -8,12 +8,12 @@ package model.general;
  *
  * @author Sergio
  */
-public class WebPage{
+public class WebPage extends DatabaseObject{
     
     protected String content;
     
-    public WebPage() {
-        super();
+    public WebPage(String tableName) {
+        super(tableName);
     }
 
     public String getContent() {

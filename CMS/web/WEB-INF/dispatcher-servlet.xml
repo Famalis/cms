@@ -18,7 +18,6 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="index.htm">indexController</prop>
                 <prop key="home.htm">homeController</prop>
                 <prop key="home/{id}.htm">homeController</prop>
                 <prop key="login.htm">loginController</prop>
@@ -28,6 +27,9 @@
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
                 <prop key="userList/save/:user.htm">userListrController</prop>
+                <prop key="articleCreation.htm">articleController</prop>
+                <prop key="article/{id}.htm">articleController</prop>
+                <prop key="article/save/:article.htm">articleController</prop>
             </props>
         </property>
     </bean>
@@ -45,12 +47,8 @@
           class="controllers.NewUserController"/>
     <bean name="userListrController"
           class="controllers.UserListController"/>
+    <bean name="articleController"
+          class="controllers.ArticleController"/>
 
-    <!--
-    The index controller.
-    -->
-    <bean name="indexController"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />
 
 </beans>
