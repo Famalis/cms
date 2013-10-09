@@ -27,6 +27,7 @@
                 <prop key="newUser.htm">newUserController</prop>
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
+                <prop key="userList/save/:user.htm">userListrController</prop>
             </props>
         </property>
     </bean>

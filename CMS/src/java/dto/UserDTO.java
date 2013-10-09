@@ -13,15 +13,30 @@ import model.UserConfiguration;
  */
 public class UserDTO {
     
+    private Long id;
     private String name, surname, bgcolor, groupId;
     public UserDTO(User user, UserConfiguration userConfig) {
+        this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
         this.bgcolor = userConfig.getBackgroundColor();
         this.groupId = userConfig.getGroupId();
         
     }
+    
+    public UserDTO() {
+        
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
     public String getName() {
         return name;
     }

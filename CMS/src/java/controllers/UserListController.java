@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import dao.UserConfigurationDao;
 import dao.UserDao;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import utils.Utils;
 
 /**
  *
@@ -28,15 +31,31 @@ import dao.UserDao;
 @RequestMapping("/userList")
 public class UserListController extends BaseController{
     
-    @RequestMapping
+    @RequestMapping("/userList")
     public String home(HttpSession session, ModelMap model) {
-        
+        System.out.println("home");
         return "userList";
     } 
     
-    @RequestMapping("/userList/users")
-    public @ResponseBody String requestJsons(HttpSession session) {
-        //System.out.println("requestJsons");
+    @RequestMapping(value = "/userList/save/:user", method = RequestMethod.POST)
+    public @ResponseBody void saveData(@RequestBody String user) {
+        UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(user, "user", UserDTO.class);
+        if(userDto!=null) {
+            System.out.println(userDto.getId()+" "+userDto.getName());
+            //User actualUser = new User();
+            //actualUser.loadObject("id="+userDto.getId());
+            UserConfiguration userConfig = new UserConfiguration();
+            userConfig.loadObject("userId="+userDto.getId());
+            userConfig.setGroupId(userDto.getGroupId());
+            userConfig.setBackgroundColor(userDto.getBgcolor());
+            userConfig.update();
+        }
+        
+    }
+    
+    @RequestMapping(value = "/userList/users")
+    public @ResponseBody String requestJsons() {
+        System.out.println("requestJsons");
         UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
         List<UserConfiguration> configs = userConfigDao.select();
@@ -54,7 +73,6 @@ public class UserListController extends BaseController{
         try {
             mapper.writeValue(out, userDtos);
             data = out.toByteArray();
-            System.out.println(new String(data));
             return new String(data);
         } catch (Exception e) {
             e.printStackTrace();

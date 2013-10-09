@@ -20,9 +20,14 @@
             <jsp:body>
                 <c:if test="${userConfig.groupId == 1}">
                     <div>
-                        <h1 ng-show="status != ''">{{status}}</h1>
+                        <h1 style="text-align: center" ng-show="status != ''">
+                            {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
+                        </h1>                        
                         <table border="1px" style="width: 100%;">
-                            <tr>
+                            <tr style="background-color: grey">
+                                <td>
+                                    
+                                </td>
                                 <td>
                                     Nazwisko
                                 </td>
@@ -38,6 +43,9 @@
                             </tr>
                             <tr ng-repeat="user in users">
                                 <td>
+                                    <input ng-click="selectUser(user.id)" type="radio" name="selectedUser" value="{{user.id}}"/>
+                                </td>
+                                <td>
                                     {{user.surname}}
                                 </td>
                                 <td>
@@ -48,6 +56,21 @@
                                 </td>
                                 <td>
                                     {{user.groupId}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    Grupa: <input type="text" ng-model="selectedUser.groupId"/>
+                                </td>
+                                <td>
+                                    Tło :<input type="text" ng-model="selectedUser.bgcolor"/>
+                                </td>
+                                <td>
+                                    <input type="submit" ng-click="save()" value="Zapisz zmiany">
                                 </td>
                             </tr>
                         </table>
