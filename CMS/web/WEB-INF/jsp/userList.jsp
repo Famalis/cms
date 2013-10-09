@@ -16,28 +16,28 @@
                     <h1 style="text-align: center" ng-show="status != ''">
                         {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
                     </h1>                        
-                    <table border="1px" style="width: 100%; text-">
+                    <table ng-init="predicate='surname'" border="1px" style="width: 100%; text-">
                         <tr style="background-color: grey; color: lightgrey; font-weight: bold">
                             <td>
 
                             </td>
-                            <td>
+                            <td ng-click="predicate='surname'">
                                 Nazwisko
                             </td>
-                            <td>
+                            <td ng-click="predicate='name'">
                                 Imię
                             </td>
-                            <td>
+                            <td ng-click="predicate='login'">
                                 Login
                             </td>
-                            <td>
+                            <td ng-click="predicate='bgcolor'">
                                 Kolor tła
                             </td>
-                            <td>
+                            <td ng-click="predicate='groupId'">
                                 Grupa
                             </td>
                         </tr>
-                        <tr ng-repeat="user in users">
+                        <tr ng-repeat="user in users | orderBy:predicate">
                             <td>
                                 <input ng-click="selectUser(user.id)" type="radio" name="selectedUser" value="{{user.id}}"/>
                             </td>
