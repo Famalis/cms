@@ -9,18 +9,13 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-            <h4>${content}</h4>
-            <c:if test="${user.name != null}" > 
-                <h1 style="background-color: ${userConfig.backgroundColor}">
-                    Witaj ${user.name}!
-                </h1>
-            </c:if>
-            <c:if test="${user.name == null}" > 
-                <h1 style="background-color: ${userConfig.backgroundColor}">
-                    Witaj Gościu!
-                </h1>
-            </c:if>
-            <a href="/CMS/login.htm">Zarządzanie kontem</a>
-            <a href="/CMS/articles.htm">Lista artykułów</a>
-        </jsp:body>
-    </t:genericTemplate>
+        <h4>${content}</h4>
+        Ostatni artykuł przez ${lastUser.name}:
+        <h1>
+            ${lastArticle.title}
+        </h1>
+        <p>
+            ${lastArticle.text}
+        </p>
+    </jsp:body>
+</t:genericTemplate>

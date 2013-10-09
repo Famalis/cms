@@ -6,17 +6,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>
-            <c:if test="${user.name == null}">
-                Wylogowanie powiodło się
-            </c:if>
-            <c:if test="${user.name != null}">
-                Wylogowanie nie powiodło się
-            </c:if>
-        </h1>
-        <a href="/CMS/login.htm">Powrót</a>
-    </body>
-</html>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:genericTemplate>
+    <h1>
+        <c:if test="${user.name == null}">
+            Wylogowanie powiodło się
+        </c:if>
+        <c:if test="${user.name != null}">
+            Wylogowanie nie powiodło się
+        </c:if>
+    </h1>
+</t:genericTemplate>

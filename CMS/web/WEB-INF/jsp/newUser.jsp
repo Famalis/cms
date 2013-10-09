@@ -26,6 +26,5 @@
         <h3>
             ${error}
         </h3>
-        <a href="/CMS/login.htm">Zarządzanie kontem</a>
     </jsp:body>
 </t:genericTemplate>

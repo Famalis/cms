@@ -76,7 +76,6 @@
                     </p>
                 </div>
             </c:if>
-            <a href="/CMS/login.htm">Powrót</a>
         </div>
     </jsp:body>
 </t:genericTemplate>

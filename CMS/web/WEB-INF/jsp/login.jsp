@@ -31,7 +31,6 @@
                 <input type="submit" name="loginButton" value="Zaloguj"/>
             </form>
         </c:if>
-        <a href="/CMS/home.htm">Strona Główna</a>
         <a href="/CMS/newUser.htm">Załóż konto</a>
         <c:if test="${userConfig.groupId == 1}">
             <a href="/CMS/userList.htm">Lista użytkowników</a>            
