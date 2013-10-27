@@ -27,10 +27,6 @@
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
                 <prop key="userList/save/:user.htm">userListrController</prop>
-                <prop key="articleCreation.htm">articleController</prop>
-                <prop key="article/{id}.htm">articleController</prop>
-                <prop key="article/save/:article.htm">articleController</prop>
-                <prop key="articles.htm">articleController</prop>
             </props>
         </property>
     </bean>
@@ -48,8 +44,6 @@
           class="controllers.NewUserController"/>
     <bean name="userListrController"
           class="controllers.UserListController"/>
-    <bean name="articleController"
-          class="controllers.ArticleController"/>
 
 
 </beans>

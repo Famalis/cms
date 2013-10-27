@@ -35,6 +35,5 @@
         <c:if test="${userConfig.groupId == 1}">
             <a href="/CMS/userList.htm">Lista użytkowników</a>            
         </c:if>
-        <a href="/CMS/articleCreation.htm">Stwórz artykuł</a>
     </jsp:body>
 </t:genericTemplate>

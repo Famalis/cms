@@ -10,12 +10,5 @@
 <t:genericTemplate>
     <jsp:body>
         <h4>${content}</h4>
-        Ostatni artykuł przez ${lastUser.name}:
-        <h1>
-            ${lastArticle.title}
-        </h1>
-        <p>
-            ${lastArticle.text}
-        </p>
     </jsp:body>
 </t:genericTemplate>

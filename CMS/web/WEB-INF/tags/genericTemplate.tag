@@ -4,7 +4,7 @@
 <html ng-app>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>        
-        <title>bleble</title>
+        <title>Zajebisty Tytuł CMS</title>
     </head>
     <body>
         <table style="width: 100%; height: 100%">
@@ -21,7 +21,6 @@
                     <div id="menu">
                         <a href="/CMS/home.htm">Strona główna</a><br/>
                         <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>
-                        <a href="/CMS/articles.htm">Lista artykułów</a><br/>
                     </div>
                 </td>
                 <td style="vertical-align: top">
