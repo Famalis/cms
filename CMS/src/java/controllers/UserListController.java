@@ -31,6 +31,10 @@ import utils.Utils;
 @RequestMapping("/userList")
 public class UserListController extends BaseController{
     
+    public UserListController() {
+        super("");
+    }
+    
     @RequestMapping("/userList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
@@ -54,21 +58,10 @@ public class UserListController extends BaseController{
     }
     
     @RequestMapping(value = "/userList/users")
-    public @ResponseBody String requestJsons() {
-        System.out.println("requestJsons");
+    public @ResponseBody String getData() {        
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
         List<UserDTO> userDtos = userDao.getUserWithConfig();
-        ObjectMapper mapper = new ObjectMapper();
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] data;
-        try {
-            mapper.writeValue(out, userDtos);
-            data = out.toByteArray();
-            return new String(data);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return Utils.convertObjectListToJSON(userDtos);
     }
 }

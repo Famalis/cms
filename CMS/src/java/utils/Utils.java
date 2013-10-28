@@ -5,7 +5,9 @@
 package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Tutaj przetrzymywane będą różne przydatne metody wykorzystywane w więcej niż
@@ -33,5 +35,20 @@ public class Utils {
             ex.printStackTrace();
         }
         return o;
+    }
+    
+    public static String convertObjectListToJSON(List<?> list) {
+        System.out.println("DEBUG: requestJsons");     
+        ObjectMapper mapper = new ObjectMapper();        
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] data;
+        try {
+            mapper.writeValue(out, list);
+            data = out.toByteArray();
+            return new String(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

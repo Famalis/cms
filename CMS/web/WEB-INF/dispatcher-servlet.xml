@@ -27,6 +27,9 @@
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
                 <prop key="userList/save/:user.htm">userListrController</prop>
+                <prop key="groupList.htm">groupListrController</prop>
+                <prop key="groupList/groups.htm">groupListrController</prop>
+                <prop key="groupList/save/:group.htm">groupListrController</prop>
             </props>
         </property>
     </bean>
@@ -35,7 +38,8 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
-    
+    <bean name="groupListrController"
+          class="controllers.GroupListController"/>
     <bean name="homeController"
           class="controllers.HomeController"/>    
     <bean name="loginController"

@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/home")
 public class HomeController extends BaseController{
     
+    public HomeController() {
+        super("");
+    }
+    
     @RequestMapping(method = RequestMethod.GET)
-    public String home(ModelMap model) {
-        
+    public String home(ModelMap model) {        
         return "home";
     }
     

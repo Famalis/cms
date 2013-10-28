@@ -23,6 +23,10 @@ import javax.inject.Inject;
 @RequestMapping("/newUser")
 public class NewUserController extends BaseController {
     
+    public NewUserController() {
+        super("");
+    }
+    
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
         
