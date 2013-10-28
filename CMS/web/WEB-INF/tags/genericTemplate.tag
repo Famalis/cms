@@ -21,6 +21,10 @@
                     <div id="menu">
                         <a href="/CMS/home.htm">Strona główna</a><br/>
                         <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>
+                        <a href="/CMS/employeeList.htm">Lista pracowników</a><br/>
+                        <a href="/CMS/departmentList.htm">Lista wydziałów</a><br/>
+                        <a href="/CMS/positionList.htm">Lista stanowisk</a><br/>
+                        <a href="/CMS/groupList.htm">Lista grup</a><br/>
                     </div>
                 </td>
                 <td style="vertical-align: top">

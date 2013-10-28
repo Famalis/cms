@@ -38,7 +38,10 @@
                 <prop key="departmentList/save/:dep.htm">departmentListrController</prop>
                 <prop key="positionList.htm">positionListrController</prop>
                 <prop key="positionList/positions.htm">positionListrController</prop>
-                <prop key="positionList/save/:position.htm">positionListrController</prop>
+                <prop key="positionList/save/:position.htm">positionListrController</prop>                
+                <prop key="terminalList.htm">terminalListrController</prop>
+                <prop key="terminalList/terminals.htm">terminalListrController</prop>
+                <prop key="terminalList/save/:terminal.htm">terminalListrController</prop>
             </props>
         </property>
     </bean>
@@ -48,6 +51,8 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
+    <bean name="terminalListrController"
+          class="controllers.TerminalListController"/>
     <bean name="positionListrController"
           class="controllers.PositionListController"/>
     <bean name="departmentListrController"
