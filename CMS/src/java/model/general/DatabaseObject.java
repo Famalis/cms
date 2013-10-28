@@ -17,7 +17,7 @@ import utils.ConnectionManager;
  * którym podaje się nazwę tabeli; Nazwy atrybutów klas dziedziczących muszą
  * być takie same jak nazwy kolumn w odpowiedniej tabeli w bazie danych; 
  * Klasa zawieta metody pozwalające na zapis obiektu w bazie danych, jego 
- * modyfikację i usunięcie;
+ * modyfikację i usunięcie; (Lepiej używać Dao do wykonywania zapytań)
  *
  * @author Sergio
  */
