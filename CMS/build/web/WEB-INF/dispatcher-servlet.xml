@@ -33,6 +33,9 @@
                 <prop key="employeeList.htm">employeeListrController</prop>
                 <prop key="employeeList/emps.htm">employeeListrController</prop>
                 <prop key="employeeList/save/:emp.htm">employeeListrController</prop>
+                <prop key="departmentList.htm">departmentListrController</prop>
+                <prop key="departmentList/deps.htm">departmentListrController</prop>
+                <prop key="departmentList/save/:dep.htm">departmentListrController</prop>
             </props>
         </property>
     </bean>
@@ -41,6 +44,9 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
+    
+    <bean name="departmentListrController"
+          class="controllers.DepartmentListController"/>
     <bean name="employeeListrController"
           class="controllers.EmployeeListController"/>
     <bean name="groupListrController"
