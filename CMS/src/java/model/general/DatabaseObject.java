@@ -4,6 +4,7 @@
  */
 package model.general;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,6 +45,7 @@ public class DatabaseObject {
         this.tableName = tableName;
     }
     
+    @JsonIgnore
     public String getTableName(){
         return tableName;
     }
@@ -51,6 +53,7 @@ public class DatabaseObject {
      * Metoda zwraca nazwy kolumn (atrybuty obiektu) w formie listy stringów.
      * @return 
      */
+    @JsonIgnore
     public List<String> getColumnNames() {
         List<String> columns = new ArrayList<String>();
         Field[] fields = this.getClass().getDeclaredFields();
@@ -65,6 +68,7 @@ public class DatabaseObject {
      * Przykład: name, surname, email
      * @return 
      */
+    @JsonIgnore
     public String getColumnString() {
         //List<String> columns = new ArrayList<String>();
         String columnString = "";
