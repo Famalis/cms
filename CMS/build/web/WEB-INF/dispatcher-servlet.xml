@@ -30,6 +30,9 @@
                 <prop key="groupList.htm">groupListrController</prop>
                 <prop key="groupList/groups.htm">groupListrController</prop>
                 <prop key="groupList/save/:group.htm">groupListrController</prop>
+                <prop key="employeeList.htm">employeeListrController</prop>
+                <prop key="employeeList/emps.htm">employeeListrController</prop>
+                <prop key="employeeList/save/:emp.htm">employeeListrController</prop>
             </props>
         </property>
     </bean>
@@ -38,6 +41,8 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
+    <bean name="employeeListrController"
+          class="controllers.EmployeeListController"/>
     <bean name="groupListrController"
           class="controllers.GroupListController"/>
     <bean name="homeController"
