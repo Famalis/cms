@@ -52,8 +52,6 @@ public class Address extends DatabaseObject {
         this.apartmentNumber = apartmentNumber;
     }
     
-    
-    
     public Address() {
         super("address");
     }
