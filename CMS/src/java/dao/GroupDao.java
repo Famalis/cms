@@ -4,7 +4,7 @@
  */
 package dao;
 
-import java.security.acl.Group;
+import model.PrivilegeGroup;
 
 /**
  *
@@ -13,6 +13,6 @@ import java.security.acl.Group;
 public class GroupDao extends GenericDao{
     
     public GroupDao(){
-        super(Group.class);
+        super(PrivilegeGroup.class);
     }
 }
