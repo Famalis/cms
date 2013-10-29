@@ -25,7 +25,7 @@
             <input type="button" ng-show="editMode" ng-click="save()" value="Zapisz"</td>
         </td>
         <td>
-            <input type="button" ng-show="editMode" ng-click="delete()" value="Usuń"</td>
+            <input type="button" ng-show="selected.id!=undefined && editMode" ng-click="delete()" value="Usuń"</td>
         </td>
     </tr>
 </table>

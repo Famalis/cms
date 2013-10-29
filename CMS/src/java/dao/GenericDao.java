@@ -42,6 +42,24 @@ public class GenericDao<T extends DatabaseObject> {
     public List<T> select() {
         return select("");
     }
+    
+    /**
+     * Metoda pobierająca dane z bazy w której podajemy listę wartości jaką
+     * może przymować podane pole (np id);
+     * @param values
+     * @return 
+     */
+    public List<T> select(String fieldName, List<String> values) {
+        String conditions = fieldName+" IN (";
+        for (int i = 0; i<values.size(); i++) {
+            conditions+=values.get(i);
+            if(i<values.size()-1) {
+                conditions+=", ";
+            }
+        }
+        conditions+=")";
+        return select(conditions);
+    }
 
     /**
      * Metoda służąca do usuwania wpisów w bazie danych

@@ -66,7 +66,12 @@ function PrivilegeKeyListCtrl($scope, $http) {
 
     };
 
-    $scope.select = function(pk) {
-        $scope.selected = pk;
+    $scope.select = function(selectedObject) {
+        if($scope.selected == selectedObject) {
+            $scope.selected = "";
+        } else {
+            $scope.selected = selectedObject;
+        }
+        
     };
 }

@@ -4,15 +4,15 @@
  */
 package dao;
 
-import java.security.acl.Group;
+import model.PrivilegeGroup;
 
 /**
  *
  * @author Sergio
  */
-public class GroupDao extends GenericDao{
+public class PrivilegeGroupDao extends GenericDao{
     
-    public GroupDao(){
-        super(Group.class);
+    public PrivilegeGroupDao(){
+        super(PrivilegeGroup.class);
     }
 }
