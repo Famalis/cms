@@ -12,7 +12,7 @@ import model.general.DatabaseObject;
  */
 public class PrivilegeKey extends DatabaseObject{
     
-    private String code;
+    private String code, description;
     
     public PrivilegeKey() {
         super("privilege_key");
@@ -24,6 +24,14 @@ public class PrivilegeKey extends DatabaseObject{
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     

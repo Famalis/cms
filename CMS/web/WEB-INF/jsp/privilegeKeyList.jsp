@@ -16,6 +16,9 @@
                                 <td>
                                     Kod
                                 </td>
+                                <td width="60%">
+                                    Opis
+                                </td>
                             </tr>
                             <tr ng-repeat="privilegeKey in privilegeKeys" ng-click="select(privilegeKey)">
                                 <td>
@@ -24,10 +27,16 @@
                                 <td>
                                     {{privilegeKey.code}}
                                 </td>
+                                <td>
+                                    {{privilegeKey.description}}
+                                </td>
                             </tr>
                             <tr ng-show="editMode">
                                 <td>
-                                    <input type="text" ng-model="selected.code"/>
+                                    Nazwa: <input type="text" ng-model="selected.code"/>
+                                </td>
+                                <td>
+                                    Opis <textarea ng-model="selected.description"> </textarea>
                                 </td>
                             </tr>
                         </table>
