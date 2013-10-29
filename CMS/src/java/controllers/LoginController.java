@@ -5,8 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dao.UserDao;
-import javax.inject.Inject;
+import dto.UserDTO;
 import javax.servlet.http.HttpSession;
 import model.User;
 import model.UserConfiguration;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @RequestMapping("/login")
-@SessionAttributes({"user", "userConfig"})
+@SessionAttributes({"user"})
 public class LoginController extends BaseController {
 
     public LoginController() {
@@ -38,19 +37,19 @@ public class LoginController extends BaseController {
     @RequestMapping(method = RequestMethod.POST)
     public String login(HttpSession session, ModelMap model, @RequestParam("login") String login, @RequestParam("password") String password) {
 
-        currentUser = new User();
-        userConfig = new UserConfiguration();
-        if (currentUser.loadObject("login='" + login + "' AND password='" + password + "'")) {
+        User user = new User();
+        UserConfiguration userConfig = new UserConfiguration();
+        if (user.loadObject("login='" + login + "' AND password='" + password + "'")) {
             //userConfig.setUserId(currentUser.getId());
-            userConfig.loadObject("userId=" + currentUser.getId());
-            model.put("helloUser", "Witaj " + currentUser.getName() + "!");
+            userConfig.loadObject("userId=" + user.getId());
+            
+            model.put("helloUser", "Witaj " + user.getName() + "!");
         } else {
             model.put("helloUser", "Złe dane logowania");
         }
 
-
-        model.put("user", this.currentUser);
-        model.put("userConfig", this.userConfig);
+        this.currentUserDto = new UserDTO(user, userConfig);
+        model.put("user", this.currentUserDto);
         return "login";
 
     }
@@ -58,10 +57,8 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(ModelMap model) {
 
-        currentUser = new User();
-        userConfig = new UserConfiguration();
-        model.put("user", this.currentUser);
-        model.put("userConfig", this.userConfig);
+        currentUserDto = new UserDTO();
+        model.put("user", this.currentUserDto);
         return "logout";
 
     }
@@ -70,9 +67,12 @@ public class LoginController extends BaseController {
     public String bgcolorChange(ModelMap model, @RequestParam("color") String color) {
 
         //currentUser = new User();
-        userConfig.setBackgroundColor(color);
-        userConfig.update();
-        model.put("userConfig", this.userConfig);
+        currentUserDto.setBgcolor(color);
+        UserConfiguration config = new UserConfiguration();
+        config.loadObject("userId="+currentUserDto.getId());
+        config.setBackgroundColor(color);
+        config.update();
+        model.put("userConfig", this.currentUserDto);
         return "login";
 
     }

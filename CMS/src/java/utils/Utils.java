@@ -38,6 +38,21 @@ public class Utils {
         return o;
     }
     
+    public static String convertObjectToJSON(Object obj) {
+        System.out.println("DEBUG: requestJsons");     
+        ObjectMapper mapper = new ObjectMapper();        
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] data;
+        try {
+            mapper.writeValue(out, obj);
+            data = out.toByteArray();
+            return new String(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public static String convertObjectListToJSON(List<?> list) {
         System.out.println("DEBUG: requestJsons");     
         ObjectMapper mapper = new ObjectMapper();        

@@ -9,15 +9,16 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
+        ${user.privilegeKeyIds}
         <c:if test="${user.name != null}">
-            <p style="background-color: ${userConfig.backgroundColor}">
+            <p style="background-color: ${user.bgcolor}">
                 Zalogowany jako ${user.login}
             </p>
             <form action="/CMS/logout.htm" method="POST">
                 <input type="submit" name="logoutButton" value="Wyloguj"/>
             </form>
             <form action="/CMS/bgcolor.htm" method="GET">
-                Kolor tła: <input type="text" value="${userConfig.backgroundColor}" name="color"/>
+                Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
                 <input type="submit" name="bgcolorButton"/>
             </form>
         </c:if>
@@ -32,8 +33,6 @@
             </form>
         </c:if>
         <a href="/CMS/newUser.htm">Załóż konto</a>
-        <c:if test="${userConfig.groupId == 1}">
-            <a href="/CMS/userList.htm">Lista użytkowników</a>            
-        </c:if>
+        
     </jsp:body>
 </t:genericTemplate>

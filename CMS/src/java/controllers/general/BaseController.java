@@ -4,31 +4,29 @@
  */
 package controllers.general;
 
-import javax.inject.Inject;
-import model.User;
-import model.UserConfiguration;
+import dto.UserDTO;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import utils.Utils;
 
 /**
  *
  * @author Sergio
  */
+@Controller
+@RequestMapping("/base")
 public class BaseController {
     /**
      *Zalogowany użytkownik
      */
-    @Inject
-    protected User currentUser;
-    
-    @Inject
-    protected UserConfiguration userConfig;
-    
+    protected UserDTO currentUserDto;
     protected String privileges;
     
     public BaseController(String privileges){
         this.privileges = privileges;
-        currentUser = new User();
-        userConfig = new UserConfiguration();
-    }
-    
+        currentUserDto = new UserDTO();
+    }    
     
 }

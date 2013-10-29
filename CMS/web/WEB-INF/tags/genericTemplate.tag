@@ -4,9 +4,11 @@
 <html ng-app>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>        
-        <title>Zajebisty Tytuł CMS</title>
+        <title>Zajebisty Tytuł CMS</title>       
     </head>
     <body>
+        <script src="/CMS/resources/js/genericCtrl.js"></script>
+        <div ng-controller="GenericCtrl">          
         <table style="width: 100%; height: 100%">
             <tr>
                 <td colspan="2" style="height: 1%; background-color: lightgrey">
@@ -42,5 +44,6 @@
                 </td>
             </tr>
         </table>
+        </div>
     </body>
 </html>

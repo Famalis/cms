@@ -4,6 +4,10 @@
  */
 package dto;
 
+import dao.PrivilegeDao;
+import java.util.ArrayList;
+import java.util.List;
+import model.Privilege;
 import model.User;
 import model.UserConfiguration;
 
@@ -15,13 +19,23 @@ public class UserDTO {
     
     private Long id;
     private String name, surname, bgcolor, groupId, login, password, groupName;
+    private List<String> privilegeKeyIds = new ArrayList<>();
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
         this.bgcolor = userConfig.getBackgroundColor();
         this.groupId = userConfig.getGroupId();
+        this.login = user.getLogin();
+        PrivilegeDao privilegeDao = new PrivilegeDao();
+        for (Privilege p : (List<Privilege>) privilegeDao.select("groupId="+userConfig.getGroupId())) {
+            privilegeKeyIds.add(p.getKeyId());
+        }
         
+    }
+    
+    public boolean contains(String o) {
+        return privilegeKeyIds.contains(o);
     }
     
     public UserDTO() {
@@ -91,6 +105,14 @@ public class UserDTO {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+    public List<String> getPrivilegeKeyIds() {
+        return privilegeKeyIds;
+    }
+
+    public void setPrivilegeKeyIds(List<String> privilegeKeyIds) {
+        this.privilegeKeyIds = privilegeKeyIds;
     }
     
     

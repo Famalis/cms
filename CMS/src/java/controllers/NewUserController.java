@@ -6,6 +6,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.UserDao;
+import dto.UserDTO;
 import model.User;
 import model.UserConfiguration;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import javax.inject.Inject;
 
 /**
  *
@@ -45,7 +45,7 @@ public class NewUserController extends BaseController {
         if(userDao.select("login='"+login+"'").size()>0) {
             model.put("error", "Podany login został już użyty");
             return "newUser";
-        }
+        }        
         User u = new User();
         u.setEmail(email);
         u.setLogin(login);
@@ -59,8 +59,9 @@ public class NewUserController extends BaseController {
             uc.setGroupId("2");
             uc.insert();
             uc.loadObject("userId="+u.getId());
+            this.currentUserDto = new UserDTO(u,uc);
         }
-        model.put("user", this.currentUser);
+        model.put("user", this.currentUserDto);
         return "login";
     }
 }

@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class ConnectionManager {
 
-    private String url = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8";
+    private String url = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=UTF-8";
     private String login = "cms";
     private String pass = "G9Dua8d5tnGvda3J";
     private Connection connection;
