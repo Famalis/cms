@@ -43,11 +43,17 @@
                                 <td>Klucze:
                                     <p ng-repeat="groupPrivKey in privilegeKeys" ng-show="selectedGroupHasKey(groupPrivKey.id)">{{groupPrivKey.code}}</p>
                                 </td>
-                                <td>Doda nowy klucz:
+                                <td>Dodaj nowy klucz:
                                     <select ng-model="newKeyId">
                                         <option ng-repeat="privKey in privilegeKeys" value="{{privKey.id}}">{{privKey.code}}</option> 
                                     </select>
                                     <input type="button" ng-click="addKey()" value="Dodaj"/>
+                                    <br/>
+                                    Usuń istniejący klucz:
+                                    <select ng-model="oldKeyId">
+                                        <option ng-repeat="privKey in privilegeKeys" ng-show="selectedGroupHasKey(privKey.id)" value="{{privKey.id}}">{{privKey.code}}</option> 
+                                    </select>
+                                    <input type="button" ng-click="removeKey()" value="Usuń"/>
                                 </td>
                             </tr>
                         </table>

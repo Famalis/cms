@@ -88,6 +88,14 @@ function GroupListCtrl($scope, $http) {
             $scope.selected.privilegeKeyIds.push($scope.newKeyId);
         }
     };
+    
+    $scope.removeKey = function() {
+        if ($scope.selectedGroupHasKey($scope.oldKeyId)) {
+            var index = $scope.selected.privilegeKeyIds.indexOf($scope.oldKeyId);
+            $scope.selected.privilegeKeyIds.splice(index, 1);
+            $scope.oldKeyId = 0;
+        }
+    }
 
     $scope.groupHasKey = function(group, privKeyId) {
         for (var i = 0; i < group.privilegeKeyIds.length; i++) {
