@@ -19,6 +19,7 @@ import utils.ConnectionManager;
  * wpisów.
  *
  * @author Sergio
+ * @param <T>
  */
 public class GenericDao<T extends DatabaseObject> {
 
@@ -46,6 +47,7 @@ public class GenericDao<T extends DatabaseObject> {
     /**
      * Metoda pobierająca dane z bazy w której podajemy listę wartości jaką
      * może przymować podane pole (np id);
+     * @param fieldName
      * @param values
      * @return 
      */
@@ -148,7 +150,7 @@ public class GenericDao<T extends DatabaseObject> {
      * @return
      */
     public List<T> select(String conditions) {
-        List<T> resultList = new ArrayList<T>();
+        List<T> resultList = new ArrayList<>();
         try {
             String query = "SELECT id, " + objectInstance.getColumnString();
             query += " FROM " + objectInstance.getTableName();
