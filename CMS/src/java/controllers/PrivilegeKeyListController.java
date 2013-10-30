@@ -35,7 +35,7 @@ public class PrivilegeKeyListController extends BaseController {
             return "missingPrivilege";
         }
         System.out.println("home");
-        return "privilegeKeyList";
+        return "configuration/privilegeKeyList";
     }
 
     @RequestMapping(value = "/privilegeKeyList/save/:privKey", method = RequestMethod.POST)

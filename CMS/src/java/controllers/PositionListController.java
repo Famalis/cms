@@ -31,7 +31,7 @@ public class PositionListController extends BaseController{
             return "missingPrivilege";
         }
         System.out.println("home");
-        return "positionList";
+        return "resourceManagment/positionList";
     } 
     
     @RequestMapping(value = "/positionList/save/:position", method = RequestMethod.POST)

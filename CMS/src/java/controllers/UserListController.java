@@ -36,7 +36,7 @@ public class UserListController extends BaseController{
             return "missingPrivilege";
         }
         System.out.println("home");
-        return "userList";
+        return "configuration/userList";
     } 
     
     @RequestMapping(value = "/userList/save/:user", method = RequestMethod.POST)

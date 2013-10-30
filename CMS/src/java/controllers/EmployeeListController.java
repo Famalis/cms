@@ -35,7 +35,7 @@ public class EmployeeListController extends BaseController{
         if(!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
-        return "employeeList";
+        return "resourceManagment/employeeList";
     } 
     
     @RequestMapping(value = "/employeeList/save/:emp", method = RequestMethod.POST)

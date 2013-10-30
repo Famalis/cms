@@ -43,7 +43,7 @@ public class GroupListController extends BaseController {
         if(!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
-        return "groupList";
+        return "configuration/groupList";
     }
 
     @RequestMapping(value = "/groupList/save/:group", method = RequestMethod.POST)

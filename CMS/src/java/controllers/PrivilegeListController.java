@@ -28,7 +28,7 @@ public class PrivilegeListController extends BaseController{
     @RequestMapping("/privilegeList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
-        return "privilegeList";
+        return "configuration/privilegeList";
     } 
     
     @RequestMapping(value = "/privilegeList/save/:priv", method = RequestMethod.POST)

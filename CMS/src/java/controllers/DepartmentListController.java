@@ -31,7 +31,7 @@ public class DepartmentListController extends BaseController{
         if(!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
-        return "departmentList";
+        return "resourceManagment/departmentList";
     } 
     
     @RequestMapping(value = "/department/save/:dep", method = RequestMethod.POST)

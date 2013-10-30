@@ -32,7 +32,7 @@ public class TerminalListController extends BaseController{
             return "missingPrivilege";
         }
         System.out.println("home");
-        return "departmentList";
+        return "resourceManagment/departmentList";
     } 
     
     @RequestMapping(value = "/terminal/save/:dep", method = RequestMethod.POST)
