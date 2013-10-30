@@ -31,6 +31,7 @@ public class LoginController extends BaseController {
 
     @RequestMapping
     public String home(ModelMap model) {
+
         return "login";
     }
 
@@ -42,7 +43,7 @@ public class LoginController extends BaseController {
         if (user.loadObject("login='" + login + "' AND password='" + password + "'")) {
             //userConfig.setUserId(currentUser.getId());
             userConfig.loadObject("userId=" + user.getId());
-            
+
             model.put("helloUser", "Witaj " + user.getName() + "!");
         } else {
             model.put("helloUser", "Złe dane logowania");
@@ -69,7 +70,7 @@ public class LoginController extends BaseController {
         //currentUser = new User();
         currentUserDto.setBgcolor(color);
         UserConfiguration config = new UserConfiguration();
-        config.loadObject("userId="+currentUserDto.getId());
+        config.loadObject("userId=" + currentUserDto.getId());
         config.setBackgroundColor(color);
         config.update();
         model.put("userConfig", this.currentUserDto);

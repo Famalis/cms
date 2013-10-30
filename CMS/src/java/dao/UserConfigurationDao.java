@@ -10,7 +10,7 @@ import model.UserConfiguration;
  *
  * @author Sergio
  */
-public class UserConfigurationDao extends GenericDao{
+public class UserConfigurationDao extends GenericDao<UserConfiguration>{
     
     public UserConfigurationDao() {
         super(UserConfiguration.class);

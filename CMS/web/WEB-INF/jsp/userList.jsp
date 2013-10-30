@@ -11,7 +11,6 @@
     <jsp:body>
         <script src="/CMS/resources/js/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">            
-            <c:if test="${user.privilegeKeyIds.contains(1)}">
                 <div>
                     <h1 style="text-align: center" ng-show="status != ''">
                         {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
@@ -74,7 +73,6 @@
                         </tr>
                     </table>
                 </div>
-            </c:if>
             <c:if test="${userConfig.groupId != 1}">
                 <div>
                     <p>

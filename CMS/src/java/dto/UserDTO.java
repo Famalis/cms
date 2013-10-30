@@ -5,9 +5,13 @@
 package dto;
 
 import dao.PrivilegeDao;
+import dao.PrivilegeKeyDao;
+import dao.UserDao;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.Privilege;
+import model.PrivilegeKey;
 import model.User;
 import model.UserConfiguration;
 
@@ -15,11 +19,11 @@ import model.UserConfiguration;
  *
  * @author Sergio
  */
-public class UserDTO {
+public class UserDTO implements Serializable{
     
     private Long id;
     private String name, surname, bgcolor, groupId, login, password, groupName;
-    private List<String> privilegeKeyIds = new ArrayList<>();
+    private List<String> privilegeKeyCodes = new ArrayList<>();
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.name = user.getName();
@@ -28,14 +32,14 @@ public class UserDTO {
         this.groupId = userConfig.getGroupId();
         this.login = user.getLogin();
         PrivilegeDao privilegeDao = new PrivilegeDao();
-        for (Privilege p : (List<Privilege>) privilegeDao.select("groupId="+userConfig.getGroupId())) {
-            privilegeKeyIds.add(p.getKeyId());
+        PrivilegeKeyDao privilegeKeyDao = new PrivilegeKeyDao();
+        List<String> keyIds = new ArrayList<>();
+        for (Privilege p : privilegeDao.select("groupId="+userConfig.getGroupId())) {
+            keyIds.add(p.getKeyId());
+        }        
+        for (PrivilegeKey key : privilegeKeyDao.select("id", keyIds)) {
+            privilegeKeyCodes.add(key.getCode());
         }
-        
-    }
-    
-    public boolean contains(String o) {
-        return privilegeKeyIds.contains(o);
     }
     
     public UserDTO() {
@@ -108,11 +112,11 @@ public class UserDTO {
     }
 
     public List<String> getPrivilegeKeyIds() {
-        return privilegeKeyIds;
+        return privilegeKeyCodes;
     }
 
     public void setPrivilegeKeyIds(List<String> privilegeKeyIds) {
-        this.privilegeKeyIds = privilegeKeyIds;
+        this.privilegeKeyCodes = privilegeKeyIds;
     }
     
     

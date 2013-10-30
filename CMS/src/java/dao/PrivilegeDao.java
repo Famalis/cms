@@ -10,7 +10,7 @@ import model.Privilege;
  *
  * @author Sergio
  */
-public class PrivilegeDao extends GenericDao{
+public class PrivilegeDao extends GenericDao<Privilege>{
     
     public PrivilegeDao() {
         super(Privilege.class);

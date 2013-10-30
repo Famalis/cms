@@ -6,19 +6,18 @@ package dto;
 
 import dao.PrivilegeDao;
 import dao.PrivilegeKeyDao;
-import dao.UserDao;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.PrivilegeGroup;
 import model.Privilege;
 import model.PrivilegeKey;
-import model.User;
 
 /**
  *
  * @author Sergio
  */
-public class GroupDTO {
+public class GroupDTO implements Serializable{
 
     private Long id;
     private String name;

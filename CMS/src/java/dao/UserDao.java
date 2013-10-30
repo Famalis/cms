@@ -15,7 +15,7 @@ import model.User;
  *
  * @author Sergio
  */
-public class UserDao extends GenericDao {
+public class UserDao extends GenericDao<User> {
 
     
     public List<UserDTO> getUserWithConfig() {
