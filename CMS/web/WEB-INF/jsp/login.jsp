@@ -9,7 +9,7 @@
 <t:genericTemplate>
     <jsp:body>
         <c:if test="${user.name != null}">
-            <p style="background-color: ${user.bgcolor}">
+            <p>
                 Zalogowany jako ${user.login}
             </p>
             <form action="/CMS/logout.htm" method="POST">

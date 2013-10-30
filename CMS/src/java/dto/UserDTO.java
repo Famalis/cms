@@ -43,7 +43,7 @@ public class UserDTO implements Serializable{
     }
     
     public UserDTO() {
-        
+        this.bgcolor = "lightgrey";
     }
 
     public String getGroupName() {
