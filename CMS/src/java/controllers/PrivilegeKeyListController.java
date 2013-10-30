@@ -6,11 +6,9 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.PrivilegeKeyDao;
-import dto.UserDTO;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import model.PrivilegeKey;
-import model.UserConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,11 +26,14 @@ import utils.Utils;
 public class PrivilegeKeyListController extends BaseController {
 
     public PrivilegeKeyListController() {
-        super("");
+        super("all","ManagePrivilegeKeys");
     }
 
     @RequestMapping("/privilegeKeyList")
     public String home(HttpSession session, ModelMap model) {
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         System.out.println("home");
         return "privilegeKeyList";
     }

@@ -29,13 +29,9 @@
                 Hasło <input type="password" name="password"/>
                 <input type="submit" name="loginButton" value="Zaloguj"/>
             </form>
-        </c:if>
-        <a href="/CMS/newUser.htm">Załóż konto</a>
-        <c:if test="${user != null}">
-            <c:if test="${user.privilegeKeyIds.contains('all') || 
-                  user.privilegeKeyIds.contains('ManageUsers')}">
-                <a href="/CMS/userList.htm">Lista użytkowników</a>
-            </c:if>
+        </c:if>        
+        <c:if test="${user == null}">
+            <a href="/CMS/newUser.htm">Załóż konto</a>
         </c:if>
     </jsp:body>
 </t:genericTemplate>

@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DepartmentListController extends BaseController{
     
     public DepartmentListController() {
-        super("");
+        super("all","ManageDepartments");
     }
     
     @RequestMapping("/departmentList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         return "departmentList";
     } 
     

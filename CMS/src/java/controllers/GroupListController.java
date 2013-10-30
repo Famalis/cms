@@ -34,13 +34,15 @@ import utils.Utils;
 public class GroupListController extends BaseController {
 
     public GroupListController() {
-        super("");
+        super("all","ManageGroups");
     }
 
     @RequestMapping("/groupList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
-
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         return "groupList";
     }
 

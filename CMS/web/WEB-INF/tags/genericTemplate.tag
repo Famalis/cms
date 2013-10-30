@@ -1,3 +1,4 @@
+<%@tag import="dto.UserDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
@@ -9,6 +10,15 @@
         <title>Zajebisty Tytuł CMS</title>       
     </head>
     <body>
+
+        <%
+
+            UserDTO user = (UserDTO) jspContext.getAttribute("user", PageContext.SESSION_SCOPE);
+            if (user == null) {
+                jspContext.setAttribute("user", new UserDTO());
+            }
+        %> 
+
         <script src="/CMS/resources/js/genericCtrl.js"></script>
         <div ng-controller="GenericCtrl">          
             <table style="width: 100%; height: 100%">
@@ -21,14 +31,38 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" style="vertical-align: top; width: 10%; background-color: lightgrey">
+                    <td rowspan="2" style="vertical-align: top; width: 15%; background-color: lightgrey">
                         <div id="menu">
                             <a href="/CMS/home.htm">Strona główna</a><br/>
-                            <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>
-                            <a href="/CMS/employeeList.htm">Lista pracowników</a><br/>
-                            <a href="/CMS/departmentList.htm">Lista wydziałów</a><br/>
-                            <a href="/CMS/positionList.htm">Lista stanowisk</a><br/>
-                            <a href="/CMS/groupList.htm">Lista grup</a><br/>
+                            <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>  
+                            <h3>Zarządzanie zasobami</h3> 
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageEmployees')}">                                         
+                                  <a href="/CMS/employeeList.htm">Zarządzanie pracownikami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageDepartments')}">
+                                  <a href="/CMS/departmentList.htm">Zarządzanie wydziałami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManagePositions')}">
+                                  <a href="/CMS/positionList.htm">Zarządzanie stanowiskami</a><br/>
+                            </c:if>
+                            <h3>Konfiguracja systemu</h3>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageUsers')}">
+                                  <a href="/CMS/userList.htm">Zarządzanie użytkownikami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManagePrivilegeKeys')}">
+                                  <a href="/CMS/privilegeKeyList.htm">Zarządzanie kluczami</a><br>
+                            </c:if>                                                        
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageGroups')}">
+                                  <a href="/CMS/groupList.htm">Zarządzanie grupami</a><br/>
+                            </c:if>
+
+
                         </div>
                     </td>
                     <td style="vertical-align: top">                        

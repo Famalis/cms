@@ -17,9 +17,6 @@
                     </h1>                        
                     <table ng-init="predicate='surname'" border="1px" style="width: 100%; text-">
                         <tr style="background-color: grey; color: lightgrey; font-weight: bold">
-                            <td>
-
-                            </td>
                             <td ng-click="predicate='surname'">
                                 Nazwisko
                             </td>
@@ -36,10 +33,7 @@
                                 Grupa
                             </td>
                         </tr>
-                        <tr ng-repeat="user in users | orderBy:predicate">
-                            <td>
-                                <input ng-click="selectUser(user.id)" type="radio" name="selectedUser" value="{{user.id}}"/>
-                            </td>
+                        <tr ng-repeat="user in users | orderBy:predicate" ng-click="select(user)">
                             <td>
                                 {{user.surname}}
                             </td>
@@ -62,10 +56,10 @@
                     <table>
                         <tr>
                             <td>
-                                Grupa: <input type="text" ng-model="selectedUser.groupId"/>
+                                Grupa: <input type="text" ng-model="selected.groupId"/>
                             </td>
                             <td>
-                                Tło :<input type="text" ng-model="selectedUser.bgcolor"/>
+                                Tło :<input type="text" ng-model="selected.bgcolor"/>
                             </td>
                             <td>
                                 <input type="submit" ng-click="save()" value="Zapisz zmiany">
@@ -73,13 +67,6 @@
                         </tr>
                     </table>
                 </div>
-            <c:if test="${userConfig.groupId != 1}">
-                <div>
-                    <p>
-                        Brak uprawnień
-                    </p>
-                </div>
-            </c:if>
         </div>
     </jsp:body>
 </t:genericTemplate>

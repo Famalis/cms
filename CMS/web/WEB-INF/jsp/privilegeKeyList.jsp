@@ -5,6 +5,7 @@
     <jsp:body>
         <script src="/CMS/resources/js/privilegeKeyListCtrl.js"></script>
         <div ng-controller="PrivilegeKeyListCtrl">  
+            <h1>Nie zmieniać istniejących</h1>
             <table border="1px" width="100%">
                 <tr>
                     <td>

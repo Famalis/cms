@@ -5,6 +5,9 @@
 package controllers.general;
 
 import dto.UserDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,11 +19,34 @@ public class BaseController {
      * Zalogowany użytkownik
      */
     protected UserDTO currentUserDto;
-    protected String privileges;
+    protected List<String> privileges;
 
-    public BaseController(String privileges) {
-        this.privileges = privileges;
+    /**
+     *
+     * @param privileges
+     */
+    public BaseController(String... privileges) {
+        this.privileges = new ArrayList<>();
+        for (String priv : privileges) {
+            this.privileges.add(priv);
+        }
         currentUserDto = new UserDTO();
+    }
+    
+    /**
+     * Metoda sprawdza czy użytkownik zalogowany w podanej sesji posiada 
+     * uprawnienia wymagane do otwarcia strony (co najmniej jedno)
+     * @param session
+     * @return 
+     */
+    protected boolean checkPrivileges(HttpSession session) {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        for (String priv : privileges) {
+            if(user.getPrivilegeKeyCodes().contains(priv)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

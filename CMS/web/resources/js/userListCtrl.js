@@ -1,5 +1,6 @@
 function UserListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
+    $scope.selected = "";
     var loadDataPromise = $http.get('/CMS/userList/users.htm').success(function(returnData) {
         $scope.users = returnData;
         //$scope.status = null;
@@ -11,10 +12,10 @@ function UserListCtrl($scope, $http) {
     });
 
     $scope.save = function() {        
-        var o = $scope.selectedUser;
+        var o = $scope.selected;
         $http.post(
             '/CMS/userList/save/:user.htm',
-            {user:o}).success(function(returnData) {
+            {user:o}).success(function() {
                 
             }).error(function(error) {
                 alert(error);
@@ -29,14 +30,11 @@ function UserListCtrl($scope, $http) {
         }
     });
 
-    $scope.selectUser = function(id) {
-        //alert("test");
-        for (var i = 0; i < $scope.users.length; i++) {
-            //alert($scope.users[i].name);
-            if ($scope.users[i].id === id) {
-                $scope.selectedUser = $scope.users[i];
-
-            }
+    $scope.select = function(user) {
+        if($scope.selected == user) {
+            $scope.selected = "";
+        } else {
+            $scope.selected = user;
         }
     };
 }

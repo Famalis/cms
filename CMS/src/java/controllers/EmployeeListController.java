@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EmployeeListController extends BaseController{
     
     public EmployeeListController() {
-        super("");
+        super("all","ManageEmployees");
     }
     
     @RequestMapping("/employeeList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         return "employeeList";
     } 
     

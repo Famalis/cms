@@ -22,11 +22,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PositionListController extends BaseController{
     
     public PositionListController() {
-        super("");
+        super("all","ManagePositions");
     }
     
     @RequestMapping("/positionList")
     public String home(HttpSession session, ModelMap model) {
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         System.out.println("home");
         return "positionList";
     } 

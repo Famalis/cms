@@ -4,20 +4,15 @@
  */
 package controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import controllers.general.BaseController;
 import dto.UserDTO;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import model.User;
 import model.UserConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import dao.UserConfigurationDao;
 import dao.UserDao;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,11 +27,14 @@ import utils.Utils;
 public class UserListController extends BaseController{
     
     public UserListController() {
-        super("");
+        super("all", "ManageUsers");
     }
     
     @RequestMapping("/userList")
     public String home(HttpSession session, ModelMap model) {
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         System.out.println("home");
         return "userList";
     } 

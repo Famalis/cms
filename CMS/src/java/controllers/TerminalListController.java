@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dto.UserDTO;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,11 +23,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TerminalListController extends BaseController{
  
     public TerminalListController() {
-        super("");
+        super("all", "ManageTerminals");
     }
     
     @RequestMapping("/terminalList")
     public String home(HttpSession session, ModelMap model) {
+        if(!this.checkPrivileges(session)) {
+            return "missingPrivilege";
+        }
         System.out.println("home");
         return "departmentList";
     } 

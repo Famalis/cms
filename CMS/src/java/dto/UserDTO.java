@@ -111,11 +111,11 @@ public class UserDTO implements Serializable{
         this.groupId = groupId;
     }
 
-    public List<String> getPrivilegeKeyIds() {
+    public List<String> getPrivilegeKeyCodes() {
         return privilegeKeyCodes;
     }
 
-    public void setPrivilegeKeyIds(List<String> privilegeKeyIds) {
+    public void setPrivilegeKeyCodes(List<String> privilegeKeyIds) {
         this.privilegeKeyCodes = privilegeKeyIds;
     }
     
