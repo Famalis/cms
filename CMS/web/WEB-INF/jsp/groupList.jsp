@@ -20,7 +20,7 @@
                                     Uprawnienia
                                 </td>
                             </tr>
-                            <tr ng-repeat="group in groups" ng-click="select(group)">
+                            <tr ng-class="{selectedTableRow: group==selected}" ng-repeat="group in groups" ng-click="select(group)">
                                 <td>
                                     {{group.name}}
                                 </td>

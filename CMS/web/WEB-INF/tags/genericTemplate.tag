@@ -6,7 +6,8 @@
 <%@attribute name="footer" fragment="true" %>
 <html ng-app>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>  
+        <LINK href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
         <title>Zajebisty Tytuł CMS</title>       
     </head>
     <body>

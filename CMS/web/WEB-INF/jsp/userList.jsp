@@ -33,7 +33,7 @@
                                 Grupa
                             </td>
                         </tr>
-                        <tr ng-repeat="user in users | orderBy:predicate" ng-click="select(user)">
+                        <tr ng-class="{selectedTableRow: user==selected}" ng-repeat="user in users | orderBy:predicate" ng-click="select(user)">
                             <td>
                                 {{user.surname}}
                             </td>
