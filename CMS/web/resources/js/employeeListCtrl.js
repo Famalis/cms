@@ -1,7 +1,10 @@
 function EmployeeListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
-    var loadDataPromise = $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
-        $scope.users = returnData;
+    $scope.selected = "";
+    $scope.employees = "";
+    $scope.editMode = false;
+    var loadDataPromise = $http.get('/CMS/employeeList/emps.htm').success(function(returnData) {
+        $scope.employees = returnData;
         //$scope.status = null;
         return "success";
     }).error(function(error) {
@@ -11,7 +14,7 @@ function EmployeeListCtrl($scope, $http) {
     });
 
     $scope.save = function() {        
-        var o = $scope.selectedUser;
+        var o = $scope.selected;
         $http.post(
             '/CMS/userList/save/:user.htm',
             {user:o}).success(function(returnData) {
@@ -29,14 +32,21 @@ function EmployeeListCtrl($scope, $http) {
         }
     });
 
-    $scope.selectUser = function(id) {
-        //alert("test");
-        for (var i = 0; i < $scope.users.length; i++) {
-            //alert($scope.users[i].name);
-            if ($scope.users[i].id === id) {
-                $scope.selectedUser = $scope.users[i];
-
-            }
+    $scope.select = function(employee) {
+        if($scope.selected == employee) {
+            $scope.selected = "";
+        } else {
+            $scope.selected = employee;
         }
+    }
+    
+    $scope.edit = function() {
+        $scope.editMode = true;
+    };
+    
+    $scope.create = function() {
+        $scope.selected = "";
+        $scope.editMode = true;
+
     };
 }
