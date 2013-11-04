@@ -16,8 +16,8 @@ function EmployeeListCtrl($scope, $http) {
     $scope.save = function() {        
         var o = $scope.selected;
         $http.post(
-            '/CMS/userList/save/:user.htm',
-            {user:o}).success(function(returnData) {
+            '/CMS/employeeList/save/:emp.htm',
+            {emp:o}).success(function(returnData) {
                 
             }).error(function(error) {
                 alert(error);

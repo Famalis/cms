@@ -6,7 +6,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.EmployeeDao;
-import java.util.List;
+import dto.EmployeeDTO;
 import javax.servlet.http.HttpSession;
 import model.Employee;
 import org.springframework.stereotype.Controller;
@@ -39,8 +39,29 @@ public class EmployeeListController extends BaseController{
     } 
     
     @RequestMapping(value = "/employeeList/save/:emp", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String user) {
-        
+    public @ResponseBody void saveData(@RequestBody String emp) {
+        EmployeeDTO empDto = (EmployeeDTO) Utils.convertJSONStringToObject(emp, "emp", EmployeeDTO.class);
+        if (empDto!=null) {
+            Employee actualEmp = new Employee();
+            if(empDto.getId()!=null) {
+                actualEmp.loadObject("id="+empDto.getId());
+            }
+            actualEmp.setName(empDto.getName());
+            actualEmp.setSurname(empDto.getSurname());
+            actualEmp.setPESEL(empDto.getPESEL());
+            actualEmp.setSalary(empDto.getSalary());
+            actualEmp.setPhone(empDto.getPhone());
+            //TODO adres, wydział, stanowisko
+            actualEmp.setAddressId(-1+"");
+            actualEmp.setDepartmentId(-1+"");
+            actualEmp.setPositionId(-1+"");
+            if(actualEmp.getId()!=null) {
+                actualEmp.update();
+            } else {
+                actualEmp.setId(empDto.getId());
+                actualEmp.insert();
+            }
+        }
         
     }
     

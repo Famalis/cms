@@ -6,6 +6,7 @@
 
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import model.Employee;
 
 /**
@@ -14,6 +15,7 @@ import model.Employee;
  */
 public class EmployeeDTO {
     
+    private Long id;
     private String name, surname, PESEL, phone, salary;
     
     public EmployeeDTO() {
@@ -24,10 +26,19 @@ public class EmployeeDTO {
         this.name = employee.getName();
         this.surname = employee.getSurname();
         this.PESEL = employee.getPESEL();
-        this.phone = employee.getPESEL();
+        this.phone = employee.getPhone();
         this.salary = employee.getSalary();
     }
 
+    @JsonIgnore
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }

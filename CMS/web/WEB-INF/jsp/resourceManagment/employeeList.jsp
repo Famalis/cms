@@ -16,6 +16,15 @@
                                 <td>
                                     Imię
                                 </td>
+                                <td>
+                                    PESEL
+                                </td>
+                                <td>
+                                    Telefon
+                                </td>
+                                <td>
+                                    Wypłata
+                                </td>
                             </tr>
                             <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees" ng-click="select(employee)">
                                 <td>
@@ -23,6 +32,15 @@
                                 </td>
                                 <td>
                                     {{employee.name}}
+                                </td>
+                                <td>
+                                    {{employee.pesel}}
+                                </td>
+                                <td>
+                                    {{employee.phone}}
+                                </td>
+                                <td>
+                                    {{employee.salary}}
                                 </td>
                             </tr>
                         </table>
@@ -42,6 +60,15 @@
                                 </td>
                                 <td>
                                     Imię: <input type="text" ng-model="selected.name"/>
+                                </td>
+                                <td>
+                                    PESEL: <input type="text" ng-model="selected.pesel"/>
+                                </td>
+                                <td>
+                                    Telefon: <input type="text" ng-model="selected.phone"/>
+                                </td>
+                                <td>
+                                    Wypłata: <input type="text" ng-model="selected.salary"/>
                                 </td>
                             </tr>
                         </table>
