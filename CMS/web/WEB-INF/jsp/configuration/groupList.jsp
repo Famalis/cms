@@ -8,10 +8,10 @@
             <h1 style="text-align: center" ng-show="status != ''">
                 {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
             </h1>  
-            <table width="100%" border="1px">
+            <table class="genericTable">
                 <tr>
                     <td>
-                        <table width="100%" border="1px">
+                        <table class="genericTable">
                             <tr>
                                 <td>
                                     Nazwa
@@ -33,7 +33,7 @@
                 </tr>                
                 <tr ng-show="editMode">
                     <td>
-                        <table>
+                        <table class="genericTable">
                             <tr>
                                 <td>
                                     Nazwa: <input type="text" ng-model="selected.name"/>

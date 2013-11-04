@@ -2,3 +2,8 @@
     background-color: lightblue;
     
 }
+
+.genericTable {
+    width : 100%;
+    border-style: solid;
+}

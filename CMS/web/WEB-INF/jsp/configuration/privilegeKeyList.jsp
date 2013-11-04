@@ -6,10 +6,10 @@
         <script src="/CMS/resources/js/privilegeKeyListCtrl.js"></script>
         <div ng-controller="PrivilegeKeyListCtrl">  
             <h1>Nie zmieniać istniejących</h1>
-            <table border="1px" width="100%">
+            <table class="genericTable">
                 <tr>
                     <td>
-                        <table width="100%" border="1px">
+                        <table class="genericTable">
                             <tr>
                                 <td>
                                     ID
