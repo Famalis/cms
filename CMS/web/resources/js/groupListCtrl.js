@@ -6,6 +6,18 @@ function GroupListCtrl($scope, $http) {
     $scope.edit = function() {
         $scope.editMode = true;
     };
+    
+     $scope.loadData = function () {
+            $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
+                $scope.groups = returnData.groups;
+                $scope.status = '';
+                return "success";
+            }).error(function(error) {
+                $scope.status = error;
+                return "failure";
+            });
+        };
+    
 
     $scope.create = function() {
         $scope.selected = "";
@@ -21,7 +33,7 @@ function GroupListCtrl($scope, $http) {
         } else {
             $scope.selected = selectedObject;
         }
-
+    
     };
 
     var loadDataPromise = $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
@@ -45,14 +57,18 @@ function GroupListCtrl($scope, $http) {
 
         });
         $scope.status = "Zapisywanie zmian...";
-        $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
-            $scope.groups = returnData.groups;
-            $scope.status = '';
-            return "success";
-        }).error(function(error) {
-            $scope.status = error;
-            return "failure";
-        });
+        /*$scope.loadData = function () {
+            $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
+                $scope.groups = returnData.groups;
+                $scope.status = '';
+                return "success";
+            }).error(function(error) {
+                $scope.status = error;
+                return "failure";
+            });
+        };
+        $scope.loadData();*/
+        $scope.loadData();
     };
 
     $scope.delete = function() {
@@ -73,6 +89,7 @@ function GroupListCtrl($scope, $http) {
             $scope.status = error;
             return "failure";
         });
+        $scope.loadData();
     };
 
     loadDataPromise.then(function(data) {
@@ -116,5 +133,5 @@ function GroupListCtrl($scope, $http) {
         }
         return false;
     }
-
+    $scope.loadData();
 }
