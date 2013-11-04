@@ -71,6 +71,37 @@
                                     Wypłata: <input type="text" ng-model="selected.salary"/>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    Kraj: <input type="text" ng-model=""/>
+                                </td>
+                                <td>
+                                    Miasto: <input type="text" ng-model=""/>
+                                </td>
+                                <td>
+                                    Nazwa ulicy: <input type="text" ng-model=""/>
+                                </td>
+                                <td>
+                                    Numer budynku: <input type="text" ng-model=""/>
+                                </td>
+                                <td>
+                                    Numer mieszkania: <input type="text" ng-model=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Stanowisko: 
+                                    <select>
+                                        
+                                    </select>
+                                </td>
+                                <td>
+                                    Wydział:
+                                    <select>
+                                        
+                                    </select>
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
