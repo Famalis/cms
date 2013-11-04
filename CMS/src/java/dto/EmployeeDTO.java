@@ -7,6 +7,7 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import model.Address;
 import model.Employee;
 
 /**
@@ -16,21 +17,33 @@ import model.Employee;
 public class EmployeeDTO {
     
     private Long id;
-    private String name, surname, PESEL, phone, salary;
+    private String name, surname, PESEL, phone, salary, country, city, streetName, streetNumber, apartmentNumber;
     
     public EmployeeDTO() {
         
     }
     
     public EmployeeDTO(Employee employee) {
+        //this.id = employee.getId();
+        this.setId(employee.getId());
+        //this.name = employee.getId()+"";
         this.name = employee.getName();
         this.surname = employee.getSurname();
         this.PESEL = employee.getPESEL();
         this.phone = employee.getPhone();
         this.salary = employee.getSalary();
+        
+        Address address = new Address();
+        if(address.loadObject("id="+employee.getAddressId())){
+            this.country = address.getCountry();
+            this.city = address.getCity();
+            this.streetName = address.getStreetName();
+            this.streetNumber = address.getStreetNumber();
+            this.apartmentNumber = address.getApartmentNumber();
+        }
     }
 
-    @JsonIgnore
+    //@JsonIgnore <-blokuje przekazywanie id w EmployeeListController co psuje dodawanie i edycję pracowników
     public Long getId() {
         return id;
     }
@@ -78,6 +91,48 @@ public class EmployeeDTO {
     public void setSalary(String salary) {
         this.salary = salary;
     }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    
     
     
 }

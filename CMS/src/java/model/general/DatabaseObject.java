@@ -214,4 +214,17 @@ public class DatabaseObject {
             return false;
         }
     }
+    
+    //Potrzebne do uzyskania ostatniego ID w tabeli Address, dzięki temu można ustawić addressId w employee
+    public Long getLastId(){
+        try{
+            String query = "SELECT id FROM " + tableName + " ORDER BY id DESC LIMIT 1;";
+            ResultSet resultSet = connectionManager.select(query);
+            resultSet.next();
+            return resultSet.getLong("id");
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 1L;
+    }
 }
