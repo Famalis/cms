@@ -8,7 +8,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>  
         <LINK href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
-        <title>Easy HR</title>       
+        <title>Zajebisty Tytuł CMS</title>       
     </head>
     <body>
 
@@ -26,7 +26,7 @@
                 <tr>
                     <td colspan="2" style="height: 1%; background-color: ${user.bgcolor}">
                         <div id="pageheader">
-                            <p style="text-align: center">Easy HR</p>
+                            <p style="text-align: center">Zajebisty CMS</p>
                             <jsp:invoke fragment="header"/>
                         </div>
                     </td>
@@ -75,7 +75,7 @@
                 <tr>
                     <td style="height: 1%; background-color: ${user.bgcolor}">
                         <div id="pagefooter">
-                            <p style="text-align: right">Powered by Spring MVC | JSTL | AngularJS | MySQL</p>
+                            <p style="text-align: right">Powered by Spring MVC | JSP | AngularJS | MySQL</p>
                             <jsp:invoke fragment="footer"/>
                         </div>
                     </td>
