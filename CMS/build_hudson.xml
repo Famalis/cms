@@ -14,7 +14,6 @@
 		<fileset dir="C:/xampp/tomcat/lib" includes="*.jar" />
 		<fileset dir="C:/xampp/tomcat/lib" includes="*.jar" />
 	</path>
-	<javac includeantruntime="false"/>  
 	<target name="clean">
 		<delete dir="bin" />
 		<mkdir dir="bin" />
