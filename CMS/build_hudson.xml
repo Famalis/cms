@@ -29,8 +29,10 @@
 		<javac srcdir="src" destdir="bin" classpathref="project-classpath" 
 			includeantruntime="false"/>
 	</target>
-    <!--<description>Builds, tests, and runs the project CMS.</description>
-    <import file="nbproject/build-impl.xml"/>
+    <!--
+	<description>Builds, tests, and runs the project CMS.</description>
+    <import file="nbproject/build-impl.xml"/> -->
+	
     <!--
 
     There exist several targets which are by default empty and which can be 
