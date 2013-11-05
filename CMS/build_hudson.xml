@@ -24,8 +24,7 @@
 	</target>
 
 	<target name="compile" depends="clean,copy-non-java-files">
-		<javac srcdir="src" destdir="bin" classpathref="project-classpath" 
-			includeantruntime="false"/>
+		<javac srcdir="src" destdir="bin" classpathref="project-classpath"/>
 	</target>
     
 	<description>Builds, tests, and runs the project CMS.</description>
