@@ -8,6 +8,12 @@
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
 <project name="CMS" default="default" basedir=".">
+	<path id="project-classpath">
+		<fileset dir="web/WEB-INF/lib" includes="*.jar" />
+		<fileset dir="${tomcat-home}/bin" includes="*.jar" />
+		<fileset dir="${tomcat-home}/common/lib" includes="*.jar" />
+		<fileset dir="${tomcat-home}/server/lib" includes="*.jar" />
+	</path>
     <description>Builds, tests, and runs the project CMS.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
