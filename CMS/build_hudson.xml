@@ -29,9 +29,8 @@
 			includeantruntime="false"/>
 	</target>
     
-	<!--<description>Builds, tests, and runs the project CMS.</description>
+	<description>Builds, tests, and runs the project CMS.</description>
     <import file="nbproject/build-impl.xml"/>
-	-->
 	
     <!--
 
