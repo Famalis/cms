@@ -10,6 +10,7 @@
 <project name="CMS" default="default" basedir=".">
 	<path id="project-classpath">
 		<fileset dir="build/web/WEB-INF/lib" includes="*.jar" />
+		<fileset dir="build/web/WEB-INF/libraries" includes="*.jar" />
 		<fileset dir="C:/xampp/tomcat/bin" includes="*.jar" />
 		<fileset dir="C:/xampp/tomcat/lib" includes="*.jar" />
 		<fileset dir="C:/xampp/tomcat/lib" includes="*.jar" />
