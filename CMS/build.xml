@@ -9,7 +9,7 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="CMS" default="default" basedir=".">
 	<path id="project-classpath">
-		<fileset dir="build/web/WEB-INF/lib" includes="*.jar" />
+		<fileset dir="web/WEB-INF/lib" includes="*.jar" />
 		<fileset dir="${tomcat-home}/bin" includes="*.jar" />
 		<fileset dir="${tomcat-home}/common/lib" includes="*.jar" />
 		<fileset dir="${tomcat-home}/server/lib" includes="*.jar" />
