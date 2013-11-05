@@ -14,6 +14,20 @@
 		<fileset dir="${tomcat-home}/common/lib" includes="*.jar" />
 		<fileset dir="${tomcat-home}/server/lib" includes="*.jar" />
 	</path>
+	<target name="clean">
+		<delete dir="bin" />
+		<mkdir dir="bin" />
+	</target>
+
+	<target name="copy-non-java-files">
+		<copy todir="bin" includeemptydirs="false">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="compile" depends="clean,copy-non-java-files">
+		<javac srcdir="src" destdir="bin" classpathref="project-classpath" />
+	</target>
     <description>Builds, tests, and runs the project CMS.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
