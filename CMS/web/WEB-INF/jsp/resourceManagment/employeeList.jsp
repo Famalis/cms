@@ -73,19 +73,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Kraj: <input type="text" ng-model=""/>
+                                    Kraj: <input type="text" ng-model="selected.country"/>
                                 </td>
                                 <td>
-                                    Miasto: <input type="text" ng-model=""/>
+                                    Miasto: <input type="text" ng-model="selected.city"/>
                                 </td>
                                 <td>
-                                    Nazwa ulicy: <input type="text" ng-model=""/>
+                                    Nazwa ulicy: <input type="text" ng-model="selected.streetName"/>
                                 </td>
                                 <td>
-                                    Numer budynku: <input type="text" ng-model=""/>
+                                    Numer budynku: <input type="text" ng-model="selected.streetNumber"/>
                                 </td>
                                 <td>
-                                    Numer mieszkania: <input type="text" ng-model=""/>
+                                    Numer mieszkania: <input type="text" ng-model="selected.apartmentNumber"/>
                                 </td>
                             </tr>
                             <tr>
