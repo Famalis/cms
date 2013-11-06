@@ -15,7 +15,7 @@
                     <h1 style="text-align: center" ng-show="status != ''">
                         {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
                     </h1>                        
-                    <table ng-init="predicate='surname'" border="1px" style="width: 100%; text-">
+                    <table ng-init="predicate='surname'" class="genericTable">
                         <tr style="background-color: grey; color: lightgrey; font-weight: bold">
                             <td ng-click="predicate='surname'">
                                 Nazwisko
@@ -53,7 +53,7 @@
                     </table>
                 </div>
                 <div>
-                    <table>
+                    <table class="genericTable">
                         <tr>
                             <td>
                                 Grupa: <input type="text" ng-model="selected.groupId"/>

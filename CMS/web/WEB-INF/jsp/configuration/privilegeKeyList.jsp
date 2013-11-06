@@ -6,7 +6,7 @@
         <script src="/CMS/resources/js/privilegeKeyListCtrl.js"></script>
         <div ng-controller="PrivilegeKeyListCtrl">  
             <h1>Nie zmieniać istniejących</h1>
-            <table class="genericTable">
+            <table width="100%">
                 <tr>
                     <td>
                         <table class="genericTable">

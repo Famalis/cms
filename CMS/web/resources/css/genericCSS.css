@@ -5,5 +5,9 @@
 
 .genericTable {
     width : 100%;
-    border-style: solid;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+.genericTable td,.genericTable th {
+    border: 1px solid;
 }

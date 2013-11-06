@@ -5,10 +5,10 @@
     <jsp:body>
         <script src="/CMS/resources/js/employeeListCtrl.js"></script>
         <div ng-controller="EmployeeListCtrl">  
-            <table border="1px" width="100%">
+            <table width="100%">
                 <tr>
                     <td>
-                        <table border="1px" width="100%">
+                        <table class="genericTable">
                             <tr>
                                 <td>
                                     Nazwisko
@@ -65,7 +65,7 @@
                 </tr>
                 <tr ng-show="editMode">
                     <td>
-                        <table border="1px" width="100%">
+                        <table class="genericTable">
                             <tr>
                                 <td>
                                     Nazwisko: <input type="text" ng-model="selected.surname"/>

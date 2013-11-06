@@ -1,7 +1,9 @@
-function EmployeeListCtrl($scope, $http) {
+function DepartmentListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
+    $scope.selected = "";
+    $scope.departments = "";
     var loadDataPromise = $http.get('/CMS/departmentList/deps.htm').success(function(returnData) {
-        $scope.users = returnData;
+        $scope.departments = returnData;
         //$scope.status = null;
         return "success";
     }).error(function(error) {
@@ -13,8 +15,8 @@ function EmployeeListCtrl($scope, $http) {
     $scope.save = function() {        
         var o = $scope.selectedUser;
         $http.post(
-            '/CMS/userList/save/:user.htm',
-            {user:o}).success(function(returnData) {
+            '/CMS/departmentList/save/:dep.htm',
+            {dep:o}).success(function(returnData) {
                 
             }).error(function(error) {
                 alert(error);
@@ -28,15 +30,24 @@ function EmployeeListCtrl($scope, $http) {
             $scope.status = "Błąd:";
         }
     });
-
-    $scope.selectUser = function(id) {
-        //alert("test");
-        for (var i = 0; i < $scope.users.length; i++) {
-            //alert($scope.users[i].name);
-            if ($scope.users[i].id === id) {
-                $scope.selectedUser = $scope.users[i];
-
-            }
+    
+    $scope.select = function(department) {
+        if($scope.selected == department) {
+            $scope.selected = "";
+        } else {
+            $scope.selected = department;
         }
+    }
+    
+    $scope.edit = function() {
+        $scope.editMode = true;
     };
+    
+    $scope.create = function() {
+        $scope.selected = "";
+        $scope.editMode = true;
+
+    };
+
+    
 }

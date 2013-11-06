@@ -8,17 +8,17 @@
             <h1 style="text-align: center" ng-show="status != ''">
                 {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
             </h1>  
-            <table class="genericTable">
+            <table width="100%">
                 <tr>
                     <td>
                         <table class="genericTable">
                             <tr>
-                                <td>
+                                <th>
                                     Nazwa
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Uprawnienia
-                                </td>
+                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: group==selected}" ng-repeat="group in groups" ng-click="select(group)">
                                 <td>
