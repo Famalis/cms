@@ -25,6 +25,12 @@
                                 <td>
                                     Wypłata
                                 </td>
+                                <td>
+                                    Stanowisko
+                                </td>
+                                <td>
+                                    Wydział
+                                </td>
                             </tr>
                             <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees" ng-click="select(employee)">
                                 <td>
@@ -41,6 +47,12 @@
                                 </td>
                                 <td>
                                     {{employee.salary}}
+                                </td>
+                                <td>
+                                    {{getPositionName(employee.positionId)}}
+                                </td>
+                                <td>
+                                    {{getDepartmentName(employee.departmentId)}}
                                 </td>
                             </tr>
                         </table>
@@ -90,15 +102,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Stanowisko: 
-                                    <select>
-                                        
+                                    Stanowisko: {{selected.positionId}}
+                                    <select ng-model="selected.positionId">
+                                        <option ng-repeat="position in positions" value="{{position.id}}">
+                                            {{position.name}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td>
-                                    Wydział:
-                                    <select>
-                                        
+                                    Wydział: {{selected.departmentId}}
+                                    <select ng-model="selected.departmentId">
+                                        <option ng-repeat="department in departments" value="{{department.id}}">
+                                            {{department.name}}
+                                        </option>
                                     </select>
                                 </td>
                             </tr>

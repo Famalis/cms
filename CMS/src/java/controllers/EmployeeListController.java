@@ -1,8 +1,12 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.DepartmentDao;
 import dao.EmployeeDao;
+import dao.PositionDao;
 import dto.EmployeeDTO;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Address;
 import model.Employee;
@@ -35,6 +39,7 @@ public class EmployeeListController extends BaseController{
     @RequestMapping(value = "/employeeList/save/:emp", method = RequestMethod.POST)
     public @ResponseBody void saveData(@RequestBody String emp) {
         EmployeeDTO empDto = (EmployeeDTO) Utils.convertJSONStringToObject(emp, "emp", EmployeeDTO.class);
+        System.out.println(emp);
         if (empDto!=null) {
             Employee actualEmp = new Employee();
             Address actualAdr = new Address();
@@ -47,6 +52,12 @@ public class EmployeeListController extends BaseController{
             actualEmp.setPESEL(empDto.getPESEL());
             actualEmp.setSalary(empDto.getSalary());
             actualEmp.setPhone(empDto.getPhone());
+            if(empDto.getDepartmentId().length()>0){
+                actualEmp.setDepartmentId(empDto.getDepartmentId());
+            }
+            if(empDto.getPositionId().length()>0) {
+                actualEmp.setPositionId(empDto.getPositionId());
+            }            
             
             actualAdr.setCity(empDto.getCity());
             actualAdr.setCountry(empDto.getCountry());
@@ -60,10 +71,6 @@ public class EmployeeListController extends BaseController{
                 actualAdr.insert();
                 actualEmp.setAddressId(actualAdr.getLastId()+"");
             }
-            //TODO wydział, stanowisko
-            actualEmp.setDepartmentId(-1+"");
-            actualEmp.setPositionId(-1+"");
-            
             if(actualEmp.getId()!=null) {
                 actualEmp.update();
             } else {
@@ -74,8 +81,14 @@ public class EmployeeListController extends BaseController{
     }
     
     @RequestMapping(value = "/employeeList/emps")
-    public @ResponseBody String getData() {       
+    public @ResponseBody String getData() {               
         EmployeeDao empDao = new EmployeeDao();
-        return Utils.convertObjectListToJSON(empDao.getEmployeeDTOList());
+        DepartmentDao depDao = new DepartmentDao();
+        PositionDao posDao = new PositionDao();
+        Map<String, Object> initData = new HashMap<String, Object>();
+        initData.put("employees", empDao.getEmployeeDTOList());
+        initData.put("departments", depDao.select());
+        initData.put("positions", posDao.select());
+        return Utils.convertOMapToJSON(initData);
     }
 }

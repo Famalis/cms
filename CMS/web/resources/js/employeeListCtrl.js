@@ -2,9 +2,13 @@ function EmployeeListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.employees = "";
+    $scope.departments = "";
+    $scope.positions = "";
     $scope.editMode = false;
     var loadDataPromise = $http.get('/CMS/employeeList/emps.htm').success(function(returnData) {
-        $scope.employees = returnData;
+        $scope.employees = returnData.employees;
+        $scope.departments = returnData.departments;
+        $scope.positions = returnData.positions;
         //$scope.status = null;
         return "success";
     }).error(function(error) {
@@ -12,6 +16,22 @@ function EmployeeListCtrl($scope, $http) {
         $scope.error = error;
         return "failure";
     });
+    
+    $scope.getPositionName = function(positionId) {
+      for (var i = 0; i<$scope.positions.length; i++) {
+          if($scope.positions[i].id == positionId) {
+            return $scope.positions[i].name;
+          }
+      }  
+    };
+    
+    $scope.getDepartmentName = function(departmentId) {
+      for (var i = 0; i<$scope.departments.length; i++) {
+          if($scope.departments[i].id == departmentId) {
+            return $scope.departments[i].name;
+          }
+      }  
+    };
 
     $scope.save = function() {        
         var o = $scope.selected;

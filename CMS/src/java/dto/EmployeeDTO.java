@@ -17,10 +17,10 @@ import model.Employee;
 public class EmployeeDTO {
     
     private Long id;
-    private String name, surname, PESEL, phone, salary, country, city, streetName, streetNumber, apartmentNumber;
+    private String name, surname, PESEL, phone, salary, country, city, streetName, streetNumber, apartmentNumber, positionId, departmentId;
     
     public EmployeeDTO() {
-        
+        super();
     }
     
     public EmployeeDTO(Employee employee) {
@@ -32,7 +32,8 @@ public class EmployeeDTO {
         this.PESEL = employee.getPESEL();
         this.phone = employee.getPhone();
         this.salary = employee.getSalary();
-        
+        this.positionId = employee.getPositionId();
+        this.departmentId = employee.getDepartmentId();
         Address address = new Address();
         if(address.loadObject("id="+employee.getAddressId())){
             this.country = address.getCountry();
@@ -51,6 +52,22 @@ public class EmployeeDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(String positionId) {
+        this.positionId = positionId;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }      
     
     public String getName() {
         return name;
