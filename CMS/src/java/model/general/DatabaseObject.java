@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.ConnectionManager;
 
 /**
@@ -110,6 +112,13 @@ public class DatabaseObject {
             }
             query += ") ";
             if (connectionManager.update(query)) {
+                ResultSet set = connectionManager.select("SELECT id FROM "+tableName );
+                try {
+                    set.last();
+                    this.id = set.getLong("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(DatabaseObject.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 return true;
             } else {
                 return false;
@@ -190,10 +199,10 @@ public class DatabaseObject {
             }
             resultSet.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             return false;
         } catch (IllegalAccessException aEx) {
-            aEx.printStackTrace();
+            //aEx.printStackTrace();
             return false;
         }
         return true;

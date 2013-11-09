@@ -18,13 +18,14 @@ public class DepartmentDTO {
     private Long id;
     private String name;
     private String managerName, managerSurname, managerId;
-    private String country, city, street, streetNumber, apartment, addressId;
+    private String country, city, streetName, streetNumber, apartment, addressId;
 
     public DepartmentDTO() {
 
     }
 
     public DepartmentDTO(Department department) {
+        this.id = department.getId();
         this.name = department.getName();
         Employee emp = new Employee();
         if (Long.parseLong(department.getManagerId()) > 0) {
@@ -38,7 +39,7 @@ public class DepartmentDTO {
             address.loadObject("id=" + department.getAddressId());
             country = address.getCountry();
             city = address.getCity();
-            street = address.getStreetName();
+            streetName = address.getStreetName();
             streetNumber = address.getStreetNumber();
             apartment = address.getApartmentNumber();
             addressId = department.getAddressId();
@@ -93,12 +94,12 @@ public class DepartmentDTO {
         this.city = city;
     }
 
-    public String getStreet() {
-        return street;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setStreetName(String street) {
+        this.streetName = street;
     }
 
     public String getStreetNumber() {
@@ -109,12 +110,29 @@ public class DepartmentDTO {
         this.streetNumber = streetNumber;
     }
 
-    public String getApartment() {
+    public String getApartmentNumber() {
         return apartment;
     }
 
-    public void setApartment(String apartment) {
+    public void setApartmentNumber(String apartment) {
         this.apartment = apartment;
     }
+
+    public String getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(String managerId) {
+        this.managerId = managerId;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
+    }
+    
 
 }

@@ -15,10 +15,10 @@ function DepartmentListCtrl($scope, $http) {
     });
 
     $scope.save = function() {        
-        var o = $scope.selectedUser;
+        var o = $scope.selected;
         $http.post(
             '/CMS/departmentList/save/:dep.htm',
-            {dep:o}).success(function(returnData) {
+            {dep:o}).success(function() {
                 
             }).error(function(error) {
                 alert(error);
