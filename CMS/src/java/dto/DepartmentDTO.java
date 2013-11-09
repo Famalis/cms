@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dto;
 
 import model.Address;
@@ -15,29 +14,35 @@ import model.Employee;
  * @author Sergio
  */
 public class DepartmentDTO {
-    
+
     private Long id;
     private String name;
-    private String managerName, managerSurname;
-    private String country, city, street, streetNumber, apartment;
-    
-    public DepartmentDTO(){
-        
+    private String managerName, managerSurname, managerId;
+    private String country, city, street, streetNumber, apartment, addressId;
+
+    public DepartmentDTO() {
+
     }
-    
+
     public DepartmentDTO(Department department) {
         this.name = department.getName();
         Employee emp = new Employee();
-        emp.loadObject("id="+department.getManagerId());
-        managerName = emp.getName();
-        managerSurname = emp.getSurname();
+        if (Long.parseLong(department.getManagerId()) > 0) {
+            emp.loadObject("id=" + department.getManagerId());
+            managerName = emp.getName();
+            managerSurname = emp.getSurname();
+            managerId = department.getManagerId();
+        }
         Address address = new Address();
-        address.loadObject("id="+department.getAddressId());
-        country = address.getCountry();
-        city = address.getCity();
-        street = address.getStreetName();
-        streetNumber = address.getStreetNumber();
-        apartment = address.getApartmentNumber();
+        if (Long.parseLong(department.getAddressId()) > 0) {
+            address.loadObject("id=" + department.getAddressId());
+            country = address.getCountry();
+            city = address.getCity();
+            street = address.getStreetName();
+            streetNumber = address.getStreetNumber();
+            apartment = address.getApartmentNumber();
+            addressId = department.getAddressId();
+        }
     }
 
     public Long getId() {
@@ -111,6 +116,5 @@ public class DepartmentDTO {
     public void setApartment(String apartment) {
         this.apartment = apartment;
     }
-    
-    
+
 }

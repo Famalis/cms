@@ -2,8 +2,10 @@ function DepartmentListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.departments = "";
+    $scope.employees = "";
     var loadDataPromise = $http.get('/CMS/departmentList/deps.htm').success(function(returnData) {
-        $scope.departments = returnData;
+        $scope.departments = returnData.departmnets;
+        $scope.employees = returnData.employees;
         //$scope.status = null;
         return "success";
     }).error(function(error) {

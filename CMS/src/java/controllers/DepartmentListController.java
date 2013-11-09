@@ -6,6 +6,9 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.DepartmentDao;
+import dao.EmployeeDao;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,8 +46,12 @@ public class DepartmentListController extends BaseController{
     }
     
     @RequestMapping(value = "/departmentList/deps")
-    public @ResponseBody String getData() {       
+    public @ResponseBody String getData() {     
+        Map<String, Object> initData = new HashMap<>();
         DepartmentDao dao = new DepartmentDao();
-        return Utils.convertObjectListToJSON(dao.getDepartmentDTOList());
+        EmployeeDao empDao = new EmployeeDao();
+        initData.put("departmnets", dao.getDepartmentDTOList());
+        initData.put("employees", empDao.select());
+        return Utils.convertOMapToJSON(initData);
     }
 }

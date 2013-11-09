@@ -38,10 +38,15 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Nazwisko: <input type="text" ng-model="selected.name"/>
+                                    Nazwa wydziału: <input type="text" ng-model="selected.name"/>
                                 </td>
                                 <td>
-                                    Imię: <input type="text" ng-model="selected.managerName"/>
+                                    Prowadzący: <select ng-model="selected.managerId">
+                                        <option ng-repeat="employee in employees"
+                                                value="{{employee.id}}">
+                                            {{employee.surname}} {{employee.name}}
+                                        </option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
