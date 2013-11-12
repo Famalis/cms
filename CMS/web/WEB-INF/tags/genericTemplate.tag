@@ -52,6 +52,10 @@
                                           user.privilegeKeyCodes.contains('ManageTerminals')}">
                                   <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
                             </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageLogs')}">
+                                  <a href="/CMS/logList.htm">Zarządzanie logami</a><br/>
+                            </c:if>
                             <h3>Konfiguracja systemu</h3>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageUsers')}">

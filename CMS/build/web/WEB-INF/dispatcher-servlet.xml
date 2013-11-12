@@ -42,7 +42,10 @@
                 <prop key="positionList/save/:position.htm">positionListrController</prop>                
                 <prop key="terminalList.htm">terminalListrController</prop>
                 <prop key="terminalList/terminals.htm">terminalListrController</prop>
-                <prop key="terminalList/save/:terminal.htm">terminalListrController</prop>                
+                <prop key="terminalList/save/:terminal.htm">terminalListrController</prop>  
+                <prop key="logList.htm">logListController</prop>
+                <prop key="logList/logs.htm">logListController</prop>
+                <prop key="logList/save/:log.htm">logListController</prop>                 
                 <prop key="privilegeList.htm">privilegeListController</prop>
                 <prop key="privilegeList/privs.htm">privilegeListController</prop>
                 <prop key="privilegeList/save/:priv.htm">privilegeListController</prop>  
@@ -70,6 +73,8 @@
           class="controllers.PrivilegeKeyListController"/>    
     <bean name="privilegeListController"
           class="controllers.PrivilegeListController"/>
+    <bean name="logListController"
+          class="controllers.LogListController"/>
     <bean name="terminalListrController"
           class="controllers.TerminalListController"/>
     <bean name="positionListrController"
