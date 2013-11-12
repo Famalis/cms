@@ -11,7 +11,6 @@
                         <table class="genericTable">
                             <tr>
                                 <th>
-                                    {{serviceTest('test')}}
                                     Nazwa
                                 </th>
                                 <th>

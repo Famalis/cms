@@ -36,7 +36,7 @@
                 <prop key="employeeList/save/:emp.htm">employeeListrController</prop>
                 <prop key="departmentList.htm">departmentListrController</prop>
                 <prop key="departmentList/deps.htm">departmentListrController</prop>
-                <prop key="departmentList/save/:dep.htm">departmentListrController</prop>
+                <prop key="departmentList/save/:object.htm">departmentListrController</prop>
                 <prop key="positionList.htm">positionListrController</prop>
                 <prop key="positionList/positions.htm">positionListrController</prop>
                 <prop key="positionList/save/:position.htm">positionListrController</prop>                

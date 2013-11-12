@@ -42,11 +42,11 @@ public class DepartmentListController extends BaseController {
         return "resourceManagment/departmentList";
     }
 
-    @RequestMapping(value = "/departmentList/save/:dep", method = RequestMethod.POST)
+    @RequestMapping(value = "/departmentList/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String dep) {
-        DepartmentDTO depDto = (DepartmentDTO) Utils.convertJSONStringToObject(dep, "dep", DepartmentDTO.class);
-        System.out.println(dep);
+    void saveData(@RequestBody String object) {
+        DepartmentDTO depDto = (DepartmentDTO) Utils.convertJSONStringToObject(object, "object", DepartmentDTO.class);
+        System.out.println(object);
         //System.out.println(depDto.getId());
         if (depDto != null) {
             Department actualDep = new Department();
