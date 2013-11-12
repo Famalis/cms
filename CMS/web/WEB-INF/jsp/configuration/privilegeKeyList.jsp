@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/privilegeKeyListCtrl.js"></script>
+        <script src="/CMS/resources/js/configuration/privilegeKeyListCtrl.js"></script>
         <div ng-controller="PrivilegeKeyListCtrl">  
             <h1>Nie zmieniać istniejących</h1>
             <table width="100%">

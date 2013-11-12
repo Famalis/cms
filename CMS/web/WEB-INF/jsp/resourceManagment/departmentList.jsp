@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/departmentListCtrl.js"></script>
+        <script src="/CMS/resources/js/resourceManagment/departmentListCtrl.js"></script>
         <div ng-controller="DepartmentListCtrl">  
             <table width="100%">
                 <tr>
@@ -11,6 +11,7 @@
                         <table class="genericTable">
                             <tr>
                                 <th>
+                                    {{serviceTest('test')}}
                                     Nazwa
                                 </th>
                                 <th>

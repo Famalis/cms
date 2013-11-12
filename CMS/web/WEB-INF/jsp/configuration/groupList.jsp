@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/groupListCtrl.js"></script>
+        <script src="/CMS/resources/js/configuration/groupListCtrl.js"></script>
         <div ng-controller="GroupListCtrl">  
             <h1 style="text-align: center" ng-show="status != ''">
                 {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>

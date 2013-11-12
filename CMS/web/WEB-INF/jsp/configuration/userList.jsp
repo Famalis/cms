@@ -9,7 +9,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/userListCtrl.js"></script>
+        <script src="/CMS/resources/js/configuration/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">            
                 <div>
                     <h1 style="text-align: center" ng-show="status != ''">

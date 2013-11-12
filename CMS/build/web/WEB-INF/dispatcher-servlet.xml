@@ -51,6 +51,10 @@
                 <prop key="privilegeKeyList/privKeys.htm">privilegeKeyListController</prop>
                 <prop key="privilegeKeyList/save/:privKey.htm">privilegeKeyListController</prop>
                 <prop key="privilegeKeyList/delete/:privKey.htm">privilegeKeyListController</prop>
+                <prop key="terminalList.htm">terminalListController</prop>
+                <prop key="terminalList/terminals.htm">terminalListController</prop>
+                <prop key="terminalList/save/:terminal.htm">terminalListController</prop>
+                <prop key="terminalList/delete/:terminal.htm">terminalListController</prop>
             </props>
         </property>
     </bean>
@@ -60,6 +64,8 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
+    <bean name="terminalListController"
+          class="controllers.TerminalListController"/>  
     <bean name="privilegeKeyListController"
           class="controllers.PrivilegeKeyListController"/>    
     <bean name="privilegeListController"

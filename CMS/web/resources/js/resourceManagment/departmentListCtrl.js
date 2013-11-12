@@ -1,4 +1,4 @@
-function DepartmentListCtrl($scope, $http) {
+function DepartmentListCtrl($scope, $http, serviceFunction) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.departments = "";
@@ -50,6 +50,8 @@ function DepartmentListCtrl($scope, $http) {
         $scope.editMode = true;
 
     };
-
+    
+    $scope.serviceTest = serviceFunction;   
+    
     
 }

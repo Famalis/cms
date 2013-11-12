@@ -1,7 +1,9 @@
 function TerminalListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
-    var loadDataPromise = $http.get('/CMS/terminalList/deps.htm').success(function(returnData) {
-        $scope.users = returnData;
+    $scope.selected = "";
+    $scope.terminals = "";
+    var loadDataPromise = $http.get('/CMS/terminalList/terminals.htm').success(function(returnData) {
+        $scope.terminals = returnData.terminals;
         //$scope.status = null;
         return "success";
     }).error(function(error) {
@@ -11,10 +13,10 @@ function TerminalListCtrl($scope, $http) {
     });
 
     $scope.save = function() {        
-        var o = $scope.selectedUser;
+        var o = $scope.selected;
         $http.post(
-            '/CMS/userList/save/:user.htm',
-            {user:o}).success(function(returnData) {
+            '/CMS/terminalList/save/:terminal.htm',
+            {terminal:o}).success(function(returnData) {
                 
             }).error(function(error) {
                 alert(error);

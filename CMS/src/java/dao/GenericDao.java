@@ -45,6 +45,24 @@ public class GenericDao<T extends DatabaseObject> {
     }
     
     /**
+     * Metoda pobierająca dane z bazy, w której podajemy wartości jakie ma 
+     * przyjmować dane pole
+     * @param fieldName
+     * @param values
+     * @return 
+     */
+    public List<T> select(String fieldName, String... values) {
+        if(fieldName.length()<=0) {
+            return select();
+        }
+        List<String> list = new ArrayList<String>();
+        for (String s : values) {
+            list.add(s);
+        }
+        return select(fieldName, list);
+    }
+    
+    /**
      * Metoda pobierająca dane z bazy w której podajemy listę wartości jaką
      * może przymować podane pole (np id);
      * @param fieldName
@@ -52,6 +70,9 @@ public class GenericDao<T extends DatabaseObject> {
      * @return 
      */
     public List<T> select(String fieldName, List<String> values) {
+        if(fieldName.length()<=0) {
+            return select();
+        }
         String conditions = fieldName+" IN (";
         for (int i = 0; i<values.size(); i++) {
             conditions+=values.get(i);

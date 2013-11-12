@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/employeeListCtrl.js"></script>
+        <script src="/CMS/resources/js/resourceManagment/employeeListCtrl.js"></script>
         <div ng-controller="EmployeeListCtrl">  
             <table width="100%">
                 <tr>

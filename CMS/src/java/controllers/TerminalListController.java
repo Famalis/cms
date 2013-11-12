@@ -5,7 +5,9 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dto.UserDTO;
+import dao.TerminalDao;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import utils.Utils;
 
 /**
  *
@@ -29,21 +32,23 @@ public class TerminalListController extends BaseController{
     @RequestMapping("/terminalList")
     public String home(HttpSession session, ModelMap model) {
         if(!this.checkPrivileges(session)) {
-            return "missingPrivilege";
+            return "terminalList";
         }
         System.out.println("home");
-        return "resourceManagment/departmentList";
+        return "resourceManagment/terminalList";
     } 
     
-    @RequestMapping(value = "/terminal/save/:dep", method = RequestMethod.POST)
+    @RequestMapping(value = "/terminalList/save/:terminal", method = RequestMethod.POST)
     public @ResponseBody void saveData(@RequestBody String user) {
         //TODO
         
     }
     
-    @RequestMapping(value = "/terminal/terminals")
+    @RequestMapping(value = "/terminalList/terminals")
     public @ResponseBody String getData() {       
-        //TODO
-        return null;
+        TerminalDao terminalDao = new TerminalDao();     
+        Map<String, Object> initData = new HashMap<String, Object>();
+        initData.put("terminals", terminalDao.select());
+        return Utils.convertOMapToJSON(initData);
     }
 }

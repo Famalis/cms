@@ -4,9 +4,10 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
-<html ng-app>
+<html ng-app = "cms">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>  
+        <script src="/CMS/resources/js/services.js"></script>  
         <LINK href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
         <title>Easy HR</title>       
     </head>
@@ -19,9 +20,7 @@
                 jspContext.setAttribute("user", new UserDTO());
             }
         %> 
-
-        <script src="/CMS/resources/js/genericCtrl.js"></script>
-        <div ng-controller="GenericCtrl">          
+        <div>          
             <table style="width: 100%; height: 100%">
                 <tr>
                     <td colspan="2" style="height: 1%; background-color: ${user.bgcolor}">
@@ -48,6 +47,10 @@
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManagePositions')}">
                                   <a href="/CMS/positionList.htm">Zarządzanie stanowiskami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageTerminals')}">
+                                  <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
                             </c:if>
                             <h3>Konfiguracja systemu</h3>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
