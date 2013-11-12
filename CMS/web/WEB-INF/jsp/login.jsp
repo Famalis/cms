@@ -12,7 +12,7 @@
             <p>
                 Zalogowany jako ${user.login}
             </p>
-            <form action="/CMS/logout.htm" method="POST">
+            <form action="/CMS/home.htm" method="GET">
                 <input type="submit" name="logoutButton" value="Wyloguj"/>
             </form>
             <form action="/CMS/bgcolor.htm" method="GET">
