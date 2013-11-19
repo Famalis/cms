@@ -89,7 +89,7 @@ public class Utils {
         return null;
     }
     
-    public void test(File file) {
+    public static void test(File file) {
         try {
         Document document = new Document();
         XMLWorkerHelper xmlWorker = XMLWorkerHelper.getInstance();

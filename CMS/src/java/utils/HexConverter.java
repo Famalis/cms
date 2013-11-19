@@ -66,23 +66,21 @@ public class HexConverter {
         StringBuffer rc = new StringBuffer(bytes.length * 2);
         for (int i = 0; i < bytes.length; i++) {
             rc.append(HEX_TABLE[0xFF & bytes[i]]);
-            System.out.println(i+") "+rc.toString());
+            //System.out.println(i+") "+rc.toString());
         }
         return rc.toString();
     }
 
     public static void main(String[] args) {
         try {
-            Path p = Paths.get("plik.txt");
-            byte[] bytes = Files.readAllBytes(p);
-            System.out.println(bytes);
-            String s = toHexFromBytes(bytes);
+            File f = new File("plik.txt");
+            String s = toHexFromFile(f);
             System.out.println(s);
-            File f = new File("newFile");
-            FileOutputStream fos = new FileOutputStream(f);
+            FileOutputStream fos = null;
+            File f2 = new File("plik2.txt");
+            fos = new FileOutputStream(f2);
             fos.write(toBytesFromHex(s));
             fos.close();
-            System.out.println("all done");
         } catch (Exception e) {
             e.printStackTrace();
         }

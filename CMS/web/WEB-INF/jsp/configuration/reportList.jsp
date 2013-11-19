@@ -16,9 +16,6 @@
                                 <th>
                                     Opis
                                 </th>
-                                <th>
-                                    Hash
-                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
                                 <td>
@@ -26,9 +23,6 @@
                                 </td>
                                 <td>
                                     {{report.description}}
-                                </td>
-                                <td>
-                                    {{report.hash}}
                                 </td>
                             </tr>
                         </table>
@@ -40,10 +34,11 @@
                             <tr>
                                 <td>
                                     <form action="reportList/upload.htm" method="POST"
-                                          commandName="fileCmd">
-                                        <input type="file" name="file"/>
-                                        <input type="text" value="aName" name="name"/>
-                                        <input type="submit"/>
+                                          enctype="multipart/form-data">                                        
+                                        Nazwa: <input type="text" name="name"/>
+                                        Opis: <input type="text" name="description"/>
+                                        Plik: <input type="file" name="file"/>
+                                        <input type="Wyslij plik"/>
                                     </form>                                    
                                 </td>
                             </tr>

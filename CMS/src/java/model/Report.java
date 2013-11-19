@@ -13,9 +13,7 @@ import model.general.DatabaseObject;
  * @author Sergio
  */
 public class Report extends DatabaseObject{
-    
-    private Long id;
-    public String name, description, hashCode;
+    private String name, description, hashCode;
     
     public Report(){
         super("report");
