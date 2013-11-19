@@ -16,9 +16,6 @@
                                 <th>
                                     Opis
                                 </th>
-                                <th>
-                                    Hash
-                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
                                 <td>
@@ -26,9 +23,6 @@
                                 </td>
                                 <td>
                                     {{report.description}}
-                                </td>
-                                <td>
-                                    {{report.hash}}
                                 </td>
                             </tr>
                         </table>
@@ -39,7 +33,10 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    
+                                    <form action="reportPrint/print.htm">
+                                        <input ng-show="false" type="text" value="{{selected.id}}" name="id"/>
+                                        <input type="submit" value="Drukuj {{selected.name}}"/>
+                                    </form>
                                 </td>
                             </tr>
                         </table>

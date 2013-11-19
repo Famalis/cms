@@ -84,7 +84,7 @@ public class ReportListController extends BaseController {
                     input.read(barr);
                     String s = HexConverter.toHexFromBytes(barr);
                     System.out.println(s.length());
-                    r.setHashCode(s);                    
+                    r.setHashCode(s);
                 }
             }
             r.insert();
@@ -99,32 +99,9 @@ public class ReportListController extends BaseController {
     @RequestMapping(value = "/reportList/download")
     public @ResponseBody
     void download(@RequestParam("id") Long id, HttpServletResponse response) {
-        File file;
-        try {
-            Report r = new Report();
-            r.loadObject("id=" + id);
-            String hash = r.getHashCode();
-            byte[] barr = HexConverter.toBytesFromHex(hash);
-            file = new File(r.getName());
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(barr);
-            fos.close();
-            
-            FileInputStream fis = new FileInputStream(file);
-            response.setContentType(r.getMimeType());
-            
-            
-            String headerKey = "Content-Disposition";
-            String headerValue = String.format("attachment; filename=\"%s\"",
-                    r.getName());            
-            response.setHeader(headerKey, headerValue);
-            
-            IOUtils.copy(fis, response.getOutputStream());
-            response.flushBuffer();
-        } catch (IOException io) {
-            System.err.println("Download IO error");
-            io.printStackTrace();
-        }
+        Report r = new Report();
+        r.loadObject("id=" + id);
+        Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
 
     @RequestMapping(value = "/reportList/reports")
