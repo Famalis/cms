@@ -15,6 +15,7 @@ public class UserConfiguration extends DatabaseObject{
     private String userId;
     private String backgroundColor;
     private String groupId;
+    private String photoHash;
 
     public String getUserId() {
         return userId;
@@ -24,6 +25,14 @@ public class UserConfiguration extends DatabaseObject{
         this.userId = userId;
     }
 
+    public String getPhotoHash() {
+        return photoHash;
+    }
+
+    public void setPhotoHash(String photoHash) {
+        this.photoHash = photoHash;
+    }
+    
     public String getBackgroundColor() {
         return backgroundColor;
     }

@@ -12,13 +12,31 @@
             <p>
                 Zalogowany jako ${user.login}
             </p>
-            <form action="/CMS/home.htm" method="GET">
-                <input type="submit" name="logoutButton" value="Wyloguj"/>
-            </form>
-            <form action="/CMS/bgcolor.htm" method="GET">
-                Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
-                <input type="submit" name="bgcolorButton"/>
-            </form>
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="/CMS/logout.htm" method="POST">
+                            <input type="submit" name="logoutButton" value="Wyloguj"/>
+                        </form>
+                        <form action="/CMS/bgcolor.htm" method="GET">
+                            Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
+                            <input type="submit" name="bgcolorButton"/>
+                        </form>
+                        <form action="/CMS/uploadPhoto.htm" method="POST">
+                            Plik: <input type="file" name="file"/>
+                            <input type="submit" value="Wyslij plik"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
         </c:if>
         <h2>
             ${helloUser}

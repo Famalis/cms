@@ -33,7 +33,6 @@
                 <tr>
                     <td rowspan="2" style="vertical-align: top; width: 15%; background-color: ${user.bgcolor}">
                         <div id="menu">
-                            <a href="/CMS/home.htm">Strona główna</a><br/>
                             <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>  
                             <h3>Zarządzanie zasobami</h3> 
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 

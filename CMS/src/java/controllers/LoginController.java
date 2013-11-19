@@ -6,6 +6,8 @@ package controllers;
 
 import controllers.general.BaseController;
 import dto.UserDTO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.User;
 import model.UserConfiguration;
@@ -57,7 +59,7 @@ public class LoginController extends BaseController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(ModelMap model) {
-
+        System.out.println("logoout");
         currentUserDto = new UserDTO();
         model.put("user", this.currentUserDto);
         return "logout";
@@ -72,6 +74,19 @@ public class LoginController extends BaseController {
         UserConfiguration config = new UserConfiguration();
         config.loadObject("userId=" + currentUserDto.getId());
         config.setBackgroundColor(color);
+        config.update();
+        model.put("userConfig", this.currentUserDto);
+        return "login";
+
+    }
+    @RequestMapping(value = "/uploadPhoto", method = RequestMethod.POST)
+    public String uploadPhoto(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+
+        //currentUser = new User();
+        currentUserDto.setBgcolor("");
+        UserConfiguration config = new UserConfiguration();
+        config.loadObject("userId=" + currentUserDto.getId());
+        config.setBackgroundColor("");
         config.update();
         model.put("userConfig", this.currentUserDto);
         return "login";
