@@ -69,7 +69,7 @@ public class EmployeeListController extends BaseController{
                 actualAdr.update();
             } else {
                 actualAdr.insert();
-                actualEmp.setAddressId(actualAdr.getLastId()+"");
+                actualEmp.setAddressId(actualAdr.findLastId()+"");
             }
             if(actualEmp.getId()!=null) {
                 actualEmp.update();

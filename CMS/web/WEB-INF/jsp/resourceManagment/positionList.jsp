@@ -4,8 +4,50 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/positionListCtrl.js"></script>
-        <div ng-controller="PositiontListCtrl">  
-            <h1>Positions List</h1>
+        <div ng-controller="PositionListCtrl">  
+            <table width="100%">
+                <tr>
+                    <td>
+                        <table class="genericTable">
+                            <tr>
+                                <td>
+                                    Nazwa
+                                </td>
+                                <td>
+                                    Opis
+                                </td>
+                            </tr>
+                            <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions" ng-click="select(position)">
+                                <td>
+                                    {{position.name}}
+                                </td>
+                                <td>
+                                    {{position.description}}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <t:jsonOperations/>
+                    </td>
+                </tr>
+                <tr ng-show="editMode">
+                    <td>
+                        <table class="genericTable">
+                            <tr>
+                                <td>
+                                    Nazwa: <input type="text" ng-model="selected.name"/>
+                                </td>
+                                <td>
+                                    Opis: <input type="text" ng-model="selected.description"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
         </div>
     </jsp:body>
 </t:genericTemplate>

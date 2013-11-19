@@ -1,21 +1,19 @@
 function PositionListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
+    $scope.selected = "";
+    $scope.positions = "";
+    $scope.editMode = false;
     var loadDataPromise = $http.get('/CMS/positionList/positions.htm').success(function(returnData) {
-        $scope.users = returnData;
-        //$scope.status = null;
+        $scope.positions = returnData.positions;
         return "success";
     }).error(function(error) {
-        //$scope.status = "Błąd";
         $scope.error = error;
         return "failure";
     });
 
     $scope.save = function() {        
-        var o = $scope.selectedUser;
-        $http.post(
-            '/CMS/userList/save/:user.htm',
-            {user:o}).success(function(returnData) {
-                
+        var o = $scope.selected;
+        $http.post('/CMS/positionList/save/:position.htm',{position:o}).success(function(returnData) {                
             }).error(function(error) {
                 alert(error);
             });
@@ -29,14 +27,21 @@ function PositionListCtrl($scope, $http) {
         }
     });
 
-    $scope.selectUser = function(id) {
-        //alert("test");
-        for (var i = 0; i < $scope.users.length; i++) {
-            //alert($scope.users[i].name);
-            if ($scope.users[i].id === id) {
-                $scope.selectedUser = $scope.users[i];
-
-            }
+    $scope.select = function(position) {
+        if($scope.selected == position) {
+            $scope.selected = "";
+        } else {
+            $scope.selected = position;
         }
+    }
+    
+    $scope.edit = function() {
+        $scope.editMode = true;
+    };
+    
+    $scope.create = function() {
+        $scope.selected = "";
+        $scope.editMode = true;
+
     };
 }
