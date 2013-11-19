@@ -62,7 +62,7 @@
                                         </select>
                                         <br/>
                                         Opis:
-                                        <textarea name="description">
+                                        <textarea style="width: 100%; height: 100%" name="description">
                                             
                                         </textarea>        
                                         <br/>
