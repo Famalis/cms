@@ -2,7 +2,9 @@ package utils;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,6 +46,18 @@ public class HexConverter {
         return rc;
     }
 
+    public static String toHexFromFile(File file){
+        byte[] barr = new byte[(int)file.length()];
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(file);
+            fis.read(barr);
+            fis.close();
+        } catch (IOException e) {
+            return "";
+        }
+        return toHexFromBytes(barr);
+    }
     /**
      * @param bytes
      * @return

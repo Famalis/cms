@@ -58,6 +58,14 @@
                 <prop key="terminalList/terminals.htm">terminalListController</prop>
                 <prop key="terminalList/save/:terminal.htm">terminalListController</prop>
                 <prop key="terminalList/delete/:terminal.htm">terminalListController</prop>
+                <prop key="reportList.htm">reportListController</prop>
+                <prop key="reportList/reports.htm">reportListController</prop>
+                <prop key="reportList/upload.htm">reportListController</prop>
+                <prop key="reportList/save/:report.htm">reportListController</prop>
+                <prop key="reportList/delete/:report.htm">reportListController</prop>
+                <prop key="reportPrint.htm">reportPrintController</prop>
+                <prop key="reportPrint/reports.htm">reportPrintController</prop>
+                
             </props>
         </property>
     </bean>
@@ -67,6 +75,10 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
+    <bean name="reportPrintController"
+          class="controllers.ReportPrintController"/> 
+    <bean name="reportListController"
+          class="controllers.ReportListController"/>  
     <bean name="terminalListController"
           class="controllers.TerminalListController"/>  
     <bean name="privilegeKeyListController"

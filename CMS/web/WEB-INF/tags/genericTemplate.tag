@@ -47,10 +47,14 @@
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManagePositions')}">
                                   <a href="/CMS/positionList.htm">Zarządzanie stanowiskami</a><br/>
-                            </c:if>
+                            </c:if>                            
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageTerminals')}">
                                   <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ReportsPrint')}">
+                                  <a href="/CMS/reportPrint.htm">Drukowanie raportów</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageLogs')}">
@@ -68,6 +72,10 @@
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageGroups')}">
                                   <a href="/CMS/groupList.htm">Zarządzanie grupami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageReports')}">
+                                  <a href="/CMS/reportList.htm">Zarządzanie raportami</a><br/>
                             </c:if>
 
 

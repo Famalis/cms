@@ -5,7 +5,13 @@
 package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -81,5 +87,18 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public void test(File file) {
+        try {
+        Document document = new Document();
+        XMLWorkerHelper xmlWorker = XMLWorkerHelper.getInstance();
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, 
+                new FileOutputStream("pdf.pdf"));
+        xmlWorker.parseXHtml(pdfWriter, document, 
+                new FileInputStream(file));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
