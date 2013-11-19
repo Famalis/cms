@@ -2,6 +2,11 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.reports = "";
+    $scope.mimetypes = new Object();    
+    $scope.mimetypes["Excel"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";           
+    $scope.mimetypes["Word"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+    $scope.mimetypes["TXT"] = "text/plain";
+    $scope.mimetypes["PDF"] = "application/pdf";
     $scope.get = saveEditDelete.get($http, '/CMS/reportList/reports.htm', $scope);
     var loadDataPromise = $scope.get;
 
