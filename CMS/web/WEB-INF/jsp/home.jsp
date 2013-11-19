@@ -7,8 +7,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:genericTemplate>
-    <jsp:body>
-        <h4>${content}</h4>
-    </jsp:body>
-</t:genericTemplate>
+<html>
+    <body>
+        <div align="center">
+        <form action="/CMS/login.htm" method="POST">
+            Login <input type="text" name="login"/>
+            Hasło <input type="password" name="password"/>
+            <input type="submit" name="loginButton" value="Zaloguj"/>
+        </form>
+        </div>
+</html>

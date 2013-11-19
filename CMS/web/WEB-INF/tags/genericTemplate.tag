@@ -33,7 +33,6 @@
                 <tr>
                     <td rowspan="2" style="vertical-align: top; width: 15%; background-color: ${user.bgcolor}">
                         <div id="menu">
-                            <a href="/CMS/home.htm">Strona główna</a><br/>
                             <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>  
                             <h3>Zarządzanie zasobami</h3> 
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
@@ -47,10 +46,14 @@
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManagePositions')}">
                                   <a href="/CMS/positionList.htm">Zarządzanie stanowiskami</a><br/>
-                            </c:if>
+                            </c:if>                            
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageTerminals')}">
                                   <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ReportsPrint')}">
+                                  <a href="/CMS/reportPrint.htm">Drukowanie raportów</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageLogs')}">
@@ -68,6 +71,10 @@
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageGroups')}">
                                   <a href="/CMS/groupList.htm">Zarządzanie grupami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageReports')}">
+                                  <a href="/CMS/reportList.htm">Zarządzanie raportami</a><br/>
                             </c:if>
 
 
