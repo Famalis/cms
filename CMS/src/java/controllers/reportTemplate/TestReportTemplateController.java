@@ -35,7 +35,9 @@ public class TestReportTemplateController extends BaseController{
         Map<String, String[]> inputParams = request.getParameterMap();
         Map<String, Object> params = new HashMap<>();
         
-        //params.put("helloAttr", inputParams.get("helloMsg")[0]);
+        if(inputParams.get("helloMsg")!=null) {
+            params.put("helloAttr", inputParams.get("helloMsg")[0]);
+        }        
         
         model.addAllAttributes(params);
         response.setHeader("Content-Disposition", "attachment;filename=report.pdf");        

@@ -28,9 +28,9 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-show="selected">
                     <td>
-                        <table class="genericTable">
+                        <table class="genericTable" ng-hide="selected.formCode">
                             <tr>
                                 <td>
                                     <form action="reportPrint/print.htm">
@@ -40,13 +40,13 @@
                                 </td>
                             </tr>
                         </table>
+                        <div ng-show="selected.formCode" ng-include="selected.formCode">
+                            
+                        </div>
                     </td>
                 </tr>
                 <tr>                    
                     <td>
-                        <div ng-include="selected.formCode">
-                            
-                        </div>
                     </td>
                 </tr>
             </table>

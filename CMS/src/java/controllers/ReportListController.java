@@ -72,6 +72,8 @@ public class ReportListController extends BaseController {
                     String fieldvalue = item.getString();
                     if (fieldname.equals("fileExt")) {
                         r.setMimeType(fieldvalue);
+                    } else if(fieldname.equals("formCode")) {
+                        r.setFormCode(fieldvalue);
                     } else {
                         r.setDescription(fieldvalue);
                     }

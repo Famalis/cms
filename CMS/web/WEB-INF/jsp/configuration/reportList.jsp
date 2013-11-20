@@ -19,6 +19,9 @@
                                 <th>
                                     Rodzaj pliku
                                 </th>
+                                <th>
+                                    Adres formularza
+                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
                                 <td>
@@ -29,6 +32,9 @@
                                 </td>
                                 <td>
                                     {{report.mimeType}}
+                                </td>
+                                <td>
+                                    {{report.formCode}}
                                 </td>
                             </tr>
                         </table>
@@ -60,6 +66,7 @@
                                                 {{key}}
                                             </option>
                                         </select>
+                                        <input type="text" name="formCode"/>
                                         <br/>
                                         Opis:
                                         <textarea style="width: 100%; height: 100%" name="description">

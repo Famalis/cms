@@ -62,7 +62,7 @@ public class LoginController extends BaseController {
         System.out.println("logoout");
         currentUserDto = new UserDTO();
         model.put("user", this.currentUserDto);
-        return "logout";
+        return "home";
 
     }
 
