@@ -61,5 +61,10 @@ public class ReportPrintController extends BaseController {
         r.loadObject("id=" + id);
         Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
+    
+    @RequestMapping(value = "/reportPrint/testForm")
+    public String testFormLoad() {
+        return "reportForms/testReportForm";
+    }
 
 }

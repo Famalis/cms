@@ -26,12 +26,15 @@ public class ReportDao extends GenericDao<Report>{
         params.add("name");
         params.add("description");
         params.add("mimeType");
+        params.add("formCode");
         List<Report> reports = this.selectFields("", params);
         List<ReportDTO> dtos = new ArrayList<>();
         for (Report r : reports) {
             ReportDTO dto = new ReportDTO();
             dto.setDescription(r.getDescription());
             dto.setName(r.getName());
+            dto.setMimeType(r.getMimeType());
+            dto.setFormCode(r.getFormCode());
             dtos.add(dto);
         }
         return dtos;

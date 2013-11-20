@@ -15,7 +15,7 @@ import model.Report;
 public class ReportDTO {
     
     private Long id;
-    private String name, description, mimeType;
+    private String name, description, mimeType, formCode;
     
     public ReportDTO() {
         
@@ -55,6 +55,14 @@ public class ReportDTO {
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
+    }
+
+    public String getFormCode() {
+        return formCode;
+    }
+
+    public void setFormCode(String formCode) {
+        this.formCode = formCode;
     }
     
 }
