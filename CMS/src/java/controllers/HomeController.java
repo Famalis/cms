@@ -5,6 +5,8 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dto.UserDTO;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +26,13 @@ public class HomeController extends BaseController{
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String home(ModelMap model) {        
-        return "home";
+    public String home(HttpSession session) {        
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        System.out.println(user.getId()+"");
+        if(user.getId()!=null)
+            return "login";
+        else
+            return "home";
     }
-    
-    @RequestMapping(value = "/home/{id}", method = RequestMethod.GET, params = "id")
-    public String customHome(ModelMap model, @RequestParam String id) {
-        System.out.println("load Page");
-        return "home";
-    }    
     
 }
