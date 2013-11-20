@@ -13,12 +13,12 @@ saveEditDeleteModule.factory('saveEditDelete', function() {
         },
         get: function($http, link, $scope) {
             return $http.get(link).success(function(returnData) {
-                //$scope.status = null;
+                $scope.status = null;
                 $scope.initData = returnData;
                 //alert(returnData.departmnets);
                 return "Success";
             }).error(function(error) {
-                //$scope.status = "Błąd";
+                $scope.status = "Błąd";
                 return null;
             });
         },

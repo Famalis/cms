@@ -11,6 +11,16 @@
 
 <%-- any content can be specified here e.g.: --%>
 <table>
+    <tr ng-show="status != null">
+        <td>
+            <h1><img src="resources/loader.gif" alt="brak obrazka"/> Ładowanie danych</h1>
+        </td>
+    </tr>
+    <tr ng-show="status == 'Błąd'">
+        <td>
+            Błąd podczas ładowania danych
+        </td>
+    </tr>
     <tr>
         <td>
             <input type="button" ng-show="editMode" ng-click="editMode=false" value="Anuluj"</td>

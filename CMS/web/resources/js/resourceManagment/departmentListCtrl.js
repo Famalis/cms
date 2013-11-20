@@ -16,7 +16,6 @@ function DepartmentListCtrl($scope, $http, saveEditDelete) {
             $scope.departments = $scope.initData.departmnets;
             $scope.employees = $scope.initData.employees;
         } else {
-            $scope.status = "Błąd:";
             alert('err');
         }
     });
