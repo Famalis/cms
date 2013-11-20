@@ -30,18 +30,14 @@
                 </tr>
                 <tr ng-show="selected">
                     <td>
-                        <table class="genericTable" ng-hide="selected.formCode">
-                            <tr>
-                                <td>
-                                    <form action="reportPrint/print.htm">
-                                        <input ng-show="false" type="text" value="{{selected.id}}" name="id"/>
-                                        <input type="submit" value="Drukuj {{selected.name}}"/>
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
+                        <div ng-hide="selected.formCode">
+                            <form action="reportPrint/print.htm">
+                                <input ng-show="false" type="text" value="{{selected.id}}" name="id"/>
+                                <input type="submit" value="Drukuj {{selected.name}}"/>
+                            </form>
+                        </div>
                         <div ng-show="selected.formCode" ng-include="selected.formCode">
-                            
+
                         </div>
                     </td>
                 </tr>
