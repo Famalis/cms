@@ -109,7 +109,7 @@ public class ReportListController extends BaseController {
     String getData() {
         Map<String, Object> initData = new HashMap<String, Object>();
         ReportDao reportDao = new ReportDao();
-        initData.put("reports", reportDao.select());
+        initData.put("reports", reportDao.getReportDtos());
         return Utils.convertOMapToJSON(initData);
     }
 }

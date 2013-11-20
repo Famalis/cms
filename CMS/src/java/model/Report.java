@@ -13,7 +13,7 @@ import model.general.DatabaseObject;
  * @author Sergio
  */
 public class Report extends DatabaseObject{
-    private String name, description, hashCode, mimeType;
+    private String name, description, hashCode, mimeType, form;
     
     public Report(){
         super("report");
@@ -49,6 +49,14 @@ public class Report extends DatabaseObject{
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
+    }    
+
+    public String getForm() {
+        return form;
+    }
+
+    public void setForm(String form) {
+        this.form = form;
     }
     
 }

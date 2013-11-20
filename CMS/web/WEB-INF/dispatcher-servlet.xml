@@ -68,6 +68,7 @@
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
                 <prop key="reportPrint/print.htm">reportPrintController</prop>
                 
+                <prop key="testReportTemplate.htm">testReportTemplate</prop>                
             </props>
         </property>
     </bean>
@@ -77,6 +78,9 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
+    <bean name="testReportTemplate"
+          class="controllers.reportTemplate.TestReportTemplateController"/> 
+          
     <bean name="reportPrintController"
           class="controllers.ReportPrintController"/> 
     <bean name="reportListController"
