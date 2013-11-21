@@ -2,7 +2,8 @@ function UserListCtrl($scope, $http) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     var loadDataPromise = $http.get('/CMS/userList/users.htm').success(function(returnData) {
-        $scope.users = returnData;
+        $scope.users = returnData.users;
+        $scope.employees = returnData.employees;
         //$scope.status = null;
         return "success";
     }).error(function(error) {

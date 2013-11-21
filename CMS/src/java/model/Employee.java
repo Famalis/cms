@@ -5,7 +5,14 @@ import model.general.DatabaseObject;
 
 public class Employee extends DatabaseObject {
     
-    private String name, surname, PESEL, phone, salary, positionId, departmentId, addressId;    
+    private String name, 
+            surname, 
+            PESEL, 
+            phone, 
+            salary, 
+            positionId, 
+            departmentId, 
+            addressId;    
 
     public String getName() {
         return name;
