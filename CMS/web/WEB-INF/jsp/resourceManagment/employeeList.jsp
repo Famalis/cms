@@ -10,24 +10,24 @@
                     <td>
                         <table class="genericTable">
                             <tr>
-                                <td>
+                                <th>
                                     Imię i Nazwisko
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     PESEL
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Telefon
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Wypłata
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Stanowisko
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Wydział
-                                </td>
+                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees" ng-click="select(employee)">
                                 <td>

@@ -10,12 +10,12 @@
                     <td>
                         <table class="genericTable">
                             <tr>
-                                <td>
+                                <th>
                                     Nazwa
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Opis
-                                </td>
+                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions" ng-click="select(position)">
                                 <td>
