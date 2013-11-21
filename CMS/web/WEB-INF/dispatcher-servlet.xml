@@ -67,6 +67,7 @@
                 <prop key="reportPrint.htm">reportPrintController</prop>
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
                 <prop key="reportPrint/print.htm">reportPrintController</prop>
+                <prop key="employeePage/{id}.htm">employeePageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
                 
@@ -82,7 +83,9 @@
     
     <bean name="testReportTemplate"
           class="controllers.reportTemplate.TestReportTemplateController"/> 
-          
+    
+    <bean name="employeePageController"
+          class="controllers.EmployeePageController"/>       
     <bean name="reportPrintController"
           class="controllers.ReportPrintController"/> 
     <bean name="reportListController"

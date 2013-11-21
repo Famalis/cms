@@ -11,10 +11,7 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Nazwisko
-                                </td>
-                                <td>
-                                    Imię
+                                    Imię i Nazwisko
                                 </td>
                                 <td>
                                     PESEL
@@ -34,10 +31,9 @@
                             </tr>
                             <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees" ng-click="select(employee)">
                                 <td>
-                                    {{employee.surname}}
-                                </td>
-                                <td>
-                                    {{employee.name}}
+                                    <a href="/CMS/employeePage/{{employee.id}}.htm">
+                                    {{employee.name}} {{employee.surname}}
+                                    </a>
                                 </td>
                                 <td>
                                     {{employee.pesel}}
