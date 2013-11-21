@@ -4,6 +4,7 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/employeeListCtrl.js"></script>
+        <form name="myForm">
         <div ng-controller="EmployeeListCtrl">  
             <table width="100%">
                 <tr>
@@ -70,8 +71,12 @@
                                     Imię: <input type="text" ng-model="selected.name"/>
                                 </td>
                                 <td>
-                                    PESEL: <input type="text" ng-model="selected.pesel"/>
-                                </td>
+                                    PESEL: <input name="pesel" type="text" ng-model="selected.pesel" ng-pattern="/^[0-9]+$/" required="required"  ng-minlength="11" ng-maxlength="11" />
+                                </td>    
+                                      <span ng-show="myForm.pesel.$error.required">Pesel potrzebny!</span>
+                                      <span ng-show="myForm.pesel.$error.pattern"> Proszę wprowadzić tyko cyfry</span>
+                                      <span ng-show="myForm.pesel.$error.minlength"<{{myForm.pesel.$viewValue.length}} > Za mało cyfr</span>
+                                      <span ng-show="myForm.pesel.$error.maxlength"&gt;{{myForm.pesel.$viewValue.length}} > Za dużo cyfr</span>
                                 <td>
                                     Telefon: <input type="text" ng-model="selected.phone"/>
                                 </td>
@@ -119,5 +124,6 @@
                 </tr>
             </table>
         </div>
+      </form>
     </jsp:body>
 </t:genericTemplate>
