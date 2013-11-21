@@ -4,17 +4,14 @@
  * and open the template in the editor.
  */
 
-package dao;
-
-import model.Report;
+package dto;
 
 /**
  *
  * @author Sergio
  */
-public class ReportDao extends GenericDao<Report>{
+public class TaskDTO {
     
-    public ReportDao() {
-        super(Report.class);
-    }
+    private Long id;
+    //public String userId, userName, userSurname, description, 
 }

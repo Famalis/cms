@@ -30,8 +30,8 @@ public class GenericDao<T extends DatabaseObject> {
         try {
             objectInstance = c.newInstance();
             connectionManager = ConnectionManager.getConnectionManager(
-                    "cms", 
-                    "G9Dua8d5tnGvda3J", 
+                    "cms",
+                    "G9Dua8d5tnGvda3J",
                     "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8");
         } catch (InstantiationException ex) {
             ex.printStackTrace();
@@ -43,16 +43,17 @@ public class GenericDao<T extends DatabaseObject> {
     public List<T> select() {
         return select("");
     }
-    
+
     /**
-     * Metoda pobierająca dane z bazy, w której podajemy wartości jakie ma 
+     * Metoda pobierająca dane z bazy, w której podajemy wartości jakie ma
      * przyjmować dane pole
+     *
      * @param fieldName
      * @param values
-     * @return 
+     * @return
      */
     public List<T> select(String fieldName, String... values) {
-        if(fieldName.length()<=0) {
+        if (fieldName.length() <= 0) {
             return select();
         }
         List<String> list = new ArrayList<String>();
@@ -61,26 +62,27 @@ public class GenericDao<T extends DatabaseObject> {
         }
         return select(fieldName, list);
     }
-    
+
     /**
-     * Metoda pobierająca dane z bazy w której podajemy listę wartości jaką
-     * może przymować podane pole (np id);
+     * Metoda pobierająca dane z bazy w której podajemy listę wartości jaką może
+     * przymować podane pole (np id);
+     *
      * @param fieldName
      * @param values
-     * @return 
+     * @return
      */
     public List<T> select(String fieldName, List<String> values) {
-        if(fieldName.length()<=0) {
+        if (fieldName.length() <= 0) {
             return select();
         }
-        String conditions = fieldName+" IN (";
-        for (int i = 0; i<values.size(); i++) {
-            conditions+=values.get(i);
-            if(i<values.size()-1) {
-                conditions+=", ";
+        String conditions = fieldName + " IN (";
+        for (int i = 0; i < values.size(); i++) {
+            conditions += values.get(i);
+            if (i < values.size() - 1) {
+                conditions += ", ";
             }
         }
-        conditions+=")";
+        conditions += ")";
         return select(conditions);
     }
 
@@ -119,8 +121,9 @@ public class GenericDao<T extends DatabaseObject> {
 
     /**
      * Metoda dodająca podany w parametrze obiekt do bazy danych.
+     *
      * @param o
-     * @return 
+     * @return
      */
     public boolean insert(T o) {
         try {
@@ -148,15 +151,16 @@ public class GenericDao<T extends DatabaseObject> {
         }
 
     }
-    
+
     /**
      * Pozwala dodać wiele obiektów do bazy danych
+     *
      * @param object
-     * @return 
+     * @return
      */
     public boolean insert(T... object) {
         for (T o : object) {
-            if(!insert(o)){
+            if (!insert(o)) {
                 return false;
             }
         }
@@ -188,6 +192,47 @@ public class GenericDao<T extends DatabaseObject> {
                     f.setAccessible(true);
                     f.set(obj, fieldValue);
 
+                }
+                obj.setId(resultSet.getLong("id"));
+                resultList.add(obj);
+            }
+        } catch (Exception e) {
+            //System.err.println(get);
+            e.printStackTrace();
+        }
+        return resultList;
+
+    }
+
+    /**
+     * Pobiera określone kolumny tabeli z bazy danych
+     *
+     * @param conditions
+     * @param selectFieldNames
+     * @return
+     */
+    public List<T> selectFields(String conditions, List<String> selectFieldNames) {
+        List<T> resultList = new ArrayList<>();
+        try {
+            String query = "SELECT id";
+            for (String field : selectFieldNames) {
+                query += ", " + field;
+            }
+            query += " FROM " + objectInstance.getTableName();
+            if (conditions.length() > 0) {
+                query += " WHERE " + conditions;
+            }
+            ResultSet resultSet = connectionManager.select(query);
+            while (resultSet.next()) {
+                T obj = (T) objectInstance.getClass().newInstance();
+                Field[] fields = obj.getClass().getDeclaredFields();
+                for (Field f : fields) {
+                    if (selectFieldNames.contains(f.getName())) {
+                        String fieldValue = "";
+                        fieldValue = resultSet.getString(f.getName());
+                        f.setAccessible(true);
+                        f.set(obj, fieldValue);
+                    }
                 }
                 obj.setId(resultSet.getLong("id"));
                 resultList.add(obj);

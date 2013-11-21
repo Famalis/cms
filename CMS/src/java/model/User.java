@@ -12,7 +12,7 @@ import model.general.DatabaseObject;
  */
 public class User extends DatabaseObject {
 
-    private String name, surname, email, login, password;
+    private String name, surname, email, login, password, employeeId;
 
     public String getName() {
         return name;
@@ -54,6 +54,14 @@ public class User extends DatabaseObject {
         this.password = password;
     }
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+    
     public User() {
         super("user");
     }

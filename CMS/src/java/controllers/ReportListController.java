@@ -5,7 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dao.ReportDao;
+import dao.SystemFileDao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,7 +17,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Report;
+import model.SystemFile;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -65,13 +65,15 @@ public class ReportListController extends BaseController {
     public String upload(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-            Report r = new Report();
+            SystemFile r = new SystemFile();
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     String fieldname = item.getFieldName();
                     String fieldvalue = item.getString();
                     if (fieldname.equals("fileExt")) {
                         r.setMimeType(fieldvalue);
+                    } else if(fieldname.equals("formCode")) {
+                        r.setFormCode(fieldvalue);
                     } else {
                         r.setDescription(fieldvalue);
                     }
@@ -84,7 +86,7 @@ public class ReportListController extends BaseController {
                     input.read(barr);
                     String s = HexConverter.toHexFromBytes(barr);
                     System.out.println(s.length());
-                    r.setHashCode(s);                    
+                    r.setHashCode(s);
                 }
             }
             r.insert();
@@ -99,40 +101,17 @@ public class ReportListController extends BaseController {
     @RequestMapping(value = "/reportList/download")
     public @ResponseBody
     void download(@RequestParam("id") Long id, HttpServletResponse response) {
-        File file;
-        try {
-            Report r = new Report();
-            r.loadObject("id=" + id);
-            String hash = r.getHashCode();
-            byte[] barr = HexConverter.toBytesFromHex(hash);
-            file = new File(r.getName());
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(barr);
-            fos.close();
-            
-            FileInputStream fis = new FileInputStream(file);
-            response.setContentType(r.getMimeType());
-            
-            
-            String headerKey = "Content-Disposition";
-            String headerValue = String.format("attachment; filename=\"%s\"",
-                    r.getName());            
-            response.setHeader(headerKey, headerValue);
-            
-            IOUtils.copy(fis, response.getOutputStream());
-            response.flushBuffer();
-        } catch (IOException io) {
-            System.err.println("Download IO error");
-            io.printStackTrace();
-        }
+        SystemFile r = new SystemFile();
+        r.loadObject("id=" + id);
+        Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
 
     @RequestMapping(value = "/reportList/reports")
     public @ResponseBody
     String getData() {
         Map<String, Object> initData = new HashMap<String, Object>();
-        ReportDao reportDao = new ReportDao();
-        initData.put("reports", reportDao.select());
+        SystemFileDao reportDao = new SystemFileDao();
+        initData.put("reports", reportDao.getReportDtos());
         return Utils.convertOMapToJSON(initData);
     }
 }

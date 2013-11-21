@@ -5,8 +5,8 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.EmployeeDao;
 import dto.UserDTO;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import model.UserConfiguration;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import dao.UserDao;
+import java.util.HashMap;
+import java.util.Map;
+import model.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import utils.Utils;
@@ -44,8 +47,10 @@ public class UserListController extends BaseController{
         UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(user, "user", UserDTO.class);
         if(userDto!=null) {
             System.out.println(userDto.getId()+" "+userDto.getName());
-            //User actualUser = new User();
-            //actualUser.loadObject("id="+userDto.getId());
+            User actualUser = new User();
+            actualUser.loadObject("id="+userDto.getId());
+            actualUser.setEmployeeId(userDto.getEmployeeId());
+            actualUser.update();
             UserConfiguration userConfig = new UserConfiguration();
             userConfig.loadObject("userId="+userDto.getId());
             userConfig.setGroupId(userDto.getGroupId());
@@ -59,7 +64,11 @@ public class UserListController extends BaseController{
     public @ResponseBody String getData() {        
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
-        List<UserDTO> userDtos = userDao.getUserWithConfig();
-        return Utils.convertObjectListToJSON(userDtos);
+        EmployeeDao empDao = new EmployeeDao();
+        Map<String, Object> initData = new HashMap<>();
+        initData.put("users", userDao.getUserWithConfig());
+        initData.put("employees", empDao.getEmployeeDTOList());
+        //List<UserDTO> userDtos = userDao.getUserWithConfig();
+        return Utils.convertOMapToJSON(initData);
     }
 }

@@ -27,7 +27,7 @@ public class UserDao extends GenericDao<User> {
             conditions+=" AND "; 
         }
         String query = "SELECT user.id as id, user.name as name, user.surname as surname,"
-                + "user.login as login, user.password as password, "
+                + "user.login as login, user.password as password, user.employeeId as employeeId, "
                 + "user_configuration.backgroundColor as bgcolor, "
                 + "user_configuration.groupId as groupId FROM user, user_configuration "
                 + "WHERE " + conditions + "user.id = user_configuration.userId";
@@ -41,6 +41,7 @@ public class UserDao extends GenericDao<User> {
                 dto.setId(resultSet.getLong("id"));
                 dto.setGroupId(resultSet.getString("groupId"));
                 dto.setBgcolor(resultSet.getString("bgcolor"));
+                dto.setEmployeeId(resultSet.getString("employeeId"));
                 dtos.add(dto);
             }
         } catch (SQLException sql) {

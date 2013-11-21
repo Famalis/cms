@@ -16,22 +16,25 @@
                         {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
                     </h1>                        
                     <table ng-init="predicate='surname'" class="genericTable">
-                        <tr style="background-color: grey; color: lightgrey; font-weight: bold">
-                            <td ng-click="predicate='surname'">
+                        <tr>
+                            <th ng-click="predicate='surname'">
                                 Nazwisko
-                            </td>
-                            <td ng-click="predicate='name'">
+                            </th>
+                            <th ng-click="predicate='name'">
                                 Imię
-                            </td>
-                            <td ng-click="predicate='login'">
+                            </th>
+                            <th ng-click="predicate='login'">
                                 Login
-                            </td>
-                            <td ng-click="predicate='bgcolor'">
+                            </th>
+                            <th ng-click="predicate='bgcolor'">
                                 Kolor tła
-                            </td>
-                            <td ng-click="predicate='groupId'">
+                            </th>
+                            <th ng-click="predicate='groupId'">
                                 Grupa
-                            </td>
+                            </th>
+                            <th ng-click="predicate='employeeId'">
+                                Pracownik
+                            </th>
                         </tr>
                         <tr ng-class="{selectedTableRow: user==selected}" ng-repeat="user in users | orderBy:predicate" ng-click="select(user)">
                             <td>
@@ -49,6 +52,9 @@
                             <td>
                                 {{user.groupId}}
                             </td>
+                            <td>
+                                <a href="/CMS/employeePage/{{user.employeeId}}.htm">{{user.employeeId}}</a>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -60,6 +66,13 @@
                             </td>
                             <td>
                                 Tło :<input type="text" ng-model="selected.bgcolor"/>
+                            </td>
+                            <td>
+                                Pracownik posiadający konto:
+                                <select ng-model="selected.employeeId">
+                                    <option ng-repeat="emp in employees" value="{{emp.id}}" ng-selected="selected.employeeId == emp.id">
+                                        {{emp.surname}} {{emp.name}}</option>
+                                </select>
                             </td>
                             <td>
                                 <input type="submit" ng-click="save()" value="Zapisz zmiany">

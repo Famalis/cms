@@ -52,17 +52,18 @@ public class LoginController extends BaseController {
         }
 
         this.currentUserDto = new UserDTO(user, userConfig);
-        model.put("user", this.currentUserDto);
+        session.setAttribute("user", currentUserDto);
+        //model.put("user", this.currentUserDto);
         return "login";
 
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logout(ModelMap model) {
+    public String logout(HttpSession session, ModelMap model) {
         System.out.println("logoout");
         currentUserDto = new UserDTO();
-        model.put("user", this.currentUserDto);
-        return "logout";
+        session.setAttribute("user", currentUserDto);
+        return "home";
 
     }
 

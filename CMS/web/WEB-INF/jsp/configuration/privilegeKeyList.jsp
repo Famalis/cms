@@ -11,15 +11,15 @@
                     <td>
                         <table class="genericTable">
                             <tr>
-                                <td>
+                                <th>
                                     ID
-                                </td>
-                                <td>
+                                </th>
+                                <th>
                                     Kod
-                                </td>
-                                <td width="60%">
+                                </th>
+                                <th width="60%">
                                     Opis
-                                </td>
+                                </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: privilegeKey==selected}" ng-repeat="privilegeKey in privilegeKeys" ng-click="select(privilegeKey)">
                                 <td>

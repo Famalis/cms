@@ -8,6 +8,12 @@
     border: 1px solid;
     border-collapse: collapse;
 }
-.genericTable td,.genericTable th {
+.genericTable td {
+    border: 1px solid;
+}
+.genericTable th {
+    background-color: grey;
+    color: lightgrey;
+    font-weight: bold;
     border: 1px solid;
 }

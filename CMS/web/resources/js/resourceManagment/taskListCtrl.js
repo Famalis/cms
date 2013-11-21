@@ -1,4 +1,4 @@
-function DepartmentListCtrl($scope, $http, saveEditDelete) {
+function TaskListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.saveLink = '/CMS/departmentList/save/:object.htm';
     $scope.selected = "";
@@ -30,10 +30,6 @@ function DepartmentListCtrl($scope, $http, saveEditDelete) {
 
     $scope.edit = function() {
         $scope.editMode = true;
-    };
-
-    $scope.cancel = function() {
-        $scope.editMode = false;
     };
 
     $scope.create = function() {

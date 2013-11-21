@@ -3,34 +3,29 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/resourceManagment/positionListCtrl.js"></script>
-        <div ng-controller="PositionListCtrl">  
+        <script src="/CMS/resources/js/resourceManagment/taskListCtrl.js"></script>
+        <div ng-controller="TaskListCtrl">  
             <table width="100%">
                 <tr>
                     <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
-                                    Nazwa
+                                    Przydzielone do:
                                 </th>
                                 <th>
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions" ng-click="select(position)">
+                            <tr ng-class="{selectedTableRow: task == selected}" ng-repeat="task in tasks" ng-click="select(task)">
                                 <td>
-                                    {{position.name}}
+                                    {{task.empName}} {{task.empSurname}}
                                 </td>
                                 <td>
-                                    {{position.description}}
+                                    {{task.description}}
                                 </td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <t:jsonOperations/>
                     </td>
                 </tr>
                 <tr ng-show="editMode">
@@ -38,10 +33,17 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Nazwa: <input type="text" ng-model="selected.name"/>
+                                    Prowadzący: <select ng-model="selected.managerId">
+                                        <option ng-repeat="employee in employees"
+                                                value="{{employee.id}}">
+                                            {{employee.surname}} {{employee.name}}
+                                        </option>
+                                    </select>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                    Opis: <input type="text" ng-model="selected.description"/>
+                                    Kraj: <input type="text" ng-model="selected.country"/>
                                 </td>
                             </tr>
                         </table>

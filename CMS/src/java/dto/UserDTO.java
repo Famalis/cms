@@ -6,10 +6,10 @@ package dto;
 
 import dao.PrivilegeDao;
 import dao.PrivilegeKeyDao;
-import dao.UserDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import model.Employee;
 import model.Privilege;
 import model.PrivilegeKey;
 import model.User;
@@ -19,11 +19,12 @@ import model.UserConfiguration;
  *
  * @author Sergio
  */
-public class UserDTO implements Serializable{
-    
+public class UserDTO implements Serializable {
+
     private Long id;
-    private String name, surname, bgcolor, groupId, login, password, groupName;
+    private String name, surname, bgcolor, groupId, login, password, groupName, employeeId;
     private List<String> privilegeKeyCodes = new ArrayList<>();
+
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.name = user.getName();
@@ -31,17 +32,22 @@ public class UserDTO implements Serializable{
         this.bgcolor = userConfig.getBackgroundColor();
         this.groupId = userConfig.getGroupId();
         this.login = user.getLogin();
+        if (user.getEmployeeId() != null) {
+            if (!user.getEmployeeId().isEmpty()) {
+                this.employeeId = user.getEmployeeId();
+            }
+        }
         PrivilegeDao privilegeDao = new PrivilegeDao();
         PrivilegeKeyDao privilegeKeyDao = new PrivilegeKeyDao();
         List<String> keyIds = new ArrayList<>();
-        for (Privilege p : privilegeDao.select("groupId="+userConfig.getGroupId())) {
+        for (Privilege p : privilegeDao.select("groupId=" + userConfig.getGroupId())) {
             keyIds.add(p.getKeyId());
-        }        
+        }
         for (PrivilegeKey key : privilegeKeyDao.select("id", keyIds)) {
             privilegeKeyCodes.add(key.getCode());
         }
     }
-    
+
     public UserDTO() {
         this.bgcolor = "lightgrey";
     }
@@ -53,7 +59,7 @@ public class UserDTO implements Serializable{
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
-    
+
     public String getLogin() {
         return login;
     }
@@ -69,7 +75,7 @@ public class UserDTO implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -77,8 +83,7 @@ public class UserDTO implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
+
     public String getName() {
         return name;
     }
@@ -118,6 +123,13 @@ public class UserDTO implements Serializable{
     public void setPrivilegeKeyCodes(List<String> privilegeKeyIds) {
         this.privilegeKeyCodes = privilegeKeyIds;
     }
-    
-    
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
 }

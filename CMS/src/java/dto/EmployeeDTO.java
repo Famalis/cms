@@ -6,9 +6,10 @@
 
 package dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import model.Address;
+import model.Department;
 import model.Employee;
+import model.Position;
 
 /**
  *
@@ -17,7 +18,20 @@ import model.Employee;
 public class EmployeeDTO {
     
     private Long id;
-    private String name, surname, PESEL, phone, salary, country, city, streetName, streetNumber, apartmentNumber, positionId, departmentId;
+    private String name, 
+            surname, 
+            PESEL, 
+            phone, 
+            salary, 
+            country, 
+            city, 
+            streetName, 
+            streetNumber, 
+            apartmentNumber, 
+            positionId, 
+            departmentId,
+            positionName,
+            departmentName;
     
     public EmployeeDTO() {
         super();
@@ -42,6 +56,12 @@ public class EmployeeDTO {
             this.streetNumber = address.getStreetNumber();
             this.apartmentNumber = address.getApartmentNumber();
         }
+        Position position = new Position();
+        position.loadObject("id="+positionId);
+        this.positionName = position.getName();
+        Department department = new Department();
+        department.loadObject("id="+departmentId);
+        this.departmentName = department.getName();
     }
 
     //@JsonIgnore <-blokuje przekazywanie id w EmployeeListController co psuje dodawanie i edycję pracowników
@@ -149,7 +169,19 @@ public class EmployeeDTO {
         this.apartmentNumber = apartmentNumber;
     }
 
-    
-    
-    
+    public String getPositionName() {
+        return positionName;
+    }
+
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 }

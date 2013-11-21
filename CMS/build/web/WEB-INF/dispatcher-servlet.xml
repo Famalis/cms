@@ -63,7 +63,12 @@
                 <prop key="reportList/delete/:report.htm">reportListController</prop>
                 <prop key="reportPrint.htm">reportPrintController</prop>
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
+                <prop key="reportPrint/print.htm">reportPrintController</prop>
+                <prop key="employeePage/{id}.htm">employeePageController</prop>
                 
+                <prop key="reportPrint/testForm.htm">reportPrintController</prop>
+                
+                <prop key="testReportTemplate.htm">testReportTemplate</prop>                
             </props>
         </property>
     </bean>
@@ -73,6 +78,11 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
     
+    <bean name="testReportTemplate"
+          class="controllers.reportTemplate.TestReportTemplateController"/> 
+    
+    <bean name="employeePageController"
+          class="controllers.EmployeePageController"/>       
     <bean name="reportPrintController"
           class="controllers.ReportPrintController"/> 
     <bean name="reportListController"
