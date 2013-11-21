@@ -35,6 +35,10 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
         $scope.editMode = true;
     };
 
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
+
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;

@@ -64,6 +64,10 @@ function EmployeeListCtrl($scope, $http) {
         $scope.editMode = true;
     };
     
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
+    
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;

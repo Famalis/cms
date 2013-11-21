@@ -7,6 +7,10 @@ function GroupListCtrl($scope, $http) {
         $scope.editMode = true;
     };
     
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
+    
      $scope.loadData = function () {
             $http.get('/CMS/groupList/groups.htm').success(function(returnData) {
                 $scope.groups = returnData.groups;

@@ -44,6 +44,34 @@
                         </table>
                     </td>
                 </tr>
+                <tr ng-show="logMode">
+                    <td>
+                        <table class="genericTable">
+                            <tr>
+                                <td>
+                                    Log Id:
+                                </td>
+                                <td>
+                                    LogListId:
+                                </td>
+                                <td>
+                                    Timestamp:
+                                </td>
+                            </tr>
+                            <tr  ng-repeat="log in logs" ng-show="log.terminalId == selected.id">
+                                <td>
+                                    {{log.id}}
+                                </td>
+                                <td>
+                                    {{log.logListId}}
+                                </td>
+                                <td>
+                                    {{log.timestamp}}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
     </jsp:body>

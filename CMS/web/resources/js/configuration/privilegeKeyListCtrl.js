@@ -59,7 +59,11 @@ function PrivilegeKeyListCtrl($scope, $http) {
     $scope.edit = function() {
         $scope.editMode = true;
     };
-
+    
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
+    
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;

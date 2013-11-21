@@ -1,14 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import controllers.general.BaseController;
+import dao.LogDao;
 import dao.TerminalDao;
+import dto.TerminalDTO;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import model.Terminal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import utils.Utils;
 
-/**
- *
- * @author Sergio
- */
 @Controller
 @RequestMapping("/terminalList")
 public class TerminalListController extends BaseController{
@@ -39,16 +34,31 @@ public class TerminalListController extends BaseController{
     } 
     
     @RequestMapping(value = "/terminalList/save/:terminal", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String user) {
-        //TODO
-        
+    public @ResponseBody void saveData(@RequestBody String terminal) {
+        TerminalDTO terDto = (TerminalDTO) Utils.convertJSONStringToObject(terminal, "terminal", TerminalDTO.class);
+        System.out.println(terminal);
+        if (terDto!=null) {
+            Terminal actualTer = new Terminal();
+            if(terDto.getId()!=null) {
+                actualTer.loadObject("id="+terDto.getId());
+            }
+            actualTer.setDescription(terDto.getDescription());
+             if(actualTer.getId()!=null) {
+                actualTer.update();
+            } else {
+                actualTer.insert();
+            }
+        }
     }
     
     @RequestMapping(value = "/terminalList/terminals")
     public @ResponseBody String getData() {       
-        TerminalDao terminalDao = new TerminalDao();     
+        TerminalDao terminalDao = new TerminalDao();
+        LogDao logDao = new LogDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("terminals", terminalDao.select());
+        initData.put("logs",logDao.select());
+        
         return Utils.convertOMapToJSON(initData);
     }
 }

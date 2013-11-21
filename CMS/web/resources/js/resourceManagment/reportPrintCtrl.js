@@ -25,6 +25,10 @@ function ReportPrintCtrl($scope, $http, saveEditDelete) {
     $scope.edit = function() {
         $scope.editMode = true;
     };
+    
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
 
     $scope.create = function() {
         $scope.selected = "";

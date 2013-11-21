@@ -236,4 +236,5 @@ public class DatabaseObject {
         }
         return 1L;
     }
+    //
 }

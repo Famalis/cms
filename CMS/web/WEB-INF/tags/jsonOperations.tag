@@ -13,7 +13,7 @@
 <table>
     <tr>
         <td>
-            <input type="button" ng-show="editMode" ng-click="editMode=false" value="Anuluj"</td>
+            <input type="button" ng-show="editMode" ng-click="cancel()" value="Anuluj"</td>
         </td>
         <td>
             <input type="button" ng-show="!selected && !editMode" ng-click="create()" value="Dodaj"</td>
