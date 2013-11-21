@@ -5,7 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dao.ReportDao;
+import dao.SystemFileDao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,7 +17,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Report;
+import model.SystemFile;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -65,7 +65,7 @@ public class ReportListController extends BaseController {
     public String upload(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-            Report r = new Report();
+            SystemFile r = new SystemFile();
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     String fieldname = item.getFieldName();
@@ -101,7 +101,7 @@ public class ReportListController extends BaseController {
     @RequestMapping(value = "/reportList/download")
     public @ResponseBody
     void download(@RequestParam("id") Long id, HttpServletResponse response) {
-        Report r = new Report();
+        SystemFile r = new SystemFile();
         r.loadObject("id=" + id);
         Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
@@ -110,7 +110,7 @@ public class ReportListController extends BaseController {
     public @ResponseBody
     String getData() {
         Map<String, Object> initData = new HashMap<String, Object>();
-        ReportDao reportDao = new ReportDao();
+        SystemFileDao reportDao = new SystemFileDao();
         initData.put("reports", reportDao.getReportDtos());
         return Utils.convertOMapToJSON(initData);
     }

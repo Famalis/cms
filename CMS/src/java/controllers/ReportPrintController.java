@@ -5,7 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dao.ReportDao;
+import dao.SystemFileDao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Report;
+import model.SystemFile;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -49,7 +49,7 @@ public class ReportPrintController extends BaseController {
     public @ResponseBody
     String getData() {
         Map<String, Object> initData = new HashMap<String, Object>();
-        ReportDao reportDao = new ReportDao();
+        SystemFileDao reportDao = new SystemFileDao();
         initData.put("reports", reportDao.getReportDtos());
         return Utils.convertOMapToJSON(initData);
     }
@@ -57,7 +57,7 @@ public class ReportPrintController extends BaseController {
     @RequestMapping(value = "/reportPrint/print")
     public @ResponseBody
     void download(@RequestParam("id") Long id, HttpServletResponse response) {
-        Report r = new Report();
+        SystemFile r = new SystemFile();
         r.loadObject("id=" + id);
         Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }

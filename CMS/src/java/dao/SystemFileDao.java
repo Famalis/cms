@@ -6,31 +6,31 @@
 
 package dao;
 
-import dto.ReportDTO;
+import dto.SystemFileDTO;
 import java.util.ArrayList;
 import java.util.List;
-import model.Report;
+import model.SystemFile;
 
 /**
  *
  * @author Sergio
  */
-public class ReportDao extends GenericDao<Report>{
+public class SystemFileDao extends GenericDao<SystemFile>{
     
-    public ReportDao() {
-        super(Report.class);
+    public SystemFileDao() {
+        super(SystemFile.class);
     }
     
-    public List<ReportDTO> getReportDtos() {
+    public List<SystemFileDTO> getReportDtos() {
         List<String> params = new ArrayList<>();
         params.add("name");
         params.add("description");
         params.add("mimeType");
         params.add("formCode");
-        List<Report> reports = this.selectFields("", params);
-        List<ReportDTO> dtos = new ArrayList<>();
-        for (Report r : reports) {
-            ReportDTO dto = new ReportDTO();
+        List<SystemFile> reports = this.selectFields("", params);
+        List<SystemFileDTO> dtos = new ArrayList<>();
+        for (SystemFile r : reports) {
+            SystemFileDTO dto = new SystemFileDTO();
             dto.setDescription(r.getDescription());
             dto.setName(r.getName());
             dto.setMimeType(r.getMimeType());

@@ -4,41 +4,27 @@
  * and open the template in the editor.
  */
 
-package dto;
+package model;
 
-import model.Report;
+import model.general.DatabaseObject;
 
 /**
  *
  * @author Sergio
  */
-public class ReportDTO {
+public class SystemFile extends DatabaseObject{
+    private String name, description, hashCode, mimeType, formCode;
     
-    private Long id;
-    private String name, description, mimeType, formCode;
-    
-    public ReportDTO() {
-        
-    }
-    
-    public ReportDTO(Report report) {
-        
+    public SystemFile(){
+        super("file");
     }
 
-    public Long getId() {
-        return id;
+    public String getHashCode() {
+        return hashCode;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
     }
 
     public String getDescription() {
@@ -49,13 +35,21 @@ public class ReportDTO {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getMimeType() {
         return mimeType;
     }
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
-    }
+    }    
 
     public String getFormCode() {
         return formCode;
