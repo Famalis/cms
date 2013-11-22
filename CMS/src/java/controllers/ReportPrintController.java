@@ -18,6 +18,7 @@ import model.SystemFile;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,9 +63,9 @@ public class ReportPrintController extends BaseController {
         Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
     
-    @RequestMapping(value = "/reportPrint/testForm")
-    public String testFormLoad() {
-        return "reportForms/testReportForm";
+    @RequestMapping(value = "/reportPrint/form/{form}")
+    public String testFormLoad(@PathVariable("form") String form) {        
+        return "reportForms/"+form;
     }
 
 }

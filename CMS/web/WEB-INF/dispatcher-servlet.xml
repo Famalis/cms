@@ -64,6 +64,7 @@
                 <prop key="reportPrint.htm">reportPrintController</prop>
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
                 <prop key="reportPrint/print.htm">reportPrintController</prop>
+                <prop key="reportPrint/form/{form}.htm">reportPrintController</prop>
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
