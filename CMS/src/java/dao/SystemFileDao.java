@@ -31,6 +31,7 @@ public class SystemFileDao extends GenericDao<SystemFile>{
         List<SystemFileDTO> dtos = new ArrayList<>();
         for (SystemFile r : reports) {
             SystemFileDTO dto = new SystemFileDTO();
+            dto.setId(r.getId());
             dto.setDescription(r.getDescription());
             dto.setName(r.getName());
             dto.setMimeType(r.getMimeType());
