@@ -43,7 +43,7 @@ public class UserDTO implements Serializable {
         for (Privilege p : privilegeDao.select("groupId=" + userConfig.getGroupId())) {
             keyIds.add(p.getKeyId());
         }
-        for (PrivilegeKey key : privilegeKeyDao.select("id", keyIds)) {
+        for (PrivilegeKey key : privilegeKeyDao.findByFieldName("id", keyIds)) {
             privilegeKeyCodes.add(key.getCode());
         }
     }

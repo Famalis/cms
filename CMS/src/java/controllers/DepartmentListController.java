@@ -94,4 +94,20 @@ public class DepartmentListController extends BaseController {
         initData.put("employees", empDao.select());
         return Utils.convertOMapToJSON(initData);
     }
+    
+    @RequestMapping(value = "/departmentList/delete/:dep", method = RequestMethod.POST)
+    public @ResponseBody
+    void deleteData(@RequestBody String dep) {
+        System.out.println("delete");
+        DepartmentDTO dto = (DepartmentDTO) Utils.convertJSONStringToObject(dep, "dep", DepartmentDTO.class);
+        if (dto != null) {
+            DepartmentDao depDao = new DepartmentDao();
+            EmployeeDao empDao = new EmployeeDao();
+            depDao.deleteAllWithId(dto.getId()+"");
+            empDao.updateFieldForAllElementsWithId("departmentId", dto.getId()+"", 
+                    "departmentId", null);
+
+        }
+
+    }
 }

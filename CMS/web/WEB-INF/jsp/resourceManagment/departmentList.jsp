@@ -43,7 +43,8 @@
                                 <td>
                                     Prowadzący: <select ng-model="selected.managerId">
                                         <option ng-repeat="employee in employees"
-                                                value="{{employee.id}}">
+                                                value="{{employee.id}}" 
+                                                ng-selected="selected.managerId==employee.id">
                                             {{employee.surname}} {{employee.name}}
                                         </option>
                                     </select>

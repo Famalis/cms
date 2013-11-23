@@ -43,6 +43,10 @@ public class GenericDao<T extends DatabaseObject> {
     public List<T> select() {
         return select("");
     }
+    
+    public List<T> findById(String id) {
+        return findByFieldName("id", id);
+    }
 
     /**
      * Metoda pobierająca dane z bazy, w której podajemy wartości jakie ma
@@ -52,7 +56,7 @@ public class GenericDao<T extends DatabaseObject> {
      * @param values
      * @return
      */
-    public List<T> select(String fieldName, String... values) {
+    public List<T> findByFieldName(String fieldName, String... values) {
         if (fieldName.length() <= 0) {
             return select();
         }
@@ -60,7 +64,7 @@ public class GenericDao<T extends DatabaseObject> {
         for (String s : values) {
             list.add(s);
         }
-        return select(fieldName, list);
+        return findByFieldName(fieldName, list);
     }
 
     /**
@@ -71,7 +75,7 @@ public class GenericDao<T extends DatabaseObject> {
      * @param values
      * @return
      */
-    public List<T> select(String fieldName, List<String> values) {
+    public List<T> findByFieldName(String fieldName, List<String> values) {
         if (fieldName.length() <= 0) {
             return select();
         }
@@ -84,6 +88,25 @@ public class GenericDao<T extends DatabaseObject> {
         }
         conditions += ")";
         return select(conditions);
+    }
+    
+    /**
+     * Metoda usuwa wszystkie wpisy w tabeli o podanym id
+     * @param id
+     * @return 
+     */
+    public boolean deleteAllWithId(String id) {
+        return delete("id="+id);
+    }
+    
+    /**
+     * Metoda usuwa wszystkie wpisy w tablei, w których dana kolumna posiada podaną wartość
+     * @param fieldName nazwa kolumny
+     * @param fieldValue wartość kolumny
+     * @return 
+     */
+    public boolean deleteAllMatching(String fieldName, String fieldValue){
+        return delete(fieldName+"="+fieldValue);
     }
 
     /**
@@ -118,7 +141,29 @@ public class GenericDao<T extends DatabaseObject> {
         query += " WHERE " + conditions;
         return connectionManager.update(query);
     }
+    /**
+     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów posiadających dane id
+     * @param id id elementu który będzie zmieniony
+     * @param fieldName nazwa kolumny do zmiany
+     * @param fieldValue nowa wartość kolumny
+     * @return 
+     */
+    public boolean updateFieldForAllElementsWithId(String id, String fieldName, String fieldValue){
+        return update("id="+id, fieldName+"="+fieldValue);
+    }
 
+    /**
+     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów spełniających warunki
+     * @param conditionFieldName nazwa kolumny na podstawie której wybierane są elementy do zmiany
+     * @param conditionFieldValue wartość jaką mają mieć modyfikowane wpisy w danej kolumie
+     * @param fieldName nazwa modyfikowanej kolumny
+     * @param fieldValue nowa watość
+     * @return 
+     */
+    public boolean updateFieldForAllElementsWithId(String conditionFieldName, String conditionFieldValue, String fieldName, String fieldValue){
+        return update(conditionFieldName+"="+conditionFieldValue, fieldName+"="+fieldValue);
+    }
+    
     /**
      * Metoda dodająca podany w parametrze obiekt do bazy danych.
      *

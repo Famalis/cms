@@ -8,6 +8,7 @@ import controllers.general.BaseController;
 import dao.PrivilegeDao;
 import dao.PrivilegeGroupDao;
 import dao.PrivilegeKeyDao;
+import dao.UserConfigurationDao;
 import dto.GroupDTO;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,9 +83,13 @@ public class GroupListController extends BaseController {
         GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(group, "group", GroupDTO.class);
         if (dto != null) {
             PrivilegeGroupDao privilegeGroupDao = new PrivilegeGroupDao();
+            UserConfigurationDao userConfigDao = new UserConfigurationDao();
             PrivilegeDao privilegeDao = new PrivilegeDao();
             privilegeDao.delete("groupId=" + dto.getId());
             privilegeGroupDao.delete("id=" + dto.getId());
+            userConfigDao.updateFieldForAllElementsWithId(
+                    "groupId", dto.getId()+"", 
+                    "groupId", null);
 
         }
 

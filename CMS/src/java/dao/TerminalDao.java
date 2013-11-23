@@ -16,7 +16,7 @@ public class TerminalDao extends GenericDao<Terminal>{
     }
     
     public List<TerminalDTO> getTerminalDtos(String field, String... values) {
-        List<Terminal> selectList = this.select(field, values);
+        List<Terminal> selectList = this.findByFieldName(field, values);
         List<TerminalDTO> list = new ArrayList<TerminalDTO>();
         for (Terminal t : selectList) {
             list.add(new TerminalDTO(t));
