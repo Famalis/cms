@@ -5,7 +5,7 @@ import model.Log;
 public class LogDTO {
     
     private Long id;
-    private String logListId, timestamp, terminalId;
+    private String timestamp, terminalId;
     
     public LogDTO(){
         
@@ -13,7 +13,6 @@ public class LogDTO {
     
     public LogDTO(Log log){
         this.id = log.getId();
-        this.logListId = log.getLogListId();
         this.timestamp = log.getTimestamp();
         this.terminalId = log.getTerminalId();
     }
@@ -24,14 +23,6 @@ public class LogDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLogListId() {
-        return logListId;
-    }
-
-    public void setLogListId(String logListId) {
-        this.logListId = logListId;
     }
 
     public String getTimestamp() {

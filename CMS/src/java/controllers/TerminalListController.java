@@ -1,7 +1,6 @@
 package controllers;
 
 import controllers.general.BaseController;
-import dao.LogDao;
 import dao.TerminalDao;
 import dto.TerminalDTO;
 import java.util.HashMap;
@@ -54,11 +53,8 @@ public class TerminalListController extends BaseController{
     @RequestMapping(value = "/terminalList/terminals")
     public @ResponseBody String getData() {       
         TerminalDao terminalDao = new TerminalDao();
-        LogDao logDao = new LogDao();
         Map<String, Object> initData = new HashMap<String, Object>();
-        initData.put("terminals", terminalDao.select());
-        initData.put("logs",logDao.select());
-        
+        initData.put("terminalDtos", terminalDao.getTerminalDtos());
         return Utils.convertOMapToJSON(initData);
     }
 }

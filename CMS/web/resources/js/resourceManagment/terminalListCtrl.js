@@ -6,7 +6,7 @@ function TerminalListCtrl($scope, $http) {
     $scope.editMode = false;
     $scope.logMode = false;
     var loadDataPromise = $http.get('/CMS/terminalList/terminals.htm').success(function(returnData) {
-        $scope.terminals = returnData.terminals;
+        $scope.terminals = returnData.terminalDtos;
         $scope.logs = returnData.logs;
         //$scope.status = null;
         return "success";

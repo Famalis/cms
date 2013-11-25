@@ -1,18 +1,22 @@
 package dto;
 
+import java.util.ArrayList;
 import model.Terminal;
 
 public class TerminalDTO {
     
     private Long id;
-    public String description, lastLog;
+    private String description, lastLog;
+    private ArrayList<String> timestamps;
     
     public TerminalDTO() {
+        timestamps = new ArrayList<>();
     }
     
     public TerminalDTO(Terminal terminal) {
         this.id = terminal.getId();
         this.description = terminal.getDescription();
+        timestamps = new ArrayList<>();
     }
     
     public Long getId() {
@@ -38,4 +42,14 @@ public class TerminalDTO {
     public void setLastLog(String lastLog) {
         this.lastLog = lastLog;
     }
+
+    public ArrayList<String> getTimestamps() {
+        return timestamps;
+    }
+
+    public void setTimestamps(ArrayList<String> timestamps) {
+        this.timestamps = timestamps;
+    }
+    
+    
 }

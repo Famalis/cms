@@ -4,15 +4,7 @@ import model.general.DatabaseObject;
 
 public class Log extends DatabaseObject{
 
-    private String logListId, timestamp, terminalId;
-
-    public String getLogListId() {
-        return logListId;
-    }
-
-    public void setLogListId(String logListId) {
-        this.logListId = logListId;
-    }
+    private String timestamp, terminalId;
 
     public String getTimestamp() {
         return timestamp;

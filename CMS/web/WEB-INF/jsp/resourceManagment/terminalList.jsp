@@ -49,24 +49,12 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Log Id:
-                                </td>
-                                <td>
-                                    LogListId:
-                                </td>
-                                <td>
                                     Timestamp:
                                 </td>
                             </tr>
-                            <tr  ng-repeat="log in logs" ng-show="log.terminalId == selected.id">
+                            <tr  ng-repeat="timestamp in selected.timestamps">
                                 <td>
-                                    {{log.id}}
-                                </td>
-                                <td>
-                                    {{log.logListId}}
-                                </td>
-                                <td>
-                                    {{log.timestamp}}
+                                    {{timestamp}}
                                 </td>
                             </tr>
                         </table>
