@@ -20,9 +20,10 @@ public class TerminalDao extends GenericDao<Terminal> {
     }
 
     public List<TerminalDTO> getTerminalDtos(String field, String... values) {
-        String query = "SELECT log.timestamp as timestamp, terminal.id as id, terminal.description as description";
-        query += " FROM log, terminal";
-        query += " WHERE terminal.id = log.terminalId";
+        String query = "SELECT log.timestamp as timestamp, terminal.id as id, terminal.description as description, "
+                + "employee.name as name, employee.surname as surname";
+        query += " FROM log, terminal, employee";
+        query += " WHERE terminal.id = log.terminalId and employee.id = log.employeeId";
         if (field.length() > 0) {
             query += " " + field + " (";
             for (int i = 0; i<values.length; i++) {                
@@ -44,16 +45,20 @@ public class TerminalDao extends GenericDao<Terminal> {
                 String description = resultSet.getString("description");
                 String timestamp = resultSet.getString("timestamp");
                 String terminalId = resultSet.getString("id");
+                String employee = resultSet.getString("name")+" "+
+                        resultSet.getString("surname");
                 if (dtoMap.containsKey(terminalId)) {
                     TerminalDTO existingDto = dtoMap.get(terminalId);
-                    existingDto.getTimestamps().add(timestamp);
+                    existingDto.getTimestamps().put(timestamp, employee);
+                    //existingDto.getTimestamps().add(timestamp);
                     dtoMap.put(terminalId, existingDto);
                     //dtoMap.get(terminalIds).getTimestamps().add(timestamp);
                 } else {
                     TerminalDTO newDto = new TerminalDTO();
                     newDto.setDescription(description);
                     newDto.setId(Long.parseLong(terminalId));
-                    newDto.getTimestamps().add(timestamp);
+                    //newDto.getTimestamps().add(timestamp);
+                    newDto.getTimestamps().put(timestamp, employee);
                     dtoMap.put(terminalId, newDto);
                 }
             }

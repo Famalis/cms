@@ -51,10 +51,16 @@
                                 <td>
                                     Timestamp:
                                 </td>
+                                <td>
+                                    Pracownik:
+                                </td>
                             </tr>
-                            <tr  ng-repeat="timestamp in selected.timestamps">
+                            <tr  ng-repeat="(timestamp, employee) in selected.timestamps">
                                 <td>
                                     {{timestamp}}
+                                </td>
+                                <td>
+                                    {{employee}}
                                 </td>
                             </tr>
                         </table>

@@ -1,22 +1,26 @@
 package dto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import model.Terminal;
 
 public class TerminalDTO {
     
     private Long id;
     private String description, lastLog;
-    private ArrayList<String> timestamps;
+    private Map<String, String> timestamps;
     
     public TerminalDTO() {
-        timestamps = new ArrayList<>();
+        //timestamps = new ArrayList<>();
+        timestamps = new HashMap<String, String>();
     }
     
     public TerminalDTO(Terminal terminal) {
         this.id = terminal.getId();
         this.description = terminal.getDescription();
-        timestamps = new ArrayList<>();
+        //timestamps = new ArrayList<>();
+        timestamps = new HashMap<String, String>();
     }
     
     public Long getId() {
@@ -43,13 +47,11 @@ public class TerminalDTO {
         this.lastLog = lastLog;
     }
 
-    public ArrayList<String> getTimestamps() {
+    public Map<String, String> getTimestamps() {
         return timestamps;
     }
 
-    public void setTimestamps(ArrayList<String> timestamps) {
+    public void setTimestamps(Map<String, String> timestamps) {
         this.timestamps = timestamps;
     }
-    
-    
 }

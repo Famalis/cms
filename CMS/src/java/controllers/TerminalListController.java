@@ -55,6 +55,7 @@ public class TerminalListController extends BaseController{
         TerminalDao terminalDao = new TerminalDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("terminalDtos", terminalDao.getTerminalDtos());
+        System.out.println(Utils.convertOMapToJSON(initData));
         return Utils.convertOMapToJSON(initData);
     }
 }
