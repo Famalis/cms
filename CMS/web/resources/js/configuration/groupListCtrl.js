@@ -1,8 +1,18 @@
-function GroupListCtrl($scope, $http) {
+function GroupListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.editMode = false;
     $scope.selected = "";
-    $scope.selected.privilegeKeyIds = ""
+    $scope.selected.privilegeKeyIds = "";
+    $scope.get = saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
+    $scope.aGet = function() {
+        $scope.status = "Zapisywanie zmian...";
+        for (var i=0; i<1000000; i++) {
+            
+        }
+        saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
+        $scope.groups = $scope.initData.groups;
+    };
+
     $scope.edit = function() {
         $scope.editMode = true;
     };
