@@ -1,15 +1,21 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.AddressDao;
 import dao.DepartmentDao;
 import dao.EmployeeDao;
+import dao.LogDao;
 import dao.PositionDao;
+import dao.TaskDao;
+import dao.UserConfigurationDao;
+import dao.UserDao;
 import dto.EmployeeDTO;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Address;
 import model.Employee;
+import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -90,5 +96,39 @@ public class EmployeeListController extends BaseController{
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
         return Utils.convertOMapToJSON(initData);
+    }
+    
+    @RequestMapping(value = "employeeList/delete/:emp", method = RequestMethod.POST)
+    public @ResponseBody
+    void deleteData(@RequestBody String emp) {
+        System.out.println("delete");
+        EmployeeDTO dto = (EmployeeDTO) Utils.convertJSONStringToObject(emp, "emp", EmployeeDTO.class);
+        if (dto != null) {
+            EmployeeDao empDao = new EmployeeDao();
+            Employee actualEmp = new Employee();
+            actualEmp.loadObject("id="+dto.getId());
+            
+            LogDao logDao = new LogDao();
+            AddressDao adrDao = new AddressDao();
+            DepartmentDao depDao = new DepartmentDao();
+            
+            
+            empDao.deleteAllWithId(dto.getId()+"");
+            logDao.deleteAllMatching("employeeId", dto.getId()+"");
+            adrDao.deleteAllWithId(actualEmp.getAddressId()+"");
+            depDao.updateFieldForAllElementsWithId("managerId", dto.getId()+"", 
+                    "managerId", null);
+            
+            User user = new User();
+            if(user.loadObject("employeeId="+dto.getId())){
+                UserDao usDao = new UserDao();
+                TaskDao tskDao = new TaskDao();
+                UserConfigurationDao conf = new UserConfigurationDao();
+                usDao.deleteAllWithId(user.getId()+"");
+                tskDao.updateFieldForAllElementsWithId("userId", user.getId()+"","userId", null);
+                conf.deleteAllMatching("userId", user.getId()+"");
+            }
+        }
+
     }
 }

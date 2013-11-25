@@ -34,6 +34,7 @@
                 <prop key="employeeList.htm">employeeListrController</prop>
                 <prop key="employeeList/emps.htm">employeeListrController</prop>
                 <prop key="employeeList/save/:emp.htm">employeeListrController</prop>
+                <prop key="employeeList/delete/:emp.htm">employeeListrController</prop>
                 <prop key="departmentList.htm">departmentListrController</prop>
                 <prop key="departmentList/deps.htm">departmentListrController</prop>
                 <prop key="departmentList/save/:object.htm">departmentListrController</prop>
@@ -87,7 +88,7 @@
     <bean name="reportPrintController"
           class="controllers.ReportPrintController"/> 
     <bean name="reportListController"
-          class="controllers.ReportListController"/>  
+          class="controllers.ReportListController"/> 
     <bean name="terminalListController"
           class="controllers.TerminalListController"/>  
     <bean name="privilegeKeyListController"

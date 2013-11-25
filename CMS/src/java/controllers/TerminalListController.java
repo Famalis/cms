@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.LogDao;
 import dao.TerminalDao;
 import dto.TerminalDTO;
 import java.util.HashMap;
@@ -51,11 +52,26 @@ public class TerminalListController extends BaseController{
     }
     
     @RequestMapping(value = "/terminalList/terminals")
-    public @ResponseBody String getData() {       
+    public @ResponseBody String getData() {
         TerminalDao terminalDao = new TerminalDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("terminalDtos", terminalDao.getTerminalDtos());
         System.out.println(Utils.convertOMapToJSON(initData));
         return Utils.convertOMapToJSON(initData);
     }
+    
+    @RequestMapping(value = "terminalList/delete/:terminal", method = RequestMethod.POST)
+    public @ResponseBody
+    void deleteData(@RequestBody String terminal) {
+        System.out.println("delete");
+        TerminalDTO ter = (TerminalDTO) Utils.convertJSONStringToObject(terminal, "terminal", TerminalDTO.class);
+        if (ter != null) {
+            TerminalDao terDao = new TerminalDao();
+            LogDao logDao = new LogDao();
+            terDao.deleteAllWithId(ter.getId()+"");
+            logDao.deleteAllMatching("terminalId", ter.getId()+"");
+        }
+
+    }
+    
 }
