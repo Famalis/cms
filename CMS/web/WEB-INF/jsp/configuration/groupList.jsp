@@ -65,6 +65,9 @@
 
                     </t:jsonOperations>
                     </td>
+                    <td>
+                        <input type="button" ng-click="aGet()" value="Odśwież"/>
+                    </td>
                 </tr>
             </table>
         </div>
