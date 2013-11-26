@@ -13,7 +13,7 @@ saveEditDeleteModule.factory('saveEditDelete', function() {
         },
         get: function($http, link, $scope) {
             return $http.get(link).success(function(returnData) {
-                $scope.status = '';
+                $scope.status = null;
                 $scope.initData = returnData;
                 //alert(returnData.departmnets);
                 return "Success";
@@ -22,10 +22,10 @@ saveEditDeleteModule.factory('saveEditDelete', function() {
                 return null;
             });
         },
-        remove: function($http, link, $scope, object) {
+        remove: function($http, link, $scope) {
             return $http.post(
                     link,
-                    {object: object}).success(function() {
+                    {object: $scope.selected}).success(function() {
                 $scope.selected = "";
             }).error(function(error) {
 

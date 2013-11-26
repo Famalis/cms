@@ -41,6 +41,10 @@ function DepartmentListCtrl($scope, $http, saveEditDelete) {
         $scope.editMode = true;
 
     };
+    
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/departmentList/delete/:object.htm', $scope);
+    };
 
 
 }

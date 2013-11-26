@@ -91,17 +91,17 @@ public class DepartmentListController extends BaseController {
         return Utils.convertOMapToJSON(initData);
     }
     
-    @RequestMapping(value = "/departmentList/delete/:dep", method = RequestMethod.POST)
+    @RequestMapping(value = "/departmentList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void deleteData(@RequestBody String dep) {
-        System.out.println("delete");
-        DepartmentDTO dto = (DepartmentDTO) Utils.convertJSONStringToObject(dep, "dep", DepartmentDTO.class);
+    void deleteData(@RequestBody String object) {
+        System.out.println("delete "+object);
+        DepartmentDTO dto = (DepartmentDTO) Utils.convertJSONStringToObject(object, "object", DepartmentDTO.class);
         if (dto != null) {
             DepartmentDao depDao = new DepartmentDao();
             EmployeeDao empDao = new EmployeeDao();
             depDao.deleteAllWithId(dto.getId()+"");
             empDao.updateFieldForAllElementsWithId("departmentId", dto.getId()+"", 
-                    "departmentId", null);
+                    "departmentId", "-1");
 
         }
 
