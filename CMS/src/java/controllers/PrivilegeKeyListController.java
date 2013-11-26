@@ -6,7 +6,9 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.PrivilegeKeyDao;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.PrivilegeKey;
 import org.springframework.stereotype.Controller;
@@ -38,10 +40,10 @@ public class PrivilegeKeyListController extends BaseController {
         return "configuration/privilegeKeyList";
     }
 
-    @RequestMapping(value = "/privilegeKeyList/save/:privKey", method = RequestMethod.POST)
+    @RequestMapping(value = "/privilegeKeyList/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String privKey) {
-        PrivilegeKey privilegeKey = (PrivilegeKey) Utils.convertJSONStringToObject(privKey, "privKey", PrivilegeKey.class);
+    void saveData(@RequestBody String object) {
+        PrivilegeKey privilegeKey = (PrivilegeKey) Utils.convertJSONStringToObject(object, "object", PrivilegeKey.class);
         if (privilegeKey != null) {
             if (privilegeKey.getId() == null) {
                 privilegeKey.insert();
@@ -58,14 +60,15 @@ public class PrivilegeKeyListController extends BaseController {
     String getData() {
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         PrivilegeKeyDao privilegeDao = new PrivilegeKeyDao();
-        List<PrivilegeKey> pKeys = privilegeDao.select();
-        return Utils.convertObjectListToJSON(pKeys);
+        Map<String, Object> initData = new HashMap<String, Object>();
+        initData.put("privilegeKeys", privilegeDao.select());
+        return Utils.convertOMapToJSON(initData);
     }
 
-    @RequestMapping(value = "/privilegeKeyList/delete/:privKey", method = RequestMethod.POST)
+    @RequestMapping(value = "/privilegeKeyList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void deleteData(@RequestBody String privKey) {
-        PrivilegeKey privilegeKey = (PrivilegeKey) Utils.convertJSONStringToObject(privKey, "privKey", PrivilegeKey.class);
+    void deleteData(@RequestBody String object) {
+        PrivilegeKey privilegeKey = (PrivilegeKey) Utils.convertJSONStringToObject(object, "object", PrivilegeKey.class);
         if (privilegeKey != null) {
             privilegeKey.delete();
         }

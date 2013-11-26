@@ -6,7 +6,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.positions = "";
     $scope.editMode = false;
    
-   $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
+    $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
@@ -43,7 +43,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
         $scope.editMode = true;
 
     };
-    
+
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/employeeList/delete/:object.htm', $scope);
     };

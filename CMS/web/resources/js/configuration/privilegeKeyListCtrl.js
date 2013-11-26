@@ -1,81 +1,47 @@
-function PrivilegeKeyListCtrl($scope, $http) {
+function PrivilegeKeyListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.editMode = false;
     $scope.editValue = "Edytuj";
     $scope.selected = null;
-    var loadDataPromise = $http.get('/CMS/privilegeKeyList/privKeys.htm').success(function(returnData) {
-        $scope.privilegeKeys = returnData;
-        return "success";
-    }).error(function(error) {
-        $scope.error = error;
-        return "failure";
-    });
+
+    $scope.get = saveEditDelete.get($http, '/CMS/privilegeKeyList/privKeys.htm', $scope);
+    var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        var o = $scope.selected;
-        $http.post(
-                '/CMS/privilegeKeyList/save/:privKey.htm',
-                {privKey: o}).success(function(returnData) {
-                    
-        }).error(function(error) {
-            
-        });
-        $scope.editMode = false;
-        $http.get('/CMS/privilegeKeyList/privKeys.htm').success(function(returnData) {
-            $scope.privilegeKeys = returnData;
-            return "success";
-        }).error(function(error) {
-            $scope.error = error;
-            return "failure";
-        });
+        saveEditDelete.save($http, '/CMS/privilegeKeyList/save/:object.htm', $scope.selected);
     };
 
-    loadDataPromise.then(function(data) {
-        if (data != null) {
-            $scope.status = "";
+    loadDataPromise.then(function(returnData) {
+        if (returnData != null) {
+            $scope.privilegeKeys = $scope.initData.privilegeKeys;
         } else {
-            $scope.status = "Błąd:";
+            alert('err');
         }
     });
 
-    $scope.delete = function() {
-        var o = $scope.selected;
-        $http.post(
-                '/CMS/privilegeKeyList/delete/:privKey.htm',
-                {privKey: o}).success(function(returnData) {
+    $scope.select = function(object) {
+        if ($scope.selected == object) {
             $scope.selected = "";
-        }).error(function(error) {
-            
-        });
-        $http.get('/CMS/privilegeKeyList/privKeys.htm').success(function(returnData) {
-            $scope.privilegeKeys = returnData;
-            return "success";
-        }).error(function(error) {
-            $scope.error = error;
-            return "failure";
-        });
-    };
+        } else {
+            $scope.selected = object;
+        }
+    }
 
     $scope.edit = function() {
         $scope.editMode = true;
     };
-    
+
     $scope.cancel = function() {
         $scope.editMode = false;
     };
-    
+
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;
 
     };
 
-    $scope.select = function(selectedObject) {
-        if($scope.selected == selectedObject) {
-            $scope.selected = "";
-        } else {
-            $scope.selected = selectedObject;
-        }
-        
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/privilegeKeyList/delete/:object.htm', $scope);
     };
 }
