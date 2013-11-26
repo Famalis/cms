@@ -1,76 +1,50 @@
-function EmployeeListCtrl($scope, $http) {
+function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.employees = "";
     $scope.departments = "";
     $scope.positions = "";
     $scope.editMode = false;
-    var loadDataPromise = $http.get('/CMS/employeeList/emps.htm').success(function(returnData) {
-        $scope.employees = returnData.employees;
-        $scope.departments = returnData.departments;
-        $scope.positions = returnData.positions;
-        //$scope.status = null;
-        return "success";
-    }).error(function(error) {
-        //$scope.status = "Błąd";
-        $scope.error = error;
-        return "failure";
-    });
-    
-    $scope.getPositionName = function(positionId) {
-      for (var i = 0; i<$scope.positions.length; i++) {
-          if($scope.positions[i].id == positionId) {
-            return $scope.positions[i].name;
-          }
-      }  
-    };
-    
-    $scope.getDepartmentName = function(departmentId) {
-      for (var i = 0; i<$scope.departments.length; i++) {
-          if($scope.departments[i].id == departmentId) {
-            return $scope.departments[i].name;
-          }
-      }  
+   
+   $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
+    var loadDataPromise = $scope.get;
+
+    $scope.save = function() {
+        saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope.selected);
     };
 
-    $scope.save = function() {        
-        var o = $scope.selected;
-        $http.post(
-            '/CMS/employeeList/save/:emp.htm',
-            {emp:o}).success(function(returnData) {
-                
-            }).error(function(error) {
-                alert(error);
-            });
-    };
-
-    loadDataPromise.then(function(data) {
-        if (data != null) {
-            $scope.status = "";
+    loadDataPromise.then(function(returnData) {
+        if (returnData != null) {
+            $scope.departments = $scope.initData.departmnets;
+            $scope.employees = $scope.initData.employees;
         } else {
-            $scope.status = "Błąd:";
+            alert('err');
         }
     });
 
-    $scope.select = function(employee) {
-        if($scope.selected == employee) {
+    $scope.select = function(department) {
+        if ($scope.selected == department) {
             $scope.selected = "";
         } else {
-            $scope.selected = employee;
+            $scope.selected = department;
         }
     }
-    
+
     $scope.edit = function() {
         $scope.editMode = true;
     };
-    
+
     $scope.cancel = function() {
         $scope.editMode = false;
     };
-    
+
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;
 
+    };
+    
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/employeeList/delete/:object.htm', $scope);
     };
 }

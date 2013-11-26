@@ -24,49 +24,57 @@
                 <prop key="logout.htm">loginController</prop>
                 <prop key="bgcolor.htm">loginController</prop>
                 <prop key="newUser.htm">newUserController</prop>
+                
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
                 <prop key="userList/save/:user.htm">userListrController</prop>
+                
                 <prop key="groupList.htm">groupListrController</prop>
                 <prop key="groupList/groups.htm">groupListrController</prop>
                 <prop key="groupList/save/:group.htm">groupListrController</prop>
                 <prop key="groupList/delete/:group.htm">groupListrController</prop>
+                
                 <prop key="employeeList.htm">employeeListrController</prop>
                 <prop key="employeeList/emps.htm">employeeListrController</prop>
-                <prop key="employeeList/save/:emp.htm">employeeListrController</prop>
-                <prop key="employeeList/delete/:emp.htm">employeeListrController</prop>
+                <prop key="employeeList/save/:object.htm">employeeListrController</prop>
+                <prop key="employeeList/delete/:object.htm">employeeListrController</prop>
+                
                 <prop key="departmentList.htm">departmentListrController</prop>
                 <prop key="departmentList/deps.htm">departmentListrController</prop>
                 <prop key="departmentList/save/:object.htm">departmentListrController</prop>
                 <prop key="departmentList/delete/:object.htm">departmentListrController</prop>
+                
                 <prop key="positionList.htm">positionListrController</prop>
                 <prop key="positionList/positions.htm">positionListrController</prop>
-                <prop key="positionList/save/:position.htm">positionListrController</prop>                
-                <prop key="terminalList.htm">terminalListrController</prop>
-                <prop key="terminalList/terminals.htm">terminalListrController</prop>
-                <prop key="terminalList/save/:terminal.htm">terminalListrController</prop>             
+                <prop key="positionList/save/:object.htm">positionListrController</prop>   
+                          
                 <prop key="privilegeList.htm">privilegeListController</prop>
                 <prop key="privilegeList/privs.htm">privilegeListController</prop>
-                <prop key="privilegeList/save/:priv.htm">privilegeListController</prop>  
-                <prop key="privilegeList/delete/:priv.htm">privilegeListController</prop>              
+                <prop key="privilegeList/save/:object.htm">privilegeListController</prop>  
+                <prop key="privilegeList/delete/:object.htm">privilegeListController</prop>    
+                          
                 <prop key="privilegeKeyList.htm">privilegeKeyListController</prop>
                 <prop key="privilegeKeyList/privKeys.htm">privilegeKeyListController</prop>
-                <prop key="privilegeKeyList/save/:privKey.htm">privilegeKeyListController</prop>
-                <prop key="privilegeKeyList/delete/:privKey.htm">privilegeKeyListController</prop>
+                <prop key="privilegeKeyList/save/:object.htm">privilegeKeyListController</prop>
+                <prop key="privilegeKeyList/delete/:object.htm">privilegeKeyListController</prop>
+                
                 <prop key="terminalList.htm">terminalListController</prop>
                 <prop key="terminalList/terminals.htm">terminalListController</prop>
-                <prop key="terminalList/save/:terminal.htm">terminalListController</prop>
-                <prop key="terminalList/delete/:terminal.htm">terminalListController</prop>
+                <prop key="terminalList/save/:object.htm">terminalListController</prop>
+                <prop key="terminalList/delete/:object.htm">terminalListController</prop>
+                
                 <prop key="reportList.htm">reportListController</prop>
                 <prop key="reportList/reports.htm">reportListController</prop>
                 <prop key="reportList/upload.htm">reportListController</prop>
                 <prop key="reportList/download.htm">reportListController</prop>
-                <prop key="reportList/save/:report.htm">reportListController</prop>
-                <prop key="reportList/delete/:report.htm">reportListController</prop>
+                <prop key="reportList/save/:object.htm">reportListController</prop>
+                <prop key="reportList/delete/:object.htm">reportListController</prop>
+                
                 <prop key="reportPrint.htm">reportPrintController</prop>
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
                 <prop key="reportPrint/print.htm">reportPrintController</prop>
                 <prop key="reportPrint/form/{form}.htm">reportPrintController</prop>
+                
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>

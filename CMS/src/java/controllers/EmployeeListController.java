@@ -42,10 +42,10 @@ public class EmployeeListController extends BaseController{
         return "resourceManagment/employeeList";
     } 
     
-    @RequestMapping(value = "/employeeList/save/:emp", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String emp) {
-        EmployeeDTO empDto = (EmployeeDTO) Utils.convertJSONStringToObject(emp, "emp", EmployeeDTO.class);
-        System.out.println(emp);
+    @RequestMapping(value = "/employeeList/save/:object", method = RequestMethod.POST)
+    public @ResponseBody void saveData(@RequestBody String object) {
+        EmployeeDTO empDto = (EmployeeDTO) Utils.convertJSONStringToObject(object, "object", EmployeeDTO.class);
+        System.out.println(object);
         if (empDto!=null) {
             Employee actualEmp = new Employee();
             Address actualAdr = new Address();
@@ -98,11 +98,11 @@ public class EmployeeListController extends BaseController{
         return Utils.convertOMapToJSON(initData);
     }
     
-    @RequestMapping(value = "employeeList/delete/:emp", method = RequestMethod.POST)
+    @RequestMapping(value = "/employeeList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void deleteData(@RequestBody String emp) {
+    void deleteData(@RequestBody String object) {
         System.out.println("delete");
-        EmployeeDTO dto = (EmployeeDTO) Utils.convertJSONStringToObject(emp, "emp", EmployeeDTO.class);
+        EmployeeDTO dto = (EmployeeDTO) Utils.convertJSONStringToObject(object, "object", EmployeeDTO.class);
         if (dto != null) {
             EmployeeDao empDao = new EmployeeDao();
             Employee actualEmp = new Employee();
