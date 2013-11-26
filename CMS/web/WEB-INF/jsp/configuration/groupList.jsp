@@ -42,7 +42,7 @@
                                 </td>
                                 <td>Dodaj nowy klucz:
                                     <select ng-model="newKeyId">
-                                        <option ng-repeat="privKey in privilegeKeys" value="{{privKey.id}}">{{privKey.code}}</option> 
+                                        <option ng-repeat="privKey in privilegeKeys" ng-hide="selectedGroupHasKey(privKey.id)" value="{{privKey.id}}">{{privKey.code}}</option> 
                                     </select>
                                     <input type="button" ng-click="addKey()" value="Dodaj"/>
                                     <br/>
