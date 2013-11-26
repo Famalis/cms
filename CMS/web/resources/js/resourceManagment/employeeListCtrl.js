@@ -22,11 +22,11 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
         }
     });
 
-    $scope.select = function(department) {
-        if ($scope.selected == department) {
+    $scope.select = function(object) {
+        if ($scope.selected == object) {
             $scope.selected = "";
         } else {
-            $scope.selected = department;
+            $scope.selected = object;
         }
     }
 

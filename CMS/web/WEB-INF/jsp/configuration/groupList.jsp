@@ -4,10 +4,7 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/configuration/groupListCtrl.js"></script>
-        <div ng-controller="GroupListCtrl">  
-            <h1 style="text-align: center" ng-show="status != ''">
-                {{status}}<img src="/CMS/resources/loader.gif" alt="ble"/>
-            </h1>  
+        <div ng-controller="GroupListCtrl"> 
             <table width="100%">
                 <tr>
                     <td>

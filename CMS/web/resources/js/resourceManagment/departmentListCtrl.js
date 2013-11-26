@@ -1,6 +1,5 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
-    $scope.saveLink = '/CMS/departmentList/save/:object.htm';
     $scope.selected = "";
     $scope.departments = "";
     $scope.employees = "";

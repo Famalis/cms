@@ -47,10 +47,10 @@ public class GroupListController extends BaseController {
         return "configuration/groupList";
     }
 
-    @RequestMapping(value = "/groupList/save/:group", method = RequestMethod.POST)
+    @RequestMapping(value = "/groupList/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String group) {
-        GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(group, "group", GroupDTO.class);
+    void saveData(@RequestBody String object) {
+        GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(object, "object", GroupDTO.class);
         if (dto != null) {
             PrivilegeGroup actualGroup = new PrivilegeGroup();
             PrivilegeDao privilegeDao = new PrivilegeDao();
@@ -76,11 +76,11 @@ public class GroupListController extends BaseController {
 
     }
 
-    @RequestMapping(value = "/groupList/delete/:group", method = RequestMethod.POST)
+    @RequestMapping(value = "/groupList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void deleteData(@RequestBody String group) {
+    void deleteData(@RequestBody String object) {
         System.out.println("delete");
-        GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(group, "group", GroupDTO.class);
+        GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(object, "object", GroupDTO.class);
         if (dto != null) {
             PrivilegeGroupDao privilegeGroupDao = new PrivilegeGroupDao();
             UserConfigurationDao userConfigDao = new UserConfigurationDao();
