@@ -50,7 +50,6 @@
                     </td>
                     <td>
                         <a href="/CMS/employeePage/{{user.employeeId}}.htm">{{user.employeeId}}</a>
-                        {{editMode}}
                     </td>
                 </tr>
             </table>
