@@ -1,51 +1,46 @@
-function PositionListCtrl($scope, $http) {
+function PositionListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.positions = "";
     $scope.editMode = false;
-    var loadDataPromise = $http.get('/CMS/positionList/positions.htm').success(function(returnData) {
-        $scope.positions = returnData.positions;
-        return "success";
-    }).error(function(error) {
-        $scope.error = error;
-        return "failure";
-    });
+    $scope.get = saveEditDelete.get($http, '/CMS/positionList/positions.htm', $scope);
+    var loadDataPromise = $scope.get;
 
-    $scope.save = function() {        
-        var o = $scope.selected;
-        $http.post('/CMS/positionList/save/:position.htm',{position:o}).success(function(returnData) {                
-            }).error(function(error) {
-                alert(error);
-            });
+    $scope.save = function() {
+        saveEditDelete.save($http, '/CMS/positionList/save/:object.htm', $scope.selected);
     };
 
-    loadDataPromise.then(function(data) {
-        if (data != null) {
-            $scope.status = "";
+    loadDataPromise.then(function(returnData) {
+        if (returnData != null) {
+            $scope.positions = $scope.initData.positions;
         } else {
-            $scope.status = "Błąd:";
+            alert('err');
         }
     });
 
-    $scope.select = function(position) {
-        if($scope.selected == position) {
+    $scope.select = function(object) {
+        if ($scope.selected == object) {
             $scope.selected = "";
         } else {
-            $scope.selected = position;
+            $scope.selected = object;
         }
     }
-    
+
     $scope.edit = function() {
         $scope.editMode = true;
     };
-    
+
     $scope.cancel = function() {
         $scope.editMode = false;
     };
-    
+
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;
 
+    };
+    
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/positionList/delete/:object.htm', $scope);
     };
 }

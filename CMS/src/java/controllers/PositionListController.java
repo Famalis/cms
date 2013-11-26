@@ -37,10 +37,10 @@ public class PositionListController extends BaseController{
         return "resourceManagment/positionList";
     } 
     
-    @RequestMapping(value = "/positionList/save/:position", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String position) {
-        PositionDTO posDto = (PositionDTO) Utils.convertJSONStringToObject(position, "position", PositionDTO.class);
-        System.out.println(position);
+    @RequestMapping(value = "/positionList/save/:object", method = RequestMethod.POST)
+    public @ResponseBody void saveData(@RequestBody String object) {
+        PositionDTO posDto = (PositionDTO) Utils.convertJSONStringToObject(object, "object", PositionDTO.class);
+        System.out.println(object);
         if (posDto!=null) {
             Position actualPos = new Position();
             if(posDto.getId()!=null) {
