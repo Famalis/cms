@@ -46,10 +46,10 @@
                                         {{employee.salary}}
                                     </td>
                                     <td>
-                                        {{getPositionName(employee.positionId)}}
+                                        {{employee.positionName}}
                                     </td>
                                     <td>
-                                        {{getDepartmentName(employee.departmentId)}}
+                                        {{employee.departmentName}}
                                     </td>
                                 </tr>
                             </table>

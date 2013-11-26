@@ -10,6 +10,7 @@
             <h1>
                 BRAK UPRAWNIEŃ
             </h1>
+            <img src="/CMS/resources/sadPanda.png" alt="No panda"/><br/>
             <a href="/CMS/home.htm">Przejdź do strony logowania</a>
         </div>
     </body>
