@@ -42,9 +42,9 @@ public class UserListController extends BaseController{
         return "configuration/userList";
     } 
     
-    @RequestMapping(value = "/userList/save/:user", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String user) {
-        UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(user, "user", UserDTO.class);
+    @RequestMapping(value = "/userList/save/:object", method = RequestMethod.POST)
+    public @ResponseBody void saveData(@RequestBody String object) {
+        UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(object, "object", UserDTO.class);
         if(userDto!=null) {
             System.out.println(userDto.getId()+" "+userDto.getName());
             User actualUser = new User();

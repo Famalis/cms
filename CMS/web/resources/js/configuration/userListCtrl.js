@@ -1,41 +1,46 @@
-function UserListCtrl($scope, $http) {
+function UserListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
-    var loadDataPromise = $http.get('/CMS/userList/users.htm').success(function(returnData) {
-        $scope.users = returnData.users;
-        $scope.employees = returnData.employees;
-        //$scope.status = null;
-        return "success";
-    }).error(function(error) {
-        //$scope.status = "Błąd";
-        $scope.error = error;
-        return "failure";
-    });
+    $scope.editMode = false;
+    $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);
+    var loadDataPromise = $scope.get;
 
-    $scope.save = function() {        
-        var o = $scope.selected;
-        $http.post(
-            '/CMS/userList/save/:user.htm',
-            {user:o}).success(function() {
-                
-            }).error(function(error) {
-                alert(error);
-            });
+    $scope.save = function() {
+        saveEditDelete.save($http, '/CMS/userList/save/:object.htm', $scope.selected);
     };
 
-    loadDataPromise.then(function(data) {
-        if (data != null) {
-            $scope.status = "";
+    loadDataPromise.then(function(returnData) {
+        if (returnData != null) {
+            $scope.users = $scope.initData.users;
+            $scope.employees = $scope.initData.employees;
         } else {
-            $scope.status = "Błąd:";
+            alert('err');
         }
     });
 
-    $scope.select = function(user) {
-        if($scope.selected == user) {
+    $scope.select = function(object) {
+        if ($scope.selected == object) {
             $scope.selected = "";
         } else {
-            $scope.selected = user;
+            $scope.selected = object;
         }
+    }
+
+    $scope.edit = function() {
+        $scope.editMode = true;
+    };
+
+    $scope.cancel = function() {
+        $scope.editMode = false;
+    };
+
+    $scope.create = function() {
+        $scope.selected = "";
+        $scope.editMode = true;
+
+    };
+
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/userList/delete/:object.htm', $scope);
     };
 }
