@@ -33,10 +33,10 @@ public class TerminalListController extends BaseController{
         return "resourceManagment/terminalList";
     } 
     
-    @RequestMapping(value = "/terminalList/save/:terminal", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String terminal) {
-        TerminalDTO terDto = (TerminalDTO) Utils.convertJSONStringToObject(terminal, "terminal", TerminalDTO.class);
-        System.out.println(terminal);
+    @RequestMapping(value = "/terminalList/save/:object", method = RequestMethod.POST)
+    public @ResponseBody void saveData(@RequestBody String object) {
+        TerminalDTO terDto = (TerminalDTO) Utils.convertJSONStringToObject(object, "object", TerminalDTO.class);
+        System.out.println(object);
         if (terDto!=null) {
             Terminal actualTer = new Terminal();
             if(terDto.getId()!=null) {
@@ -60,11 +60,11 @@ public class TerminalListController extends BaseController{
         return Utils.convertOMapToJSON(initData);
     }
     
-    @RequestMapping(value = "terminalList/delete/:terminal", method = RequestMethod.POST)
+    @RequestMapping(value = "terminalList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void deleteData(@RequestBody String terminal) {
+    void deleteData(@RequestBody String object) {
         System.out.println("delete");
-        TerminalDTO ter = (TerminalDTO) Utils.convertJSONStringToObject(terminal, "terminal", TerminalDTO.class);
+        TerminalDTO ter = (TerminalDTO) Utils.convertJSONStringToObject(object, "object", TerminalDTO.class);
         if (ter != null) {
             TerminalDao terDao = new TerminalDao();
             LogDao logDao = new LogDao();

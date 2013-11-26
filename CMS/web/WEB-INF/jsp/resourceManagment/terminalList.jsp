@@ -44,7 +44,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr ng-show="logMode">
+                <tr ng-show="selected">
                     <td>
                         <table class="genericTable">
                             <tr>

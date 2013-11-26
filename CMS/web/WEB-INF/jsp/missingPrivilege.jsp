@@ -1,10 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:genericTemplate>
-    <jsp:body>
-        <div>  
-            <h1>Brak uprawnień</h1>
+<html>
+    <title>
+        Brak uprawnień
+    </title>
+    <body>
+        <div align="center">
+            <h1>
+                BRAK UPRAWNIEŃ
+            </h1>
+            <a href="/CMS/home.htm">Przejdź do strony logowania</a>
         </div>
-    </jsp:body>
-</t:genericTemplate>
+    </body>
+</html>

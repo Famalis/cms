@@ -1,71 +1,47 @@
-function TerminalListCtrl($scope, $http) {
+function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.terminals = "";
     $scope.logs = "";
     $scope.editMode = false;
-    $scope.logMode = false;
-    var loadDataPromise = $http.get('/CMS/terminalList/terminals.htm').success(function(returnData) {
-        $scope.terminals = returnData.terminalDtos;
-        $scope.logs = returnData.logs;
-        //$scope.status = null;
-        return "success";
-    }).error(function(error) {
-        //$scope.status = "Błąd";
-        $scope.error = error;
-        return "failure";
-    });
+    $scope.get = saveEditDelete.get($http, '/CMS/terminalList/terminals.htm', $scope);
+    var loadDataPromise = $scope.get;
 
-    $scope.save = function() {        
-        var o = $scope.selected;
-        $http.post(
-            '/CMS/terminalList/save/:terminal.htm',
-            {terminal:o}).success(function(returnData) {
-                
-            }).error(function(error) {
-                alert(error);
-            });
+    $scope.save = function() {
+        saveEditDelete.save($http, '/CMS/terminalList/save/:object.htm', $scope.selected);
     };
 
-    loadDataPromise.then(function(data) {
-        if (data != null) {
-            $scope.status = "";
+    loadDataPromise.then(function(returnData) {
+        if (returnData != null) {
+            $scope.terminals = $scope.initData.terminalDtos;
         } else {
-            $scope.status = "Błąd:";
+            alert('err');
         }
     });
 
-    $scope.select = function(terminal) {
-        if($scope.selected == terminal) {
+    $scope.select = function(object) {
+        if ($scope.selected == object) {
             $scope.selected = "";
-            $scope.logMode = false;
         } else {
-            $scope.selected = terminal;
-            if($scope.editMode) {
-                $scope.logMode = false;
-            } else {
-                $scope.logMode = true;
-            }
+            $scope.selected = object;
         }
     }
-    
+
     $scope.edit = function() {
         $scope.editMode = true;
-        $scope.logMode = false;
     };
-    
+
     $scope.cancel = function() {
         $scope.editMode = false;
-        if($scope.selected == "") {
-            $scope.logMode = false;
-        } else {
-            $scope.logMode = true;
-        }
     };
-    
+
     $scope.create = function() {
         $scope.selected = "";
         $scope.editMode = true;
 
+    };
+
+    $scope.delete = function() {
+        saveEditDelete.remove($http, '/CMS/terminalList/delete/:object.htm', $scope);
     };
 }
