@@ -24,7 +24,7 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             $scope.groups = $scope.initData.groups;
-            $scope.privilegeKeyIds = $scope.initData.privilegeKeyIds;
+            $scope.privilegeKeys = $scope.initData.privilegeKeys;
         } else {
             alert('err');
         }
@@ -35,6 +35,7 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
             $scope.selected = "";
         } else {
             $scope.selected = object;
+            $scope.selected.privilegeKeyIds = object.privilegeKeyIds;
         }
     }
 
