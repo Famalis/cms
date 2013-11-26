@@ -8,19 +8,22 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-import controllers.general.BaseController;
+import controllers.reportTemplate.general.BaseTemplateController;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -29,54 +32,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/testReportTemplate")
-public class TestReportTemplateController extends BaseController {
+public class TestReportTemplateController extends BaseTemplateController {
 
     public TestReportTemplateController() {
-        super("all", "ReportsPrint");
+        super();
     }
 
     @RequestMapping("/testReportTemplate")
-    public String home(HttpSession session, ModelMap model,
+    public void home(HttpSession session,
             HttpServletResponse response, HttpServletRequest request) {
         if (!this.checkPrivileges(session)) {
-            return "missingPrivilege";
+            //return "missingPrivilege";
         }
         Map<String, String[]> inputParams = request.getParameterMap();
-        Map<String, Object> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 
-        if (inputParams.get("helloMsg") != null) {
-            params.put("helloAttr", inputParams.get("helloMsg")[0]);
+        if (inputParams.get("msg1") != null) {
+            params.put("${msg1}", inputParams.get("msg1")[0]);
         }
-        model.addAllAttributes(params);
-        try {
-            ServletContext context = request.getServletContext();
-            String appPath = context.getRealPath("");
-            String filePath = "\\WEB-INF\\templates\\testReportTemplate.html";
-            File sourceFile = new File(appPath + filePath);
-
-            Document document = new Document();
-            //FileOutputStream fos = new FileOutputStream("report.pdf");
-            OutputStream out = response.getOutputStream();
-            PdfWriter writer = PdfWriter.getInstance(document, out);            
-            XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-            FileInputStream fis = new FileInputStream(sourceFile);
-            worker.parseXHtml(writer, document, fis);
-            response.setHeader("Content-Disposition", "attachment;filename=report.pdf");     
-            document.close();
-            fis.close();
-            out.close();
-            //fos.close();
-            
-            System.out.println(appPath + filePath + "\n" + sourceFile.isFile());
-        } catch (IOException io) {
-
-        } catch (DocumentException docEx) {
-
+        if (inputParams.get("msg2") != null) {
+            params.put("${msg2}", inputParams.get("msg2")[0]);
         }
-        
-        //response.setHeader("Content-Disposition", "attachment;filename=report.pdf");        
-        System.out.println("home");
-        return "reportTemplates/testReportTemplate";
+        if (inputParams.get("msg3") != null) {
+            params.put("${msg3}", inputParams.get("msg3")[0]);
+        }
+        generatePdf(response, request, params);        
     }
 
 }

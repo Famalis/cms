@@ -18,7 +18,7 @@
                                 </th>
                             </tr>
                             <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
-                                <td>
+                                <td width="30%">
                                     {{report.name}}
                                 </td>
                                 <td>
