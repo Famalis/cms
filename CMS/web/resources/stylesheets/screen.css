@@ -117,7 +117,7 @@ input.user-name {
 }
 
 input.user-name:focus {
-  border-color: #d4d4d4;
+  border-color: #32b38c;
 }
 
 /*----------------------------------------------*/
@@ -156,7 +156,7 @@ input.password-input {
 }
 
 input.password-input:focus {
-  border-color: #d4d4d4;
+  border-color: #32b38c;
 }
 
 /*----------------------------------------------*/
