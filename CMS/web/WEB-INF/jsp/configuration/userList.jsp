@@ -59,6 +59,8 @@
                         <t:jsonOperations/>
                     </td>
                 </tr>
+            </table>
+            <table>
                 <tr>
                     <td>
                         <table ng-show="editMode" class="genericTable">

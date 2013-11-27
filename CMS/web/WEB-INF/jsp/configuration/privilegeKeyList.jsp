@@ -21,7 +21,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: privilegeKey==selected}" ng-repeat="privilegeKey in privilegeKeys" ng-click="select(privilegeKey)">
+                            <tr ng-class="{selectedTableRow: privilegeKey == selected}" ng-repeat="privilegeKey in privilegeKeys" ng-click="select(privilegeKey)">
                                 <td>
                                     {{privilegeKey.id}}
                                 </td>
@@ -31,23 +31,23 @@
                                 <td>
                                     {{privilegeKey.description}}
                                 </td>
-                            </tr>
-                            <tr ng-show="editMode">
-                                <td>
-                                    Nazwa: <input type="text" ng-model="selected.code"/>
-                                </td>
-                                <td>
-                                    Opis <textarea ng-model="selected.description"> </textarea>
-                                </td>
-                            </tr>
+                            </tr>                            
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <t:jsonOperations>
-                            
-                        </t:jsonOperations>
+                        <t:jsonOperations/>
+                    </td>
+                </tr>
+            </table>
+                    <table class="genericTable">
+                <tr ng-show="editMode">
+                    <td>
+                        Nazwa: <input type="text" ng-model="selected.code"/>
+                    </td>
+                    <td>
+                        Opis <textarea ng-model="selected.description"> </textarea>
                     </td>
                 </tr>
             </table>

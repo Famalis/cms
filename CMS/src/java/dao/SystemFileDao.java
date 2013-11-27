@@ -26,7 +26,6 @@ public class SystemFileDao extends GenericDao<SystemFile>{
         params.add("name");
         params.add("description");
         params.add("mimeType");
-        params.add("formCode");
         List<SystemFile> reports = this.selectFields("", params);
         List<SystemFileDTO> dtos = new ArrayList<>();
         for (SystemFile r : reports) {
@@ -35,7 +34,6 @@ public class SystemFileDao extends GenericDao<SystemFile>{
             dto.setDescription(r.getDescription());
             dto.setName(r.getName());
             dto.setMimeType(r.getMimeType());
-            dto.setFormCode(r.getFormCode());
             dtos.add(dto);
         }
         return dtos;

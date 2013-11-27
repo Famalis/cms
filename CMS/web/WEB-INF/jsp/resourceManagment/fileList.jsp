@@ -3,8 +3,8 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <script src="/CMS/resources/js/resourceManagment/reportPrintCtrl.js"></script>
-        <div ng-controller="ReportPrintCtrl">  
+        <script src="/CMS/resources/js/resourceManagment/fileListCtrl.js"></script>
+        <div ng-controller="FileListCtrl">  
             <table width="100%">
                 <tr>
                     <td>
@@ -17,12 +17,12 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
+                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files" ng-click="select(file)">
                                 <td width="30%">
-                                    {{report.name}}
+                                    {{file.name}}
                                 </td>
                                 <td>
-                                    {{report.description}}
+                                    {{file.description}}
                                 </td>
                             </tr>
                         </table>
@@ -30,9 +30,10 @@
                 </tr>
                 <tr ng-show="selected">
                     <td>
-                        <div ng-show="selected.formCode" ng-include="selected.formCode">
-
-                        </div>
+                        <form action="fileList/download.htm">
+                            <input ng-hide="true" type="text" name="id" value="{{selected.id}}">
+                            <input type="submit" value="Pobierz {{selected.name}}"/>
+                        </form>
                     </td>
                 </tr>
                 <tr>                    

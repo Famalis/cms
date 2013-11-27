@@ -6,9 +6,6 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.SystemFileDao;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -22,7 +19,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -72,8 +68,6 @@ public class ReportListController extends BaseController {
                     String fieldvalue = item.getString();
                     if (fieldname.equals("fileExt")) {
                         r.setMimeType(fieldvalue);
-                    } else if(fieldname.equals("formCode")) {
-                        r.setFormCode(fieldvalue);
                     } else {
                         r.setDescription(fieldvalue);
                     }

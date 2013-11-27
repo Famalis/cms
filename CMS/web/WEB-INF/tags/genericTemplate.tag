@@ -55,6 +55,10 @@
                                           user.privilegeKeyCodes.contains('ReportsPrint')}">
                                   <a href="/CMS/reportPrint.htm">Drukowanie raportów</a><br/>
                             </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('FileList')}">
+                                  <a href="/CMS/fileList.htm">Pobieranie plików</a><br/>
+                            </c:if>
                             <h3>Konfiguracja systemu</h3>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageUsers')}">

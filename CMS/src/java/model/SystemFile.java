@@ -13,7 +13,7 @@ import model.general.DatabaseObject;
  * @author Sergio
  */
 public class SystemFile extends DatabaseObject{
-    private String name, description, hashCode, mimeType, formCode;
+    private String name, description, hashCode, mimeType;
     
     public SystemFile(){
         super("file");
@@ -49,14 +49,6 @@ public class SystemFile extends DatabaseObject{
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
-    }    
-
-    public String getFormCode() {
-        return formCode;
-    }
-
-    public void setFormCode(String formCode) {
-        this.formCode = formCode;
-    }
+    }   
     
 }
