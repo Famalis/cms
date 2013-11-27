@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports" ng-click="select(report)">
+                            <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports | filter:searchText" ng-click="select(report)">
                                 <td width="30%">
                                     {{report.name}}
                                 </td>

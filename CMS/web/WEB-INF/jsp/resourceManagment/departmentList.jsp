@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Zarządca
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: deparmtnet == selected}" ng-repeat="deparmtnet in departments" ng-click="select(deparmtnet)">
+                            <tr ng-class="{selectedTableRow: deparmtnet == selected}" ng-repeat="deparmtnet in departments | filter:searchText" ng-click="select(deparmtnet)">
                                 <td>
                                     {{deparmtnet.name}}
                                 </td>

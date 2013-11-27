@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: task == selected}" ng-repeat="task in tasks" ng-click="select(task)">
+                            <tr ng-class="{selectedTableRow: task == selected}" ng-repeat="task in tasks | filter:searchText" ng-click="select(task)">
                                 <td>
                                     {{task.empName}} {{task.empSurname}}
                                 </td>

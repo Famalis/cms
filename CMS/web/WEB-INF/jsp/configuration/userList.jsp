@@ -11,28 +11,33 @@
     <jsp:body>
         <script src="/CMS/resources/js/configuration/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">  
-            <table ng-init="predicate = 'surname'" class="genericTable">
+            <table class="genericTable">
                 <tr>
-                    <th ng-click="predicate = 'surname'">
+                    <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
                         Nazwisko
                     </th>
-                    <th ng-click="predicate = 'name'">
+                    <th>
                         Imię
                     </th>
-                    <th ng-click="predicate = 'login'">
+                    <th>
                         Login
                     </th>
-                    <th ng-click="predicate = 'bgcolor'">
+                    <th>
                         Kolor tła
                     </th>
-                    <th ng-click="predicate = 'groupId'">
+                    <th>
                         Grupa
                     </th>
-                    <th ng-click="predicate = 'employeeId'">
+                    <th>
                         Pracownik
                     </th>
                 </tr>
-                <tr ng-class="{selectedTableRow: user == selected}" ng-repeat="user in users | orderBy:predicate" ng-click="select(user)">
+                <tr ng-class="{selectedTableRow: user == selected}" ng-repeat="user in users | filter:searchText" ng-click="select(user)">
                     <td>
                         {{user.surname}}
                     </td>

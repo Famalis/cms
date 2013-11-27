@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Uprawnienia
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: group == selected}" ng-repeat="group in groups" ng-click="select(group)">
+                            <tr ng-class="{selectedTableRow: group == selected}" ng-repeat="group in groups | filter:searchText" ng-click="select(group)">
                                 <td>
                                     {{group.name}}
                                 </td>

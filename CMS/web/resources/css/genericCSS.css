@@ -21,3 +21,23 @@
 .error {
     color: red;
 }
+
+.filterTable {
+    width : 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.filterTable th {
+    text-align: left;
+    background-color: bisque;
+    color: black;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.filterTable td {
+    width: 100%;
+    border: 1px solid;
+    background-color: lavenderblush;
+}

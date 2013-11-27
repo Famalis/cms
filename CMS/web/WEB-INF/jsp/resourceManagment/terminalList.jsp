@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: terminal == selected}" ng-repeat="terminal in terminals" ng-click="select(terminal)">
+                            <tr ng-class="{selectedTableRow: terminal == selected}" ng-repeat="terminal in terminals | filter:searchText" ng-click="select(terminal)">
                                 <td>
                                     {{terminal.id}}
                                 </td>

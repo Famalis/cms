@@ -8,6 +8,11 @@
             <table width="100%">
                 <tr>
                     <td>
+                        <t:filterTable/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="genericTable">
                             <tr>
                                 <th>
@@ -17,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files" ng-click="select(file)">
+                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files | filter:searchText" ng-click="select(file)">
                                 <td width="30%">
                                     {{file.name}}
                                 </td>
@@ -34,10 +39,6 @@
                             <input ng-hide="true" type="text" name="id" value="{{selected.id}}">
                             <input type="submit" value="Pobierz {{selected.name}}"/>
                         </form>
-                    </td>
-                </tr>
-                <tr>                    
-                    <td>
                     </td>
                 </tr>
             </table>
