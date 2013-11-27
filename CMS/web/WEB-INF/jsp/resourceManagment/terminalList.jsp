@@ -51,23 +51,30 @@
                 </tr>
                 <tr ng-show="selected">
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <td>
-                                    Timestamp:
-                                </td>
-                                <td>
-                                    Pracownik:
+                        <table class="genericTable">                            
+                            <tr ng-show="size(selected.timestamps) == 0">
+                                <td colspan="2">
+                                    Brak logów
                                 </td>
                             </tr>
-                            <tr  ng-repeat="(timestamp, employee) in selected.timestamps">
-                                <td>
+                            <tbody ng-show="size(selected.timestamps) > 0">
+                            <tr>
+                                <th width="50%">
+                                    Timestamp:
+                                </th>
+                                <th>
+                                    Pracownik:
+                                </th>
+                            </tr>
+                            <tr ng-repeat="(timestamp, employee) in selected.timestamps">                                
+                                <td>                                    
                                     {{timestamp}}
                                 </td>
                                 <td>
                                     {{employee}}
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </td>
                 </tr>

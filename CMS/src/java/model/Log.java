@@ -4,7 +4,7 @@ import model.general.DatabaseObject;
 
 public class Log extends DatabaseObject{
 
-    private String timestamp, terminalId, userId;
+    private String timestamp, terminalId, employeeId;
 
     public String getTimestamp() {
         return timestamp;
@@ -22,12 +22,12 @@ public class Log extends DatabaseObject{
         this.terminalId = terminalId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
     
     public Log(){

@@ -44,4 +44,12 @@ function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/terminalList/delete/:object.htm', $scope);
     };
+    
+    $scope.size = function(map) {
+        var size = 0;
+        for (val in map) {
+            size++;
+        }
+        return size;
+    };
 }

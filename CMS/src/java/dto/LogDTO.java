@@ -6,6 +6,7 @@ public class LogDTO {
     
     private Long id;
     private String timestamp, terminalId;
+    private String employeeName, employeeSurname;
     
     public LogDTO(){
         
@@ -40,4 +41,21 @@ public class LogDTO {
     public void setTerminalId(String terminalId) {
         this.terminalId = terminalId;
     }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmployeeSurname() {
+        return employeeSurname;
+    }
+
+    public void setEmployeeSurname(String employeeSurname) {
+        this.employeeSurname = employeeSurname;
+    }
+    
 }
