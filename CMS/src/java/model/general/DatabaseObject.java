@@ -43,7 +43,7 @@ public class DatabaseObject {
         connectionManager = ConnectionManager.getConnectionManager(
                     "cms", 
                     "G9Dua8d5tnGvda3J", 
-                    "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=utf8");
+                    "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=UTF-8");
         this.tableName = tableName;
     }
     

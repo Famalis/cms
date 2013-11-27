@@ -10,19 +10,63 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-        <style>
-            td {
-                text-align: left; 
-            }
-            .textLink {
-                color: blue;
-                text-decoration: underline;
-                text-align: center;
-            }
-        </style>
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+        <link rel="icon" href="/images/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <script type="text/javascript" src="/CMS/resources/js/jquery-2.0.3.min.js"></script>
+
+        <link href="/CMS/resources/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
     </head>
     <body ng-app>
-        <div align="center">
+        <div class="container">
+
+	<div class="top-container">
+    	<div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
+        <div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div>
+        <div class="button-tekst">
+        nie masz konta?<br>
+        <span style="font-weight:700;">wyślij prośbę</span>
+        
+        </div>
+        
+    
+    
+    </div> <!-- end of top-container -->
+    
+    <div class="form-container">
+        <form class="formularz" action="/CMS/login.htm" method="POST">
+        <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
+        
+		
+        <input type="text" class="user-name" name="login" placeholder="Nazwa użytkownika" maxlength="32"/>
+        
+        
+        <div class="password-icon"><img src="/CMS/resources/images/password-icon.png" width="18" height="18"  alt=""/></div>
+        
+    
+        <input type="password" class="password-input" name="password" placeholder="Hasło" maxlength="32"/>
+       
+    	
+        <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">
+    	</form>
+    
+    </div> <!-- end of form-container -->
+  </div> <!-- end of container -->      
+        
+        
+        
+        
+        
+        
+        
+        <!--<div align="center">
             <table>
                 <tr ng-hide="newAccount">
                     <td>
@@ -63,5 +107,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>-->
+    </body>
 </html>
