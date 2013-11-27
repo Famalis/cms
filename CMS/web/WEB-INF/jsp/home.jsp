@@ -45,7 +45,7 @@
         <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
         
 		
-        <input type="text" class="user-name" name="login" placeholder="Nazwa użytkownika" maxlength="32" autofocus/>
+        <input type="text" class="user-name" name="login" placeholder="Nazwa użytkownika" maxlength="32" autocomplete="off" autofocus/>
         
         
         <div class="password-icon"><img src="/CMS/resources/images/password-icon.png" width="18" height="18"  alt=""/></div>
