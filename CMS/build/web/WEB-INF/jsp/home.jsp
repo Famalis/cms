@@ -27,18 +27,21 @@
     <body ng-app>
         <div class="container">
 
-            <div class="top-container">
-                <div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
-                <div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div>
-                <div class="button-tekst">
-                    nie masz konta?<br>
-                    <span style="font-weight:700;">wyślij prośbę</span>
-
-                </div>
-
-
-
-            </div> <!-- end of top-container -->
+           	<div class="top-container">
+    	<div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
+        
+        <div id="tekst-bg">
+        <div class="button-tekst">
+        nie masz konta?<br>
+        <span style="font-weight:700;"><a href="">wyślij prośbę</a></span></div>
+        </div>
+        <div id="strzalka-button"><div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div></div>
+        
+        
+        
+    
+    
+    </div> <!-- end of top-container -->
 
             <div class="form-container">
                 <form class="formularz" action="/CMS/login.htm" method="POST">

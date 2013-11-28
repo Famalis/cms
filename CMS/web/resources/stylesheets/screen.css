@@ -5,6 +5,8 @@
 /*----------------------------------------------*/
 /* SASS */
 /*----------------------------------------------*/
+/* SASS */
+/*----------------------------------------------*/
 /* Czcionki */
 /* @font-face {
   font-family: 'Open Sans';
@@ -12,7 +14,27 @@
   font-weight: 400;
   src: url('webfonts/opensans.eot');
   src: local('Open Sans'), local('OpenSans'), url(webfonts/opensans.woff) format('woff');
-} *
+} * 
+
+/*----------------------------------------------*/
+/* Linki */
+a:link {
+  color: #218164;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #218164;
+}
+
+a:hover {
+  color: #1a7056;
+}
+
+a:active {
+  color: #218164;
+}
+
 /*----------------------------------------------*/
 /* Clear-fix */
 /* For modern browsers */
@@ -58,9 +80,9 @@ body {
   width: 440px;
   height: 225px;
 }
+
 .formularz {
-    float: left;
-    
+  float: left;
 }
 
 .logo {
@@ -69,17 +91,41 @@ body {
 }
 
 .button-tekst {
+  cursor: default;
+  float: left;
+  padding: 0 0 0 0;
+}
+
+#tekst-bg {
+  margin: 24px 0 0 118px;
+  width: 112px;
+  height: 20px;
   font-smooth: auto;
-  float: right;
-  padding: 24px 20px 0px 0px;
+  float: left;
   line-height: 18px;
   font-size: 15px;
   color: #218164;
+  background-color: #32b38c;
+}
+
+#tekst-bg:hover + #strzalka-button {
+  background-color: #5c6672;
+}
+
+#strzalka-button {
+  float: right;
+  width: 55px;
+  height: 85px;
+}
+
+#strzalka-button:hover {
+  background-color: #5c6672;
+  cursor: pointer;
 }
 
 .strzalka {
   float: right;
-  padding: 34px 25px 0 0;
+  padding: 34px 21px 0 0;
 }
 
 /*----------------------------------------------*/
