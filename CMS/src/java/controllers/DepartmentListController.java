@@ -9,6 +9,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Address;
 import model.Department;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -81,14 +84,16 @@ public class DepartmentListController extends BaseController {
     }
 
     @RequestMapping(value = "/departmentList/deps")
-    public @ResponseBody
-    String getData() {
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<>();
         DepartmentDao dao = new DepartmentDao();
         EmployeeDao empDao = new EmployeeDao();
         initData.put("departmnets", dao.getDepartmentDTOList());
         initData.put("employees", empDao.select());
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/departmentList/delete/:object", method = RequestMethod.POST)

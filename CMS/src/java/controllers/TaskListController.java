@@ -10,6 +10,9 @@ import dao.EmployeeDao;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,13 +41,15 @@ public class TaskListController extends BaseController {
     }
 
     @RequestMapping(value = "/taskList/tasks")
-    public @ResponseBody
-    String getData() {
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<>();
         DepartmentDao dao = new DepartmentDao();
         EmployeeDao empDao = new EmployeeDao();
         initData.put("departmnets", dao.getDepartmentDTOList());
         initData.put("employees", empDao.select());
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 }

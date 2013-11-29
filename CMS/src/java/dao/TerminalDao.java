@@ -28,7 +28,7 @@ public class TerminalDao extends GenericDao<Terminal> {
             dto.setDescription(t.getDescription());
             if (logsByTerminal.containsKey(t.getId() + "")) {
                 for (LogDTO logDto : logsByTerminal.get(t.getId() + "")) {
-                    dto.getTimestamps().put(logDto.getTimestamp(), logDto.getEmployeeName() + logDto.getEmployeeSurname());
+                    dto.getTimestamps().put(logDto.getTimestamp(), logDto.getEmployeeName() +" "+ logDto.getEmployeeSurname());
                 }
             }
             terminalDtos.add(dto);

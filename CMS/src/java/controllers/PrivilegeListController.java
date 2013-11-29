@@ -6,6 +6,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import javax.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +39,12 @@ public class PrivilegeListController extends BaseController{
     }
     
     @RequestMapping(value = "/privilegeList/privs")
-    public @ResponseBody String getData() {       
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {  
         //TODO
+        //HttpHeaders responseHeaders = new HttpHeaders();
+        //responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        //return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
         return null;
     }
 }

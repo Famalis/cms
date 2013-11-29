@@ -17,6 +17,9 @@ import dao.UserDao;
 import java.util.HashMap;
 import java.util.Map;
 import model.User;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import utils.Utils;
@@ -61,7 +64,8 @@ public class UserListController extends BaseController{
     }
     
     @RequestMapping(value = "/userList/users")
-    public @ResponseBody String getData() {        
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {   
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
         EmployeeDao empDao = new EmployeeDao();
@@ -69,6 +73,8 @@ public class UserListController extends BaseController{
         initData.put("users", userDao.getUserWithConfig());
         initData.put("employees", empDao.getEmployeeDTOList());
         //List<UserDTO> userDtos = userDao.getUserWithConfig();
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 }

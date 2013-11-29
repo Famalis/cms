@@ -11,9 +11,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.SystemFile;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,12 +43,14 @@ public class FileListController extends BaseController {
     }
 
     @RequestMapping(value = "/fileList/files")
-    public @ResponseBody
-    String getData() {
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<String, Object>();
         SystemFileDao fileDao = new SystemFileDao();
         initData.put("files", fileDao.getReportDtos());
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/fileList/download")

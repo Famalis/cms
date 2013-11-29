@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Terminal;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,12 +55,14 @@ public class TerminalListController extends BaseController{
     }
     
     @RequestMapping(value = "/terminalList/terminals")
-    public @ResponseBody String getData() {
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         TerminalDao terminalDao = new TerminalDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("terminalDtos", terminalDao.getTerminalDtos());
-        System.out.println(Utils.convertOMapToJSON(initData));
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
     
     @RequestMapping(value = "terminalList/delete/:object", method = RequestMethod.POST)

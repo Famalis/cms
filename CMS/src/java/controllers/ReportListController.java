@@ -19,6 +19,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -101,11 +104,13 @@ public class ReportListController extends BaseController {
     }
 
     @RequestMapping(value = "/reportList/reports")
-    public @ResponseBody
-    String getData() {
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<String, Object>();
         SystemFileDao reportDao = new SystemFileDao();
         initData.put("reports", reportDao.getReportDtos());
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 }

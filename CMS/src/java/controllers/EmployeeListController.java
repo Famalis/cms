@@ -16,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import model.Address;
 import model.Employee;
 import model.User;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -87,7 +90,8 @@ public class EmployeeListController extends BaseController{
     }
     
     @RequestMapping(value = "/employeeList/emps")
-    public @ResponseBody String getData() {               
+    @ResponseBody
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {        
         EmployeeDao empDao = new EmployeeDao();
         DepartmentDao depDao = new DepartmentDao();
         PositionDao posDao = new PositionDao();
@@ -95,7 +99,9 @@ public class EmployeeListController extends BaseController{
         initData.put("employees", empDao.getEmployeeDTOList());
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
-        return Utils.convertOMapToJSON(initData);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/employeeList/delete/:object", method = RequestMethod.POST)

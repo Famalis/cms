@@ -58,7 +58,7 @@ public class Utils {
         try {
             mapper.writeValue(out, obj);
             data = out.toByteArray();
-            return new String(data);
+            return new String(data, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class Utils {
         try {
             mapper.writeValue(out, list);
             data = out.toByteArray();
-            return new String(data);
+            return new String(data, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class Utils {
         try {
             mapper.writeValue(out, map);
             data = out.toByteArray();
-            return new String(data);
+            return new String(data, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
