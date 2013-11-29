@@ -7,14 +7,18 @@ package controllers.reportTemplate.general;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerFontProvider;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 import controllers.general.BaseController;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +46,10 @@ public class BaseTemplateController extends BaseController {
         String appPath = context.getRealPath("");
         String filePath = "\\WEB-INF\\templates\\testReportTemplate.html";
         File sourceFile = new File(appPath + filePath);
-
+        
         try {
 
-            BufferedReader br = new BufferedReader(new FileReader(sourceFile));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile), "UTF-8"));
             String line = "";
             List<String> lines = new ArrayList<>();
             List<String> usedKeys = new ArrayList<>();
@@ -70,26 +74,25 @@ public class BaseTemplateController extends BaseController {
         } catch (IOException io) {
             System.err.println("Error preparing html template for pdf");
             io.printStackTrace();
-        }
+        } 
 
         try {
             Document document = new Document();
             //FileOutputStream fos = new FileOutputStream("report.pdf");
             PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
-            document.open();
             XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-            /*
-             BufferedReader br = new BufferedReader(new FileReader(newFile));
-             String line = "";
-             while((line = br.readLine()) != null) {
-             System.out.println(line);
-             }
-             */
+            XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider();
+            
+            document.open();
+            
             FileInputStream fis = new FileInputStream(newFile);
-            worker.parseXHtml(writer, document, fis);
+            FileInputStream css = new FileInputStream(appPath + "/resources/css/genericCSS.css");
+            
+            worker.parseXHtml(writer, document, fis, css, fontProvider);
+            
             document.close();
             fis.close();
-            //fos.close();
+            css.close();
         } catch (IOException | DocumentException io) {
             System.err.println("DEBUG: Error creating pdf file");
             io.printStackTrace();
