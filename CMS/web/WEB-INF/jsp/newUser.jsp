@@ -9,7 +9,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>    
     <jsp:body>
-        <c:if test="${user.name == null}">
+        <c:if test="${user.name == null && emailSent == null}">
             Załóż konto
             <form action="/CMS/newUser.htm" method="POST">
                 Login: <input type="text" name="login"/>
@@ -22,6 +22,12 @@
         </c:if>
         <c:if test="${user.name != null}">
             Zalogowany
+        </c:if>
+        <c:if test="${emailSent == 'y'}">
+            Prośba wysłana!
+        </c:if>
+        <c:if test="${emailSent != 'y' && emailSent != null}">
+            Błąd przy wysyłaniu wiadomości email. Prosze spróbować ponownie później.
         </c:if>
         <h3>
             ${error}

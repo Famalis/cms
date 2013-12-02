@@ -24,6 +24,7 @@
                 <prop key="logout.htm">loginController</prop>
                 <prop key="bgcolor.htm">loginController</prop>
                 <prop key="newUser.htm">newUserController</prop>
+                <prop key="home/sendMail.htm">homeController</prop>
                 
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>

@@ -22,16 +22,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/newUser")
 public class NewUserController extends BaseController {
-    
+
     public NewUserController() {
         super("");
     }
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
-        
+
         return "newUser";
     }
+
     @RequestMapping
     public String createUser(ModelMap model,
             @RequestParam String login,
@@ -42,26 +43,27 @@ public class NewUserController extends BaseController {
 
         //GenericDao genericDao = new GenericDao(User.class);
         UserDao userDao = new UserDao();
-        if(userDao.select("login='"+login+"'").size()>0) {
+        if (userDao.select("login='" + login + "'").size() > 0) {
             model.put("error", "Podany login został już użyty");
             return "newUser";
-        }        
+        }
         User u = new User();
         u.setEmail(email);
         u.setLogin(login);
         u.setName(name);
         u.setSurname(surname);
         u.setPassword(password);
-        if(u.insert()) {
+        if (u.insert()) {
             UserConfiguration uc = new UserConfiguration();
-            u.loadObject("login='"+u.getLogin()+"'");
-            uc.setUserId(u.getId()+"");
+            u.loadObject("login='" + u.getLogin() + "'");
+            uc.setUserId(u.getId() + "");
             uc.setGroupId("2");
             uc.insert();
-            uc.loadObject("userId="+u.getId());
-            this.currentUserDto = new UserDTO(u,uc);
+            uc.loadObject("userId=" + u.getId());
+            this.currentUserDto = new UserDTO(u, uc);
         }
         model.put("user", this.currentUserDto);
         return "login";
     }
+
 }

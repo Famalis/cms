@@ -20,31 +20,29 @@
         <link rel="shortcut icon" href="/favicon.ico" />
 
         <script type="text/javascript" src="/CMS/resources/js/jquery-2.0.3.min.js"></script>
-
         <link href="/CMS/resources/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
     </head>
     <body ng-app>
         <div class="container">
 
-           	<div class="top-container">
-    	<div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
-        
-        <div id="tekst-bg">
-        <div class="button-tekst">
-        nie masz konta?<br>
-        <span style="font-weight:700;"><a href="">wyślij prośbę</a></span></div>
-        </div>
-        <div id="strzalka-button"><div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div></div>
-        
-        
-        
-    
-    
-    </div> <!-- end of top-container -->
+            <div class="top-container">
+                <div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
 
+                <div id="tekst-bg">
+                    <div class="button-tekst">
+                        nie masz konta?<br>
+                        <span style="font-weight:700;" ng-click="newAccount = !newAccount"><a href="">wyślij prośbę</a></span></div>
+                </div>
+                <div id="strzalka-button"><div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div></div>
+
+
+
+
+
+            </div> <!-- end of top-container -->
             <div class="form-container">
-                <form class="formularz" action="/CMS/login.htm" method="POST">
+                <form ng-hide="newAccount" class="formularz" action="/CMS/login.htm" method="POST">
                     <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
 
 
@@ -57,7 +55,41 @@
                     <input type="password" class="password-input" name="password" placeholder="Hasło" maxlength="32"/>
 
 
-                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">
+                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">                    
+                    <c:if test="${mailSent == true}">
+                        Wysłano prośbę
+                    </c:if>
+                    ${error}
+                </form>
+                <form ng-show="newAccount" action="/CMS/home.htm" method="POST">
+                    <c:if test="${mailSent != true}">
+                        <table>
+                            <tr>
+                                <td>
+                                    Nazwa użytkownika:<br/>
+                                    Hasło:<br/>
+                                    Imię:<br/>
+                                    Nazwisko:<br/>
+                                    Adres email:<br/>
+                                </td>
+                                <td>
+                                    <input type="text" name="login"/><br/>
+                                    <input type="password" name="password"/><br/>
+                                    <input type="text" name="name"/><br/>
+                                    <input type="text" name="surname"/><br/>
+                                    <input type="text" name="email"/><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="Wyślij mail"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </c:if>
+                    <c:if test="${mailSent == true}">
+                        Wysłano już prośbę o konto.
+                    </c:if>
                 </form>
 
             </div> <!-- end of form-container -->
