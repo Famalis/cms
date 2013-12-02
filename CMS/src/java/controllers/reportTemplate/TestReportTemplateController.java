@@ -30,7 +30,7 @@ public class TestReportTemplateController extends BaseTemplateController {
     public void home(HttpSession session,
             HttpServletResponse response, HttpServletRequest request) throws UnsupportedEncodingException{
         if (!this.checkPrivileges(session)) {
-            //return "missingPrivilege";
+            return;
         }
         Map<String, String[]> inputParams = request.getParameterMap();
         Map<String, String> params = new HashMap<>();
