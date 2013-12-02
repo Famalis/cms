@@ -19,9 +19,13 @@ import java.util.Map;
  */
 public class ConnectionManager {
 
-    private String url = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=UTF-8";
-    private String login = "cms";
-    private String pass = "G9Dua8d5tnGvda3J";
+    public static String staticUrl = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
+    public static String staticLogin = "admin";
+    public static String staticPass = "cmsadmin";
+    
+    private String url = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
+    private String login = "admin";
+    private String pass = "cmsadmin";
     private Connection connection;
     private static Map<String, ConnectionManager> activeConnections = new HashMap<>();
 

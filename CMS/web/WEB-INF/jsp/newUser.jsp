@@ -20,15 +20,6 @@
                 <input type="submit"/>
             </form>
         </c:if>
-        <c:if test="${user.name != null}">
-            Zalogowany
-        </c:if>
-        <c:if test="${emailSent == 'y'}">
-            Prośba wysłana!
-        </c:if>
-        <c:if test="${emailSent != 'y' && emailSent != null}">
-            Błąd przy wysyłaniu wiadomości email. Prosze spróbować ponownie później.
-        </c:if>
         <h3>
             ${error}
         </h3>
