@@ -81,18 +81,15 @@ public class BaseTemplateController extends BaseController {
             //FileOutputStream fos = new FileOutputStream("report.pdf");
             PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
             XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-            XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider();
             
             document.open();
             
             FileInputStream fis = new FileInputStream(newFile);
-            FileInputStream css = new FileInputStream(appPath + "/resources/css/genericCSS.css");
             
-            worker.parseXHtml(writer, document, fis, css, fontProvider);
+            worker.parseXHtml(writer, document, fis);
             
             document.close();
             fis.close();
-            css.close();
         } catch (IOException | DocumentException io) {
             System.err.println("DEBUG: Error creating pdf file");
             io.printStackTrace();
