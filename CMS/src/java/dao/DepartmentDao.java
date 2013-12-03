@@ -32,8 +32,8 @@ public class DepartmentDao extends GenericDao<Department> {
                 + "a.city as city, a.streetName as streetName, "
                 + "a.streetNumber as streetNumber, a.apartmentNumber as apartment, "
                 + "a.id as addressId ";
-        query += "FROM department as dep, employee as emp, address as a ";
-        query += "WHERE emp.id = dep.id AND a.id = dep.addressId";
+        query += "FROM department as dep, address as a ";
+        query += "a.id = dep.addressId";
         if(!params.isEmpty()) {
             query+= " ";
             for (String key : params.keySet()) {
