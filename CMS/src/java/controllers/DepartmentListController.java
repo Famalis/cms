@@ -95,6 +95,7 @@ public class DepartmentListController extends BaseController {
         initData.put("employees", empDao.select());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        System.out.println("SEND: "+Utils.convertOMapToJSON(initData));
         return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
     

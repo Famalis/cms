@@ -1,14 +1,15 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "departments";
     $scope.selected = "";
-    $scope.selectedEmp = "";
     $scope.departments = "";
     $scope.employees = "";
     $scope.get = saveEditDelete.get($http, '/CMS/departmentList/deps.htm', $scope);
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope);
+        
     };
 
     loadDataPromise.then(function(returnData) {
