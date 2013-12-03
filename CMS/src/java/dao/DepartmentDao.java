@@ -33,7 +33,7 @@ public class DepartmentDao extends GenericDao<Department> {
                 + "a.streetNumber as streetNumber, a.apartmentNumber as apartment, "
                 + "a.id as addressId ";
         query += "FROM department as dep, address as a ";
-        query += "a.id = dep.addressId";
+        query += "WHERE a.id = dep.addressId";
         if(!params.isEmpty()) {
             query+= " ";
             for (String key : params.keySet()) {
