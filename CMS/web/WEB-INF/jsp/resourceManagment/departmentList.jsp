@@ -22,12 +22,12 @@
                                     Zarządca
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: deparmtnet == selected}" ng-repeat="deparmtnet in departments | filter:searchText" ng-click="select(deparmtnet)">
+                            <tr ng-class="{selectedTableRow: deparmtnet == selected}" ng-repeat="deparmtnet in departments | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(deparmtnet)">
                                 <td>
                                     {{deparmtnet.name}}
                                 </td>
                                 <td>
-                                    {{selectEmp(deparmtnet.managerId).name}} {{selectEmp(deparmtnet.managerId).surname}}
+                                    {{deparmtnet.managerName = selectEmp(deparmtnet.managerId).name}} {{deparmtnet.managerSurname = selectEmp(deparmtnet.managerId).surname}}
                                 </td>
                             </tr>
                         </table>

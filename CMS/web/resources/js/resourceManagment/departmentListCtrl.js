@@ -1,6 +1,10 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "departments";
+    $scope.columns = {
+        'name' : "Nazwa",
+        'managerSurname' : "Zarządca"
+    };
     $scope.selected = "";
     $scope.departments = "";
     $scope.employees = "";

@@ -17,7 +17,7 @@ public class DepartmentDTO {
 
     private Long id;
     private String name;
-    private String managerId;
+    private String managerId, managerName, managerSurname;
     private String country, city, streetName, streetNumber, apartment, addressId;
 
     public DepartmentDTO() {
@@ -115,6 +115,28 @@ public class DepartmentDTO {
     public void setAddressId(String addressId) {
         this.addressId = addressId;
     }
-    
 
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getManagerSurname() {
+        return managerSurname;
+    }
+
+    public void setManagerSurname(String managerSurname) {
+        this.managerSurname = managerSurname;
+    }
+
+    public String getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
 }

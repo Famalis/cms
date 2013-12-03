@@ -12,13 +12,22 @@
 <%-- any content can be specified here e.g.: --%>
 <table class="filterTable">
     <tr>
-        <th ng-click="showFilter = !showFilter">
+        <th colspan="2" ng-click="showFilter = !showFilter">
             Filtrowanie danych
         </th>
     </tr>
     <tr ng-show="showFilter">
         <td>
             Wyszukaj: <input type="text" ng-model="searchText"/>
+        </td>
+        <td>
+            Sortuj po:
+            <select ng-model="orderColumn">
+                <option ng-repeat="(columnName, columnValue) in columns" value="{{columnName}}">{{columnValue}}</option>
+            </select>
+            Kolejność: <input type="checkbox" ng-init="reverse=false" ng-model="reverse"/>
+            <span ng-show="reverse">Malejąco</span>
+            <span ng-hide="reverse">Rosnąco</span>
         </td>
     </tr>
 </table>
