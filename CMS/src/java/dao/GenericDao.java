@@ -45,7 +45,7 @@ public class GenericDao<T extends DatabaseObject> {
     }
     
     public List<T> findById(String id) {
-        return findByFieldName("id", id);
+        return findByField("id", id);
     }
 
     /**
@@ -56,7 +56,7 @@ public class GenericDao<T extends DatabaseObject> {
      * @param values
      * @return
      */
-    public List<T> findByFieldName(String fieldName, String... values) {
+    public List<T> findByField(String fieldName, String... values) {
         if (fieldName.length() <= 0) {
             return select();
         }
@@ -64,7 +64,7 @@ public class GenericDao<T extends DatabaseObject> {
         for (String s : values) {
             list.add(s);
         }
-        return findByFieldName(fieldName, list);
+        return findByField(fieldName, list);
     }
 
     /**
@@ -75,7 +75,7 @@ public class GenericDao<T extends DatabaseObject> {
      * @param values
      * @return
      */
-    public List<T> findByFieldName(String fieldName, List<String> values) {
+    public List<T> findByField(String fieldName, List<String> values) {
         if (fieldName.length() <= 0) {
             return select();
         }

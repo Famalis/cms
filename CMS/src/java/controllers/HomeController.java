@@ -58,7 +58,7 @@ public class HomeController extends BaseController {
         @RequestParam("email") String email) {
         System.out.println("Trying to send email");
         UserDao userDao = new UserDao();
-        if(!userDao.findByFieldName("login", login).isEmpty()) {
+        if(!userDao.findByField("login", login).isEmpty()) {
             model.put("error", "Dany login jest już zajęty");
             return "home";
         }

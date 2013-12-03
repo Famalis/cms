@@ -28,7 +28,7 @@ public class EmployeeDao extends GenericDao<Employee>{
         if(field.length()==0){
             emps = this.select();
         } else {
-            emps = this.findByFieldName(field, conditions);
+            emps = this.findByField(field, conditions);
         }
         
         for (Employee emp : emps) {
