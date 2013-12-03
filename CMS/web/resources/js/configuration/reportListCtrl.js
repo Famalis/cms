@@ -2,6 +2,8 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.reports = "";
+    $scope.objectsName = "reports";
+    
     $scope.mimetypes = new Object();    
     $scope.mimetypes["Excel"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";           
     $scope.mimetypes["Word"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
@@ -11,7 +13,7 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/reportList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/reportList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {

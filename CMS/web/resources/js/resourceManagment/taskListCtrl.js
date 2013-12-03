@@ -1,5 +1,6 @@
 function TaskListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "tasks";
     $scope.saveLink = '/CMS/departmentList/save/:object.htm';
     $scope.selected = "";
     $scope.departments = "";
@@ -8,7 +9,7 @@ function TaskListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {

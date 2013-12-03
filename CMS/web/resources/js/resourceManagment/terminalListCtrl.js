@@ -1,5 +1,6 @@
 function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "terminals";
     $scope.selected = "";
     $scope.terminals = "";
     $scope.logs = "";
@@ -8,7 +9,7 @@ function TerminalListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/terminalList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/terminalList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {

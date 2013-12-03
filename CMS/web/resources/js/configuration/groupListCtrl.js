@@ -1,5 +1,6 @@
 function GroupListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "groups";
     $scope.editMode = false;
     $scope.selected = "";
     $scope.selected.privilegeKeyIds = "";    
@@ -18,7 +19,7 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/groupList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/groupList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {

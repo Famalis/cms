@@ -1,5 +1,6 @@
 function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "employees";
     $scope.selected = "";
     $scope.employees = "";
     $scope.departments = "";
@@ -10,7 +11,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {

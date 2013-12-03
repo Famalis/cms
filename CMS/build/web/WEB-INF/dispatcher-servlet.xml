@@ -47,12 +47,7 @@
                 
                 <prop key="positionList.htm">positionListrController</prop>
                 <prop key="positionList/positions.htm">positionListrController</prop>
-                <prop key="positionList/save/:object.htm">positionListrController</prop>   
-                          
-                <prop key="privilegeList.htm">privilegeListController</prop>
-                <prop key="privilegeList/privs.htm">privilegeListController</prop>
-                <prop key="privilegeList/save/:object.htm">privilegeListController</prop>  
-                <prop key="privilegeList/delete/:object.htm">privilegeListController</prop>    
+                <prop key="positionList/save/:object.htm">positionListrController</prop>  
                           
                 <prop key="privilegeKeyList.htm">privilegeKeyListController</prop>
                 <prop key="privilegeKeyList/privKeys.htm">privilegeKeyListController</prop>
@@ -108,9 +103,7 @@
     <bean name="terminalListController"
           class="controllers.TerminalListController"/>  
     <bean name="privilegeKeyListController"
-          class="controllers.PrivilegeKeyListController"/>    
-    <bean name="privilegeListController"
-          class="controllers.PrivilegeListController"/>
+          class="controllers.PrivilegeKeyListController"/>   
     <bean name="terminalListrController"
           class="controllers.TerminalListController"/>
     <bean name="positionListrController"

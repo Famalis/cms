@@ -1,5 +1,6 @@
 function PositionListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.objectsName = "positions";
     $scope.selected = "";
     $scope.positions = "";
     $scope.editMode = false;
@@ -7,7 +8,7 @@ function PositionListCtrl($scope, $http, saveEditDelete) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/positionList/save/:object.htm', $scope.selected);
+        saveEditDelete.save($http, '/CMS/positionList/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {
