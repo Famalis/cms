@@ -1,6 +1,7 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
+    $scope.selectedEmp = "";
     $scope.departments = "";
     $scope.employees = "";
     $scope.get = saveEditDelete.get($http, '/CMS/departmentList/deps.htm', $scope);
@@ -24,9 +25,18 @@ function DepartmentListCtrl($scope, $http, saveEditDelete) {
             $scope.selected = "";
         } else {
             $scope.selected = department;
+            $scope.selectedEmp = $scope.selectEmp(department.managerId);
+            
         }
     }
 
+    $scope.selectEmp = function(id) {
+        for (var i = 0; i<$scope.employees.length; i++) {
+            if($scope.employees[i].id == id) {
+                return $scope.employees[i];
+            }
+        }
+    }
     $scope.edit = function() {
         $scope.editMode = true;
     };

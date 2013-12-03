@@ -46,14 +46,16 @@ public class DepartmentListController extends BaseController {
     void saveData(@RequestBody String object) {
         DepartmentDTO depDto = (DepartmentDTO) Utils.convertJSONStringToObject(object, "object", DepartmentDTO.class);
         System.out.println(object);
-        //System.out.println(depDto.getId());
         if (depDto != null) {
             Department actualDep = new Department();
-            System.out.println(depDto.getId() == null);
             if (depDto.getId() != null) {
                 actualDep.loadObject("id=" + depDto.getId());
             }
-            actualDep.setManagerId(depDto.getManagerId());
+            if(depDto.getManagerId() != null) {
+                actualDep.setManagerId(depDto.getManagerId());
+            } else {
+                actualDep.setManagerId("-1");
+            }                    
             actualDep.setName(depDto.getName());
             Address a = new Address();
             if (a.loadObject("id=" + depDto.getAddressId())) {

@@ -17,7 +17,7 @@ public class DepartmentDTO {
 
     private Long id;
     private String name;
-    private String managerName, managerSurname, managerId;
+    private String managerId;
     private String country, city, streetName, streetNumber, apartment, addressId;
 
     public DepartmentDTO() {
@@ -30,8 +30,6 @@ public class DepartmentDTO {
         Employee emp = new Employee();
         if (Long.parseLong(department.getManagerId()) > 0) {
             emp.loadObject("id=" + department.getManagerId());
-            managerName = emp.getName();
-            managerSurname = emp.getSurname();
             managerId = department.getManagerId();
         }
         Address address = new Address();
@@ -60,22 +58,6 @@ public class DepartmentDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getManagerName() {
-        return managerName;
-    }
-
-    public void setManagerName(String managerName) {
-        this.managerName = managerName;
-    }
-
-    public String getManagerSurname() {
-        return managerSurname;
-    }
-
-    public void setManagerSurname(String managerSurname) {
-        this.managerSurname = managerSurname;
     }
 
     public String getCountry() {

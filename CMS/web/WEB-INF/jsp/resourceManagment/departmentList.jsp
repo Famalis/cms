@@ -27,7 +27,7 @@
                                     {{deparmtnet.name}}
                                 </td>
                                 <td>
-                                    {{deparmtnet.managerName}}
+                                    {{selectEmp(deparmtnet.managerId).name}} {{selectEmp(deparmtnet.managerId).surname}}
                                 </td>
                             </tr>
                         </table>
