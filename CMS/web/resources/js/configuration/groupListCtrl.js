@@ -1,20 +1,23 @@
 function GroupListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "groups";
+    $scope.columns = {
+        'name': "Nazwa"
+    };
     $scope.editMode = false;
     $scope.selected = "";
-    $scope.selected.privilegeKeyIds = "";    
-    
+    $scope.selected.privilegeKeyIds = "";
+
     /*
-    $scope.aGet = function() {
-        $scope.status = "Zapisywanie zmian...";
-        for (var i=0; i<1000000; i++) {
-            
-        }
-        saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
-        $scope.groups = $scope.initData.groups;
-    };
-    */
+     $scope.aGet = function() {
+     $scope.status = "Zapisywanie zmian...";
+     for (var i=0; i<1000000; i++) {
+     
+     }
+     saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
+     $scope.groups = $scope.initData.groups;
+     };
+     */
     $scope.get = saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
     var loadDataPromise = $scope.get;
 
@@ -53,7 +56,7 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
         $scope.editMode = true;
 
     };
-    
+
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/groupList/delete/:object.htm', $scope);
     };
@@ -63,7 +66,7 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
             $scope.selected.privilegeKeyIds.push($scope.newKeyId);
         }
     };
-    
+
     $scope.removeKey = function() {
         if ($scope.selectedGroupHasKey($scope.oldKeyId)) {
             var index = $scope.selected.privilegeKeyIds.indexOf($scope.oldKeyId);

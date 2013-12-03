@@ -1,6 +1,10 @@
 function FileListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "files";
+    $scope.columns = {
+      'name' : "Nazwa"  ,
+      'mimeType' : "Rodzaj pliku"
+    };
     $scope.selected = "";
     $scope.files = "";
     $scope.get = saveEditDelete.get($http, '/CMS/fileList/files.htm', $scope);

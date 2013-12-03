@@ -1,5 +1,9 @@
 function ReportListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.columns = {
+      'name' : "Nazwa",
+      'fileType' : "Rodzaj pliku"
+    };
     $scope.selected = "";
     $scope.reports = "";
     $scope.objectsName = "reports";

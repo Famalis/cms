@@ -22,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: terminal == selected}" ng-repeat="terminal in terminals | filter:searchText" ng-click="select(terminal)">
+                            <tr ng-class="{selectedTableRow: terminal == selected}" ng-repeat="terminal in terminals | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(terminal)">
                                 <td>
                                     {{terminal.id}}
                                 </td>

@@ -11,12 +11,8 @@
     <jsp:body>
         <script src="/CMS/resources/js/configuration/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">  
-            <table class="genericTable">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
+            <t:filterTable/>
+            <table class="genericTable">                
                 <tr>
                     <th>
                         Nazwisko
@@ -37,7 +33,7 @@
                         Pracownik
                     </th>
                 </tr>
-                <tr ng-class="{selectedTableRow: user == selected}" ng-repeat="user in users | filter:searchText" ng-click="select(user)">
+                <tr ng-class="{selectedTableRow: user == selected}" ng-repeat="user in users | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(user)">
                     <td>
                         {{user.surname}}
                     </td>

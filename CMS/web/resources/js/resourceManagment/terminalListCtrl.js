@@ -1,6 +1,9 @@
 function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "terminals";
+    $scope.columns = {
+        'description': "Opis"
+    };
     $scope.selected = "";
     $scope.terminals = "";
     $scope.logs = "";
@@ -45,7 +48,7 @@ function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/terminalList/delete/:object.htm', $scope);
     };
-    
+
     $scope.size = function(map) {
         var size = 0;
         for (val in map) {

@@ -1,6 +1,9 @@
 function ReportPrintCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "reports";
+    $scope.columns = {
+      'name' : "Nazwa"
+    };
     $scope.selected = "";
     $scope.reports = "";
     $scope.get = saveEditDelete.get($http, '/CMS/reportPrint/reports.htm', $scope);

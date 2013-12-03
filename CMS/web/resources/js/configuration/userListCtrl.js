@@ -1,6 +1,11 @@
 function UserListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "users";
+    $scope.columns = {
+      'surname' : "Nazwisko"  ,
+      'login' : "Login",
+      'groupId' : "ID Grupy"
+    };
     $scope.selected = "";
     $scope.editMode = false;
     $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);

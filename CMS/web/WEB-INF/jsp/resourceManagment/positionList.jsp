@@ -22,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions | filter:searchText" ng-click="select(position)">
+                            <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(position)">
                                 <td>
                                     {{position.name}}
                                 </td>

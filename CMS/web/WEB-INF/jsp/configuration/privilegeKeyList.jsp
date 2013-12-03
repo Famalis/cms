@@ -26,7 +26,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: privilegeKey == selected}" ng-repeat="privilegeKey in privilegeKeys | filter:searchText" ng-click="select(privilegeKey)">
+                            <tr ng-class="{selectedTableRow: privilegeKey == selected}" ng-repeat="privilegeKey in privilegeKeys | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(privilegeKey)">
                                 <td>
                                     {{privilegeKey.id}}
                                 </td>

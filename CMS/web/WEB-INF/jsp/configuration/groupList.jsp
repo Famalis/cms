@@ -22,7 +22,7 @@
                                     Uprawnienia
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: group == selected}" ng-repeat="group in groups | filter:searchText" ng-click="select(group)">
+                            <tr ng-class="{selectedTableRow: group == selected}" ng-repeat="group in groups | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(group)">
                                 <td>
                                     {{group.name}}
                                 </td>

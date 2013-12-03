@@ -1,12 +1,20 @@
 function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "employees";
+    $scope.columns = {
+        'surname': "Nazwisko",
+        'departmentName': "Wydział",
+        'salary': "Wypłata",
+        'country': "Kraj",
+        'city': "Miasto",
+        'positionName' : "Stanowisko"
+    };
     $scope.selected = "";
     $scope.employees = "";
     $scope.departments = "";
     $scope.positions = "";
     $scope.editMode = false;
-   
+
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
     var loadDataPromise = $scope.get;
 

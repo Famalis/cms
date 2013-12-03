@@ -22,7 +22,7 @@
                                     Opis
                                 </th>
                             </tr>
-                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files | filter:searchText" ng-click="select(file)">
+                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(file)">
                                 <td width="30%">
                                     {{file.name}}
                                 </td>
