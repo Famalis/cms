@@ -29,7 +29,7 @@ import utils.Utils;
 public class DepartmentListController extends BaseController {
 
     public DepartmentListController() {
-        super("all", "ManageDepartments");
+        super("all", "ViewDepartments");
     }
 
     @RequestMapping("/departmentList")

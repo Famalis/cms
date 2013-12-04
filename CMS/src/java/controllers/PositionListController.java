@@ -28,7 +28,7 @@ import utils.Utils;
 public class PositionListController extends BaseController{
     
     public PositionListController() {
-        super("all","ManagePositions");
+        super("all","ViewPositions");
     }
     
     @RequestMapping("/positionList")

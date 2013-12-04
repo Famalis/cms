@@ -24,7 +24,7 @@ import utils.Utils;
 public class TerminalListController extends BaseController{
  
     public TerminalListController() {
-        super("all", "ManageTerminals");
+        super("all", "ViewTerminals");
     }
     
     @RequestMapping("/terminalList")

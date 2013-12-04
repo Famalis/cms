@@ -33,7 +33,7 @@ import utils.Utils;
 public class EmployeeListController extends BaseController{
     
     public EmployeeListController() {
-        super("all","ManageEmployees");
+        super("all","ViewEmployees");
     }
     
     @RequestMapping("/employeeList")

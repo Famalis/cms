@@ -36,19 +36,19 @@
                             <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>  
                             <h3>Zarządzanie zasobami</h3> 
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                          user.privilegeKeyCodes.contains('ManageEmployees')}">                                         
+                                          user.privilegeKeyCodes.contains('ViewEmployees')}">                                         
                                   <a href="/CMS/employeeList.htm">Zarządzanie pracownikami</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                          user.privilegeKeyCodes.contains('ManageDepartments')}">
+                                          user.privilegeKeyCodes.contains('ViewDepartments')}">
                                   <a href="/CMS/departmentList.htm">Zarządzanie wydziałami</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                          user.privilegeKeyCodes.contains('ManagePositions')}">
+                                          user.privilegeKeyCodes.contains('ViewPositions')}">
                                   <a href="/CMS/positionList.htm">Zarządzanie stanowiskami</a><br/>
                             </c:if>                            
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                          user.privilegeKeyCodes.contains('ManageTerminals')}">
+                                          user.privilegeKeyCodes.contains('ViewTerminals')}">
                                   <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
