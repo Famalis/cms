@@ -1,6 +1,11 @@
 function PrivilegeKeyListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "privilegeKeys";
+    $scope.columns = {
+        'description' : "Opis" ,
+        'code' : "Kod",
+        'id' : "ID"
+    };
     $scope.editMode = false;
     $scope.editValue = "Edytuj";
     $scope.selected = null;
@@ -14,7 +19,7 @@ function PrivilegeKeyListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.privilegeKeys = $scope.initData.privilegeKeys;
+            
         } else {
             alert('err');
         }

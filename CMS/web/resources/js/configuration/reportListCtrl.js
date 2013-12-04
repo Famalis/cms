@@ -1,6 +1,11 @@
 function ReportListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'name';
+    $scope.attributes[1] = 'description';
+    $scope.attributes[2] = 'fileType';
     $scope.columns = {
+      'description' : "Opis",
       'name' : "Nazwa",
       'fileType' : "Rodzaj pliku"
     };
@@ -22,7 +27,6 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.reports = $scope.initData.reports;
         } else {
             $scope.status = "Błąd:";
             alert('err');

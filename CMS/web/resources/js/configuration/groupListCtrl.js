@@ -1,8 +1,12 @@
 function GroupListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "groups";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'name';
+    $scope.attributes[1] = 'privilegeKeyIds';
     $scope.columns = {
-        'name': "Nazwa"
+        'name': "Nazwa",
+        'privilegeKeyIds' : "Klucze"
     };
     $scope.editMode = false;
     $scope.selected = "";
@@ -27,7 +31,6 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.groups = $scope.initData.groups;
             $scope.privilegeKeys = $scope.initData.privilegeKeys;
         } else {
             alert('err');

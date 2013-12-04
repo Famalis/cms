@@ -1,6 +1,9 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
-    $scope.objectsName = "departments";      
+    $scope.objectsName = "departments";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'name';
+    $scope.attributes[1] = 'managerSurname';
     $scope.columns = {
         'name' : "Nazwa",
         'managerSurname' : "Zarządca"

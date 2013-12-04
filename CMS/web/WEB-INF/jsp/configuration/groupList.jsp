@@ -13,32 +13,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Uprawnienia
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: group == selected}" ng-repeat="group in groups | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(group)">
-                                <td>
-                                    {{group.name}}
-                                </td>
-                                <td>
-                                    <span ng-repeat="groupPrivKey in privilegeKeys" ng-show="groupHasKey(group, groupPrivKey.id)">{{groupPrivKey.code}} </span>
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>           
                 <tr>
                     <td>
                         <t:jsonOperations/>
-                    </td>
-                    <td>
-                        <input type="button" ng-click="aGet()" value="Odśwież"/>
                     </td>
                 </tr>
             </table>

@@ -10,18 +10,19 @@
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
-<table class="genericTable">
+<table width="100%" class="genericTable">
     <thead>
         <tr>
-            <th ng-class="{selectedTableSort: columnName == orderColumn, genericTableHeader: columnName != orderColumn}" ng-repeat="(columnName, columnValue) in columns">
-                <a ng-click="$parent.orderColumn = columnName; $parent.reverse = !$parent.reverse">{{columnValue}}</a>
+            <th ng-class="{selectedTableSort: attr == orderColumn, genericTableHeader: attr != orderColumn}" ng-repeat="attr in attributes">
+                <a ng-click="$parent.orderColumn = attr;
+                        $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
             </th>        
         </tr>
     </thead>
     <tbody>
         <tr ng-class="{selectedTableRow: obj == selected}" ng-repeat="obj in objects | filter:searchText | orderBy:orderColumn:reverse">
-            <td ng-repeat="(columnName, columnValue) in columns" ng-click="$parent.select(obj)">
-                {{obj[columnName]}}
+            <td ng-repeat="attr in attributes" ng-click="$parent.select(obj)">
+                {{obj[attr]}}
             </td>
         </tr>
     </tbody>

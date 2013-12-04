@@ -12,48 +12,7 @@
         <script src="/CMS/resources/js/configuration/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">  
             <t:filterTable/>
-            <table class="genericTable">                
-                <tr>
-                    <th>
-                        Nazwisko
-                    </th>
-                    <th>
-                        Imię
-                    </th>
-                    <th>
-                        Login
-                    </th>
-                    <th>
-                        Kolor tła
-                    </th>
-                    <th>
-                        Grupa
-                    </th>
-                    <th>
-                        Pracownik
-                    </th>
-                </tr>
-                <tr ng-class="{selectedTableRow: user == selected}" ng-repeat="user in users | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(user)">
-                    <td>
-                        {{user.surname}}
-                    </td>
-                    <td>
-                        {{user.name}}
-                    </td>
-                    <td>
-                        {{user.login}}
-                    </td>
-                    <td>
-                        {{user.bgcolor}}
-                    </td>
-                    <td>
-                        {{user.groupId}}
-                    </td>
-                    <td>
-                        <a href="/CMS/employeePage/{{user.employeeId}}.htm">{{user.employeeId}}</a>
-                    </td>
-                </tr>
-            </table>
+            <t:dataTable/>
             <table>
                 <tr>
                     <td>

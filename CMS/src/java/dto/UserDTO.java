@@ -9,7 +9,6 @@ import dao.PrivilegeKeyDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import model.Employee;
 import model.Privilege;
 import model.PrivilegeKey;
 import model.User;

@@ -14,30 +14,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Kod
-                                </th>
-                                <th width="60%">
-                                    Opis
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: privilegeKey == selected}" ng-repeat="privilegeKey in privilegeKeys | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(privilegeKey)">
-                                <td>
-                                    {{privilegeKey.id}}
-                                </td>
-                                <td>
-                                    {{privilegeKey.code}}
-                                </td>
-                                <td>
-                                    {{privilegeKey.description}}
-                                </td>
-                            </tr>                            
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr>

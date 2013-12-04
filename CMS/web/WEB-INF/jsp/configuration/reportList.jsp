@@ -13,36 +13,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Opis
-                                </th>
-                                <th>
-                                    Rodzaj pliku
-                                </th>
-                                <th>
-                                    Adres formularza
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(report)">
-                                <td>
-                                    {{report.name}}
-                                </td>
-                                <td>
-                                    {{report.description}}
-                                </td>
-                                <td>
-                                    {{report.mimeType}}
-                                </td>
-                                <td>
-                                    {{report.formCode}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>                
                 <tr ng-show="selected != ''">
