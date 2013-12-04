@@ -42,7 +42,6 @@
                                                 {{key}}
                                             </option>
                                         </select>
-                                        <input type="text" name="formCode"/>
                                         <br/>
                                         Opis:
                                         <textarea style="width: 100%; height: 100%" name="description">
