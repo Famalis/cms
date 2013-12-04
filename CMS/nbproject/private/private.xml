@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/resources/stylesheets/screen.css</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/beans.xml</file>
-            <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/src/java/utils/Utils.java</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/src/java/utils/ConnectionManager.java</file>
+            <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/src/java/utils/Utils.java</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/configuration/groupList.jsp</file>
-            <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/home.jsp</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/login.jsp</file>
+            <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/home.jsp</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/missingPrivilege.jsp</file>
             <file>file:/C:/Users/pawelek/Documents/NetBeansProjects/cms/CMS/web/WEB-INF/jsp/newUser.jsp</file>
         </group>

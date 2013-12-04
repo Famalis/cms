@@ -1,9 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : 2013-09-30, 19:11:29
-    Author     : Sergio
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -24,25 +18,38 @@
 
     </head>
     <body ng-app>
+
         <div class="container">
+
+            <c:if test="${mailSent == true}">
+                <div class="request-sent">
+                    Wysłano prośbę </div>
+                </c:if>
+                ${error}
+
 
             <div class="top-container">
                 <div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
 
-                <div id="tekst-bg">
-                    <div class="button-tekst">
+                <div id="tekst-bg" ng-hide="newAccount">
+                    <div class="button-tekst" >
                         nie masz konta?<br>
                         <span style="font-weight:700;" ng-click="newAccount = !newAccount"><a href="">wyślij prośbę</a></span></div>
                 </div>
-                <div id="strzalka-button"><div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div></div>
+                <div id="tekst-bg-after" ng-show="newAccount">
+                    <div class="button-tekst">
+                        po pozytywnej weryfikacji<br>
+                        <span style="font-weight:700;">otrzymasz dane do konta</span></div>
+                </div>
+                <div id="strzalka-button" ng-click="newAccount = !newAccount" ng-hide="newAccount"><div class="strzalka"><img src="/CMS/resources/images/strzalka.png" width="11" height="18"  alt=""/></div></div>
 
 
 
 
 
             </div> <!-- end of top-container -->
-            <div class="form-container">
-                <form ng-hide="newAccount" class="formularz" action="/CMS/login.htm" method="POST">
+            <div class="form-container" ng-hide="newAccount">
+                <form class="formularz" action="/CMS/login.htm" method="POST">
                     <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
 
 
@@ -55,93 +62,65 @@
                     <input type="password" class="password-input" name="password" placeholder="Hasło" maxlength="32"/>
 
 
-                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">                    
-                    <c:if test="${mailSent == true}">
-                        Wysłano prośbę
-                    </c:if>
-                    ${error}
+                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">
+
+
+
+
+
                 </form>
-                <form ng-show="newAccount" action="/CMS/home.htm" method="POST">
+            </div> <!-- end of form-container -->
+
+        </div> <!-- end of container -->      
+
+        <div class="container-after" ng-show="newAccount">
+            <div class="top-container">
+                <div class="logo"><img src="/CMS/resources/images/hr-logo.png" width="113" height="40"  alt=""/></div>
+                <div id="tekst-bg-after">
+                    <div class="button-tekst">
+                        po pozytywnej weryfikacji<br>
+                        <span style="font-weight:700;">otrzymasz dane do konta</span></div>
+                </div>
+
+
+
+
+
+            </div> <!-- end of top-container -->
+
+
+
+
+            <div class="form-container-after">
+                <form class="formularz" action="/CMS/home.htm" method="POST">
                     <c:if test="${mailSent != true}">
-                        <table>
-                            <tr>
-                                <td>
-                                    Nazwa użytkownika:<br/>
-                                    Hasło:<br/>
-                                    Imię:<br/>
-                                    Nazwisko:<br/>
-                                    Adres email:<br/>
-                                </td>
-                                <td>
-                                    <input type="text" name="login"/><br/>
-                                    <input type="password" name="password"/><br/>
-                                    <input type="text" name="name"/><br/>
-                                    <input type="text" name="surname"/><br/>
-                                    <input type="text" name="email"/><br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <input type="submit" value="Wyślij mail"/>
-                                </td>
-                            </tr>
-                        </table>
+
+                        <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
+                        <input type="text" class="imie-input" name="name" placeholder="Imię..." maxlength="32" autocomplete="off" autofocus/>
+
+                        <div class="surname-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
+                        <input type="text" class="nazwisko-input" name="surname" placeholder="Nazwisko..." maxlength="32" autocomplete="off"/>
+
+                        <div class="email-icon"><img src="/CMS/resources/images/email-icon.png" width="18" height="18"  alt=""/></div>
+                        <input type="email" class="email-input" name="email" placeholder="Adres e-mail..." maxlength="32" autocomplete="off"/>
+
+                        <div class="login-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
+                        <input type="text" class="login-input" name="login" placeholder="Nazwa użytkownika..." maxlength="32" autocomplete="off"/>
+
+                        <div class="pass-icon"><img src="/CMS/resources/images/password-icon.png" width="18" height="18"  alt=""/></div>
+                        <input type="password" class="password-input" name="password" placeholder="Hasło..." maxlength="32" autocomplete="off"/>
+
+                        <input type="submit" class="wyslij-button" value="WYŚLIJ">
+                        <input type="button" class="anuluj-button" ng-click="newAccount = false" value="ANULUJ">
+
                     </c:if>
+
                     <c:if test="${mailSent == true}">
                         Wysłano już prośbę o konto.
                     </c:if>
                 </form>
 
-            </div> <!-- end of form-container -->
-        </div> <!-- end of container -->      
+            </div> <!-- end of form-container-after -->
 
-
-
-
-
-
-
-        <!--<div align="center">
-            <table>
-                <tr ng-hide="newAccount">
-                    <td>
-                        <form action="/CMS/login.htm" method="POST">
-                            Login <input type="text" name="login"/>
-                            Hasło <input type="password" name="password"/>
-                            <input type="submit" name="loginButton" value="Zaloguj"/>
-                        </form>
-                    </td>
-                </tr>
-                <tr ng-show="!newAccount">
-                    <td class="textLink" ng-click="newAccount = true">
-                        Złóż prośbę o konto ->
-                    </td>
-                </tr>
-                <tr ng-show="newAccount">
-                    <td>
-                        Nazwa użytkownika:<br/>
-                        Hasło:<br/>
-                        Imię i nazwisko:<br/>
-                        Adres email:<br/>
-                    </td>
-                    <td>
-                        <input type="text" name="username"/><br/>
-                        <input type="password" name="password"/><br/>
-                        <input type="text" name="nameAndSurname"/><br/>
-                        <input type="text" name="email"/><br/>
-                    </td>
-                </tr>
-                <tr ng-show="newAccount">
-                    <td colspan="2">
-                        <input type="button" value="Wyślij mail"/>
-                    </td>
-                </tr>
-                <tr ng-show="newAccount">
-                    <td colspan="2" class="textLink" ng-click="newAccount = false">
-                        <- Powrót do strony logowania
-                    </td>
-                </tr>
-            </table>
-        </div>-->
     </body>
 </html>

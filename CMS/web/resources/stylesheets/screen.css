@@ -68,6 +68,14 @@ body {
   width: 440px;
 }
 
+.container-after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -240px 0px 0px -220px;
+  width: 440px;
+}
+
 .top-container {
   background-color: #32b38c;
   width: 440px;
@@ -79,6 +87,12 @@ body {
   background-color: #5c6672;
   width: 440px;
   height: 225px;
+}
+.form-container-after {
+  clear: both;
+  background-color: #5c6672;
+  width: 440px;
+  height: 396px;
 }
 
 .formularz {
@@ -99,6 +113,17 @@ body {
 #tekst-bg {
   margin: 24px 0 0 118px;
   width: 112px;
+  height: 20px;
+  font-smooth: auto;
+  float: left;
+  line-height: 18px;
+  font-size: 15px;
+  color: #218164;
+  background-color: #32b38c;
+}
+#tekst-bg-after {
+  margin: 24px 0 0 75px;
+  width: 190px;
   height: 20px;
   font-smooth: auto;
   float: left;
@@ -165,6 +190,29 @@ input.user-name {
 input.user-name:focus {
   border-color: #32b38c;
 }
+input.imie-input {
+  float: left;
+  margin: 34px 0 0 39px;
+  font-family: 'Open Sans';
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #ececec;
+  color: #aaabac;
+  padding-left: 50px;
+  width: 362px;
+  height: 41px;
+  border: 1px solid #5c6672;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+}
+
+input.imie-input:focus {
+  border-color: #32b38c;
+}
 
 /*----------------------------------------------*/
 /* Password input */
@@ -178,6 +226,30 @@ input.user-name:focus {
   position: absolute;
   padding-left: 57px;
   padding-top: 103px;
+}
+.surname-icon {
+  float: left;
+  position: absolute;
+  padding-left: 57px;
+  padding-top: 103px;
+}
+.email-icon {
+  float: left;
+  position: absolute;
+  padding-left: 57px;
+  padding-top: 160px;
+}
+.login-icon {
+  float: left;
+  position: absolute;
+  padding-left: 57px;
+  padding-top: 217px;
+}
+.pass-icon {
+  float: left;
+  position: absolute;
+  padding-left: 57px;
+  padding-top: 274px;
 }
 
 input.password-input {
@@ -204,11 +276,82 @@ input.password-input {
 input.password-input:focus {
   border-color: #32b38c;
 }
+input.nazwisko-input {
+  float: left;
+  font-family: 'Open Sans';
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #ececec;
+  color: #aaabac;
+  padding-left: 50px;
+  margin: 16px 0 0 39px;
+  width: 362px;
+  height: 41px;
+  border: 1px solid #5c6672;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+  -webkit-appearance: none;
+}
 
+input.nazwisko-input:focus {
+  border-color: #32b38c;
+}
+input.login-input {
+  float: left;
+  font-family: 'Open Sans';
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #ececec;
+  color: #aaabac;
+  padding-left: 50px;
+  margin: 16px 0 0 39px;
+  width: 362px;
+  height: 41px;
+  border: 1px solid #5c6672;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+input.login-input:focus {
+  border-color: #32b38c;
+}
+input.email-input {
+  float: left;
+  font-family: 'Open Sans';
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #ececec;
+  color: #aaabac;
+  padding-left: 50px;
+  margin: 16px 0 0 39px;
+  width: 362px;
+  height: 41px;
+  border: 1px solid #5c6672;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+input.email-input:focus {
+  border-color: #32b38c;
+}
 /*----------------------------------------------*/
 input.zaloguj-button {
   float: left;
-  clear: both;
+  clear: right;
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
@@ -230,4 +373,62 @@ input.zaloguj-button {
 
 input.zaloguj-button:hover, input.zaloguj-button:active {
   background-color: #ef8e71;
+}
+
+input.wyslij-button {
+  float: right;
+  clear: left;
+  margin: 25px 39px 0 0;
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.wyslij-button:hover, input.zaloguj-button:active {
+  background-color: #ef8e71;
+}
+
+input.anuluj-button {
+  float: right;
+  clear: left;
+  padding: 0 0 0 2px;
+  margin: 25px 10px 0 0;
+  width: 90px;
+  height: 36px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #7d8288;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.anuluj-button:hover, input.zaloguj-button:active {
+  background-color: #8a8f95;
+}
+.request-sent {
+    margin: 0 0 15px 0;
+width:440px;
+height:45px;
+background-color: #32b38c;
 }
