@@ -20,14 +20,5 @@
         <td>
             Wyszukaj: <input type="text" ng-model="searchText"/>
         </td>
-        <td>
-            Sortuj po:
-            <select ng-model="orderColumn">
-                <option ng-repeat="(columnName, columnValue) in columns" value="{{columnName}}">{{columnValue}}</option>
-            </select>
-            Kolejność: <input type="checkbox" ng-init="reverse=false" ng-model="reverse"/>
-            <span ng-show="reverse">Malejąco</span>
-            <span ng-hide="reverse">Rosnąco</span>
-        </td>
     </tr>
 </table>

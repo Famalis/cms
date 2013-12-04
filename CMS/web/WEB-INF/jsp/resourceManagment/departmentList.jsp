@@ -4,7 +4,7 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/departmentListCtrl.js"></script>
-        <div ng-controller="DepartmentListCtrl">  
+        <div ng-controller="DepartmentListCtrl">
             <table width="100%">
                 <tr>
                     <td>
@@ -13,24 +13,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Zarządca
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: deparmtnet == selected}" ng-repeat="deparmtnet in departments | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(deparmtnet)">
-                                <td>
-                                    {{deparmtnet.name}}
-                                </td>
-                                <td>
-                                    {{deparmtnet.managerName = selectEmp(deparmtnet.managerId).name}} {{deparmtnet.managerSurname = selectEmp(deparmtnet.managerId).surname}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +32,7 @@
                                     Prowadzący: <select ng-model="selected.managerId">
                                         <option ng-repeat="employee in employees"
                                                 value="{{employee.id}}" 
-                                                ng-selected="selected.managerId==employee.id">
+                                                ng-selected="selected.managerId == employee.id">
                                             {{employee.surname}} {{employee.name}}
                                         </option>
                                     </select>

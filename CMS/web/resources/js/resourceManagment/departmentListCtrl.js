@@ -1,6 +1,6 @@
 function DepartmentListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
-    $scope.objectsName = "departments";
+    $scope.objectsName = "departments";      
     $scope.columns = {
         'name' : "Nazwa",
         'managerSurname' : "Zarządca"
@@ -18,7 +18,6 @@ function DepartmentListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.departments = $scope.initData.departmnets;
             $scope.employees = $scope.initData.employees;
         } else {
             alert('err');

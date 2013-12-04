@@ -91,7 +91,7 @@ public class DepartmentListController extends BaseController {
         Map<String, Object> initData = new HashMap<>();
         DepartmentDao dao = new DepartmentDao();
         EmployeeDao empDao = new EmployeeDao();
-        initData.put("departmnets", dao.getDepartmentDTOList());
+        initData.put("departments", dao.getDepartmentDTOList());
         initData.put("employees", empDao.select());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");

@@ -17,6 +17,8 @@ saveEditDeleteModule.factory('saveEditDelete', function() {
             return $http.get(link).success(function(returnData) {
                 $scope.status = null;
                 $scope.initData = returnData;
+                $scope[$scope.objectsName] = returnData[$scope.objectsName];
+                $scope.objects = returnData[$scope.objectsName];
                 //alert(returnData.departmnets);
                 return "Success";
             }).error(function(error) {
