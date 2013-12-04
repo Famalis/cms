@@ -82,14 +82,7 @@
                         <span style="font-weight:700;">otrzymasz dane do konta</span></div>
                 </div>
 
-
-
-
-
             </div> <!-- end of top-container -->
-
-
-
 
             <div class="form-container-after">
                 <form class="formularz" action="/CMS/home.htm" method="POST">
