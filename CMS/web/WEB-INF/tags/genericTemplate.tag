@@ -73,8 +73,8 @@
                                   <a href="/CMS/groupList.htm">Zarządzanie grupami</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                          user.privilegeKeyCodes.contains('ManageReports')}">
-                                  <a href="/CMS/reportList.htm">Zarządzanie raportami</a><br/>
+                                          user.privilegeKeyCodes.contains('ManageFiles')}">
+                                  <a href="/CMS/fileListUpload.htm">Zarządzanie plikami</a><br/>
                             </c:if>
 
 

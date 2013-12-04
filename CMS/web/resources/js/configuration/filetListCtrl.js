@@ -1,4 +1,4 @@
-function ReportListCtrl($scope, $http, saveEditDelete) {
+function FileListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
@@ -18,11 +18,11 @@ function ReportListCtrl($scope, $http, saveEditDelete) {
     $scope.mimetypes["Word"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
     $scope.mimetypes["TXT"] = "text/plain";
     $scope.mimetypes["PDF"] = "application/pdf";
-    $scope.get = saveEditDelete.get($http, '/CMS/reportList/reports.htm', $scope);
+    $scope.get = saveEditDelete.get($http, '/CMS/fileListUpload/reports.htm', $scope);
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        saveEditDelete.save($http, '/CMS/reportList/save/:object.htm', $scope);
+        saveEditDelete.save($http, '/CMS/fileListUpload/save/:object.htm', $scope);
     };
 
     loadDataPromise.then(function(returnData) {
