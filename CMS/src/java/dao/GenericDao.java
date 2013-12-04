@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import model.general.DatabaseObject;
 import utils.ConnectionManager;
 
@@ -43,7 +44,7 @@ public class GenericDao<T extends DatabaseObject> {
     public List<T> select() {
         return select("");
     }
-    
+
     public List<T> findById(String id) {
         return findByField("id", id);
     }
@@ -89,24 +90,27 @@ public class GenericDao<T extends DatabaseObject> {
         conditions += ")";
         return select(conditions);
     }
-    
+
     /**
      * Metoda usuwa wszystkie wpisy w tabeli o podanym id
+     *
      * @param id
-     * @return 
+     * @return
      */
     public boolean deleteAllWithId(String id) {
-        return delete("id="+id);
+        return delete("id=" + id);
     }
-    
+
     /**
-     * Metoda usuwa wszystkie wpisy w tablei, w których dana kolumna posiada podaną wartość
+     * Metoda usuwa wszystkie wpisy w tablei, w których dana kolumna posiada
+     * podaną wartość
+     *
      * @param fieldName nazwa kolumny
      * @param fieldValue wartość kolumny
-     * @return 
+     * @return
      */
-    public boolean deleteAllMatching(String fieldName, String fieldValue){
-        return delete(fieldName+"="+fieldValue);
+    public boolean deleteAllMatching(String fieldName, String fieldValue) {
+        return delete(fieldName + "=" + fieldValue);
     }
 
     /**
@@ -141,29 +145,36 @@ public class GenericDao<T extends DatabaseObject> {
         query += " WHERE " + conditions;
         return connectionManager.update(query);
     }
+
     /**
-     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów posiadających dane id
+     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów
+     * posiadających dane id
+     *
      * @param id id elementu który będzie zmieniony
      * @param fieldName nazwa kolumny do zmiany
      * @param fieldValue nowa wartość kolumny
-     * @return 
+     * @return
      */
-    public boolean updateFieldForAllElementsWithId(String id, String fieldName, String fieldValue){
-        return update("id="+id, fieldName+"="+fieldValue);
+    public boolean updateFieldForAllElementsWithId(String id, String fieldName, String fieldValue) {
+        return update("id=" + id, fieldName + "=" + fieldValue);
     }
 
     /**
-     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów spełniających warunki
-     * @param conditionFieldName nazwa kolumny na podstawie której wybierane są elementy do zmiany
-     * @param conditionFieldValue wartość jaką mają mieć modyfikowane wpisy w danej kolumie
+     * Metoda ustawia podaną wartość w podanej kolumnie dla wszystkich wpisów
+     * spełniających warunki
+     *
+     * @param conditionFieldName nazwa kolumny na podstawie której wybierane są
+     * elementy do zmiany
+     * @param conditionFieldValue wartość jaką mają mieć modyfikowane wpisy w
+     * danej kolumie
      * @param fieldName nazwa modyfikowanej kolumny
      * @param fieldValue nowa watość
-     * @return 
+     * @return
      */
-    public boolean updateFieldForAllElementsWithId(String conditionFieldName, String conditionFieldValue, String fieldName, String fieldValue){
-        return update(conditionFieldName+"="+conditionFieldValue, fieldName+"="+fieldValue);
+    public boolean updateFieldForAllElementsWithId(String conditionFieldName, String conditionFieldValue, String fieldName, String fieldValue) {
+        return update(conditionFieldName + "=" + conditionFieldValue, fieldName + "=" + fieldValue);
     }
-    
+
     /**
      * Metoda dodająca podany w parametrze obiekt do bazy danych.
      *
@@ -288,5 +299,31 @@ public class GenericDao<T extends DatabaseObject> {
         }
         return resultList;
 
+    }
+
+    /**
+     * Kod dodający wymagania dotyczące pól w wyszukiwanych danych do 
+     * stringa z zapytaniem (jesli mapa jest pusta nic nie zostanie zmienione);
+     * Metoda dodaje odstep na przed dodaniem kodu do stringa
+     * @param query
+     * @param params
+     * @return 
+     */
+    protected String addParamConditions(String query, Map<String, List<String>> params) {
+        if (!params.isEmpty()) {
+            query += " ";
+            for (String key : params.keySet()) {
+                query += key + " IN (";
+                for (int i = 0; i < params.get(key).size(); i++) {
+                    query += params.get(key).get(i);
+                    if (i < params.get(key).size()) {
+                        query += ",";
+                    }
+                    query += ")";
+                }
+            }
+        }
+        
+        return query;
     }
 }

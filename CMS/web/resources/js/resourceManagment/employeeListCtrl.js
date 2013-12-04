@@ -9,6 +9,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.attributes[4] = 'salary';
     $scope.attributes[5] = 'country';
     $scope.attributes[6] = 'city';
+    $scope.attributes[7] = 'pesel';
     $scope.columns = {
         'name' : "Imię",
         'surname': "Nazwisko",
@@ -16,7 +17,8 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
         'salary': "Wypłata",
         'country': "Kraj",
         'city': "Miasto",
-        'positionName' : "Stanowisko"
+        'positionName' : "Stanowisko",
+        'pesel' : "PESEL"
     };
     $scope.selected = "";
     $scope.employees = "";
