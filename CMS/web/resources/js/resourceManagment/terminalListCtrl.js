@@ -1,6 +1,9 @@
 function TerminalListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "terminals";
+    $scope.objects = [];
+    $scope.attributes = [];
+    $scope.attributes[0] = 'description';
     $scope.columns = {
         'description': "Opis"
     };
@@ -17,7 +20,6 @@ function TerminalListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.terminals = $scope.initData.terminalDtos;
         } else {
             alert('err');
         }

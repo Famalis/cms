@@ -59,12 +59,12 @@
                 <prop key="terminalList/save/:object.htm">terminalListController</prop>
                 <prop key="terminalList/delete/:object.htm">terminalListController</prop>
                 
-                <prop key="reportList.htm">reportListController</prop>
-                <prop key="reportList/reports.htm">reportListController</prop>
-                <prop key="reportList/upload.htm">reportListController</prop>
-                <prop key="reportList/download.htm">reportListController</prop>
-                <prop key="reportList/save/:object.htm">reportListController</prop>
-                <prop key="reportList/delete/:object.htm">reportListController</prop>
+                <prop key="fileListUpload.htm">fileUploadController</prop>
+                <prop key="fileListUpload/reports.htm">fileUploadController</prop>
+                <prop key="fileListUpload/upload.htm">fileUploadController</prop>
+                <prop key="fileListUpload/download.htm">fileUploadController</prop>
+                <prop key="fileListUpload/save/:object.htm">fileUploadController</prop>
+                <prop key="fileListUpload/delete/:object.htm">fileUploadController</prop>
                 
                 <prop key="reportPrint.htm">reportPrintController</prop>
                 <prop key="reportPrint/reports.htm">reportPrintController</prop>
@@ -98,8 +98,8 @@
           class="controllers.EmployeePageController"/>       
     <bean name="reportPrintController"
           class="controllers.ReportPrintController"/> 
-    <bean name="reportListController"
-          class="controllers.ReportListController"/> 
+    <bean name="fileUploadController"
+          class="controllers.FileListUploadController"/> 
     <bean name="terminalListController"
           class="controllers.TerminalListController"/>  
     <bean name="privilegeKeyListController"

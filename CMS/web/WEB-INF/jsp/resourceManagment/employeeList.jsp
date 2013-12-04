@@ -14,50 +14,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <table class="genericTable">
-                                <tr>
-                                    <th>
-                                        Imię i Nazwisko
-                                    </th>
-                                    <th>
-                                        PESEL
-                                    </th>
-                                    <th>
-                                        Telefon
-                                    </th>
-                                    <th>
-                                        Wypłata
-                                    </th>
-                                    <th>
-                                        Stanowisko
-                                    </th>
-                                    <th>
-                                        Wydział
-                                    </th>
-                                </tr>
-                                <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(employee)">
-                                    <td>
-                                        <a href="/CMS/employeePage/{{employee.id}}.htm">
-                                            {{employee.name}} {{employee.surname}}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{employee.pesel}}
-                                    </td>
-                                    <td>
-                                        {{employee.phone}}
-                                    </td>
-                                    <td>
-                                        {{employee.salary}}
-                                    </td>
-                                    <td>
-                                        {{employee.positionName}}
-                                    </td>
-                                    <td>
-                                        {{employee.departmentName}}
-                                    </td>
-                                </tr>
-                            </table>
+                            <t:dataTable/>
                         </td>
                     </tr>
                     <tr>
@@ -109,16 +66,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Stanowisko: {{selected.positionId}}
-                                        <select ng-model="selected.positionId">
+                                        Stanowisko:
+                                        <select ng-model="selected.positionId" ng-click='selected.positionName = getPositionName(selected.positionId)'>
                                             <option ng-repeat="position in positions" value="{{position.id}}">
                                                 {{position.name}}
                                             </option>
                                         </select>
                                     </td>
                                     <td>
-                                        Wydział: {{selected.departmentId}}
-                                        <select ng-model="selected.departmentId">
+                                        Wydział:
+                                        <select ng-model="selected.departmentId" ng-click='selected.departmentName = getDepartmentName(selected.departmentId)'>
                                             <option ng-repeat="department in departments" value="{{department.id}}">
                                                 {{department.name}}
                                             </option>

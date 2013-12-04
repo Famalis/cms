@@ -28,7 +28,7 @@
                         Nazwa: <input type="text" ng-model="selected.name"/>
                     </td>
                 </tr>
-                <tr ng-show="selected.privilegeKeyIds != undefined">
+                <tr ng-show="selected.id">
                     <td>Klucze:
                         <p ng-repeat="groupPrivKey in privilegeKeys" ng-show="selectedGroupHasKey(groupPrivKey.id)">{{groupPrivKey.code}}</p>
                     </td>

@@ -37,30 +37,30 @@ import utils.Utils;
  * @author Sergio
  */
 @Controller
-@RequestMapping("/reportList")
-public class ReportListController extends BaseController {
+@RequestMapping("/fileListUpload")
+public class FileListUploadController extends BaseController {
 
-    public ReportListController() {
-        super("all", "ManageReports");
+    public FileListUploadController() {
+        super("all", "ManageFiles");
     }
 
-    @RequestMapping("/reportList")
+    @RequestMapping("/fileListUpload")
     public String home(HttpSession session, ModelMap model) {
         if (!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
         System.out.println("home");
-        return "configuration/reportList";
+        return "configuration/fileList";
     }
 
-    @RequestMapping(value = "/reportList/save/:report", method = RequestMethod.POST)
+    @RequestMapping(value = "/fileListUpload/save/:report", method = RequestMethod.POST)
     public @ResponseBody
     void saveData(@RequestBody String user) {
         //TODO
 
     }
 
-    @RequestMapping(value = "/reportList/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/fileListUpload/upload", method = RequestMethod.POST)
     public String upload(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -92,10 +92,10 @@ public class ReportListController extends BaseController {
         } catch (IOException io) {
             System.err.println("Can't process file\n" + io.getMessage());
         }
-        return "redirect:/reportList.htm";
+        return "redirect:/fileList.htm";
     }
 
-    @RequestMapping(value = "/reportList/download")
+    @RequestMapping(value = "/fileListUpload/download")
     public @ResponseBody
     void download(@RequestParam("id") Long id, HttpServletResponse response) {
         SystemFile r = new SystemFile();
@@ -103,7 +103,7 @@ public class ReportListController extends BaseController {
         Utils.download(r.getHashCode(), r.getName(), r.getMimeType(), response);
     }
 
-    @RequestMapping(value = "/reportList/reports")
+    @RequestMapping(value = "/fileListUpload/reports")
     @ResponseBody
     public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<String, Object>();

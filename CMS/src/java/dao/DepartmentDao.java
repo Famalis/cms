@@ -34,19 +34,7 @@ public class DepartmentDao extends GenericDao<Department> {
                 + "a.id as addressId ";
         query += "FROM department as dep, address as a ";
         query += "WHERE a.id = dep.addressId";
-        if(!params.isEmpty()) {
-            query+= " ";
-            for (String key : params.keySet()) {
-                query+=key+" IN (";
-                for (int i = 0; i<params.get(key).size(); i++) {
-                    query+=params.get(key).get(i);
-                    if(i<params.get(key).size()) {
-                        query+=",";
-                    }
-                    query+=")";
-                }                
-            }
-        }
+        query = this.addParamConditions(query, params);
         
         List<DepartmentDTO> list = new ArrayList<DepartmentDTO>();
         ResultSet set = this.connectionManager.select(query);

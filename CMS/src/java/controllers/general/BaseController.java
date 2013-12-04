@@ -32,18 +32,21 @@ public class BaseController {
         }
         currentUserDto = new UserDTO();
     }
-    
+
     /**
-     * Metoda sprawdza czy użytkownik zalogowany w podanej sesji posiada 
+     * Metoda sprawdza czy użytkownik zalogowany w podanej sesji posiada
      * uprawnienia wymagane do otwarcia strony (co najmniej jedno)
+     *
      * @param session
-     * @return 
+     * @return
      */
     protected boolean checkPrivileges(HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
         for (String priv : privileges) {
-            if(user.getPrivilegeKeyCodes().contains(priv)) {
-                return true;
+            if (user != null) {
+                if (user.getPrivilegeKeyCodes().contains(priv)) {
+                    return true;
+                }
             }
         }
         return false;

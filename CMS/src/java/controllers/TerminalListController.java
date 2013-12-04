@@ -24,7 +24,7 @@ import utils.Utils;
 public class TerminalListController extends BaseController{
  
     public TerminalListController() {
-        super("all", "ManageTerminals");
+        super("all", "ViewTerminals");
     }
     
     @RequestMapping("/terminalList")
@@ -59,13 +59,13 @@ public class TerminalListController extends BaseController{
     public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         TerminalDao terminalDao = new TerminalDao();
         Map<String, Object> initData = new HashMap<String, Object>();
-        initData.put("terminalDtos", terminalDao.getTerminalDtos());
+        initData.put("terminals", terminalDao.getTerminalDtos());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");
         return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "terminalList/delete/:object", method = RequestMethod.POST)
+    @RequestMapping(value = "/terminalList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
     void deleteData(@RequestBody String object) {
         System.out.println("delete");
