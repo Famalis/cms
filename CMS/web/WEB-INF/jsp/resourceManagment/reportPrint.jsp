@@ -13,35 +13,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Opis
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: report == selected}" ng-repeat="report in reports | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(report)">
-                                <td width="30%">
-                                    {{report.name}}
-                                </td>
-                                <td>
-                                    {{report.description}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr ng-show="selected">
                     <td>
-                        <div ng-show="selected.formCode" ng-include="selected.formCode">
+                        <div ng-include="selected.formCode">
 
                         </div>
-                    </td>
-                </tr>
-                <tr>                    
-                    <td>
                     </td>
                 </tr>
             </table>

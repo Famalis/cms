@@ -13,24 +13,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Przydzielone do:
-                                </th>
-                                <th>
-                                    Opis
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: task == selected}" ng-repeat="task in tasks | filter:searchText" ng-click="select(task)">
-                                <td>
-                                    {{task.empName}} {{task.empSurname}}
-                                </td>
-                                <td>
-                                    {{task.description}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr ng-show="editMode">

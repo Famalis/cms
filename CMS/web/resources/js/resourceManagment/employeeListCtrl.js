@@ -1,7 +1,16 @@
 function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "employees";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'name';
+    $scope.attributes[1] = 'surname';
+    $scope.attributes[2] = 'positionName';
+    $scope.attributes[3] = 'departmentName';
+    $scope.attributes[4] = 'salary';
+    $scope.attributes[5] = 'country';
+    $scope.attributes[6] = 'city';
     $scope.columns = {
+        'name' : "Imię",
         'surname': "Nazwisko",
         'departmentName': "Wydział",
         'salary': "Wypłata",

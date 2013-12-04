@@ -1,8 +1,12 @@
 function PositionListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "positions";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'name';
+    $scope.attributes[1] = 'description';
     $scope.columns = {
-        'name' : "Nazwa"
+        'name' : "Nazwa",
+        'description' : "Opis"
     };
     $scope.selected = "";
     $scope.positions = "";

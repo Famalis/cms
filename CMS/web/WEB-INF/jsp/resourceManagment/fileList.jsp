@@ -13,24 +13,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Opis
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: file == selected}" ng-repeat="file in files | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(file)">
-                                <td width="30%">
-                                    {{file.name}}
-                                </td>
-                                <td>
-                                    {{file.description}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr ng-show="selected">

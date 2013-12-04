@@ -14,50 +14,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <table class="genericTable">
-                                <tr>
-                                    <th>
-                                        Imię i Nazwisko
-                                    </th>
-                                    <th>
-                                        PESEL
-                                    </th>
-                                    <th>
-                                        Telefon
-                                    </th>
-                                    <th>
-                                        Wypłata
-                                    </th>
-                                    <th>
-                                        Stanowisko
-                                    </th>
-                                    <th>
-                                        Wydział
-                                    </th>
-                                </tr>
-                                <tr ng-class="{selectedTableRow: employee == selected}" ng-repeat="employee in employees | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(employee)">
-                                    <td>
-                                        <a href="/CMS/employeePage/{{employee.id}}.htm">
-                                            {{employee.name}} {{employee.surname}}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{employee.pesel}}
-                                    </td>
-                                    <td>
-                                        {{employee.phone}}
-                                    </td>
-                                    <td>
-                                        {{employee.salary}}
-                                    </td>
-                                    <td>
-                                        {{employee.positionName}}
-                                    </td>
-                                    <td>
-                                        {{employee.departmentName}}
-                                    </td>
-                                </tr>
-                            </table>
+                            <t:dataTable/>
                         </td>
                     </tr>
                     <tr>

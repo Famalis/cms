@@ -13,24 +13,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="genericTable">
-                            <tr>
-                                <th>
-                                    Nazwa
-                                </th>
-                                <th>
-                                    Opis
-                                </th>
-                            </tr>
-                            <tr ng-class="{selectedTableRow: position == selected}" ng-repeat="position in positions | filter:searchText | orderBy:orderColumn:reverse" ng-click="select(position)">
-                                <td>
-                                    {{position.name}}
-                                </td>
-                                <td>
-                                    {{position.description}}
-                                </td>
-                            </tr>
-                        </table>
+                        <t:dataTable/>
                     </td>
                 </tr>
                 <tr>

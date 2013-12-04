@@ -1,10 +1,12 @@
 function PrivilegeKeyListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "privilegeKeys";
+    $scope.attributes = [];
+    $scope.attributes[0] = 'code';
+    $scope.attributes[1] = 'description';
     $scope.columns = {
         'description' : "Opis" ,
-        'code' : "Kod",
-        'id' : "ID"
+        'code' : "Kod"
     };
     $scope.editMode = false;
     $scope.editValue = "Edytuj";
