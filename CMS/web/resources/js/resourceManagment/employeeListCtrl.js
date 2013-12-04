@@ -68,4 +68,20 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/employeeList/delete/:object.htm', $scope);
     };
+    
+    $scope.getPositionName = function(posId) {
+        for (var i = 0; i<$scope.positions.length; i++) {
+            if($scope.positions[i].id == posId) {
+                return $scope.positions[i].name;
+            }
+        }
+    };
+    
+    $scope.getDepartmentName = function(depId) {
+        for (var i = 0; i<$scope.departments.length; i++) {
+            if($scope.departments[i].id == depId) {
+                return $scope.departments[i].name;
+            }
+        }
+    };
 }

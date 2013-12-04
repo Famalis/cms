@@ -66,16 +66,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Stanowisko: {{selected.positionId}}
-                                        <select ng-model="selected.positionId">
+                                        Stanowisko:
+                                        <select ng-model="selected.positionId" ng-click='selected.positionName = getPositionName(selected.positionId)'>
                                             <option ng-repeat="position in positions" value="{{position.id}}">
                                                 {{position.name}}
                                             </option>
                                         </select>
                                     </td>
                                     <td>
-                                        Wydział: {{selected.departmentId}}
-                                        <select ng-model="selected.departmentId">
+                                        Wydział:
+                                        <select ng-model="selected.departmentId" ng-click='selected.departmentName = getDepartmentName(selected.departmentId)'>
                                             <option ng-repeat="department in departments" value="{{department.id}}">
                                                 {{department.name}}
                                             </option>
