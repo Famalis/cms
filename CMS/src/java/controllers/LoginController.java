@@ -6,6 +6,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import dto.UserDTO;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import utils.Utils;
 
 /**
  *
@@ -38,8 +40,10 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String login(HttpSession session, ModelMap model, @RequestParam("login") String login, @RequestParam("password") String password) {
+    public String login(HttpSession session, ModelMap model, HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("login") String login, @RequestParam("password") String password, @RequestParam("stayLogged") boolean stayLogged) {
 
+        System.out.println(stayLogged);
         User user = new User();
         UserConfiguration userConfig = new UserConfiguration();
         if (user.loadObject("login='" + login + "' AND password='" + password + "'")) {
@@ -53,14 +57,23 @@ public class LoginController extends BaseController {
 
         this.currentUserDto = new UserDTO(user, userConfig);
         session.setAttribute("user", currentUserDto);
-        //model.put("user", this.currentUserDto);
+        if (stayLogged) {
+            System.out.println("ADDED COOKIE: " + Utils.convertObjectToJSON(currentUserDto));
+            Cookie c = new Cookie("user", Utils.convertObjectToJSON(currentUserDto));
+            c.setMaxAge(60 * 60 * 24 * 7);
+            response.addCookie(c);
+            //model.put("user", this.currentUserDto);
+        }
         return "login";
 
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logout(HttpSession session, ModelMap model) {
+    public String logout(HttpSession session, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("logoout");
+        Cookie nullUser = new Cookie("user", null);
+        nullUser.setMaxAge(0);
+        response.addCookie(nullUser);
         currentUserDto = new UserDTO();
         session.setAttribute("user", currentUserDto);
         return "home";
@@ -80,6 +93,7 @@ public class LoginController extends BaseController {
         return "login";
 
     }
+
     @RequestMapping(value = "/uploadPhoto", method = RequestMethod.POST)
     public String uploadPhoto(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 

@@ -29,6 +29,24 @@ public class Utils {
     /**
      * Metoda zamieniająca JSON w postaci Stringa na object Javovy; zwracany
      * obiekt wciąż trzeba zrzutować do konkretnego obiektu.
+     * @param json
+     * @param javaClass
+     * @return 
+     */
+    public static Object convertJSONStringToObject(String json, Class javaClass) {       
+        ObjectMapper mapper = new ObjectMapper();
+        Object o = null;
+        try {
+            o = mapper.readValue(json, javaClass);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return o;
+    }
+    /**
+     * Metoda zamieniająca JSON w postaci Stringa (z nazwą obiektu na początku)
+     * na object Javovy; zwracany
+     * obiekt wciąż trzeba zrzutować do konkretnego obiektu.
      *
      * @param json - JSON w formie Stringa
      * @param objectName - Nazwa zmiennej String w której zawarty jest JSON

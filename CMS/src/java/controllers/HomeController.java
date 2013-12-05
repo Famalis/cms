@@ -15,12 +15,15 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import utils.Utils;
 
 /**
  *
@@ -35,11 +38,25 @@ public class HomeController extends BaseController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(HttpSession session) {
+    public String home(HttpSession session, HttpServletRequest request, ModelMap model) {        
         UserDTO user = (UserDTO) session.getAttribute("user");
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null) {
+            for (Cookie c : cookies) {
+                System.out.println(c.getName());
+                if(c.getName().equals("user")){                    
+                    String json = c.getValue();
+                    System.out.println("COOKIE VALUE: "+json);
+                    user = (UserDTO) Utils.convertJSONStringToObject(json, UserDTO.class);
+                }
+            }
+        }
         //System.out.println(user.getId()+"");
         if (user != null) {
             if (user.getId() != null) {
+                this.currentUserDto = user;
+                session.setAttribute("user", user);
+                //model.put("user", user);
                 return "login";
             } else {
                 return "home";

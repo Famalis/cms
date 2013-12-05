@@ -62,12 +62,11 @@
                     <input type="password" class="password-input" name="password" placeholder="Hasło" maxlength="32"/>
 
 
-                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ">
-
-
-
-
-
+                    <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ"/>
+                    
+                    Pamiętaj mnie: <input type="checkbox" ng-init="stayLogged = 'false'" ng-model="stayLogged" ng-true-value="true" ng-false-value="false"/>
+                    <input type="text" ng-hide="true" name="stayLogged" ng-model="stayLogged"/>
+                    
                 </form>
             </div> <!-- end of form-container -->
 

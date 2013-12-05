@@ -45,6 +45,7 @@
             <form action="/CMS/login.htm" method="POST">
                 Login <input type="text" name="login"/>
                 Hasło <input type="password" name="password"/>
+                <input type="text" name="stayLogged" ng-hide="true" value="false"/>
                 <input type="submit" name="loginButton" value="Zaloguj"/>
             </form>
         </c:if>        

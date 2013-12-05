@@ -84,4 +84,8 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
             }
         }
     };
+    
+    $scope.checkEditPrivileges = function() {
+        
+    };
 }
