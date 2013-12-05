@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.PrivilegeGroup;
 import model.User;
 
 /**
@@ -32,6 +33,8 @@ public class UserDao extends GenericDao<User> {
                 + "user_configuration.groupId as groupId FROM user, user_configuration "
                 + "WHERE " + conditions + "user.id = user_configuration.userId";
         ResultSet resultSet = this.connectionManager.select(query);
+        PrivilegeGroupDao privGroupDao = new PrivilegeGroupDao();
+        List<PrivilegeGroup> groups = privGroupDao.select();
         try {
             while (resultSet.next()) {
                 UserDTO dto = new UserDTO();
@@ -42,6 +45,13 @@ public class UserDao extends GenericDao<User> {
                 dto.setGroupId(resultSet.getString("groupId"));
                 dto.setBgcolor(resultSet.getString("bgcolor"));
                 dto.setEmployeeId(resultSet.getString("employeeId"));
+                if(dto.getGroupId()!=null){
+                    for (PrivilegeGroup g : groups) {
+                        if(g.getId() == Long.parseLong(dto.getGroupId())) {
+                            dto.setGroupName(g.getName());
+                        }
+                    }
+                }
                 dtos.add(dto);
             }
         } catch (SQLException sql) {

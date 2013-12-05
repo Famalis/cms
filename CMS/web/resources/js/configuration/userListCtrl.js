@@ -6,11 +6,11 @@ function UserListCtrl($scope, $http, saveEditDelete) {
     $scope.attributes[1] = 'name';
     $scope.attributes[2] = 'login';
     $scope.attributes[3] = 'bgcolor';
-    $scope.attributes[4] = 'groupId';
+    $scope.attributes[4] = 'groupName';
     $scope.attributes[5] = 'employeeId';
     $scope.columns = {
       'employeeId' : "Pracownik",
-      'groupId' : "Grupa",
+      'groupName' : "Grupa",
       'bgcolor' : "Kolor tła",
       'login' : "Login",      
       'name' : "Imię",
@@ -27,8 +27,8 @@ function UserListCtrl($scope, $http, saveEditDelete) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.users = $scope.initData.users;
             $scope.employees = $scope.initData.employees;
+            $scope.groups = $scope.initData.groups;
         } else {
             alert('err');
         }
@@ -58,5 +58,13 @@ function UserListCtrl($scope, $http, saveEditDelete) {
 
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/userList/delete/:object.htm', $scope);
+    };
+    
+    $scope.getGroupName = function(id) {
+      for (var i = 0; i<$scope.groups.length; i++) {
+          if($scope.groups[i].id == id){
+              return $scope.groups[i].name;
+          }
+      }  
     };
 }

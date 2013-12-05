@@ -6,6 +6,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.EmployeeDao;
+import dao.PrivilegeGroupDao;
 import dto.UserDTO;
 import javax.servlet.http.HttpSession;
 import model.UserConfiguration;
@@ -69,9 +70,11 @@ public class UserListController extends BaseController{
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
         EmployeeDao empDao = new EmployeeDao();
+        PrivilegeGroupDao groupDao = new PrivilegeGroupDao();
         Map<String, Object> initData = new HashMap<>();
         initData.put("users", userDao.getUserWithConfig());
         initData.put("employees", empDao.getEmployeeDTOList());
+        initData.put("groups", groupDao.select());
         //List<UserDTO> userDtos = userDao.getUserWithConfig();
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");

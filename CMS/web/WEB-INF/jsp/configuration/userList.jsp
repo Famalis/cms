@@ -26,7 +26,13 @@
                         <table ng-show="editMode" class="genericTable">
                             <tr>
                                 <td>
-                                    Grupa: <input type="text" ng-model="selected.groupId"/>
+                                    Grupa:
+                                    <select ng-model="selected.groupId">
+                                        <option ng-repeat="group in groups" value="{{group.id}}" ng-click="selected.groupName = getGroupName(group.id)"
+                                                ng-selected="selected.groupId == group.id">
+                                            {{group.name}}
+                                        </option>
+                                    </select>
                                 </td>
                                 <td>
                                     Tło :<input type="text" ng-model="selected.bgcolor"/>
