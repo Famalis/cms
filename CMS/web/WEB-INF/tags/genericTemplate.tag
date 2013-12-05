@@ -52,6 +52,14 @@
                                   <a href="/CMS/terminalList.htm">Zarządzanie terminalami</a><br/>
                             </c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageCustomers')}">
+                                  <a href="/CMS/customerList.htm">Zarządzanie klientami</a><br/>
+                            </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageContracts')}">
+                                  <a href="/CMS/contractList.htm">Zarządzanie umowami</a><br/>
+                            </c:if>     
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ReportsPrint')}">
                                   <a href="/CMS/reportPrint.htm">Drukowanie raportów</a><br/>
                             </c:if>

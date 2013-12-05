@@ -75,10 +75,21 @@
                 <prop key="fileList/files.htm">fileListController</prop>
                 <prop key="fileList/download.htm">fileListController</prop>
                 
+                <prop key="customerList.htm">customerListController</prop>
+                <prop key="customerList/customers.htm">customerListController</prop>
+                <prop key="customerList/save/:object.htm">customerListController</prop>
+                <prop key="customerList/delete/:object.htm">customerListController</prop>
+                
+                <prop key="contractList.htm">contractListController</prop>
+                <prop key="contractList/contracts.htm">contractListController</prop>
+                <prop key="contractList/save/:object.htm">contractListController</prop>
+                <prop key="contractList/delete/:object.htm">contractListController</prop>
+                
                 <prop key="systemConfig.htm">systemConfigController</prop>
                 <prop key="systemConfig/configs.htm">systemConfigController</prop>
                 
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
+                <prop key="customerPage/{id}.htm">customerPageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
                 
@@ -97,6 +108,12 @@
     
     <bean name="systemConfigController" 
           class="controllers.SystemConfigruationController"/>
+    <bean name="contractListController" 
+          class="controllers.ContractListController"/>
+    <bean name="customerListController" 
+          class="controllers.CustomerListController"/>
+    <bean name="customerPageController"
+          class="controllers.CustomerPageController"/>   
     <bean name="fileListController" 
           class="controllers.FileListController"/>
     <bean name="employeePageController"
