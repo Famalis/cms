@@ -75,6 +75,9 @@
                 <prop key="fileList/files.htm">fileListController</prop>
                 <prop key="fileList/download.htm">fileListController</prop>
                 
+                <prop key="systemConfig.htm">systemConfigController</prop>
+                <prop key="systemConfig/configs.htm">systemConfigController</prop>
+                
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
@@ -92,6 +95,8 @@
     <bean name="testReportTemplate"
           class="controllers.reportTemplate.TestReportTemplateController"/> 
     
+    <bean name="systemConfigController" 
+          class="controllers.SystemConfigruationController"/>
     <bean name="fileListController" 
           class="controllers.FileListController"/>
     <bean name="employeePageController"

@@ -76,6 +76,10 @@
                                           user.privilegeKeyCodes.contains('ManageFiles')}">
                                   <a href="/CMS/fileListUpload.htm">Zarządzanie plikami</a><br/>
                             </c:if>
+                            <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('SystemConfig')}">
+                                  <a href="/CMS/systemConfig.htm">Wartości konfiguracyjne</a><br/>
+                            </c:if>
 
 
                         </div>

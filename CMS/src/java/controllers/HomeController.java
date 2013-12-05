@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.SystemConfigurationDao;
 import dao.UserDao;
 import dto.UserDTO;
 import java.util.Properties;
@@ -79,15 +80,16 @@ public class HomeController extends BaseController {
             model.put("error", "Dany login jest już zajęty");
             return "home";
         }
-        String to = "accreqehr@gmail.com";
-        String from = "accreqehr@gmail.com";
-        String host = "smtp.gmail.com";
+        SystemConfigurationDao sysDao = new SystemConfigurationDao();
+        String to = sysDao.getAccountRequestEmail();
+        String from = sysDao.getAccountRequestEmail();
+        String host = sysDao.getAccountRequestSMTP();
         Properties props = System.getProperties();
 
         props.put("mail.smtp.starttls.enable", true); // added this line
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.user", "accreqehr");
-        props.put("mail.smtp.password", "easyhr12345");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", sysDao.getAccountRequestLogin());
+        props.put("mail.smtp.password", sysDao.getAccountRequestPassword());
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", true);
         props.setProperty("mail.smtp.ssl.trust", host);
