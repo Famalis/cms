@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.general.BaseController;
 import dao.AddressDao;
+import dao.ContractDao;
 import dao.DepartmentDao;
 import dao.EmployeeDao;
 import dao.LogDao;
@@ -117,13 +118,14 @@ public class EmployeeListController extends BaseController{
             LogDao logDao = new LogDao();
             AddressDao adrDao = new AddressDao();
             DepartmentDao depDao = new DepartmentDao();
-            
+            ContractDao conDao = new ContractDao();
             
             empDao.deleteAllWithId(dto.getId()+"");
             logDao.deleteAllMatching("employeeId", dto.getId()+"");
             adrDao.deleteAllWithId(actualEmp.getAddressId()+"");
             depDao.updateFieldForAllElementsWithId("managerId", dto.getId()+"", 
                     "managerId", null);
+            conDao.updateFieldForAllElementsWithId("employeeId", dto.getId()+"", "employeeId", null);
             
             User user = new User();
             if(user.loadObject("employeeId="+dto.getId())){
