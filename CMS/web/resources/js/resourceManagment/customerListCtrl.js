@@ -3,6 +3,8 @@ function CustomerListCtrl($scope, $http, saveEditDelete) {
     $scope.selected = "";
     $scope.customers = "";
     $scope.editMode = false;
+    $scope.displayPage = true;
+    $scope.displayPageName = "customerPage";
     
     $scope.objectsName = "customers";
     $scope.attributes = [];

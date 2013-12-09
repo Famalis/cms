@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <t:jsonOperations/>
+                            <t:jsonOperations/> 
                         </td>
                     </tr>
                     <tr ng-show="editMode">

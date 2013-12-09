@@ -37,5 +37,8 @@
         <td>
             <input type="button" ng-show="selected.id!=undefined && editMode" ng-click="delete()" value="Usuń"</td>
         </td>
+        <td>
+            <input type="button" ng-show="displayPage" onclick="location.href='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl"</td>
+        </td>
     </tr>
 </table>

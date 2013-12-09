@@ -1,5 +1,8 @@
 function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.status = "Ładowanie danych";
+    $scope.displayPage = true;
+    $scope.displayPageName = "employeePage";
+    
     $scope.objectsName = "employees";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
