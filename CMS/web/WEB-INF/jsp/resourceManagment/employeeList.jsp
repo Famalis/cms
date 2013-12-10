@@ -68,7 +68,7 @@
                                     <td>
                                         Stanowisko:
                                         <select ng-model="selected.positionId" ng-click='selected.positionName = getPositionName(selected.positionId)'>
-                                            <option ng-repeat="position in positions" value="{{position.id}}">
+                                            <option ng-repeat="position in positions" ng-selected="selected.positionId == position.id" value="{{position.id}}">
                                                 {{position.name}}
                                             </option>
                                         </select>
@@ -76,7 +76,7 @@
                                     <td>
                                         Wydział:
                                         <select ng-model="selected.departmentId" ng-click='selected.departmentName = getDepartmentName(selected.departmentId)'>
-                                            <option ng-repeat="department in departments" value="{{department.id}}">
+                                            <option ng-repeat="department in departments" ng-selected="selected.departmentId == department.id" value="{{department.id}}">
                                                 {{department.name}}
                                             </option>
                                         </select>

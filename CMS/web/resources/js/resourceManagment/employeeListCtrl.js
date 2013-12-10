@@ -39,7 +39,6 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             $scope.departments = $scope.initData.departments;
-            $scope.employees = $scope.initData.employees;
             $scope.positions = $scope.initData.positions;
         } else {
             alert('err');

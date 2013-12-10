@@ -13,6 +13,9 @@
 <table width="100%" class="genericTable">
     <thead>
         <tr>
+            <th>
+                Lp.
+            </th>
             <th ng-class="{selectedTableSort: attr == orderColumn, genericTableHeader: attr != orderColumn}" ng-repeat="attr in attributes">
                 <a ng-click="$parent.orderColumn = attr;
                         $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
@@ -21,6 +24,9 @@
     </thead>
     <tbody>
         <tr ng-class="{selectedTableRow: obj == selected}" ng-repeat="obj in objects | filter:searchText | orderBy:orderColumn:reverse">
+            <td>
+                {{$index+1}}
+            </td>
             <td ng-repeat="attr in attributes" ng-click="$parent.select(obj)">
                 {{obj[attr]}}
             </td>
