@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import model.Department;
+import model.Employee;
 
 public class DepartmentDao extends GenericDao<Department> {
 
@@ -47,6 +48,14 @@ public class DepartmentDao extends GenericDao<Department> {
                 dto.setCountry(set.getString("country"));
                 dto.setId(set.getLong("id"));
                 dto.setManagerId(set.getString("managerId"));
+                
+                Employee emp = new Employee();
+                if (Long.parseLong(dto.getManagerId()) > 0) {
+                    emp.loadObject("id=" + dto.getManagerId());
+                    dto.setManagerName(emp.getName());
+                    dto.setManagerSurname(emp.getSurname());
+                }
+                
                 dto.setName(set.getString("name"));
                 dto.setStreetName(set.getString("streetName"));
                 dto.setStreetNumber(set.getString("streetNumber"));

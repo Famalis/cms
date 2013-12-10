@@ -31,6 +31,8 @@ public class DepartmentDTO {
         if (Long.parseLong(department.getManagerId()) > 0) {
             emp.loadObject("id=" + department.getManagerId());
             managerId = department.getManagerId();
+            managerName = emp.getName();
+            managerSurname = emp.getSurname();
         }
         Address address = new Address();
         if (Long.parseLong(department.getAddressId()) > 0) {
