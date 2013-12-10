@@ -350,8 +350,6 @@ input.email-input:focus {
 }
 /*----------------------------------------------*/
 input.zaloguj-button {
-  float: left;
-  clear: right;
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
@@ -432,3 +430,45 @@ width:440px;
 height:45px;
 background-color: #32b38c;
 }
+.stay-logged input[type="checkbox"] + label {
+	font-size: 14px;
+	font-weight: 700;
+	color: #7d8288;
+}
+ .stay-logged input[type="checkbox"] {
+    display:none;
+}
+.stay-logged input[type="checkbox"] + label span {
+    display:inline-block;
+    width:28px;
+    height:22px;
+    margin:0 5px 0 0;
+    vertical-align:middle;
+    background:url(/CMS/resources/images/checkbox.png) left top no-repeat;
+    cursor:pointer;
+}
+.stay-logged input[type="checkbox"]:checked + label span {
+    background:url(/CMS/resources/images/checkbox.png) -56px top no-repeat;
+}
+.stay-logged {
+float: left;
+clear: both;
+position: absolute;
+margin: 166px 0 0 40px;
+}
+.stay-logged input[type="checkbox"] + label span:before {
+	background-position: 0px 0px;
+}
+.stay-logged input[type="checkbox"]:hover + label span:before, .stay-logged input[type="checkbox"] + label span:hover {
+	background-position: -28px 0px;
+}
+.stay-logged input[type="checkbox"]:checked + label span {
+	background-position: -56px 0px;
+}
+.stay-logged input[type="checkbox"]:hover:checked + label span, .stay-logged input[type="checkbox"]:focus:checked + label span {
+	background-position: -56px 0px;
+}
+.stay-logged input[type="checkbox"]:active:checked + label span {
+	background-position: -56px 0px;
+}
+
