@@ -1,16 +1,22 @@
 package dao;
 
 import dto.EmployeeDTO;
+import java.lang.String;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.List;
 import java.util.Map;
 import model.Address;
 import model.Department;
 import model.Employee;
 import model.Position;
+import model.User;
+import model.User;
+import model.UserConfiguration;
+import model.UserConfiguration;
 
 public class EmployeeDao extends GenericDao<Employee>{
     
@@ -42,9 +48,13 @@ public class EmployeeDao extends GenericDao<Employee>{
         AddressDao addressDao = new AddressDao();
         DepartmentDao depDao = new DepartmentDao();
         PositionDao posDao = new PositionDao();
+        UserDao userDao = new UserDao();
+        UserConfigurationDao confDao= new UserConfigurationDao();
         List<Address> addrs = addressDao.select();
         List<Department> depts = depDao.select();
         List<Position> pos = posDao.select();
+        List<User> users = userDao.select();
+        List<UserConfiguration> configs = confDao.select();
         try {
             while(set.next()) {
                 EmployeeDTO empDto = new EmployeeDTO();
@@ -65,6 +75,7 @@ public class EmployeeDao extends GenericDao<Employee>{
                 empDto.setCity(a.getCity());
                 empDto.setStreetName(a.getStreetName());
                 empDto.setStreetNumber(a.getStreetNumber());
+                empDto.setPrivilegeGroupId(getEmpGroupId(users, configs, empDto.getId()));
                 empDtos.add(empDto);
             }
         } catch (SQLException ex) {
@@ -99,6 +110,20 @@ public class EmployeeDao extends GenericDao<Employee>{
                 return p;
             }
         }
+        return null;
+    }
+    
+    private String getEmpGroupId(List<User> users, List<UserConfiguration> configs, Long id){
+        for (User u : users) {
+            if(Long.parseLong(u.getEmployeeId()) == id){
+                for (UserConfiguration c : configs) {
+                    if(Long.parseLong(c.getUserId()) == u.getId()){
+                        return c.getGroupId();
+                    }
+                }
+            }
+        }
+        
         return null;
     }
     

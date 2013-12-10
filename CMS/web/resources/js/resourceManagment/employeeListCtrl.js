@@ -27,6 +27,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     $scope.employees = "";
     $scope.departments = "";
     $scope.positions = "";
+    $scope.privileges = "";
     $scope.editMode = false;
 
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
@@ -40,6 +41,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
         if (returnData != null) {
             $scope.departments = $scope.initData.departments;
             $scope.positions = $scope.initData.positions;
+            $scope.privileges = $scope.initData.privileges;
         } else {
             alert('err');
         }
@@ -88,6 +90,21 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
     };
     
     $scope.checkEditPrivileges = function() {
-        
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == "all") {
+                return true;
+            }
+            if($scope.privileges[i] == "ManageEmployees") {
+                if($scope.selected.privilegeGroupId == "3") {
+                    return true;
+                }
+            }
+            if($scope.privileges[i] == "ManageManagers") {
+                if($scope.selected.privilegeGroupId == "4") {
+                    return true;
+                }
+            }
+        }
+        return false;
     };
 }

@@ -10,6 +10,8 @@ import model.Address;
 import model.Department;
 import model.Employee;
 import model.Position;
+import model.User;
+import model.UserConfiguration;
 
 /**
  *
@@ -31,8 +33,9 @@ public class EmployeeDTO {
             positionId, 
             departmentId,
             positionName,
-            departmentName;
-    
+            departmentName,
+            privilegeGroupId;
+
     public EmployeeDTO() {
         super();
     }
@@ -62,6 +65,15 @@ public class EmployeeDTO {
         Department department = new Department();
         department.loadObject("id="+departmentId);
         this.departmentName = department.getName();
+        
+        User user = new User();
+        if(user.loadObject("employeeId=" + employee.getId())){
+            UserConfiguration conf = new UserConfiguration();
+            if(conf.loadObject("userId="+user.getId())){
+                this.privilegeGroupId = conf.getGroupId();
+            }
+        }
+        
     }
 
     //@JsonIgnore <-blokuje przekazywanie id w EmployeeListController co psuje dodawanie i edycję pracowników
@@ -184,4 +196,13 @@ public class EmployeeDTO {
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
+
+    public String getPrivilegeGroupId() {
+        return privilegeGroupId;
+    }
+
+    public void setPrivilegeGroupId(String privilegeGroupId) {
+        this.privilegeGroupId = privilegeGroupId;
+    }
+    
 }
