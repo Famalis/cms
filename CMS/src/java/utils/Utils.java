@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import dto.UserDTO;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +17,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  * Tutaj przetrzymywane będą różne przydatne metody wykorzystywane w więcej niż
@@ -24,7 +29,7 @@ import org.apache.commons.io.IOUtils;
  *
  * @author Sergio
  */
-public class Utils {
+public abstract class Utils {
 
     /**
      * Metoda zamieniająca JSON w postaci Stringa na object Javovy; zwracany
@@ -156,5 +161,16 @@ public class Utils {
             System.err.println("Download IO error");
             io.printStackTrace();
         }
+    }
+    
+    public static ResponseEntity<String> createResponseEntity(HttpSession session, Map<String, Object> initData){
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        UserDTO user = (UserDTO)(session.getAttribute("user"));
+        initData.put("privileges", user.getPrivilegeKeyCodes());
+        
+        System.out.println("SEND: "+Utils.convertOMapToJSON(initData));
+        
+        return new ResponseEntity<String>(convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 }

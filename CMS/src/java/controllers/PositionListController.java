@@ -65,8 +65,6 @@ public class PositionListController extends BaseController{
         PositionDao positionDao = new PositionDao();     
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("positions", positionDao.select());
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
 }

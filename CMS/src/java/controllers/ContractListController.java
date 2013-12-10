@@ -77,9 +77,7 @@ public class ContractListController extends BaseController{
         initData.put("contracts", conDao.getContractDTOList());
         initData.put("employees", empDao.select());
         initData.put("customers", cusDao.select());
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
     
     @RequestMapping(value = "/contractList/delete/:object", method = RequestMethod.POST)

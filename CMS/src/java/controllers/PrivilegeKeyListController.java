@@ -65,9 +65,7 @@ public class PrivilegeKeyListController extends BaseController {
         PrivilegeKeyDao privilegeDao = new PrivilegeKeyDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("privilegeKeys", privilegeDao.select());
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
 
     @RequestMapping(value = "/privilegeKeyList/delete/:object", method = RequestMethod.POST)

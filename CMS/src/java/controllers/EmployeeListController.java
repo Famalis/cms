@@ -11,14 +11,13 @@ import dao.TaskDao;
 import dao.UserConfigurationDao;
 import dao.UserDao;
 import dto.EmployeeDTO;
+import dto.UserDTO;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Address;
 import model.Employee;
 import model.User;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -100,9 +99,7 @@ public class EmployeeListController extends BaseController{
         initData.put("employees", empDao.getEmployeeDTOList());
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
     
     @RequestMapping(value = "/employeeList/delete/:object", method = RequestMethod.POST)

@@ -76,8 +76,6 @@ public class UserListController extends BaseController{
         initData.put("employees", empDao.getEmployeeDTOList());
         initData.put("groups", groupDao.select());
         //List<UserDTO> userDtos = userDao.getUserWithConfig();
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
 }

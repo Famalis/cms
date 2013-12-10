@@ -114,9 +114,6 @@ public class GroupListController extends BaseController {
         Map<String, Object> initData = new HashMap<>();
         initData.put("groups", groups);
         initData.put("privilegeKeys", privKeys);
-        System.out.println(Utils.convertOMapToJSON(initData));
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
 }

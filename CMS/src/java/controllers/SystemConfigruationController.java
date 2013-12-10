@@ -47,10 +47,7 @@ public class SystemConfigruationController extends BaseController{
         Map<String, Object> initData = new HashMap<>();
         SystemConfigurationDao sysDao = new SystemConfigurationDao();
         initData.put("systemConfigs", sysDao.select());
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-        System.out.println("SEND: "+Utils.convertOMapToJSON(initData));
-        return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return Utils.createResponseEntity(session, initData);
     }
     
 }
