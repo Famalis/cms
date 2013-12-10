@@ -33,7 +33,7 @@ import utils.Utils;
 public class ReportPrintController extends BaseController {
 
     public ReportPrintController() {
-        super("all", "PrintReports");
+        super("all", "ReportsPrint");
     }
 
     @RequestMapping("/reportPrint")

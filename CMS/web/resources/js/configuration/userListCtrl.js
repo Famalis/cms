@@ -67,4 +67,10 @@ function UserListCtrl($scope, $http, saveEditDelete) {
           }
       }  
     };
+    
+    $scope.generateLogin = function(emp) {
+        var login = emp.name.substring(0,1) + emp.surname.substring(0,emp.surname.length);
+        var login = login.toLowerCase();
+        return login;
+    };
 }

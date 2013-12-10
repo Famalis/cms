@@ -30,7 +30,7 @@ import utils.Utils;
 public class FileListController extends BaseController {
 
     public FileListController() {
-        super("all", "DownloadFiles");
+        super("all", "FileList");
     }
 
     @RequestMapping("/fileList")

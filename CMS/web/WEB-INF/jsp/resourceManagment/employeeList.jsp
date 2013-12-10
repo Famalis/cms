@@ -17,11 +17,14 @@
                             <t:dataTable/>
                         </td>
                     </tr>
+                     <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                          user.privilegeKeyCodes.contains('ManageEmployees')}">     
                     <tr>
                         <td>
                             <t:jsonOperations/>
                         </td>
                     </tr>
+                     </c:if>
                     <tr ng-show="editMode">
                         <td>
                             <table class="genericTable">

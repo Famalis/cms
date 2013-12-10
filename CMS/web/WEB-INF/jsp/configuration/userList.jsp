@@ -26,6 +26,15 @@
                         <table ng-show="editMode" class="genericTable">
                             <tr>
                                 <td>
+                                    Login: <input type="text" ng-model="selected.login"/>
+                                </td>
+                                <td>
+                                    Imię: <input type="text" ng-model="selected.name"/>
+                                </td>
+                                <td>
+                                    Naziwsko: <input type="text" ng-model="selected.surname"/>
+                                </td>
+                                <td>
                                     Grupa:
                                     <select ng-model="selected.groupId">
                                         <option ng-repeat="group in groups" value="{{group.id}}" ng-click="selected.groupName = getGroupName(group.id)"
@@ -40,7 +49,8 @@
                                 <td>
                                     Pracownik posiadający konto:
                                     <select ng-model="selected.employeeId">
-                                        <option ng-repeat="emp in employees" value="{{emp.id}}" ng-selected="selected.employeeId == emp.id">
+                                        <option ng-repeat="emp in employees" value="{{emp.id}}" ng-selected="selected.employeeId == emp.id"
+                                                ng-click="selected.name = emp.name; selected.surname = emp.surname; selected.login = generateLogin(emp)">
                                             {{emp.surname}} {{emp.name}}</option>
                                     </select>
                                 </td>
