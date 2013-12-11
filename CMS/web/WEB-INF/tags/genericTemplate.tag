@@ -8,7 +8,9 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>  
         <script src="/CMS/resources/js/services.js"></script>  
+        <style type="text/css">a.ui-dialog-titlebar-close { display:none }</style>
         <LINK href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
         <title>Easy HR</title>       
     </head>
     <body>
@@ -20,6 +22,67 @@
                 jspContext.setAttribute("user", new UserDTO());
             }
         %> 
+        
+        <c:if test="${user.id != null}">                                         
+                        
+        <div id="dialog" title="Your session is about to expire!">
+                <p>
+                        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+                        You will be logged off in <span id="dialog-countdown" style="font-weight:bold"></span> seconds.
+                </p>
+
+                <p>Do you want to continue your session?</p>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/CMS/resources/js/idleTimeout.js" type="text/javascript"></script>
+        <script src="/CMS/resources/js/idleTimer.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+        $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                width: 400,
+                height: 200,
+                closeOnEscape: false,
+                draggable: false,
+                resizable: false,
+                buttons: {
+                        'Yes, Keep Working': function(){
+                                $(this).dialog('close');
+                        },
+                        'No, Logoff': function(){
+
+                                $.idleTimeout.options.onTimeout.call(this);
+                        }
+                }
+        });
+
+        var $countdown = $("#dialog-countdown");
+
+        $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
+                idleAfter: 600,
+                pollingInterval: 2,
+
+                onTimeout: function(){
+                        $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "/CMS/logout.htm"                
+                });
+                window.location = "/CMS/home.htm";
+                },
+                onIdle: function(){
+                        $(this).dialog("open");
+                },
+                onCountdown: function(counter){
+                        $countdown.html(counter);
+                    }      
+        });
+
+        </script>        
+        </c:if>
         <div>          
             <table style="width: 100%; height: 100%">
                 <tr>
