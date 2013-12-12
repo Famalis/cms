@@ -17,11 +17,12 @@ import model.PrivilegeKey;
  *
  * @author Sergio
  */
-public class GroupDTO implements Serializable{
+public class GroupDTO implements Serializable {
 
     private Long id;
     private String name;
-    private List<Long> privilegeKeyIds;
+    private List<Long> privilegeKeyIds = new ArrayList<>();
+    private List<String> privilegeKeyNames = new ArrayList<>();
 
     public GroupDTO() {
     }
@@ -40,10 +41,10 @@ public class GroupDTO implements Serializable{
             }
         }
         PrivilegeKeyDao privilegeKeyDao = new PrivilegeKeyDao();
-        privilegeKeyIds = new ArrayList<>();
         if (!queryConditions.isEmpty()) {
             for (PrivilegeKey key : (List<PrivilegeKey>) privilegeKeyDao.select(queryConditions)) {
                 privilegeKeyIds.add(key.getId());
+                privilegeKeyNames.add(key.getCode());
             }
         }
 
@@ -72,5 +73,12 @@ public class GroupDTO implements Serializable{
     public void setPrivilegeKeyIds(List<Long> privilegeKeyIds) {
         this.privilegeKeyIds = privilegeKeyIds;
     }
-    
+
+    public List<String> getPrivilegeKeyNames() {
+        return privilegeKeyNames;
+    }
+
+    public void setPrivilegeKeyNames(List<String> privilegeKeyNames) {
+        this.privilegeKeyNames = privilegeKeyNames;
+    }
 }

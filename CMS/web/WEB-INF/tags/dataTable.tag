@@ -10,13 +10,17 @@
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
+<script>
+    
+</script>
 <table width="100%" class="genericTable">
     <thead>
         <tr>
             <th>
                 Lp.
             </th>
-            <th ng-class="{selectedTableSort: attr == orderColumn, genericTableHeader: attr != orderColumn}" ng-repeat="attr in attributes">
+            <th ng-class="{selectedTableSort: attr == orderColumn, genericTableHeader: attr != orderColumn}" 
+                ng-repeat="attr in attributes" ng-hide="attr.substring(0,1) == '%'">
                 <a ng-click="$parent.orderColumn = attr;
                         $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
             </th>        

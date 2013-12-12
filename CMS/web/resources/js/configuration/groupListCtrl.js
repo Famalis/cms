@@ -3,10 +3,10 @@ function GroupListCtrl($scope, $http, saveEditDelete) {
     $scope.objectsName = "groups";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
-    $scope.attributes[1] = 'privilegeKeyIds';
+    $scope.attributes[1] = '%privilegeKeyNames';
     $scope.columns = {
         'name': "Nazwa",
-        'privilegeKeyIds' : "Klucze"
+        '%privilegeKeyNames' : "Klucze"
     };
     $scope.editMode = false;
     $scope.selected = "";
