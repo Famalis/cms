@@ -82,7 +82,7 @@ public class GenericDao<T extends DatabaseObject> {
         }
         String conditions = fieldName + " IN (";
         for (int i = 0; i < values.size(); i++) {
-            conditions += values.get(i);
+            conditions += "'"+values.get(i)+"'";
             if (i < values.size() - 1) {
                 conditions += ", ";
             }

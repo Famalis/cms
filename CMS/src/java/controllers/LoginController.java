@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.SystemConfigurationDao;
 import dto.UserDTO;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.SystemConfiguration;
 import model.SystemFile;
 import model.User;
 import model.UserConfiguration;
@@ -71,7 +73,10 @@ public class LoginController extends BaseController {
         if (stayLogged) {
             System.out.println("ADDED COOKIE: " + Utils.convertObjectToJSON(currentUserDto));
             Cookie c = new Cookie("user", Utils.convertObjectToJSON(currentUserDto));
-            c.setMaxAge(60 * 60 * 24 * 7);
+            SystemConfigurationDao sysConfigDao = new SystemConfigurationDao();
+            SystemConfiguration sc = sysConfigDao.findByField("name", "LoginPersistanceTime").get(0);
+            int duration = Integer.parseInt(sc.getValue());
+            c.setMaxAge(duration);
             response.addCookie(c);
             //model.put("user", this.currentUserDto);
         }

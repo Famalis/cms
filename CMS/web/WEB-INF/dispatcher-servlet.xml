@@ -89,6 +89,8 @@
                 
                 <prop key="systemConfig.htm">systemConfigController</prop>
                 <prop key="systemConfig/configs.htm">systemConfigController</prop>
+                <prop key="systemConfig/save/:object.htm">systemConfigController</prop>
+                <prop key="systemConfig/delete/:object.htm">systemConfigController</prop>
                 
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
                 <prop key="customerPage/{id}.htm">customerPageController</prop>

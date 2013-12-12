@@ -25,7 +25,11 @@
             <table ng-show="editMode" class="genericTable">
                 <tr>
                     <td>
-                        
+                        Nazwa: <input type="text" ng-model="selected.name"/>
+                        Wartość: <input type="text" ng-model="selected.value"/>
+                        Opis: <textarea ng-model="selected.description">
+                            
+                        </textarea>
                     </td>
                 </tr>
             </table>
