@@ -5,9 +5,7 @@
 package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
+import dao.SystemConfigurationDao;
 import dto.UserDTO;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -18,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.SystemConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -118,19 +117,6 @@ public abstract class Utils {
         return null;
     }
 
-    public static void test(File file) {
-        try {
-            Document document = new Document();
-            XMLWorkerHelper xmlWorker = XMLWorkerHelper.getInstance();
-            PdfWriter pdfWriter = PdfWriter.getInstance(document,
-                    new FileOutputStream("pdf.pdf"));
-            xmlWorker.parseXHtml(pdfWriter, document,
-                    new FileInputStream(file));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Metoda przygotowuje odpowiedź serwera pod kątem pobrania pliku
      * @param hash
@@ -165,7 +151,9 @@ public abstract class Utils {
     
     public static ResponseEntity<String> createResponseEntity(HttpSession session, Map<String, Object> initData){
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+        SystemConfigurationDao sysConfigDao = new SystemConfigurationDao();
+        SystemConfiguration charset = sysConfigDao.findByField("name","DefaultPageEncoding").get(0);
+        responseHeaders.add("Content-Type", "text/html; charset="+charset.getValue());
         UserDTO user = (UserDTO)(session.getAttribute("user"));
         initData.put("privileges", user.getPrivilegeKeyCodes());
         
