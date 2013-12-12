@@ -23,6 +23,8 @@
                 <prop key="login.htm">loginController</prop>
                 <prop key="logout.htm">loginController</prop>
                 <prop key="bgcolor.htm">loginController</prop>
+                <prop key="uploadPhoto.htm">loginController</prop>
+                <prop key="getPhoto.htm">loginController</prop>
                 <prop key="newUser.htm">newUserController</prop>
                 <prop key="home/sendMail.htm">homeController</prop>
                 

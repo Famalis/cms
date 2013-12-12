@@ -15,7 +15,9 @@
             <table>
                 <tr>
                     <td>
-
+                        <div ng-include="getPhoto.htm">
+                            
+                        </div>
                     </td>
                     <td>
 
@@ -30,7 +32,8 @@
                             Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
                             <input type="submit" name="bgcolorButton"/>
                         </form>
-                        <form action="/CMS/uploadPhoto.htm" method="POST">
+                        <form action="/CMS/uploadPhoto.htm" method="POST"
+                                          enctype="multipart/form-data">
                             Plik: <input type="file" name="file"/>
                             <input type="submit" value="Wyslij plik"/>
                         </form>
@@ -40,6 +43,7 @@
         </c:if>
         <h2>
             ${helloUser}
+            ${error}
         </h2>
         <c:if test="${user.name == null}">
             <form action="/CMS/login.htm" method="POST">
