@@ -16,11 +16,12 @@
 <table width="100%" class="genericTable">
     <thead>
         <tr>
-            <th>
+            <th width="2px">
                 Lp.
             </th>
             <th ng-class="{selectedTableSort: attr == orderColumn, genericTableHeader: attr != orderColumn}" 
-                ng-repeat="attr in attributes" ng-hide="attr.substring(0,1) == '%'">
+                ng-repeat="attr in attributes" ng-hide="attr.substring(0,1) == '%'"
+                width="{{columnWidths[attr]}}">
                 <a ng-click="$parent.orderColumn = attr;
                         $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
             </th>        
