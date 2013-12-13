@@ -16,7 +16,7 @@
 <table class="genericTable">
     <tr class="table-header">
 
-        <th class="numer">
+        <th class="numer-header">
             #
         </th>
        <th ng-repeat="attr in attributes" ng-hide="attr.substring(0, 1) == '%'"
