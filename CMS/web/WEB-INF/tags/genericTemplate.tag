@@ -97,9 +97,9 @@
                         <span style="font-weight:700;">${user.name} ${user.surname}</span>
                     </div>
                     <div class="separator"></div>
-                    <div class="user-edit">edytuj<br>
-                        <a href="/CMS/login.htm"><span style="font-weight:700;">Swój profil</span></a>
-                    </div>
+                    <a href="/CMS/login.htm"><div class="user-edit">edytuj<br>
+                        <span style="font-weight:700;">Swój profil</span>
+                    </div></a>
                 </div>
 
             </div> <!-- end of top-nav -->

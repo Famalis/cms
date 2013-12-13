@@ -474,34 +474,34 @@ input.miejscowosc-field {
     }
     .klient-phone {
         text-align:left;
-	padding-left:17px;
-	width:8%;
-	max-width:100px;
-	min-width:100px;
+        padding-left:17px;
+        width:8%;
+        max-width:100px;
+        min-width:100px;
 
     }
     .klient-email {
-	text-align:left;
-	padding-left:17px;
-	width:20%;
-	min-width:80px;
+        text-align:left;
+        padding-left:17px;
+        width:20%;
+        min-width:80px;
     }
     .klient-companyName {
         text-align:left;
-	width:25%;
-	padding-left:17px;
+        width:25%;
+        padding-left:17px;
         min-width: 100px;
 
     }
     .numer {
-        
+
         text-align: center;
         width: 24px;
         max-width: 24px;
         min-width: 24px;
 
     }
-     .numer-header {
+    .numer-header {
         text-align: center;
         padding-left: 0px;
         width: 24px;
@@ -546,7 +546,7 @@ input.miejscowosc-field {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1280px) {
-      /* Klienci tabela danych */
+    /* Klienci tabela danych */
 
     .klient-name {
         text-align:left;
@@ -564,22 +564,22 @@ input.miejscowosc-field {
     }
     .klient-phone {
         text-align:left;
-	padding-left:17px;
-	width:8%;
-	max-width:90px;
-	min-width:90px;
+        padding-left:17px;
+        width:8%;
+        max-width:90px;
+        min-width:90px;
 
     }
     .klient-email {
-	text-align:left;
-	padding-left:17px;
-	width:20%;
-	min-width:80px;
+        text-align:left;
+        padding-left:17px;
+        width:20%;
+        min-width:80px;
     }
     .klient-companyName {
         text-align:left;
-	width:25%;
-	padding-left:17px;
+        width:25%;
+        padding-left:17px;
         min-width: 100px;
 
     }
@@ -590,7 +590,7 @@ input.miejscowosc-field {
         min-width: 24px;
 
     }
-       .numer-header {
+    .numer-header {
         text-align: center;
         padding-left: 0px;
         width: 24px;
@@ -709,4 +709,24 @@ div.wydzial-select select {
     border: none;
     box-shadow: none;
     padding: 8px 0 8px 16px;
+}
+.stay-logged {
+    float: left;
+    position: absolute;
+
+}
+.stay-logged input[type="checkbox"] {
+    display:none;
+}
+.stay-logged input[type="checkbox"] + label span {
+    display:inline-block;
+    width:28px;
+    height:22px;
+    margin:0px 7px 0 0;
+    vertical-align:middle;
+    background:url(checkbox.png) left top no-repeat;
+    cursor:pointer;
+}
+.stay-logged input[type="checkbox"]:checked + label span {
+    background:url(checkbox.png) -55px top no-repeat;
 }

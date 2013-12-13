@@ -50,6 +50,11 @@
             </div> <!-- end of top-container -->
             <div class="form-container" ng-hide="newAccount">
                 <form class="formularz" action="/CMS/login.htm" method="POST">
+                    <div class="stay-logged">
+                        <input type="checkbox" id="stay-logged" ng-init="stayLogged = 'false'" ng-model="stayLogged" ng-true-value="true" ng-false-value="false" name="" />
+                        <label for="stay-logged"><span></span>zapamiętaj mnie</label>
+                        <input type="text" ng-hide="true" name="stayLogged" ng-model="stayLogged"/>
+                    </div>
                     <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
 
 
@@ -63,11 +68,11 @@
 
 
                     <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ"/>
+
                     
-                    Pamiętaj mnie: <input type="checkbox" ng-init="stayLogged = 'false'" ng-model="stayLogged" ng-true-value="true" ng-false-value="false"/>
-                    <input type="text" ng-hide="true" name="stayLogged" ng-model="stayLogged"/>
                     
                 </form>
+                
             </div> <!-- end of form-container -->
 
         </div> <!-- end of container -->      
