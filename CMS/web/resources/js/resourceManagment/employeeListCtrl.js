@@ -23,15 +23,15 @@ function EmployeeListCtrl($scope, $http, saveEditDelete) {
         'positionName' : "Stanowisko",
         'pesel' : "PESEL"
     };
-    $scope.columnWidths = {
-        'name' : "10%",
-        'surname': "100px",
-        'departmentName': "5%",
-        'salary': "5px",
-        'country': "15px",
-        'city': "20%",
-        'positionName' : "1px",
-        'pesel' : "1px"
+    $scope.columnClasses = {
+        'name' : "nazwaklasy",
+        'surname': "nazwaklasy",
+        'departmentName': "nazwaklasy",
+        'salary': "nazwaklasy",
+        'country': "nazwaklasy",
+        'city': "nazwaklasy",
+        'positionName' : "nazwaklasy",
+        'pesel' : "nazwaklasy"
     };
     
     $scope.selected = "";
