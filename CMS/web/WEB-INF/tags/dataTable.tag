@@ -28,7 +28,7 @@
     </tr>
     <tbody>
         <tr ng-class="{selectedTableRow: obj == selected}" ng-repeat="obj in objects | filter:searchText | orderBy:orderColumn:reverse">
-            <td>
+            <td class="numer">
                 {{$index + 1}}
             </td>
             <td ng-repeat="attr in attributes" ng-click="$parent.select(obj)">
