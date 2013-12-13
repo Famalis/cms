@@ -9,6 +9,7 @@
                 <table width="100%">
                     <tr>
                         <td>
+                            {{columnClasses}}
                             <t:filterTable/>
                         </td>
                     </tr>

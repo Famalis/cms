@@ -21,7 +21,7 @@
             </th>
             <!--Poprzednia wersja <th ng-class="{selectedTableSort: attr == orderColumn, columnClasses attr != orderColumn}"-->
             <th ng-repeat="attr in attributes" ng-hide="attr.substring(0, 1) == '%'"
-                class = "{columnClasses[attr]}">
+                class = "{{columnClasses[attr]}}">
                 <a ng-click="$parent.orderColumn = attr;
                         $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
             </th>        
