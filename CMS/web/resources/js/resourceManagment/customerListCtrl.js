@@ -20,7 +20,14 @@ function CustomerListCtrl($scope, $http, saveEditDelete) {
         'email': "Email",
         'companyName': "Firma"
     };
-   
+    $scope.columnClasses = {
+        'name' : "klient-name",
+        'surname': "klient-surname",
+        'phone': "klient-phone",
+        'email': "klient-email",
+        'companyName': "klient-companyName"
+    }
+        
     $scope.get = saveEditDelete.get($http, '/CMS/customerList/customers.htm', $scope);
     var loadDataPromise = $scope.get;
 

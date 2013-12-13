@@ -5,17 +5,9 @@
     <jsp:body>
         <script src="/CMS/resources/js/configuration/filetListCtrl.js"></script>
         <div ng-controller="FileListCtrl">  
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+          
                         <t:dataTable/>
-                    </td>
-                </tr>                
+                               
                 <tr ng-show="selected != ''">
                     <td>                        
                         <form action="reportList/download.htm">

@@ -1,8 +1,4 @@
- body {
-     font-family:"Times New Roman";
- }
-
-.genericTable {
+/*.genericTable {
     width : 100%;
     border: 1px solid;
     border-collapse: collapse;
@@ -15,17 +11,14 @@
     font-weight: bold;
     border: 1px solid;
 }
-
+*/
 .selectedTableSort {
     color: activecaption;    
 }
 
 .selectedTableRow {
-    background-color: lightblue;    
-}
-
-.genericTableHeader {
-    color: black;
+    background-color: #f9f9f9;
+    font-weight: 700;
 }
 .error {
     color: red;

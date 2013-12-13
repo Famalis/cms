@@ -5,26 +5,16 @@
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/fileListCtrl.js"></script>
         <div ng-controller="FileListCtrl">  
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+           
                         <t:dataTable/>
-                    </td>
-                </tr>
-                <tr ng-show="selected">
+                  
+                <div ng-show="selected">
                     <td>
                         <form action="fileList/download.htm">
                             <input ng-hide="true" type="text" name="id" value="{{selected.id}}">
                             <input type="submit" value="Pobierz {{selected.name}}"/>
                         </form>
-                    </td>
-                </tr>
-            </table>
+                </div>
         </div>
     </jsp:body>
 </t:genericTemplate>

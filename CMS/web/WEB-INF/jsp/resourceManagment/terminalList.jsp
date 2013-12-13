@@ -5,24 +5,13 @@
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/terminalListCtrl.js"></script>
         <div ng-controller="TerminalListCtrl">  
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            
                         <t:dataTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                
                         <t:jsonOperations/>
-                    </td>
-                </tr>
-                <tr ng-show="editMode">
-                    <td>
+                  
+                        <div ng-show="editMode">
+                    
                         <table class="genericTable">
                             <tr>
                                 <td>
@@ -30,10 +19,10 @@
                                 </td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
-                <tr ng-show="selected">
-                    <td>
+                    
+                        </div>
+                        <div ng-show="selected">
+                    
                         <table class="genericTable">                            
                             <tr ng-show="size(selected.timestamps) == 0">
                                 <td colspan="2">
@@ -58,10 +47,9 @@
                                 </td>
                             </tr>
                             </tbody>
+                        
                         </table>
-                    </td>
-                </tr>
-            </table>
+                   
         </div>
     </jsp:body>
 </t:genericTemplate>

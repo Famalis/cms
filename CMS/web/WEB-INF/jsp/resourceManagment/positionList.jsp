@@ -5,23 +5,12 @@
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/positionListCtrl.js"></script>
         <div ng-controller="PositionListCtrl">  
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+         
                         <t:dataTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                   
                         <t:jsonOperations/>
-                    </td>
-                </tr>
-                <tr ng-show="editMode">
+                  
+                <div ng-show="editMode">
                     <td>
                         <table class="genericTable">
                             <tr>
@@ -33,9 +22,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
-            </table>
+                </div>
         </div>
     </jsp:body>
 </t:genericTemplate>

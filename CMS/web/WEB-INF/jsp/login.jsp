@@ -9,25 +9,15 @@
 <t:genericTemplate>
     <jsp:body>
         <c:if test="${user.name != null}">
-            <p>
-                Zalogowany jako ${user.login}
-            </p>
-            <table>
-                <tr>
-                    <td>
+            
+            
                         <div ng-include="getPhoto.htm">
                             
                         </div>
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>
-                        <form action="/CMS/logout.htm" method="POST">
-                            <input type="submit" name="logoutButton" value="Wyloguj"/>
-                        </form>
+                      
                         <form action="/CMS/bgcolor.htm" method="GET">
                             Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
                             <input type="submit" name="bgcolorButton"/>
@@ -42,7 +32,7 @@
             </table>
         </c:if>
         <h2>
-            ${helloUser}
+           
             ${error}
         </h2>
         <c:if test="${user.name == null}">

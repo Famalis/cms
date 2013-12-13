@@ -12,24 +12,14 @@
         <script src="/CMS/resources/js/resourceManagment/contractListCtrl.js"></script>
         <form name="myForm">
             <div ng-controller="ContractListCtrl">  
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <t:filterTable/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                
                             <t:dataTable/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                      
                             <t:jsonOperations/>
-                        </td>
-                    </tr>
-                    <tr ng-show="editMode">
-                        <td>
+                     
+                    
+                            <div ng-show="editMode">
+                      
                             <table class="genericTable">
                                 <tr>
                                     <td>
@@ -53,9 +43,9 @@
                                     </td>
                                 </tr>
                             </table>
-                        </td>
-                    </tr>
-                </table>
+                        
+                   
+                            </div>
             </div>
         </form>
     </jsp:body>

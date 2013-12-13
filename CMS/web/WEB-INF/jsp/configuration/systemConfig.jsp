@@ -5,23 +5,11 @@
     <jsp:body>
         <script src="/CMS/resources/js/configuration/systemConfigCtrl.js"></script>
         <div ng-controller="SystemConfigCtrl"> 
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+         
                         <t:dataTable/>
-                    </td>
-                </tr>           
-                <tr>
-                    <td>
+                   
                         <t:jsonOperations/>
-                    </td>
-                </tr>
-            </table>
+                
             <table ng-show="editMode" class="genericTable">
                 <tr>
                     <td>

@@ -11,15 +11,11 @@
     <jsp:body>
         <script src="/CMS/resources/js/configuration/userListCtrl.js"></script>
         <div ng-controller="UserListCtrl">  
-            <t:filterTable/>
+        
             <t:dataTable/>
-            <table>
-                <tr>
-                    <td>
+            
                         <t:jsonOperations/>
-                    </td>
-                </tr>
-            </table>
+                
             <table>
                 <tr>
                     <td>

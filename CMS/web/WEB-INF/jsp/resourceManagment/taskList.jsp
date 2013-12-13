@@ -5,19 +5,11 @@
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/taskListCtrl.js"></script>
         <div ng-controller="TaskListCtrl">  
-            <table width="100%">
-                <tr>
-                    <td>
-                        <t:filterTable/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            
                         <t:dataTable/>
-                    </td>
-                </tr>
-                <tr ng-show="editMode">
-                    <td>
+                    
+                <div ng-show="editMode">
+                    
                         <table class="genericTable">
                             <tr>
                                 <td>
@@ -35,9 +27,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
-            </table>
+                </div>
         </div>
     </jsp:body>
 </t:genericTemplate>
