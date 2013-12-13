@@ -6,25 +6,17 @@
         <script src="/CMS/resources/js/resourceManagment/employeeListCtrl.js"></script>
         <form name="myForm">
             <div ng-controller="EmployeeListCtrl">  
-                <table width="100%">
-                    <tr>
-                        <td>
-                            {{columnClasses}}
-                            <t:filterTable/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+              
+           
                             <t:dataTable/>
-                        </td>
-                    </tr>
-                    <tr ng-show="checkEditPrivileges()">
-                        <td>
+                    
+                            <!--<div ng-show="checkEditPrivileges()">-->
+                        
                             <t:jsonOperations/>
-                        </td>
-                    </tr>
-                    <tr ng-show="editMode && checkEditPrivileges()">
-                        <td>
+                        
+                           
+                            <div ng-show="editMode && checkEditPrivileges()">
+                       
                             <table class="genericTable">
                                 <tr>
                                     <td>
@@ -84,9 +76,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </td>
-                    </tr>
-                </table>
+                    </div>
             </div>
         </form>
     </jsp:body>
