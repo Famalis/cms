@@ -13,22 +13,21 @@
 <script>
 
 </script>
-<table width="100%" ><!--Poprzednia wersja class="genericTable"-->
-    <thead>
-        <tr>
-            <th width="2px">
-                Lp.
-            </th>
-            <!--Poprzednia wersja <th ng-class="{selectedTableSort: attr == orderColumn, columnClasses attr != orderColumn}"-->
-            <th ng-repeat="attr in attributes" ng-hide="attr.substring(0, 1) == '%'"
+<table class="genericTable">
+    <tr class="table-header">
+
+        <th class="numer">
+            #
+        </th>
+       <th ng-repeat="attr in attributes" ng-hide="attr.substring(0, 1) == '%'"
                 class = "{{columnClasses[attr]}}">
                 <a ng-click="$parent.orderColumn = attr;
                         $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
-            </th>        
-        </tr>
-    </thead>
+            </th>   
+        
+    </tr>
     <tbody>
-        <tr ng-class="{selectedTableRow: obj == selected}" ng-repeat="obj in objects| filter:searchText | orderBy:orderColumn:reverse">
+        <tr ng-class="{selectedTableRow: obj == selected}" ng-repeat="obj in objects | filter:searchText | orderBy:orderColumn:reverse">
             <td>
                 {{$index + 1}}
             </td>
