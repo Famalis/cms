@@ -84,7 +84,7 @@ public class LoginController extends BaseController {
 
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @RequestMapping(value = "/logout")
     public String logout(HttpSession session, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("logoout");
         Cookie nullUser = new Cookie("user", null);

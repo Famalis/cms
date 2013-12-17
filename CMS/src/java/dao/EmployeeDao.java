@@ -24,14 +24,22 @@ public class EmployeeDao extends GenericDao<Employee>{
         super(Employee.class);
     }
     
-    public List<EmployeeDTO> getEmployeeDTOList() {
-        return getEmployeeDTOList(new HashMap<String, List<String>>());
-    }
     
     /**
      * Metoda pobiera dane na temat pracowników i zwraca w formie listy
      * EmployeeDTO
      * 
+     * @return 
+     */
+    public List<EmployeeDTO> getEmployeeDTOList() {
+        return getEmployeeDTOList(new HashMap<String, List<String>>());
+    }
+    /**
+     * Metoda pobiera dane na temat pracowników i zwraca w formie listy
+     * EmployeeDTO. Parametry wyszukiwania podawane są w formie mapy, gdzie klucz
+     * to nazwa pola, a wartość klucza jest lista wartości, jakie dane pole może
+     * przyjąć.
+     * @param params
      * @return 
      */
     public List<EmployeeDTO> getEmployeeDTOList(Map<String, List<String>> params) {

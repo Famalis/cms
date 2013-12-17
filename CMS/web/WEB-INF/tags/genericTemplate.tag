@@ -63,15 +63,10 @@
                 var $countdown = $("#dialog-countdown");
 
                 $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
-                    idleAfter: 600,
+                    idleAfter: 10,
                     pollingInterval: 2,
                     onTimeout: function() {
-                        $.ajax({
-                            type: "POST",
-                            cache: false,
-                            url: "/CMS/logout.htm"
-                        });
-                        window.location = "/CMS/home.htm";
+                        window.location = "/CMS/logout.htm";
                     },
                     onIdle: function() {
                         $(this).dialog("open");
