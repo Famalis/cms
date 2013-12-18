@@ -63,7 +63,7 @@
                 var $countdown = $("#dialog-countdown");
 
                 $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
-                    idleAfter: 10,
+                    idleAfter: 600,
                     pollingInterval: 2,
                     onTimeout: function() {
                         window.location = "/CMS/logout.htm";
