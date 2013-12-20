@@ -1,4 +1,10 @@
-function FileListCtrl($scope, $http, saveEditDelete) {
+function FileListCtrl($scope, $http, saveEditDelete, pagination) {
+    
+    $scope.indexOnPage = pagination.indexOnPage($scope);
+    $scope.pageMin = 0;
+    $scope.pageMax = 9;
+    $scope.checkMax = pagination.pageMaxSmallerThenSize($scope);
+    
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "files";
     $scope.attributes = [];

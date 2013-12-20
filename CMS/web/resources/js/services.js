@@ -1,6 +1,6 @@
-var saveEditDeleteModule = angular.module('cms', []);
+var cmsModule = angular.module('cms', []);
 
-saveEditDeleteModule.factory('saveEditDelete', function() {
+cmsModule.factory('saveEditDelete', function() {
     return {
         save: function($http, link, $scope) {
             return $http.post(
@@ -41,6 +41,31 @@ saveEditDeleteModule.factory('saveEditDelete', function() {
             }).error(function(error) {
 
             });
+        }
+    };
+});
+
+cmsModule.factory('pagination', function() {
+    return {
+        indexOnPage: function($scope) {
+            return function(index)
+            {
+                if (index <= $scope.pageMax && index >= $scope.pageMin) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+        },
+        
+        pageMaxSmallerThenSize: function($scope) {
+          return function() {
+              if($scope.pageMax < $scope[$scope.objectsName].length) {
+                  return true;
+              } else {
+                  return false;
+              }
+          };  
         }
     };
 });
