@@ -238,7 +238,7 @@
         <!--<div>          
             <table style="width: 100%; height: 100%">
                 <tr>
-                    <td colspan="2" style="height: 1%; background-color: ${user.bgcolor}">
+                    <td colspan="2" style="height: 1%; background-color: n12">
                         <div id="pageheader">
                             <p style="text-align: center">Easy HR</p>
                             <jsp:invoke fragment="header"/>
@@ -246,7 +246,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2" style="vertical-align: top; width: 15%; background-color: ${user.bgcolor}">
+                    <td rowspan="2" style="vertical-align: top; width: 15%; background-color: n12">
                         <div id="menu">
                             <a href="/CMS/login.htm">Zarządzanie kontem</a><br/>  
 <<<<<<< HEAD
@@ -323,7 +323,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="height: 1%; background-color: ${user.bgcolor}">
+                    <td style="height: 1%; background-color: n12">
                         <div id="pagefooter">
                             <p style="text-align: right">Powered by Spring MVC | JSP | AngularJS | MySQL</p>
                             <jsp:invoke fragment="footer"/>

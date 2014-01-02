@@ -17,7 +17,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th style="text-align :left; background-color: ${user.bgcolor}" ng-click="uploadFile = !uploadFile"/>
+                    <th style="text-align :left; " ng-click="uploadFile = !uploadFile"/>
                         Dodawanie pliku (klik)
                     </th>
                 </tr>

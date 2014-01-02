@@ -21,14 +21,13 @@ import model.UserConfiguration;
 public class UserDTO implements Serializable {
 
     private Long id;
-    private String name, surname, bgcolor, groupId, login, password, groupName, employeeId;
+    private String name, surname, groupId, login, password, groupName, employeeId;
     private List<String> privilegeKeyCodes = new ArrayList<>();
 
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
-        this.bgcolor = userConfig.getBackgroundColor();
         this.groupId = userConfig.getGroupId();
         this.login = user.getLogin();
         if (user.getEmployeeId() != null) {
@@ -48,7 +47,7 @@ public class UserDTO implements Serializable {
     }
 
     public UserDTO() {
-        this.bgcolor = "lightgrey";
+        //this.bgcolor = "lightgrey";
     }
 
     public String getGroupName() {
@@ -98,15 +97,7 @@ public class UserDTO implements Serializable {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    public String getBgcolor() {
-        return bgcolor;
-    }
-
-    public void setBgcolor(String bgcolor) {
-        this.bgcolor = bgcolor;
-    }
-
+    
     public String getGroupId() {
         return groupId;
     }

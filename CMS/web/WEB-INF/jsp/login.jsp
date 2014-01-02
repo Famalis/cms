@@ -18,10 +18,6 @@
                 <tr>
                     <td>
                       
-                        <form action="/CMS/bgcolor.htm" method="GET">
-                            Kolor tła: <input type="text" value="${user.bgcolor}" name="color"/>
-                            <input type="submit" name="bgcolorButton"/>
-                        </form>
                         <form action="/CMS/uploadPhoto.htm" method="POST"
                                           enctype="multipart/form-data">
                             Plik: <input type="file" name="file"/>

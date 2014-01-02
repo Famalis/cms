@@ -96,20 +96,6 @@ public class LoginController extends BaseController {
 
     }
 
-    @RequestMapping(value = "/bgcolor", method = RequestMethod.GET)
-    public String bgcolorChange(ModelMap model, @RequestParam("color") String color) {
-
-        //currentUser = new User();
-        currentUserDto.setBgcolor(color);
-        UserConfiguration config = new UserConfiguration();
-        config.loadObject("userId=" + currentUserDto.getId());
-        config.setBackgroundColor(color);
-        config.update();
-        model.put("userConfig", this.currentUserDto);
-        return "login";
-
-    }
-
     @RequestMapping(value = "/uploadPhoto", method = RequestMethod.POST)
     public String uploadPhoto(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         try {
