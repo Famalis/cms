@@ -51,12 +51,12 @@
     
         <input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
         <div class="pageMax">
-        <input type="button" class="dalej-button" name="dalejButton" value="ZALOGUJ"/>    
+        <input ng-show="checkMax()" type="button" class="dalej-button" ng-click="pageMax = pageMax + 10;
+                pageMin = pageMin + 10" value="DALEJ"/>
+        <input ng-show="pageMin > 0" type="button" class="dalej-button" ng-click="pageMax = pageMax - 10;
+                pageMin = pageMin - 10" value="WSTECZ"/>
             
-    <input ng-show="checkMax()" type="button" ng-click="pageMax = pageMax + 10;
-                pageMin = pageMin + 10" value="Dalej"/>
-    <input ng-show="pageMin > 0" type="button" ng-click="pageMax = pageMax - 10;
-                pageMin = pageMin - 10" value="Wstecz"/>
+
     Pokazywanie wpisów od {{pageMin + 1}} {{pageMax + 1}}
     </div>
 </div>

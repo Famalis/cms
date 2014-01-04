@@ -12,6 +12,7 @@
         <link href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
         <link href="/CMS/resources/css/hr-full.css" rel="stylesheet" type="text/css">
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
         <title>HR System</title>       
     </head>
     <body>
