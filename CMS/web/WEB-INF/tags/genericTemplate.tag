@@ -158,7 +158,7 @@
                                                 user.privilegeKeyCodes.contains('ReportsPrint')}">
                               <a href="/CMS/reportPrint.htm"><li id="nav5">Wydruk raportów</li></a>
                                   </c:if>
-                        <li id="nav6">Konfiguracja systemu</li>
+                        <c:if test="${user.privilegeKeyCodes.contains('all')}"><li id="nav6">Konfiguracja systemu</li></c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageGroups')}">
                             <a href="/CMS/groupList.htm"><li id="nav9">Grupy</li></a>

@@ -22,7 +22,7 @@
         <th ng-repeat="attr in attributes" ng-hide="attr.substring(0, 1) == '%'"
             class = "{{columnClasses[attr]}}">
             <a ng-click="$parent.orderColumn = attr;
-                    $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
+                        $parent.reverse = !$parent.reverse">{{$parent.columns[attr]}}</a>
         </th>   
 
     </tr>
@@ -36,22 +36,27 @@
                 {{obj[attr]}}
             </td>
         </tr>
-        </tbody>
+    </tbody>
 
 </table>
-  <div class="footer">
-          <input type="button" ng-show="editMode" ng-click="cancel()" value="Anuluj">
+<div class="footer">
+    <input type="button" ng-show="editMode" ng-click="cancel()" value="Anuluj">
 
-<input type="button" ng-show="!selected && !editMode" ng-click="create()" value="Dodaj">
-<input type="button" ng-show="selected && !editMode" ng-click="edit()" value="Edytuj">
-<input type="button" ng-show="editMode" ng-click="save()" value="Zapisz">
+    <input type="button" ng-show="!selected && !editMode" ng-click="create()" value="Dodaj">
+    <input type="button" ng-show="selected && !editMode" ng-click="edit()" value="Edytuj">
+    <input type="button" ng-show="editMode" ng-click="save()" value="Zapisz">
 
-<input type="button" ng-show="selected.id != undefined && editMode" ng-click="delete()" value="Usuń">
+    <input type="button" ng-show="selected.id != undefined && editMode" ng-click="delete()" value="Usuń">
 
-<input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
-        <input ng-show="checkMax()" type="button" ng-click="pageMax = pageMax + 10;
-                    pageMin = pageMin + 10" value="Dalej"/>
-                <input ng-show="pageMin > 0" type="button" ng-click="pageMax = pageMax - 10;
-                    pageMin = pageMin - 10" value="Wstecz"/>
-                Pokazywanie wpisów od {{pageMin+1}} {{pageMax+1}}
-  </div>
+    
+        <input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
+        <div class="pageMax">
+        <input type="button" class="dalej-button" name="dalejButton" value="ZALOGUJ"/>    
+            
+    <input ng-show="checkMax()" type="button" ng-click="pageMax = pageMax + 10;
+                pageMin = pageMin + 10" value="Dalej"/>
+    <input ng-show="pageMin > 0" type="button" ng-click="pageMax = pageMax - 10;
+                pageMin = pageMin - 10" value="Wstecz"/>
+    Pokazywanie wpisów od {{pageMin + 1}} {{pageMax + 1}}
+    </div>
+</div>
