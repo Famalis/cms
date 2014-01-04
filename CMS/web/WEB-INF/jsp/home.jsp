@@ -11,7 +11,7 @@
 
         <link rel="icon" href="/images/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'> 
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,600,700,300,800,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="/CMS/resources/js/jquery-2.0.3.min.js"></script>
         <link href="/CMS/resources/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
