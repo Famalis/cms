@@ -80,7 +80,8 @@ public class PositionListController extends BaseController{
             actualPos.loadObject("id="+dto.getId());
             EmployeeDao empDao = new EmployeeDao();
             
-            empDao.deleteAllMatching("positionId", dto.getId()+"");
+            empDao.updateFieldForAllElementsWithId("positionId", dto.getId()+"", 
+                    "positionId", "-1");
             actualPos.delete();
         }
 
