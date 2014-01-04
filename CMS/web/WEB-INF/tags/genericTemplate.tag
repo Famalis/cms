@@ -11,6 +11,7 @@
         <style type="text/css">a.ui-dialog-titlebar-close { display:none }</style>
         <link href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
         <link href="/CMS/resources/css/hr-full.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'> 
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
    
         <title>HR System</title>       
