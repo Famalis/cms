@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="acc-config">
-                    <div class="user-img"><img src="/CMS/PhotoShowServlet?empId=${user.employeeId}" width="70" height="70"  alt=""/></div>
+                    <div class="user-img"><img src="/CMS/PhotoShowServlet?empId=${user.employeeId}" style="border: 3px solid #6e7884;border-radius: 50%" width="64" height="64"  alt=""/></div>
 
                     <div class="user-welcome">witaj<br>
                         <span style="font-weight:700;">${user.name} ${user.surname}</span>
