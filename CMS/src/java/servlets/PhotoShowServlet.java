@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.SystemFileDao;
+import model.Employee;
 import model.SystemFile;
 import utils.HexConverter;
 
@@ -41,11 +42,14 @@ public class PhotoShowServlet extends HttpServlet {
         String empId = request.getParameter("empId");
         try {
             SystemFile photo = null;
-            if (pesel.length() > 0) {
+            if (pesel != null) {
                 photo = dao.findByField("name", pesel + "Photo").get(0);
-            } else if (empId.length()>0){
-                EmployeeDao employeeDao = new EmployeeDao();                
-                photo = dao.findByField("name", employeeDao.findById(empId).get(0) + "Photo").get(0);
+            } else if (empId != null){
+                EmployeeDao employeeDao = new EmployeeDao();           
+                Employee emp = employeeDao.findById(empId).get(0);
+                String ssss = emp.getPESEL()+"Photo";
+                int a = 11;
+                photo = dao.findByField("name",emp.getPESEL() + "Photo").get(0);
             }
 
             byte barray[] = HexConverter.toBytesFromHex(photo.getHashCode());
