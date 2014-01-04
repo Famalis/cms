@@ -31,7 +31,7 @@ import utils.Utils;
 public class ContractListController extends BaseController{
 
     public ContractListController() {
-        super("all","ManageContracts");
+        super("all","ViewContracts");
     }
     
     @RequestMapping("/contractList")

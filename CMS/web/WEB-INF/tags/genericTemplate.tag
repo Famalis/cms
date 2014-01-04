@@ -124,7 +124,7 @@
                     <ul>
 
                         <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                      user.privilegeKeyCodes.contains('ManageCustomers')}">
+                                      user.privilegeKeyCodes.contains('ViewCustomers')}">
                               <a href="/CMS/customerList.htm"><li id="nav0">Klienci</li></a>
                                   </c:if>
                                   <c:if test="${user.privilegeKeyCodes.contains('all') || 
@@ -148,7 +148,7 @@
                                   </c:if>
 
                         <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                      user.privilegeKeyCodes.contains('ManageContracts')}">
+                                      user.privilegeKeyCodes.contains('ViewContracts')}">
                               <a href="/CMS/contractList.htm"><li id="nav12">Umowy</li></a>
                                   </c:if>
 
