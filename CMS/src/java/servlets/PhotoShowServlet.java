@@ -13,41 +13,24 @@ import model.Employee;
 import model.SystemFile;
 import utils.HexConverter;
 
-/**
- * Servlet implementation class FileCounter
- */
 public class PhotoShowServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
-    int count;
-    private SystemFileDao dao;
-
-    @Override
-    public void init() throws ServletException {
-        dao = new SystemFileDao();
-        try {
-            count = dao.select().size();
-        } catch (Exception e) {
-            getServletContext().log("An exception occurred in FileCounter", e);
-            throw new ServletException("An exception occurred in FileCounter"
-                    + e.getMessage());
-        }
-    }
 
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String pesel = request.getParameter("pesel");
         String empId = request.getParameter("empId");
+        SystemFileDao fileDao = new SystemFileDao();
         try {
             SystemFile photo = null;
             if (pesel != null) {
-                photo = dao.findByField("name", pesel + "Photo").get(0);
+                photo = fileDao.findByField("name", pesel + "Photo").get(0);
             } else if (empId != null){
                 EmployeeDao employeeDao = new EmployeeDao();           
                 Employee emp = employeeDao.findById(empId).get(0);
-                photo = dao.findByField("name",emp.getPESEL() + "Photo").get(0);
+                photo = fileDao.findByField("name",emp.getPESEL() + "Photo").get(0);
             }
 
             byte barray[] = HexConverter.toBytesFromHex(photo.getHashCode());
@@ -62,11 +45,6 @@ public class PhotoShowServlet extends HttpServlet {
         } catch (NullPointerException nullEx) {
             nullEx.printStackTrace();
         }
-    }
-
-    @Override
-    public void destroy() {
-        super.destroy();
     }
 
 }
