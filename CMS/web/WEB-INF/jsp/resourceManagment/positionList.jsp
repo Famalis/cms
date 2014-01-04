@@ -9,7 +9,7 @@
                         <t:dataTable/>
                    
                         <t:jsonOperations/>
-                  
+                        
                 <div ng-show="editMode">
                     <td>
                         <table class="genericTable">
@@ -19,10 +19,6 @@
                                 </td>
                                 <td>
                                     Opis: <input type="text" ng-model="selected.description"/>
-                                </td>
-                                <td>
-                                    {{positions.length}}
-                                    {{ble}}
                                 </td>
                             </tr>
                         </table>
