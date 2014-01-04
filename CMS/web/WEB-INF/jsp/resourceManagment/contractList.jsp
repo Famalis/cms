@@ -23,17 +23,21 @@
                             <table class="genericTable">
                                 <tr>
                                     <td>
-                                        Pracownik: {{selected.employeeId}}
+                                        Pracownik:
                                         <select ng-model="selected.employeeId">
-                                            <option ng-repeat="employee in employees" value="{{employee.id}}">
-                                                {{employee.name}} {{employee.surname}}
-                                            </option>
-                                        </select>
+                                        <option ng-repeat="employee in employees"
+                                                value="{{employee.id}}" 
+                                                ng-selected="selected.employeeId == employee.id">
+                                            {{employee.surname}} {{employee.name}}
+                                        </option>
+                            </select>
                                     </td>
                                     <td>
-                                        Klient: {{selected.customerId}}
+                                        Klient:
                                         <select ng-model="selected.customerId">
-                                            <option ng-repeat="customer in customers" value="{{customer.id}}">
+                                            <option ng-repeat="customer in customers" 
+                                                    value="{{customer.id}}"
+                                                    ng-selected="selected.customerId == customer.id">
                                                 {{customer.name}} {{customer.surname}}
                                             </option>
                                         </select>

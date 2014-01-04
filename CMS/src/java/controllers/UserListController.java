@@ -58,7 +58,6 @@ public class UserListController extends BaseController{
             UserConfiguration userConfig = new UserConfiguration();
             userConfig.loadObject("userId="+userDto.getId());
             userConfig.setGroupId(userDto.getGroupId());
-            userConfig.setBackgroundColor(userDto.getBgcolor());
             userConfig.update();
         }
         

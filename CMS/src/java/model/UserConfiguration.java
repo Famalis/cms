@@ -13,9 +13,7 @@ import model.general.DatabaseObject;
 public class UserConfiguration extends DatabaseObject{
     
     private String userId;
-    private String backgroundColor;
     private String groupId;
-    private String photoHash;
 
     public String getUserId() {
         return userId;
@@ -24,23 +22,7 @@ public class UserConfiguration extends DatabaseObject{
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
-    public String getPhotoHash() {
-        return photoHash;
-    }
-
-    public void setPhotoHash(String photoHash) {
-        this.photoHash = photoHash;
-    }
     
-    public String getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setBackgroundColor(String backgroundColor) {
-        this.backgroundColor = backgroundColor;
-    }
-
     public String getGroupId() {
         return groupId;
     }
