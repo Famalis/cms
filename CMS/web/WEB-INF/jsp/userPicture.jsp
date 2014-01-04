@@ -8,4 +8,4 @@
 <h1>
     Strona ze zdjęciem
 </h1>
-<img src="${photo}" alter="Brak zdjęcia"/>
+<img src="/CMS/PhotoServletShow" alter="Brak zdjęcia"/>

@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.EmployeeDao;
 import dao.SystemConfigurationDao;
 import dto.UserDTO;
 import java.io.File;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Employee;
 import model.SystemConfiguration;
 import model.SystemFile;
 import model.User;
@@ -113,10 +115,12 @@ public class LoginController extends BaseController {
             SystemFile r = new SystemFile();
             UserDTO user = (UserDTO) request.getSession().getAttribute("user");
             System.out.println(items.get(0).getContentType() + " " + item.getSize());
-            if (r.loadObject("name='" + user.getName() + "Photo'")) {
+            EmployeeDao empDao = new EmployeeDao();
+            Employee emp = empDao.findById(user.getEmployeeId()).get(0);
+            if (r.loadObject("name='" + emp.getPESEL() + "Photo'")) {
 
             } else {
-                r.setName(user.getName() + "Photo");
+                r.setName(emp.getPESEL() + "Photo");
                 r.setMimeType(item.getContentType());
                 r.setDescription("Zdjęcie użytkownika "+user.getLogin());
             }
