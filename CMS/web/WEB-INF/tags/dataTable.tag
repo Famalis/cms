@@ -47,16 +47,18 @@
     <input type="button" ng-show="editMode" ng-click="save()" value="Zapisz">
 
     <input type="button" ng-show="selected.id != undefined && editMode" ng-click="delete()" value="Usuń">
-
+    <input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
     
-        <input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
         <div class="pageMax">
+        <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 10;
+                pageMin = pageMin - 10" value="WSTECZ"/>
         <input ng-show="checkMax()" type="button" class="dalej-button" ng-click="pageMax = pageMax + 10;
                 pageMin = pageMin + 10" value="DALEJ"/>
-        <input ng-show="pageMin > 0" type="button" class="dalej-button" ng-click="pageMax = pageMax - 10;
-                pageMin = pageMin - 10" value="WSTECZ"/>
-            
-
-    Pokazywanie wpisów od {{pageMin + 1}} {{pageMax + 1}}
-    </div>
+        
+        </div> 
+        <div class="pageMax-tekst">
+        wyświetlane wpisy<br>
+        <span style="font-weight:700;float: right;">{{pageMin + 1}}-{{pageMax + 1}}</span>
+        </div>
+    
 </div>
