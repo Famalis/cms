@@ -47,8 +47,6 @@ public class PhotoShowServlet extends HttpServlet {
             } else if (empId != null){
                 EmployeeDao employeeDao = new EmployeeDao();           
                 Employee emp = employeeDao.findById(empId).get(0);
-                String ssss = emp.getPESEL()+"Photo";
-                int a = 11;
                 photo = dao.findByField("name",emp.getPESEL() + "Photo").get(0);
             }
 
