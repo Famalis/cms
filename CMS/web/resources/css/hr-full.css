@@ -743,14 +743,20 @@ bottom:0;
 }
 .pageMax {
     float: right;
-    color: #FFF;
-    padding-right: 300px;
+    
+    padding-right: 292px;
+}
+.pageMax-tekst {
+    color: #9fa3a7;
+    float:right;
+    padding-right: 20px;
+    padding-top: 14px;
 }
 input.dalej-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 39px 0 310px;
+  margin: 19px 20px 0 0px;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
@@ -768,4 +774,27 @@ input.dalej-button {
 
 input.dalej-button:hover, input.dalej-button:active {
   background-color: #ef8e71;
+}
+input.wstecz-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 0px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #7d8288;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.wstecz-button:hover, input.wstecz-button:active {
+  background-color: #8a8f95;
 }
