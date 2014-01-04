@@ -84,7 +84,7 @@
         <div class="container">
             <div class="top-green"></div>
             <div class="top-nav">
-                <div class="logo"></div>
+                <a href="/CMS/login.htm"><div class="logo"></div></a>
 
                 <div class="logout-button">
                     <form action="/CMS/logout.htm" method="POST">

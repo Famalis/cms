@@ -744,7 +744,7 @@ bottom:0;
 .pageMax {
     float: right;
     
-    padding-right: 292px;
+    padding-right: 307px;
 }
 .pageMax-tekst {
     color: #9fa3a7;
@@ -756,7 +756,7 @@ input.dalej-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 20px 0 0px;
+  margin: 19px 5px 0 0px;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
