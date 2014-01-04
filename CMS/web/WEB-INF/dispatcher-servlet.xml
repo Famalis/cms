@@ -50,6 +50,7 @@
                 <prop key="positionList.htm">positionListrController</prop>
                 <prop key="positionList/positions.htm">positionListrController</prop>
                 <prop key="positionList/save/:object.htm">positionListrController</prop>  
+                <prop key="positionList/delete/:object.htm">positionListrController</prop>
                           
                 <prop key="privilegeKeyList.htm">privilegeKeyListController</prop>
                 <prop key="privilegeKeyList/privKeys.htm">privilegeKeyListController</prop>

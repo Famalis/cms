@@ -60,10 +60,10 @@ cmsModule.factory('pagination', function() {
         
         pageMaxSmallerThenSize: function($scope) {
           return function() {
-              if($scope.pageMax < $scope[$scope.objectsName].length) {
-                  return true;
-              } else {
+              if($scope.pageMax > $scope[$scope.objectsName].length) {
                   return false;
+              } else {
+                  return true;
               }
           };  
         }

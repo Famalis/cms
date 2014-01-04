@@ -20,6 +20,10 @@
                                 <td>
                                     Opis: <input type="text" ng-model="selected.description"/>
                                 </td>
+                                <td>
+                                    {{positions.length}}
+                                    {{ble}}
+                                </td>
                             </tr>
                         </table>
                 </div>

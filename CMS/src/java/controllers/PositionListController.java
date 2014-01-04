@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.EmployeeDao;
 import dao.PositionDao;
 import dto.PositionDTO;
 import java.util.HashMap;
@@ -66,5 +67,22 @@ public class PositionListController extends BaseController{
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("positions", positionDao.select());
         return Utils.createResponseEntity(session, initData);
+    }
+    
+    @RequestMapping(value = "/positionList/delete/:object", method = RequestMethod.POST)
+    public @ResponseBody
+    void deleteData(@RequestBody String object) {
+        System.out.println("delete");
+        PositionDTO dto = (PositionDTO) Utils.convertJSONStringToObject(object, "object", PositionDTO.class);
+        if (dto != null) {
+            PositionDao posDao = new PositionDao();
+            Position actualPos = new Position();
+            actualPos.loadObject("id="+dto.getId());
+            EmployeeDao empDao = new EmployeeDao();
+            
+            empDao.deleteAllMatching("positionId", dto.getId()+"");
+            actualPos.delete();
+        }
+
     }
 }
