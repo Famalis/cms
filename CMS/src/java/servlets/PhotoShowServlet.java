@@ -1,16 +1,14 @@
 package servlets;
 
+import dao.EmployeeDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.SystemFileDao;
-import java.sql.ResultSet;
 import model.SystemFile;
 import utils.HexConverter;
 
@@ -40,18 +38,25 @@ public class PhotoShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String pesel = request.getParameter("pesel");
+        String empId = request.getParameter("empId");
         try {
-        SystemFile photo = dao.findByField("name", pesel+"Photo").get(0);
-        
-        byte barray[] = HexConverter.toBytesFromHex(photo.getHashCode());        
-        //String get_price = rs.getString(5);
-        response.setContentType("image/gif");
-        response.setContentLength(barray.length);
-        response.getOutputStream().write(barray);
-        //out.println("Price in Rs. " + get_price);
+            SystemFile photo = null;
+            if (pesel.length() > 0) {
+                photo = dao.findByField("name", pesel + "Photo").get(0);
+            } else if (empId.length()>0){
+                EmployeeDao employeeDao = new EmployeeDao();                
+                photo = dao.findByField("name", employeeDao.findById(empId).get(0) + "Photo").get(0);
+            }
 
-        response.getOutputStream().flush();
-        response.getOutputStream().close();
+            byte barray[] = HexConverter.toBytesFromHex(photo.getHashCode());
+            //String get_price = rs.getString(5);
+            response.setContentType("image/gif");
+            response.setContentLength(barray.length);
+            response.getOutputStream().write(barray);
+            //out.println("Price in Rs. " + get_price);
+
+            response.getOutputStream().flush();
+            response.getOutputStream().close();
         } catch (NullPointerException nullEx) {
             nullEx.printStackTrace();
         }
