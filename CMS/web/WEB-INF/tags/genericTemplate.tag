@@ -11,7 +11,9 @@
         <style type="text/css">a.ui-dialog-titlebar-close { display:none }</style>
         <link href="/CMS/resources/css/genericCSS.css" rel="stylesheet" type="text/css">
         <link href="/CMS/resources/css/hr-full.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,600,700,300,800,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+   
         <title>HR System</title>       
     </head>
     <body>
@@ -82,7 +84,7 @@
         <div class="container">
             <div class="top-green"></div>
             <div class="top-nav">
-                <div class="logo"></div>
+                <a href="/CMS/login.htm"><div class="logo"></div></a>
 
                 <div class="logout-button">
                     <form action="/CMS/logout.htm" method="POST">
@@ -91,15 +93,15 @@
                 </div>
 
                 <div class="acc-config">
-                    <div class="user-img"><img src="/CMS/resources/images/photo.png" width="70" height="70"  alt=""/></div>
+                    <div class="user-img"><img src="/CMS/PhotoShowServlet?empId=${user.employeeId}" style="border: 3px solid #6e7884;border-radius: 50%" width="64" height="64"  alt=""/></div>
 
                     <div class="user-welcome">witaj<br>
                         <span style="font-weight:700;">${user.name} ${user.surname}</span>
                     </div>
                     <div class="separator"></div>
-                    <div class="user-edit">edytuj<br>
-                        <a href="/CMS/login.htm"><span style="font-weight:700;">Swój profil</span></a>
-                    </div>
+                    <a href="/CMS/login.htm"><div class="user-edit">edytuj<br>
+                        <span style="font-weight:700;">Swój profil</span>
+                    </div></a>
                 </div>
 
             </div> <!-- end of top-nav -->
@@ -122,7 +124,7 @@
                     <ul>
 
                         <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                      user.privilegeKeyCodes.contains('ManageCustomers')}">
+                                      user.privilegeKeyCodes.contains('ViewCustomers')}">
                               <a href="/CMS/customerList.htm"><li id="nav0">Klienci</li></a>
                                   </c:if>
                                   <c:if test="${user.privilegeKeyCodes.contains('all') || 
@@ -146,7 +148,7 @@
                                   </c:if>
 
                         <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                      user.privilegeKeyCodes.contains('ManageContracts')}">
+                                      user.privilegeKeyCodes.contains('ViewContracts')}">
                               <a href="/CMS/contractList.htm"><li id="nav12">Umowy</li></a>
                                   </c:if>
 
@@ -158,7 +160,7 @@
                                                 user.privilegeKeyCodes.contains('ReportsPrint')}">
                               <a href="/CMS/reportPrint.htm"><li id="nav5">Wydruk raportów</li></a>
                                   </c:if>
-                        <li id="nav6">Konfiguracja systemu</li>
+                        <c:if test="${user.privilegeKeyCodes.contains('all')}"><li id="nav6">Konfiguracja systemu</li></c:if>
                             <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                           user.privilegeKeyCodes.contains('ManageGroups')}">
                             <a href="/CMS/groupList.htm"><li id="nav9">Grupy</li></a>

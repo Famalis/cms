@@ -15,7 +15,13 @@
                 
                             <t:dataTable/>
                       
-                            <t:jsonOperations/>
+                           <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                          user.privilegeKeyCodes.contains('ManageContracts')}">
+
+                  <t:jsonOperations/>
+
+
+            </c:if>
                      
                     
                             <div ng-show="editMode">

@@ -26,7 +26,7 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    <form action="reportList/upload.htm" method="POST"
+                                    <form action="fileListUpload/upload.htm" method="POST"
                                           enctype="multipart/form-data">
                                         Plik: <input type="file" name="file"/>
                                         Typ pliku: <select name="fileExt">

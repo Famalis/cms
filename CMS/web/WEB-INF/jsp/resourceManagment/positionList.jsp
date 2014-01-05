@@ -9,7 +9,7 @@
                         <t:dataTable/>
                    
                         <t:jsonOperations/>
-                  
+                        
                 <div ng-show="editMode">
                     <td>
                         <table class="genericTable">

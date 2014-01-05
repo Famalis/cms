@@ -14,12 +14,12 @@
                                     Nazwisko i imię: ${employee.surname} ${employee.name}
                                 </td>
                                 <td rowspan="4">
-                                    PHOTO HERE
+                                    <img src="/CMS/PhotoShowServlet?pesel=${employee.PESEL}" alt="Brak zdjęcia"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    PESEL: ${employee.PESEL}
+                                    PESEL: ${employee.PESEL}                                    
                                 </td>
                             </tr>
                             <tr>

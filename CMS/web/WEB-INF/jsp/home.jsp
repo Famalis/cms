@@ -4,7 +4,6 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-        <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
         Remove this if you use the .htaccess -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -12,7 +11,7 @@
 
         <link rel="icon" href="/images/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
-
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,600,700,300,800,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="/CMS/resources/js/jquery-2.0.3.min.js"></script>
         <link href="/CMS/resources/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
@@ -50,6 +49,11 @@
             </div> <!-- end of top-container -->
             <div class="form-container" ng-hide="newAccount">
                 <form class="formularz" action="/CMS/login.htm" method="POST">
+                    <div class="stay-logged">
+                        <input type="checkbox" id="stay-logged" ng-init="stayLogged = 'false'" ng-model="stayLogged" ng-true-value="true" ng-false-value="false" name="" />
+                        <label for="stay-logged"><span></span>zapamiętaj mnie</label>
+                        <input type="text" ng-hide="true" name="stayLogged" ng-model="stayLogged"/>
+                    </div>
                     <div class="user-icon"><img src="/CMS/resources/images/user-icon.png" width="18" height="18"  alt=""/></div>
 
 
@@ -63,11 +67,11 @@
 
 
                     <input type="submit" class="zaloguj-button" name="loginButton" value="ZALOGUJ"/>
+
                     
-                    Pamiętaj mnie: <input type="checkbox" ng-init="stayLogged = 'false'" ng-model="stayLogged" ng-true-value="true" ng-false-value="false"/>
-                    <input type="text" ng-hide="true" name="stayLogged" ng-model="stayLogged"/>
                     
                 </form>
+                
             </div> <!-- end of form-container -->
 
         </div> <!-- end of container -->      

@@ -7,6 +7,7 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
     
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "positions";
+    
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
     $scope.attributes[1] = 'description';
@@ -67,4 +68,6 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/positionList/delete/:object.htm', $scope);
     };
+    
+    $scope.ble = $scope[$scope.objectsName];
 }

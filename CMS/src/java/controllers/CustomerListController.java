@@ -32,7 +32,7 @@ import utils.Utils;
 public class CustomerListController extends BaseController{
 
     public CustomerListController() {
-        super("all","ManageCustomers");
+        super("all","ViewCustomers");
     }
     
     @RequestMapping("/customerList")

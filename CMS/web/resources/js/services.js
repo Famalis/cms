@@ -57,10 +57,14 @@ cmsModule.factory('pagination', function() {
         
         pageMaxSmallerThenSize: function($scope) {
           return function() {
-              if($scope.pageMax < $scope[$scope.objectsName].length) {
-                  return true;
-              } else {
+              //alert($scope[$scope.objectsName].length);
+              if($scope[$scope.objectsName].length<=10) {
                   return false;
+              }
+              if($scope.pageMax > $scope[$scope.objectsName].length) {
+                  return false;
+              } else {
+                  return true;
               }
           };  
         }
