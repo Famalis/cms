@@ -64,10 +64,8 @@ public class LoginController extends BaseController {
         if (user.loadObject("login='" + login + "' AND password='" + password + "'")) {
             //userConfig.setUserId(currentUser.getId());
             userConfig.loadObject("userId=" + user.getId());
-
-            model.put("helloUser", "Witaj " + user.getName() + "!");
         } else {
-            model.put("helloUser", "Złe dane logowania");
+            return "home";
         }
 
         this.currentUserDto = new UserDTO(user, userConfig);

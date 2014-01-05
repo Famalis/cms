@@ -19,18 +19,18 @@ public class SystemConfigurationDao extends GenericDao<SystemConfiguration>{
     }
     
     public String getAccountRequestEmail() {
-        return this.findByField("name", "AccountRequestEmail").get(0).getDescription();
+        return this.findByField("name", "AccountRequestEmail").get(0).getValue();
     }
     
     public String getAccountRequestPassword() {
-        return this.findByField("name", "AccountRequestPassword").get(0).getDescription();
+        return this.findByField("name", "AccountRequestPassword").get(0).getValue();
     }
     
     public String getAccountRequestSMTP() {
-        return this.findByField("name", "AccountRequestSMTP").get(0).getDescription();
+        return this.findByField("name", "AccountRequestSMTP").get(0).getValue();
     }
     
     public String getAccountRequestLogin() {
-        return this.findByField("name", "AccountRequestLogin").get(0).getDescription();
+        return this.findByField("name", "AccountRequestLogin").get(0).getValue();
     }
 }

@@ -118,6 +118,7 @@ public class HomeController extends BaseController {
         } catch (MessagingException mex) {
             model.put("mailSent", false);
             model.put("error", "Błąd podczas wysyałania maila");
+            System.err.println(mex);
         }
         return "home";
     }
