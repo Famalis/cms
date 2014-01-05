@@ -6,9 +6,6 @@ cmsModule.factory('saveEditDelete', function() {
             return $http.post(
                     link,
                     {object: $scope.selected}).success(function() {
-                if (!$scope.selected.id) {
-                    $scope[$scope.objectsName].push($scope.selected);
-                }
             }).error(function(error) {
                 alert(error);
             });
