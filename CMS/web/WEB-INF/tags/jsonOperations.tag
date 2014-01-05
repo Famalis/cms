@@ -79,7 +79,3 @@
         
     <span ng-show="status == 'Błąd'">Błąd podczas ładowania danych</span>
        
-
-
-
-

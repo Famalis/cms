@@ -10,6 +10,7 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.contracts = "";
     $scope.employees = "";
     $scope.customers = "";
+    $scope.privileges = "";
     $scope.editMode = false;
     
     $scope.objectsName = "contracts";
@@ -48,6 +49,7 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
+            $scope.privileges = $scope.initData.privileges;
             $scope.contracts = $scope.initData.contracts;
             $scope.employees = $scope.initData.employees;
             $scope.customers = $scope.initData.customers;
@@ -115,7 +117,15 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
     };
     
     $scope.checkEditPrivileges = function() {
-        
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == 'all') {
+                return true;
+            }
+            if($scope.privileges[i] == "ManageContracts") {
+                return true;
+            }
+        }
+        return false;
     };
     
 }

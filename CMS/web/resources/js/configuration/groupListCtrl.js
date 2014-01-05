@@ -33,6 +33,16 @@ function GroupListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/groupList/save/:object.htm', $scope);
+        
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while(curDate-date < 1000);
+        
+        $scope.get = saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
+        loadDataPromise = $scope.get;
+        $scope.selected = null;
+        $scope.editMode = false;
     };
 
     loadDataPromise.then(function(returnData) {
@@ -103,4 +113,8 @@ function GroupListCtrl($scope, $http, saveEditDelete, pagination) {
         }
         return false;
     }
+    
+    $scope.checkEditPrivileges = function() {
+        return true;
+    };
 }

@@ -17,6 +17,7 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.selected = "";
     $scope.departments = "";
     $scope.employees = "";
+    $scope.privileges = "";
     $scope.get = saveEditDelete.get($http, '/CMS/departmentList/deps.htm', $scope);
     var loadDataPromise = $scope.get;
 
@@ -37,6 +38,7 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             $scope.employees = $scope.initData.employees;
+            $scope.privileges = $scope.initData.privileges;
         } else {
             alert('err');
         }
@@ -77,5 +79,15 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
         saveEditDelete.remove($http, '/CMS/departmentList/delete/:object.htm', $scope);
     };
 
-
+    $scope.checkEditPrivileges = function() {
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == 'all') {
+                return true;
+            }
+            if($scope.privileges[i] == "ManageDepartments") {
+                return true;
+            }
+        }
+        return false;
+    };
 }

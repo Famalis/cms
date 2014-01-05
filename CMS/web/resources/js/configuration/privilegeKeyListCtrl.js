@@ -23,6 +23,16 @@ function PrivilegeKeyListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/privilegeKeyList/save/:object.htm', $scope);
+        
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while(curDate-date < 500);
+  
+        $scope.get = saveEditDelete.get($http, '/CMS/privilegeKeyList/privKeys.htm', $scope);
+        loadDataPromise = $scope.get;
+        $scope.selected = null;
+        $scope.editMode = false;
     };
 
     loadDataPromise.then(function(returnData) {
@@ -57,5 +67,9 @@ function PrivilegeKeyListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/privilegeKeyList/delete/:object.htm', $scope);
+    };
+    
+    $scope.checkEditPrivileges = function() {
+        return true;
     };
 }

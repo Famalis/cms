@@ -28,7 +28,7 @@
                                     Imię: <input type="text" ng-model="selected.name"/>
                                 </td>
                                 <td>
-                                    Naziwsko: <input type="text" ng-model="selected.surname"/>
+                                    Nazwisko: <input type="text" ng-model="selected.surname"/>
                                 </td>
                                 <td>
                                     Grupa:
@@ -38,9 +38,6 @@
                                             {{group.name}}
                                         </option>
                                     </select>
-                                </td>
-                                <td>
-                                    Tło :<input type="text" ng-model="selected.bgcolor"/>
                                 </td>
                                 <td>
                                     Pracownik posiadający konto:

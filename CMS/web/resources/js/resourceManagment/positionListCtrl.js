@@ -17,6 +17,7 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
     };
     $scope.selected = "";
     $scope.positions = "";
+    $scope.privileges = "";
     $scope.editMode = false;
     $scope.get = saveEditDelete.get($http, '/CMS/positionList/positions.htm', $scope);
     var loadDataPromise = $scope.get;
@@ -38,6 +39,7 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             $scope.positions = $scope.initData.positions;
+            $scope.privileges = $scope.initData.privileges;
         } else {
             alert('err');
         }
@@ -70,4 +72,16 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
     };
     
     $scope.ble = $scope[$scope.objectsName];
+    
+    $scope.checkEditPrivileges = function() {
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == 'all') {
+                return true;
+            }
+            if($scope.privileges[i] == "ManagePositions") {
+                return true;
+            }
+        }
+        return false;
+    };
 }

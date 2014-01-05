@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CustomerPageController extends BaseController {
 
     public CustomerPageController() {
-        super("all", "ViewCustomer");
+        super("all", "ViewCustomers");
     }
 
     @RequestMapping(value = "/customerPage/{id}")

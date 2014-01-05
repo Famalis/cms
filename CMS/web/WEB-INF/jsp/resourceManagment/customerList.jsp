@@ -13,16 +13,9 @@
 
         <div ng-controller="CustomerListCtrl">  
 
-
             <t:dataTable/>
-
-            <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                          user.privilegeKeyCodes.contains('ManageCustomers')}">
-
-                  <t:jsonOperations/>
-
-
-            </c:if>
+            
+            <t:jsonOperations/>
             <div ng-show="editMode">
                 <table class="genericTable">
                     <tr>

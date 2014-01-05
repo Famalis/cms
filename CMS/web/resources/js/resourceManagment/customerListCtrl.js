@@ -8,6 +8,7 @@ function CustomerListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.status = "Ładowanie danych";
     $scope.selected = "";
     $scope.customers = "";
+    $scope.privileges = "";
     $scope.editMode = false;
     $scope.displayPage = true;
     $scope.displayPageName = "customerPage";
@@ -54,6 +55,7 @@ function CustomerListCtrl($scope, $http, saveEditDelete, pagination) {
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             $scope.customers = $scope.initData.customers;
+            $scope.privileges = $scope.initData.privileges;
         } else {
             alert('err');
         }
@@ -86,6 +88,14 @@ function CustomerListCtrl($scope, $http, saveEditDelete, pagination) {
     };
     
     $scope.checkEditPrivileges = function() {
-        
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == 'all') {
+                return true;
+            }
+            if($scope.privileges[i] == "ManageCustomers") {
+                return true;
+            }
+        }
+        return false;
     };
 }

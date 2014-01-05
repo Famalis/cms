@@ -10,6 +10,7 @@ function TaskListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.saveLink = '/CMS/departmentList/save/:object.htm';
     $scope.selected = "";
     $scope.departments = "";
+    $scope.privileges = "";
     $scope.employees = "";
     $scope.get = saveEditDelete.get($http, '/CMS/departmentList/deps.htm', $scope);
     var loadDataPromise = $scope.get;
@@ -22,6 +23,7 @@ function TaskListCtrl($scope, $http, saveEditDelete, pagination) {
         if (returnData != null) {
             $scope.departments = $scope.initData.departmnets;
             $scope.employees = $scope.initData.employees;
+            $scope.privileges = $scope.initData.privileges;
         } else {
             alert('err');
         }
@@ -45,5 +47,12 @@ function TaskListCtrl($scope, $http, saveEditDelete, pagination) {
 
     };
 
-
+    $scope.checkEditPrivileges = function() {
+        for (var i = 0; i<$scope.privileges.length; i++) {
+            if($scope.privileges[i] == 'all') {
+                return true;
+            }
+        }
+        return false;
+    };
 }

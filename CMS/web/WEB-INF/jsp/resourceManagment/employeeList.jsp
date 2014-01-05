@@ -7,15 +7,11 @@
         <form name="myForm">
             <div ng-controller="EmployeeListCtrl">  
               
-           
                             <t:dataTable/>
-                    
-                            <!--<div ng-show="checkEditPrivileges()">-->
-                        
+                            
                             <t:jsonOperations/>
-                        
                            
-                            <div ng-show="editMode && checkEditPrivileges()">
+                            <div ng-show="editMode">
                        
                             <table class="genericTable">
                                 <tr>

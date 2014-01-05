@@ -40,15 +40,16 @@
 
 </table>
 <div class="footer">
-    <input type="button" ng-show="editMode" ng-click="cancel()" value="Anuluj">
-
-    <input type="button" ng-show="!selected && !editMode" ng-click="create()" value="Dodaj">
-    <input type="button" ng-show="selected && !editMode" ng-click="edit()" value="Edytuj">
-    <input type="button" ng-show="editMode" ng-click="save()" value="Zapisz">
-
-    <input type="button" ng-show="selected.id != undefined && editMode" ng-click="delete()" value="Usuń">
-    <input type="button" ng-show="displayPage" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
     
+    <input type="button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="Anuluj">
+
+    <input type="button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" value="Dodaj">
+    <input type="button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" value="Edytuj">
+    <input type="button" ng-show="editMode && checkEditPrivileges()" ng-click="save()" value="Zapisz">
+
+    <input type="button" ng-show="selected.id != undefined && editMode && checkEditPrivileges()" ng-click="delete()" value="Usuń">
+    <input type="button" ng-show="displayPage && selected" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="Wyświetl">
+
         <div class="pageMax">
         <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 10;
                 pageMin = pageMin - 10" value="WSTECZ"/>

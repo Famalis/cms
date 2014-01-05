@@ -11,13 +11,11 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.attributes[0] = 'surname';
     $scope.attributes[1] = 'name';
     $scope.attributes[2] = 'login';
-    $scope.attributes[3] = 'bgcolor';
-    $scope.attributes[4] = 'groupName';
-    $scope.attributes[5] = 'employeeId';
+    $scope.attributes[3] = 'groupName';
+    $scope.attributes[4] = 'employeeId';
     $scope.columns = {
       'employeeId' : "Pracownik",
       'groupName' : "Grupa",
-      'bgcolor' : "Kolor tła",
       'login' : "Login",      
       'name' : "Imię",
       'surname' : "Nazwisko"      
@@ -29,6 +27,16 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/userList/save/:object.htm', $scope);
+        
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while(curDate-date < 1000);
+  
+        $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);
+        loadDataPromise = $scope.get;
+        $scope.selected = null;
+        $scope.editMode = false;
     };
 
     loadDataPromise.then(function(returnData) {
@@ -78,5 +86,9 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
         var login = emp.name.substring(0,1) + emp.surname.substring(0,emp.surname.length);
         var login = login.toLowerCase();
         return login;
+    };
+    
+    $scope.checkEditPrivileges = function() {
+        return true;
     };
 }

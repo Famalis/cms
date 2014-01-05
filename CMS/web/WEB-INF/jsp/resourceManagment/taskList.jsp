@@ -6,7 +6,9 @@
         <script src="/CMS/resources/js/resourceManagment/taskListCtrl.js"></script>
         <div ng-controller="TaskListCtrl">  
             
-                        <t:dataTable/>
+                <t:dataTable/>
+                
+                <t:jsonOperations/>
                     
                 <div ng-show="editMode">
                     

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EmployeePageController extends BaseController {
 
     public EmployeePageController() {
-        super("all", "ViewEmployee");
+        super("all", "ViewEmployees");
     }
 
     @RequestMapping(value = "/employeePage/{id}")

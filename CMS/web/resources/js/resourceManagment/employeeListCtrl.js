@@ -122,6 +122,11 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
                     return true;
                 }
             }
+            if(!$scope.selected){
+                if($scope.privileges[i] == "ManageEmployees"){
+                    return true;
+                }
+            }
         }
         return false;
     };

@@ -6,9 +6,9 @@
         <script src="/CMS/resources/js/resourceManagment/positionListCtrl.js"></script>
         <div ng-controller="PositionListCtrl">  
          
-                        <t:dataTable/>
+                <t:dataTable/>
                    
-                        <t:jsonOperations/>
+                <t:jsonOperations/>
                         
                 <div ng-show="editMode">
                     <td>
