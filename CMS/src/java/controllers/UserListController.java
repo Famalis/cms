@@ -18,8 +18,6 @@ import dao.UserDao;
 import java.util.HashMap;
 import java.util.Map;
 import model.User;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,14 +49,35 @@ public class UserListController extends BaseController{
         UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(object, "object", UserDTO.class);
         if(userDto!=null) {
             System.out.println(userDto.getId()+" "+userDto.getName());
-            User actualUser = new User();
-            actualUser.loadObject("id="+userDto.getId());
-            actualUser.setEmployeeId(userDto.getEmployeeId());
-            actualUser.update();
+            User actualUser = new User();            
             UserConfiguration userConfig = new UserConfiguration();
-            userConfig.loadObject("userId="+userDto.getId());
-            userConfig.setGroupId(userDto.getGroupId());
-            userConfig.update();
+                        
+            //actualUser.loadObject("id="+userDto.getId());
+            
+            if(userDto.getId() != null) {
+                actualUser.loadObject("id="+userDto.getId());
+                userConfig.loadObject("userId="+userDto.getId());
+            }
+            if(userDto.getLogin().length()<=0 || userDto.getPassword().length()<=0) {
+                throw new NullPointerException("Brak hasła albo loginu");
+            }
+            actualUser.setName(userDto.getName());
+            actualUser.setSurname(userDto.getSurname());
+            actualUser.setPassword(userDto.getPassword());
+            actualUser.setLogin(userDto.getLogin());            
+            actualUser.setEmployeeId(userDto.getEmployeeId());
+            
+            userConfig.setGroupId(userDto.getGroupId());            
+            
+            if(userDto.getId() != null) {
+                actualUser.update();
+                userConfig.setUserId(actualUser.getId()+"");
+                userConfig.update();
+            } else {
+                actualUser.insert();
+                userConfig.setUserId(actualUser.getId()+"");
+                userConfig.insert();
+            }
         }
         
     }
