@@ -228,9 +228,7 @@ input.wyszukiwarka:-ms-input-placeholder {
 }
 
 .right-addNew {
-
     overflow: hidden;
-    height: 325px;
     background-color: #32b38c;
     border-bottom: 1px solid #2b9f7c;
 }
@@ -248,7 +246,7 @@ input.wyszukiwarka:-ms-input-placeholder {
 }
 
 input.imie-field, input.nazwisko-field, input.pesel-field, input.telefon-field, input.kraj-field, input.ulica-field,
-input.budynek-field, input.mieszkanie-field, input.miejscowosc-field, input.email-field, input.firma-field {
+input.budynek-field, input.mieszkanie-field, input.miejscowosc-field, input.email-field, input.firma-field, input.kod-field {
     font-family: 'Open Sans';
     font-size: 15px;
     font-weight: 700;
@@ -279,11 +277,12 @@ input.telefon-field {
     height: 37px;
 }
 input.email-field {
-    width: 240px;
+    width: 260px;
     height: 37px;
 }
 input.firma-field {
-    width: 220px;
+    min-width:300px;
+    width: 350px;
     height: 37px;
 }
 
@@ -296,14 +295,18 @@ input.ulica-field {
     width: 220px;
     height: 37px;
 }
+input.kod-field {
+    width: 165px;
+    height: 37px;
+}
 
 input.budynek-field {
-    width: 160px;
+    width: 175px;
     height: 37px;
 }
 
 input.mieszkanie-field {
-    width: 180px;
+    width: 195px;
     height: 37px;
 }
 
@@ -513,7 +516,6 @@ input.miejscowosc-field {
 
     }
     .numer {
-
         text-align: center;
         width: 24px;
         max-width: 24px;
@@ -603,7 +605,7 @@ input.miejscowosc-field {
 
     }
     .numer {
-        text-align: left;
+        text-align: center;
         width: 24px;
         max-width: 24px;
         min-width: 24px;
@@ -639,6 +641,7 @@ input.miejscowosc-field {
 
     tr:hover {
         background-color: #f9f9f9;
+        cursor: pointer;
     }
 
     .table-header {
@@ -837,6 +840,32 @@ input.wstecz-button {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
+input.wstecz-button:hover, input.wstecz-button:active {
+  background-color: #8a8f95;
+}
+.right-addNew input.anuluj-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 0 5px 0 0px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #2b9f7c;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.right-addNew input.anuluj-button:hover, input.anuluj-button:active {
+  background-color: #21906f;
+}
 input.anuluj-button {
   padding: 0 0 0 2px;
   width: 90px;
@@ -906,6 +935,31 @@ input.edytuj-button {
 input.edytuj-button:hover, input.edytuj-button:active {
   background-color: #28a27d;
 }
+
+.right-addNew input.zapisz-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 0 5px 0 21px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.right-addNew input.zapisz-button:hover, input.zapisz-button:active {
+  background-color: #ef8e71;
+}
+
 input.zapisz-button {
   padding: 0 0 0 2px;
   width: 90px;

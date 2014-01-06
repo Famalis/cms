@@ -76,6 +76,7 @@
 <%-- any content can be specified here e.g.: --%>
         
     <span ng-show="status != null"><div id="loaderImage"></div> Ładowanie danych</span>
-        
     <span ng-show="status == 'Błąd'">Błąd podczas ładowania danych</span>
-       
+    
+    <input type="button" class="zapisz-button" ng-show="editMode && checkEditPrivileges()" ng-click="save()" value="ZAPISZ">
+    <input type="button" class="anuluj-button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="ANULUJ">

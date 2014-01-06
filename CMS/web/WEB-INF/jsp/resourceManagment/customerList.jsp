@@ -9,7 +9,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
-        <form name="myForm">
+        <!--<form name="myForm">-->
             <script src="/CMS/resources/js/resourceManagment/customerListCtrl.js"></script>
 
             <div ng-controller="CustomerListCtrl">  
@@ -18,17 +18,19 @@
                     <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
 
                 </div>
-                <div class="right-addNew" id="panel" ng-show="editMode">
-                    <div class="addNew-header">Dodaj nowego klienta</div>
+                <div class="right-addNew" id="addNew" ng-show="editMode">
+                    <div class="addNew-header">Dodaj lub edytuj dane klienta</div>
                     <div class="addNew-line"></div>
                     <div class="addNew-inputs">
 
                         <div class="addNew-input">
                             <input class="imie-field" placeholder="Imię..." name="imie" type="text" maxlength="21" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
+                          
                         </div>
 
                         <div class="addNew-input">
                             <input class="nazwisko-field" placeholder="Nazwisko..." name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+){0,1}$/" ng-model="selected.surname"/>
+                         
                         </div>
 
                         <!--<div class="addNew-input"><input class="pesel-field" type="text" placeholder="Numer PESEL..."/></div>-->
@@ -43,26 +45,32 @@
                         <div class="addNew-input">
                             <input class="firma-field" placeholder="Nazwa firmy..." name="firma" type="text" required="required" ng-model="selected.companyName"/>
                         </div>
-                        
+
                         <div class="addNew-input">
                             <input class="ulica-field" placeholder="Nazwa ulicy..." name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.streetName"/>
                         </div>
-                        
+
                         <div class="addNew-input">
                             <input class="mieszkanie-field" placeholder="Numer mieszkania..." name="mieszkanie" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.apartmentNumber"/>    
                         </div>
-                        
+
                         <div class="addNew-input">
                             <input class="budynek-field" placeholder="Numer budynku..." name="budynek" type="text" ng-pattern="/^[0-9]+[a-z]{0,1}$/" required="required" ng-model="selected.streetNumber"/>
                         </div>
-                        
+
                         <div class="addNew-input">
                             <input class="miejscowosc-field" placeholder="Miejscowość.." name="miasto" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.city"/>
                         </div>
-                        
+
+                        <div class="addNew-input">
+                            <input class="kod-field" placeholder="Kod pocztowy..." maxlength="6" name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
+                        </div>
+
                         <div class="addNew-input">  
                             <input class="kraj-field" placeholder="Kraj..." name="kraj" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.country"/>
                         </div>
+
+
 
 
 
@@ -90,12 +98,13 @@
 
 
                     </div>
+                    <div style="float:right;padding-right:33px;padding-top: 20px;padding-bottom: 33px;"> <t:jsonOperations/></div>
                 </div>
 
                 <t:dataTable/>
 
-                <t:jsonOperations/>
-                <div ng-show="editMode">
+               
+                <!--<div ng-show="editMode">
                     <table class="genericTable">
                         <tr>
                             <td>
@@ -158,16 +167,16 @@
                                 <br />
                                 <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
                             </td>
-							<td>
-                           Kod pocztowy: <input name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
-                           <br />
-                           <span class="error" ng-show="myForm.kod.$error.required">Dodaj kod pocztowy!</span>
-                           <span class="error" ng-show="myForm.kod.$error.pattern">Zły format</span>
-                       </td>
+                            <td>
+                                Kod pocztowy: <input name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
+                                <br />
+                                <span class="error" ng-show="myForm.kod.$error.required">Dodaj kod pocztowy!</span>
+                                <span class="error" ng-show="myForm.kod.$error.pattern">Zły format</span>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
-        </form>
+        </form>-->
     </jsp:body>
 </t:genericTemplate>

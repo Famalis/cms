@@ -53,8 +53,8 @@
 
 
 
-    <input type="button" class="dodaj-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" value="DODAJ">
-    <input type="button" class="edytuj-button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" value="EDYTUJ">
+    <a href="#addNew"><input type="button" class="dodaj-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()"  value="DODAJ"></a>
+    <a href="#addNew"><input type="button" class="edytuj-button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" href="#addNew" value="EDYTUJ"></a>
     <input type="button" class="zapisz-button" ng-show="editMode && checkEditPrivileges()" ng-click="save()" value="ZAPISZ">
     <input type="button" class="anuluj-button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="ANULUJ">
     <input type="button" class="wyswietl-button" ng-show="displayPage && selected && !editMode" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="WYŚWIETL">
