@@ -22,6 +22,10 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
+        
+        if(($scope.selected.name == null) || $scope.selected.managerSurname == null) {
+            alert("Sprawdź poprowność wprowadzonych danych");
+        } else {
         saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope);
         
         var date = new Date();
@@ -33,6 +37,7 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
         loadDataPromise = $scope.get;
         $scope.selected = null;
         $scope.editMode = false;
+    }
     };
 
     loadDataPromise.then(function(returnData) {

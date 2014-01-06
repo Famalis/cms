@@ -3,7 +3,7 @@ var cmsModule = angular.module('cms', []);
 cmsModule.factory('saveEditDelete', function() {
     return {
         save: function($http, link, $scope) {
-            if ($scope.selected.id != null) {
+            if ($scope.selected.id == null) {
                 $scope[$scope.objectsName].push($scope.selected);
             }
 
