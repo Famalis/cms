@@ -59,7 +59,7 @@
             <script src="/CMS/resources/js/idleTimer.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $.idleTimeout('#idletimeout', '#idletimeout a', {
-                    idleAfter: 5,
+                    idleAfter: 600,
                     pollingInterval: 2,
                     serverResponseEquals: 'OK',
                     onTimeout: function() {
