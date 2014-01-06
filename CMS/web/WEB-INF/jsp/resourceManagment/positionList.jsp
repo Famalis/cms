@@ -16,7 +16,7 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Nazwa: <input name="nazwa" ng-pattern="/^[ A-Za-z0-9]+$/" required="required" type="text" ng-model="selected.name"/>
+                                    Nazwa: <input name="nazwa" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" type="text" ng-model="selected.name"/>
                                     <br />
                                     <span class="error" ng-show="myForm.nazwa.$error.required">Nazwa potrzebna!</span>
                                     <span class="error" ng-show="myForm.nazwa.$error.pattern">Użyte niepoprawne znaki</span>

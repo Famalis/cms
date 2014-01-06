@@ -63,13 +63,13 @@
                 <table class="genericTable">
                     <tr>
                          <td>
-                             Imię: <input name="imie" type="text" required="required" ng-pattern="/^[A-Za-z]+$/" ng-model="selected.name"/>
+                             Imię: <input name="imie" type="text" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
                              <br />
                              <span class="error" ng-show="myForm.imie.$error.required">Imię potrzebne!</span>
                              <span class="error" ng-show="myForm.imie.$error.pattern">Proszę prowadzić tylko litery</span>
                         </td>
                         <td>
-                            Nazwisko: <input name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-z]+){0,1}$/" ng-model="selected.surname"/>
+                            Nazwisko: <input name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+){0,1}$/" ng-model="selected.surname"/>
                             <br />
                             <span class="error" ng-show="myForm.nazwisko.$error.required">Nazwisko potrzebne!</span>
                             <span class="error" ng-show="myForm.nazwisko.$error.pattern">Proszę prowadzić tylko litery</span>
@@ -94,19 +94,19 @@
                     </tr>
                     <tr>
                       <td>
-                            Kraj: <input name="kraj" type="text" ng-pattern="/^[ A-Za-z]+$/" required="required" ng-model="selected.country"/>
+                            Kraj: <input name="kraj" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.country"/>
                             <br />
                             <span class="error" ng-show="myForm.kraj.$error.required">Kraj potrzebny!</span>
                             <span class="error" ng-show="myForm.kraj.$error.pattern">Proszę prowadzić tylko litery</span>
                        </td>
                        <td>
-                            Miasto: <input name="miasto" type="text" ng-pattern="/^[ A-Za-z]+$/" required="required" ng-model="selected.city"/>
+                            Miasto: <input name="miasto" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.city"/>
                             <br />
                             <span class="error" ng-show="myForm.miasto.$error.required">Miasto potrzebne!</span>
                             <span class="error" ng-show="myForm.miasto.$error.pattern">Proszę prowadzić tylko litery</span>
                        </td>
                        <td>
-                            Nazwa ulicy: <input name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9]+$/" required="required" ng-model="selected.streetName"/>
+                            Nazwa ulicy: <input name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.streetName"/>
                             <br />
                             <span class="error" ng-show="myForm.ulica.$error.required">Ulica potrzebna!</span>
                             <span class="error" ng-show="myForm.ulica.$error.pattern">Użyte niepoprawne znaki</span>

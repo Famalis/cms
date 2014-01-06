@@ -43,7 +43,6 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope);
-        
         var date = new Date();
         var curDate = null;
         do { curDate = new Date(); }
