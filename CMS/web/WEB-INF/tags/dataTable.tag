@@ -39,7 +39,7 @@
     </tbody>
 
 </table>
-<div class="footer">
+<div class="footer" ng-show="checkMax() || pageMin > 0">
     
     
 
