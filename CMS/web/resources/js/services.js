@@ -3,6 +3,10 @@ var cmsModule = angular.module('cms', []);
 cmsModule.factory('saveEditDelete', function() {
     return {
         save: function($http, link, $scope) {
+            if ($scope.selected.id != null) {
+                $scope[$scope.objectsName].push($scope.selected);
+            }
+            
             return $http.post(
                     link,
                     {object: $scope.selected}).success(function() {
@@ -35,6 +39,7 @@ cmsModule.factory('saveEditDelete', function() {
                 }
                 $scope[$scope.objectsName].splice(index, 1);
                 $scope.selected = "";
+                alert("Usunąłeś go kurwA!! Ty chuju!!");
             }).error(function(error) {
 
             });
