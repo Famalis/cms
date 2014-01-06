@@ -821,7 +821,7 @@ input.anuluj-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 0px 0 21px;
+  margin: 19px 5px 0 0px;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
@@ -890,7 +890,7 @@ input.zapisz-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 5px 0 5px;
+  margin: 19px 5px 0 21px;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
@@ -920,7 +920,7 @@ input.wyswietl-button {
   font-smooth: auto;
   color: #FFF;
   cursor: pointer;
-  background: #ff9879;
+  background: #7d8288;
   border: 0px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -931,4 +931,27 @@ input.wyswietl-button {
 
 input.wyswietl-button:hover, input.wyswietl-button:active {
   background-color: #ef8e71;
+}
+input.usun-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 5px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #7d8288;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.usun-button:hover, input.usun-button:active {
+  background-color: #e8416c;
 }

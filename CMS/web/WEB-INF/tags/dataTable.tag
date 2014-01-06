@@ -41,15 +41,14 @@
 </table>
 <div class="footer">
     
-    <input type="button" class="anuluj-button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="ANULUJ">
+    
 
     <input type="button" class="dodaj-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" value="DODAJ">
     <input type="button" class="edytuj-button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" value="EDYTUJ">
     <input type="button" class="zapisz-button" ng-show="editMode && checkEditPrivileges()" ng-click="save()" value="ZAPISZ">
-
-    <input type="button" ng-show="selected.id != undefined && editMode && checkEditPrivileges()" ng-click="delete()" value="Usuń">
-    <input type="button" class="wyswietl-button" ng-show="displayPage && selected" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="WYŚWIETL">
-
+    <input type="button" class="anuluj-button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="ANULUJ">
+    <input type="button" class="wyswietl-button" ng-show="displayPage && selected && !editMode" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="WYŚWIETL">
+     <input type="button" class="usun-button" ng-show="selected.id != undefined && !editMode && checkEditPrivileges()" ng-click="delete()" value="USUŃ">
         <div class="pageMax">
         <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 10;
                 pageMin = pageMin - 10" value="WSTECZ"/>
