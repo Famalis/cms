@@ -3,6 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
     <jsp:body>
+        <form name="myForm">
         <script src="/CMS/resources/js/resourceManagment/positionListCtrl.js"></script>
         <div ng-controller="PositionListCtrl">  
          
@@ -15,14 +16,20 @@
                         <table class="genericTable">
                             <tr>
                                 <td>
-                                    Nazwa: <input type="text" ng-model="selected.name"/>
+                                    Nazwa: <input name="nazwa" ng-pattern="/^[ A-Za-z0-9]+$/" required="required" type="text" ng-model="selected.name"/>
+                                    <br />
+                                    <span class="error" ng-show="myForm.nazwa.$error.required">Nazwa potrzebna!</span>
+                                    <span class="error" ng-show="myForm.nazwa.$error.pattern">Użyte niepoprawne znaki</span>
                                 </td>
                                 <td>
-                                    Opis: <input type="text" ng-model="selected.description"/>
+                                    Opis: <input name="opis" required="required" type="text" ng-model="selected.description"/>
+                                    <br />
+                                    <span class="error" ng-show="myForm.opis.$error.required">Dodaj opis!</span>
                                 </td>
                             </tr>
                         </table>
                 </div>
         </div>
+        </form>
     </jsp:body>
 </t:genericTemplate>

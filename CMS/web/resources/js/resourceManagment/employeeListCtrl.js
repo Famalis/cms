@@ -23,7 +23,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
         'name' : "Imię",
         'surname': "Nazwisko",
         'departmentName': "Wydział",
-        'salary': "Wypłata",
+        'salary': "Wypłata[zł]",
         'country': "Kraj",
         'city': "Miasto",
         'positionName' : "Stanowisko",

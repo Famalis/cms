@@ -20,29 +20,35 @@
                             <div ng-show="editMode">
                       
                             <table class="genericTable">
-                                <tr>
+                               <tr>
                                     <td>
                                         Pracownik:
-                                        <select ng-model="selected.employeeId">
+                                        <select name="pracownik" required="required" ng-model="selected.employeeId">
                                         <option ng-repeat="employee in employees"
                                                 value="{{employee.id}}" 
                                                 ng-selected="selected.employeeId == employee.id">
                                             {{employee.surname}} {{employee.name}}
                                         </option>
                             </select>
+                            <br />
+                            <span class="error" ng-show="myForm.pracownik.$error.required">Podaj pracownika!</span>
                                     </td>
                                     <td>
                                         Klient:
-                                        <select ng-model="selected.customerId">
+                                        <select name="klient" required="required" ng-model="selected.customerId">
                                             <option ng-repeat="customer in customers" 
                                                     value="{{customer.id}}"
                                                     ng-selected="selected.customerId == customer.id">
                                                 {{customer.name}} {{customer.surname}}
                                             </option>
                                         </select>
+                                        <br />
+                                        <span class="error" ng-show="myForm.klient.$error.required">Podaj klienta!</span>
                                     </td>
                                     <td>
-                                        Opis: <input type="text" ng-model="selected.description"/>
+                                        Opis: <input name="opis" required="required" type="text" ng-model="selected.description"/>
+                                        <br />
+                                        <span class="error" ng-show="myForm.opis.$error.required">Dodaj opis!</span>
                                     </td>
                                 </tr>
                             </table>
