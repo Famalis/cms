@@ -58,6 +58,7 @@ public class ContractListController extends BaseController{
             actualCon.setEmployeeId(conDTO.getEmployeeId());
             actualCon.setCustomerId(conDTO.getCustomerId());
             actualCon.setDescription(conDTO.getDescription());
+            actualCon.setPrice(conDTO.getPrice());
             
             if(actualCon.getId()!=null) {
                 actualCon.update();

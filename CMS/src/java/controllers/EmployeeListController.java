@@ -59,6 +59,7 @@ public class EmployeeListController extends BaseController{
             actualEmp.setName(empDto.getName());
             actualEmp.setSurname(empDto.getSurname());
             actualEmp.setPESEL(empDto.getPESEL());
+            actualEmp.setPhone(empDto.getPhone());
             actualEmp.setSalary(empDto.getSalary());
             actualEmp.setPhone(empDto.getPhone());
             if(empDto.getDepartmentId().length()>0){
@@ -73,6 +74,7 @@ public class EmployeeListController extends BaseController{
             actualAdr.setStreetName(empDto.getStreetName());
             actualAdr.setStreetNumber(empDto.getStreetNumber());
             actualAdr.setApartmentNumber(empDto.getApartmentNumber());
+            actualAdr.setPostalCode(empDto.getPostalCode());
             
             if(actualAdr.getId()!=null) {
                 actualAdr.update();

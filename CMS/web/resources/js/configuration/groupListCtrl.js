@@ -37,7 +37,7 @@ function GroupListCtrl($scope, $http, saveEditDelete, pagination) {
         var date = new Date();
         var curDate = null;
         do { curDate = new Date(); }
-        while(curDate-date < 1000);
+        while(curDate-date < 2000);
         
         $scope.get = saveEditDelete.get($http, '/CMS/groupList/groups.htm', $scope);
         loadDataPromise = $scope.get;

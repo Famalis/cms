@@ -21,7 +21,8 @@ public class CustomerDTO {
             city, 
             streetName, 
             streetNumber, 
-            apartmentNumber;
+            apartmentNumber,
+            postalCode;
     
     public CustomerDTO() {
         super();
@@ -44,6 +45,7 @@ public class CustomerDTO {
             this.streetName = address.getStreetName();
             this.streetNumber = address.getStreetNumber();
             this.apartmentNumber = address.getApartmentNumber();
+            this.postalCode = address.getPostalCode();
         }
         
     }
@@ -134,6 +136,14 @@ public class CustomerDTO {
 
     public void setApartmentNumber(String apartmentNumber) {
         this.apartmentNumber = apartmentNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
     
 }

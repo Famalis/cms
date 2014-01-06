@@ -30,11 +30,11 @@ public class EmployeeDTO {
             streetName, 
             streetNumber, 
             apartmentNumber, 
+            postalCode,
             positionId, 
             departmentId,
             positionName,
-            departmentName,
-            privilegeGroupId;
+            departmentName;
 
     public EmployeeDTO() {
         super();
@@ -58,6 +58,7 @@ public class EmployeeDTO {
             this.streetName = address.getStreetName();
             this.streetNumber = address.getStreetNumber();
             this.apartmentNumber = address.getApartmentNumber();
+            this.postalCode = address.getPostalCode();
         }
         Position position = new Position();
         position.loadObject("id="+positionId);
@@ -66,13 +67,6 @@ public class EmployeeDTO {
         department.loadObject("id="+departmentId);
         this.departmentName = department.getName();
         
-        User user = new User();
-        if(user.loadObject("employeeId=" + employee.getId())){
-            UserConfiguration conf = new UserConfiguration();
-            if(conf.loadObject("userId="+user.getId())){
-                this.privilegeGroupId = conf.getGroupId();
-            }
-        }
         
     }
 
@@ -181,6 +175,14 @@ public class EmployeeDTO {
         this.apartmentNumber = apartmentNumber;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
     public String getPositionName() {
         return positionName;
     }
@@ -195,14 +197,6 @@ public class EmployeeDTO {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
-    }
-
-    public String getPrivilegeGroupId() {
-        return privilegeGroupId;
-    }
-
-    public void setPrivilegeGroupId(String privilegeGroupId) {
-        this.privilegeGroupId = privilegeGroupId;
     }
     
 }

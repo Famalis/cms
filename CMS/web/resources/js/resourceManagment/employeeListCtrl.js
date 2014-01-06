@@ -13,21 +13,20 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
     $scope.attributes[1] = 'surname';
-    $scope.attributes[2] = 'positionName';
-    $scope.attributes[3] = 'departmentName';
-    $scope.attributes[4] = 'salary';
+    $scope.attributes[2] = 'phone';
+    $scope.attributes[3] = 'positionName';
+    $scope.attributes[4] = 'departmentName';
     $scope.attributes[5] = 'country';
     $scope.attributes[6] = 'city';
-    $scope.attributes[7] = 'pesel';
+    
     $scope.columns = {
         'name' : "Imię",
         'surname': "Nazwisko",
         'departmentName': "Wydział",
-        'salary': "Wypłata[zł]",
         'country': "Kraj",
         'city': "Miasto",
-        'positionName' : "Stanowisko",
-        'pesel' : "PESEL"
+        'phone': "Telefon",
+        'positionName' : "Stanowisko"
     };
   
     
@@ -98,6 +97,22 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
         }
     };
     
+    $scope.getPositionName = function(posId) {
+        for (var i = 0; i<$scope.positions.length; i++) {
+            if($scope.positions[i].id == posId) {
+                return $scope.positions[i].name;
+            }
+        }
+    };
+    
+    $scope.getPositionHierarhy = function(posId) {
+        for (var i = 0; i<$scope.positions.length; i++) {
+            if($scope.positions[i].id == posId) {
+                return $scope.positions[i].hierarhy;
+            }
+        }
+    };
+    
     $scope.getDepartmentName = function(depId) {
         for (var i = 0; i<$scope.departments.length; i++) {
             if($scope.departments[i].id == depId) {
@@ -112,12 +127,17 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
                 return true;
             }
             if($scope.privileges[i] == "ManageEmployees") {
-                if($scope.selected.privilegeGroupId == "3") {
+                if($scope.getPositionHierarhy($scope.selected.positionId) == "1") {
                     return true;
                 }
             }
             if($scope.privileges[i] == "ManageManagers") {
-                if($scope.selected.privilegeGroupId == "4") {
+                if($scope.getPositionHierarhy($scope.selected.positionId) == "2") {
+                    return true;
+                }
+            }
+            if($scope.privileges[i] == "ManagePresidents") {
+                if($scope.getPositionHierarhy($scope.selected.positionId) == "3") {
                     return true;
                 }
             }

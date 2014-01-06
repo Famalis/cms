@@ -27,7 +27,7 @@ function PrivilegeKeyListCtrl($scope, $http, saveEditDelete, pagination) {
         var date = new Date();
         var curDate = null;
         do { curDate = new Date(); }
-        while(curDate-date < 500);
+        while(curDate-date <500);
   
         $scope.get = saveEditDelete.get($http, '/CMS/privilegeKeyList/privKeys.htm', $scope);
         loadDataPromise = $scope.get;

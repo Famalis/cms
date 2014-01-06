@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Position;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -52,6 +50,7 @@ public class PositionListController extends BaseController{
             }
             actualPos.setName(posDto.getName());
             actualPos.setDescription(posDto.getDescription());
+            actualPos.setHierarhy(posDto.getHierarhy());
              if(actualPos.getId()!=null) {
                 actualPos.update();
             } else {
@@ -75,7 +74,6 @@ public class PositionListController extends BaseController{
         System.out.println("delete");
         PositionDTO dto = (PositionDTO) Utils.convertJSONStringToObject(object, "object", PositionDTO.class);
         if (dto != null) {
-            PositionDao posDao = new PositionDao();
             Position actualPos = new Position();
             actualPos.loadObject("id="+dto.getId());
             EmployeeDao empDao = new EmployeeDao();

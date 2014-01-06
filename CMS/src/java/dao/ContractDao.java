@@ -28,7 +28,7 @@ public class ContractDao extends GenericDao<Contract>{
     
     public List<ContractDTO> getContractDTOList(Map<String, List<String>> params) {
         String query = "Select con.id as id, con.employeeId as empId, con.customerId as cusId, con.date as date, "
-                + "con.description as description ";
+                + "con.description as description, con.price as price ";
         query += "FROM contract as con ";
         
         if(!params.isEmpty()) {

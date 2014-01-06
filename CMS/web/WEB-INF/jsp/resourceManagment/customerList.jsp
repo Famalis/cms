@@ -122,6 +122,9 @@
                             <br />
                             <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
                        </td>
+                       <td>
+                           Kod pocztowy: <input type="text" ng-model="selected.postalCode"/>
+                       </td>
                     </tr>
                 </table>
             </div>

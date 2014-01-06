@@ -50,6 +50,9 @@
                                         <br />
                                         <span class="error" ng-show="myForm.opis.$error.required">Dodaj opis!</span>
                                     </td>
+                                    <td>
+                                        Cena: <input type="text" ng-model="selected.price"/>
+                                    </td>
                                 </tr>
                             </table>
                         

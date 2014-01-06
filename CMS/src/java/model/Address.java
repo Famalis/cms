@@ -10,7 +10,7 @@ import model.general.DatabaseObject;
 
 public class Address extends DatabaseObject {
 
-    private String country, city, streetName, streetNumber, apartmentNumber;
+    private String country, city, streetName, streetNumber, apartmentNumber, postalCode;
 
     public String getCountry() {
         return country;
@@ -50,6 +50,14 @@ public class Address extends DatabaseObject {
 
     public void setApartmentNumber(String apartmentNumber) {
         this.apartmentNumber = apartmentNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
     
     public Address() {

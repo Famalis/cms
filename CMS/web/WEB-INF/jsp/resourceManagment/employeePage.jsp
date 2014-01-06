@@ -24,12 +24,28 @@
                             </tr>
                             <tr>
                                 <td>
+                                    Numer telefonu: ${employee.phone}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     Stanowisko: ${employee.positionName}
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Wydział: ${employee.departmentName}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kraj: ${employee.country}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Adres: ${employee.city} ${employee.postalCode} <br/>
+                                    ${employee.streetName} ${employee.streetNumber}/${employee.apartmentNumber}
                                 </td>
                             </tr>
                         </table>

@@ -15,7 +15,8 @@ public class Contract extends DatabaseObject{
     private String employeeId, 
             customerId,
             date,
-            description;
+            description,
+            price;
 
     public String getEmployeeId() {
         return employeeId;
@@ -47,6 +48,14 @@ public class Contract extends DatabaseObject{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
     
     

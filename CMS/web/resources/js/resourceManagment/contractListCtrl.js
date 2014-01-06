@@ -20,13 +20,15 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.attributes[2] = 'customerName';
     $scope.attributes[3] = 'customerSurname';
     $scope.attributes[4] = 'date';
-    $scope.attributes[5] = 'description';
+    $scope.attributes[5] = 'price';
+    $scope.attributes[6] = 'description';
     $scope.columns = {
         'employeeName' : "Pracownik: Imię",
         'employeeSurname' : "Pracownik: Nazwisko",
         'customerName': "Klient: Imię",
         'customerSurname' : "Klient: Nazwisko",
         'date': "Data",
+        'price': "Cena",
         'description': "Opis"
     };
    
