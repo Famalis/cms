@@ -99,7 +99,7 @@
                         <span style="font-weight:700;">${user.name} ${user.surname}</span>
                     </div>
                     <div class="separator"></div>
-                    <a href="/CMS/login.htm"><div class="user-edit">edytuj<br>
+                    <a href="/CMS/login.htm"><div class="user-edit">zobacz<br>
                         <span style="font-weight:700;">Swój profil</span>
                     </div></a>
                 </div>
