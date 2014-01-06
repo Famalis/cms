@@ -2,7 +2,7 @@ function SystemConfigCtrl($scope, $http, saveEditDelete, pagination) {
     
     $scope.indexOnPage = pagination.indexOnPage($scope);
     $scope.pageMin = 0;
-    $scope.pageMax = 9;
+    $scope.pageMax = 14;
     $scope.checkMax = pagination.pageMaxSmallerThenSize($scope);
     
     $scope.status = "Ładowanie danych";

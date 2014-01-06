@@ -913,7 +913,7 @@ input.wyswietl-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 5px 0 5px;
+  margin: 19px 5px 0 0;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
@@ -936,7 +936,7 @@ input.usun-button {
   padding: 0 0 0 2px;
   width: 90px;
   height: 36px;
-  margin: 19px 5px 0 5px;
+  margin: 19px 5px 0 0;
   font-family: 'Open Sans';
   font-size: 14px;
   font-weight: 700;
