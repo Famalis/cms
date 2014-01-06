@@ -955,3 +955,7 @@ input.usun-button {
 input.usun-button:hover, input.usun-button:active {
   background-color: #e8416c;
 }
+.komunikat-operacji {
+    color: #9fa3a7;
+    
+}

@@ -17,11 +17,6 @@
 
 
 </script>
-<div class="komunikat-operacji">
-    <h1 ng-show="showOperationMessage">
-        {{operationMessage}}
-    </h1>
-</div>
 <table class="genericTable">
     <tr class="table-header">
 
@@ -48,7 +43,7 @@
     </tbody>
 
 </table>
-<div class="footer" ng-show="checkMax() || pageMin > 0">
+<div class="footer" ng-show="objects.length > 0">
     
     
 
@@ -64,7 +59,8 @@
         <input ng-show="checkMax()" type="button" class="dalej-button" ng-click="pageMax = pageMax + 10;
                     pageMin = pageMin + 10" value="DALEJ"/>
 
-    </div> 
+    </div>
+
     <div class="pageMax-tekst">
         wyświetlane wpisy<br>
         <span style="font-weight:700;float: right;">{{pageMin + 1}}-{{pageMax + 1}}</span>
