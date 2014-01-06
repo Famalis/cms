@@ -17,6 +17,12 @@
 
 
 </script>
+<div class="komunikat-powodzenia-operacji">
+    <h1 ng-show="showOperationMessage">
+        {{operationMessage}}
+    </h1>
+</div>
+
 <table class="genericTable">
     <tr class="table-header">
 
@@ -44,8 +50,8 @@
 
 </table>
 <div class="footer" ng-show="objects.length > 0">
-    
-    
+
+
 
     <input type="button" class="dodaj-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" value="DODAJ">
     <input type="button" class="edytuj-button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" value="EDYTUJ">
@@ -54,9 +60,9 @@
     <input type="button" class="wyswietl-button" ng-show="displayPage && selected && !editMode" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="WYŚWIETL">
     <input type="button" class="usun-button" ng-show="selected.id != undefined && !editMode && checkEditPrivileges()" ng-click="delete()" value="USUŃ">
     <div class="pageMax">
-        <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 10;
+        <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 15;
                     pageMin = pageMin - 10" value="WSTECZ"/>
-        <input ng-show="checkMax()" type="button" class="dalej-button" ng-click="pageMax = pageMax + 10;
+        <input ng-show="checkMax()" type="button" class="dalej-button" ng-click="pageMax = pageMax + 15;
                     pageMin = pageMin + 10" value="DALEJ"/>
 
     </div>
