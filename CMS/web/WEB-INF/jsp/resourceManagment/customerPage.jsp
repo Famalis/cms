@@ -38,6 +38,17 @@
                                     Firma: ${customer.companyName}
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    Kraj: ${customer.country}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Adres: ${customer.city} ${customer.postalCode} <br/>
+                                    ${customer.streetName} ${customer.streetNumber}/${customer.apartmentNumber}
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
@@ -54,6 +65,9 @@
                                     <th>
                                         Opis Umowy
                                     </th>
+                                    <th>
+                                        Cena
+                                    </th>
                                 </tr>
                             <c:forEach items="${contracts}" var="contract">
                                 <tr>
@@ -65,6 +79,9 @@
                                     </td>
                                     <td>
                                         ${contract.description}
+                                    </td>
+                                    <td>
+                                        ${contract.price}
                                     </td>
                                 </tr>
                             </c:forEach>

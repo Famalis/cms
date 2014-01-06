@@ -57,6 +57,7 @@ public class CustomerDao extends GenericDao<Customer>{
                 dto.setCity(a.getCity());
                 dto.setStreetName(a.getStreetName());
                 dto.setStreetNumber(a.getStreetNumber());
+                dto.setPostalCode(a.getPostalCode());
                 cusDTOs.add(dto);
             }
         } catch (SQLException ex) {

@@ -50,6 +50,12 @@
                                         <br />
                                         <span class="error" ng-show="myForm.opis.$error.required">Dodaj opis!</span>
                                     </td>
+                                    <td>
+                                        Cena: <input name="cena" required="required" ng-pattern="/^[0-9]+$/" type="text" ng-model="selected.price"/>zł
+                                        <br />
+                                        <span class="error" ng-show="myForm.cena.$error.required">Dodaj cenę!</span>
+                                        <span class="error" ng-show="myForm.cena.$error.pattern">Proszę wprowadzić tyko cyfry</span>
+                                    </td>
                                 </tr>
                             </table>
                         

@@ -26,6 +26,13 @@
                                     <br />
                                     <span class="error" ng-show="myForm.opis.$error.required">Dodaj opis!</span>
                                 </td>
+                                <td>
+                                    <select ng-model="selected.hierarhy">
+                                        <option value="1">Pracownik</option>
+                                        <option value="2">Menadżer</option>
+                                        <option value="3">Prezes</option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                 </div>

@@ -69,6 +69,7 @@ public class CustomerListController extends BaseController{
             actualAdr.setStreetName(cusDto.getStreetName());
             actualAdr.setStreetNumber(cusDto.getStreetNumber());
             actualAdr.setApartmentNumber(cusDto.getApartmentNumber());
+            actualAdr.setPostalCode(cusDto.getPostalCode());
             
             if(actualAdr.getId()!=null) {
                 actualAdr.update();

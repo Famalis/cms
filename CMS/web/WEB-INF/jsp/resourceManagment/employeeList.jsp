@@ -45,7 +45,7 @@
                                         Wypłata: <input name="wyplata" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.salary"/>zł
                                         <br />
                                         <span class="error" ng-show="myForm.wyplata.$error.required">Wypłata potrzebna!</span>
-                                        <span class="error" ng-show="myForm.wyplata.$error.pattern"> Proszę wprowadzić tyko cyfry</span>
+                                        <span class="error" ng-show="myForm.wyplata.$error.pattern">Proszę wprowadzić tyko cyfry</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,6 +77,12 @@
                                         Numer mieszkania: <input name="mieszkanie" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.apartmentNumber"/>
                                         <br />
                                         <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
+                                    </td>
+                                    <td>
+                                        Kod pocztowy: <input name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
+                                        <br />
+                                        <span class="error" ng-show="myForm.kod.$error.required">Dodaj kod pocztowy!</span>
+                                        <span class="error" ng-show="myForm.kod.$error.pattern">Zły format</span>
                                     </td>
                                 </tr>
                                 <tr>

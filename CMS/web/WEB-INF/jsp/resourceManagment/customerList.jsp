@@ -91,76 +91,81 @@
 
                     </div>
                 </div>
-
-                <t:dataTable/>
-
-                <t:jsonOperations/>
-                <div ng-show="editMode">
-                    <table class="genericTable">
-                        <tr>
-                            <td>
-                                Imię: <input name="imie" type="text" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
-                                <br />
-                                <span class="error" ng-show="myForm.imie.$error.required">Imię potrzebne!</span>
-                                <span class="error" ng-show="myForm.imie.$error.pattern">Proszę prowadzić tylko litery</span>
-                            </td>
-                            <td>
-                                Nazwisko: <input name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+){0,1}$/" ng-model="selected.surname"/>
-                                <br />
-                                <span class="error" ng-show="myForm.nazwisko.$error.required">Nazwisko potrzebne!</span>
-                                <span class="error" ng-show="myForm.nazwisko.$error.pattern">Proszę prowadzić tylko litery</span>
-                            </td>
-                            <td>
-                                Telefon: <input name="tel" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.phone"/>
-                                <br />
-                                <span class="error" ng-show="myForm.tel.$error.required">Telefon potrzebny!</span>
-                                <span class="error" ng-show="myForm.tel.$error.pattern"> Proszę wprowadzić tyko cyfry</span>
-                            </td>
-                            <td>
-                                Email: <input name="email" type="text" ng-pattern="/^[.A-Za-z0-9-_]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required="required" ng-model="selected.email"/> 
-                                <br />
-                                <span class="error" ng-show="myForm.email.$error.required">Email potrzebny!</span>
-                                <span class="error" ng-show="myForm.email.$error.pattern">Niepoprawna forma E-mail</span>
-                            </td>
-                            <td>
-                                Firma: <input name="firma" type="text" required="required" ng-model="selected.companyName"/>
-                                <br />
-                                <span class="error" ng-show="myForm.firma.$error.required">Firma potrzebna!</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Kraj: <input name="kraj" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.country"/>
-                                <br />
-                                <span class="error" ng-show="myForm.kraj.$error.required">Kraj potrzebny!</span>
-                                <span class="error" ng-show="myForm.kraj.$error.pattern">Proszę prowadzić tylko litery</span>
-                            </td>
-                            <td>
-                                Miasto: <input name="miasto" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.city"/>
-                                <br />
-                                <span class="error" ng-show="myForm.miasto.$error.required">Miasto potrzebne!</span>
-                                <span class="error" ng-show="myForm.miasto.$error.pattern">Proszę prowadzić tylko litery</span>
-                            </td>
-                            <td>
-                                Nazwa ulicy: <input name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.streetName"/>
-                                <br />
-                                <span class="error" ng-show="myForm.ulica.$error.required">Ulica potrzebna!</span>
-                                <span class="error" ng-show="myForm.ulica.$error.pattern">Użyte niepoprawne znaki</span>
-                            </td>
-                            <td>
-                                Numer budynku: <input name="budynek" type="text" ng-pattern="/^[0-9]+[a-z]{0,1}$/" required="required" ng-model="selected.streetNumber"/>
-                                <br />
-                                <span class="error" ng-show="myForm.budynek.$error.required">Numer potrzebny!</span>
-                                <span class="error" ng-show="myForm.budynek.$error.pattern">Zły numer budynku</span>
-                            </td>
-                            <td>
-                                Numer mieszkania: <input name="mieszkanie" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.apartmentNumber"/>
-                                <br />
-                                <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+            
+            <t:dataTable/>
+            
+            <t:jsonOperations/>
+            <div ng-show="editMode">
+                <table class="genericTable">
+                    <tr>
+                         <td>
+                             Imię: <input name="imie" type="text" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
+                             <br />
+                             <span class="error" ng-show="myForm.imie.$error.required">Imię potrzebne!</span>
+                             <span class="error" ng-show="myForm.imie.$error.pattern">Proszę prowadzić tylko litery</span>
+                        </td>
+                        <td>
+                            Nazwisko: <input name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+){0,1}$/" ng-model="selected.surname"/>
+                            <br />
+                            <span class="error" ng-show="myForm.nazwisko.$error.required">Nazwisko potrzebne!</span>
+                            <span class="error" ng-show="myForm.nazwisko.$error.pattern">Proszę prowadzić tylko litery</span>
+                        </td>
+                         <td>
+                            Telefon: <input name="tel" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.phone"/>
+                            <br />
+                            <span class="error" ng-show="myForm.tel.$error.required">Telefon potrzebny!</span>
+                            <span class="error" ng-show="myForm.tel.$error.pattern"> Proszę wprowadzić tyko cyfry</span>
+                        </td>
+                        <td>
+                            Email: <input name="email" type="text" ng-pattern="/^[.A-Za-z0-9-_]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required="required" ng-model="selected.email"/> 
+                            <br />
+                            <span class="error" ng-show="myForm.email.$error.required">Email potrzebny!</span>
+                            <span class="error" ng-show="myForm.email.$error.pattern">Niepoprawna forma E-mail</span>
+                        </td>
+                        <td>
+                            Firma: <input name="firma" type="text" required="required" ng-model="selected.companyName"/>
+                            <br />
+                            <span class="error" ng-show="myForm.firma.$error.required">Firma potrzebna!</span>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
+                            Kraj: <input name="kraj" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.country"/>
+                            <br />
+                            <span class="error" ng-show="myForm.kraj.$error.required">Kraj potrzebny!</span>
+                            <span class="error" ng-show="myForm.kraj.$error.pattern">Proszę prowadzić tylko litery</span>
+                       </td>
+                       <td>
+                            Miasto: <input name="miasto" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.city"/>
+                            <br />
+                            <span class="error" ng-show="myForm.miasto.$error.required">Miasto potrzebne!</span>
+                            <span class="error" ng-show="myForm.miasto.$error.pattern">Proszę prowadzić tylko litery</span>
+                       </td>
+                       <td>
+                            Nazwa ulicy: <input name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.streetName"/>
+                            <br />
+                            <span class="error" ng-show="myForm.ulica.$error.required">Ulica potrzebna!</span>
+                            <span class="error" ng-show="myForm.ulica.$error.pattern">Użyte niepoprawne znaki</span>
+                       </td>
+                       <td>
+                            Numer budynku: <input name="budynek" type="text" ng-pattern="/^[0-9]+[a-z]{0,1}$/" required="required" ng-model="selected.streetNumber"/>
+                            <br />
+                            <span class="error" ng-show="myForm.budynek.$error.required">Numer potrzebny!</span>
+                            <span class="error" ng-show="myForm.budynek.$error.pattern">Zły numer budynku</span>
+                       </td>
+                       <td>
+                            Numer mieszkania: <input name="mieszkanie" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.apartmentNumber"/>
+                            <br />
+                            <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
+                       </td>
+                       <td>
+                           Kod pocztowy: <input name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
+                           <br />
+                           <span class="error" ng-show="myForm.kod.$error.required">Dodaj kod pocztowy!</span>
+                           <span class="error" ng-show="myForm.kod.$error.pattern">Zły format</span>
+                       </td>
+                    </tr>
+                </table>
             </div>
         </form>
     </jsp:body>

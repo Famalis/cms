@@ -19,7 +19,8 @@ public class ContractDTO {
             customerName, 
             customerSurname,
             date,
-            description;
+            description,
+            price;
     
     public ContractDTO() {
         super();
@@ -43,6 +44,7 @@ public class ContractDTO {
         
         this.date = contract.getDate();
         this.description = contract.getDescription();
+        this.price = contract.getPrice();
     }
 
     public Long getId() {
@@ -115,6 +117,14 @@ public class ContractDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
     
     
