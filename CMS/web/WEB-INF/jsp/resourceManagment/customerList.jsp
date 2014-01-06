@@ -10,65 +10,29 @@
 <t:genericTemplate>
     <jsp:body>
         <form name="myForm">
-            <script src="/CMS/resources/js/resourceManagment/customerListCtrl.js"></script>
+        <script src="/CMS/resources/js/resourceManagment/customerListCtrl.js"></script>
 
-            <div ng-controller="CustomerListCtrl">  
-                <div class="top-right">
-                    <div class="more-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" id="flip"></div>
-                    <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
+        <div ng-controller="CustomerListCtrl">  
+            <div class="top-right">
+    <div class="more-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" id="flip"></div>
+    <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
 
-                </div>
-                <div class="right-addNew" id="panel" ng-show="editMode">
-                    <div class="addNew-header">Dodaj nowego klienta</div>
+</div>
+            <div class="right-addNew" id="panel">
+                    <div class="addNew-header">Dodaj nowego pracownika</div>
                     <div class="addNew-line"></div>
                     <div class="addNew-inputs">
+                        <div class="addNew-input"><input class="imie-field" type="text" placeholder="Imię..."/></div>
+                        <div class="addNew-input"><input class="nazwisko-field" type="text" placeholder="Nazwisko..."/></div>
+                        <div class="addNew-input"><input class="pesel-field" type="text" placeholder="Numer PESEL..."/></div>
+                        <div class="addNew-input"><input class="telefon-field" type="text" placeholder="Telefon..."/></div>
+                        <div class="addNew-input"><input class="kraj-field" type="text" placeholder="Kraj..."/></div>
+                        <div class="addNew-input"><input class="ulica-field" type="text" placeholder="Nazwa ulicy..."/></div>
+                        <div class="addNew-input"><input class="budynek-field" type="text" placeholder="Numer budynku..."/></div>
+                        <div class="addNew-input"><input class="mieszkanie-field" type="text" placeholder="Numer mieszkania..."/></div>
+                        <div class="addNew-input"><input class="miejscowosc-field" type="text" placeholder="Miejscowość..."/></div>
 
                         <div class="addNew-input">
-                            <input class="imie-field" placeholder="Imię..." name="imie" type="text" maxlength="21" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
-                        </div>
-
-                        <div class="addNew-input">
-                            <input class="nazwisko-field" placeholder="Nazwisko..." name="nazwisko" type="text" required="required" ng-pattern="/^[A-Za-z]+(-[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+){0,1}$/" ng-model="selected.surname"/>
-                        </div>
-
-                        <!--<div class="addNew-input"><input class="pesel-field" type="text" placeholder="Numer PESEL..."/></div>-->
-                        <div class="addNew-input">
-                            <input class="telefon-field" placeholder="Telefon..." name="tel" type="text" ng-pattern="/^[0-9]+$/" maxlength="9" required="required" ng-model="selected.phone"/>
-                        </div>
-
-                        <div class="addNew-input">
-                            <input class="email-field" placeholder="Adres e-mail..." name="email" type="text" ng-pattern="/^[.A-Za-z0-9-_]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required="required" ng-model="selected.email"/>
-                        </div>
-
-                        <div class="addNew-input">
-                            <input class="firma-field" placeholder="Nazwa firmy..." name="firma" type="text" required="required" ng-model="selected.companyName"/>
-                        </div>
-                        
-                        <div class="addNew-input">
-                            <input class="ulica-field" placeholder="Nazwa ulicy..." name="ulica" type="text" ng-pattern="/^[ A-Za-z0-9ąęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.streetName"/>
-                        </div>
-                        
-                        <div class="addNew-input">
-                            <input class="mieszkanie-field" placeholder="Numer mieszkania..." name="mieszkanie" type="text" ng-pattern="/^[0-9]+$/" required="required" ng-model="selected.apartmentNumber"/>    
-                        </div>
-                        
-                        <div class="addNew-input">
-                            <input class="budynek-field" placeholder="Numer budynku..." name="budynek" type="text" ng-pattern="/^[0-9]+[a-z]{0,1}$/" required="required" ng-model="selected.streetNumber"/>
-                        </div>
-                        
-                        <div class="addNew-input">
-                            <input class="miejscowosc-field" placeholder="Miejscowość.." name="miasto" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.city"/>
-                        </div>
-                        
-                        <div class="addNew-input">  
-                            <input class="kraj-field" placeholder="Kraj..." name="kraj" type="text" ng-pattern="/^[ A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" required="required" ng-model="selected.country"/>
-                        </div>
-
-
-
-
-
-                        <!--<div class="addNew-input">
                             <div class="stanowisko-select"> 
                                 <select> 
                                     <option selected="selected">Stanowisko...</option>
@@ -76,9 +40,9 @@
                                     <option>Webkit</option> 
                                 </select> 
                             </div>
-                        </div> -->
+                        </div>
 
-                        <!--<div class="addNew-input">
+                        <div class="addNew-input">
                             <div class="wydzial-select"> 
                                 <select> 
                                     <option selected="selected">Wydział...</option>
@@ -86,7 +50,7 @@
                                     <option>Webkit</option> 
                                 </select> 
                             </div>
-                        </div>-->
+                        </div>
 
 
                     </div>
@@ -167,6 +131,7 @@
                     </tr>
                 </table>
             </div>
+        </div>
         </form>
     </jsp:body>
 </t:genericTemplate>
