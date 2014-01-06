@@ -752,6 +752,29 @@ bottom:0;
     padding-right: 20px;
     padding-top: 14px;
 }
+input.dodaj-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 0px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.dodaj-button:hover, input.dodaj-button:active {
+  background-color: #ef8e71;
+}
 input.dalej-button {
   padding: 0 0 0 2px;
   width: 90px;
@@ -794,7 +817,118 @@ input.wstecz-button {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
+input.anuluj-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 0px 0 21px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #7d8288;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
 
-input.wstecz-button:hover, input.wstecz-button:active {
+input.anuluj-button:hover, input.anuluj-button:active {
   background-color: #8a8f95;
+}
+input.dodaj-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 21px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #32b38c;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.dodaj-button:hover, input.dodaj-button:active {
+  background-color: #28a27d;
+}
+input.edytuj-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 21px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #32b38c;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.edytuj-button:hover, input.edytuj-button:active {
+  background-color: #28a27d;
+}
+input.zapisz-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 5px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #32b38c;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.zapisz-button:hover, input.zapisz-button:active {
+  background-color: #28a27d;
+}
+input.wyswietl-button {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 19px 5px 0 5px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.wyswietl-button:hover, input.wyswietl-button:active {
+  background-color: #ef8e71;
 }
