@@ -123,7 +123,10 @@
                             <span class="error" ng-show="myForm.mieszkanie.$error.pattern">Proszę prowadzić tylko cyfry</span>
                        </td>
                        <td>
-                           Kod pocztowy: <input type="text" ng-model="selected.postalCode"/>
+                           Kod pocztowy: <input name="kod" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" required="required"  type="text" ng-model="selected.postalCode"/>
+                           <br />
+                           <span class="error" ng-show="myForm.kod.$error.required">Dodaj opis!</span>
+                           <span class="error" ng-show="myForm.kod.$error.pattern">Zły format</span>
                        </td>
                     </tr>
                 </table>
