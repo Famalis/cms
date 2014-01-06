@@ -25,11 +25,16 @@
                                     Login: <input type="text" ng-model="selected.login"/>
                                 </td>
                                 <td>
+                                    Hasło: <input type="text" ng-model="selected.password"/>
+                                </td>
+                                <td>
                                     Imię: <input type="text" ng-model="selected.name"/>
                                 </td>
                                 <td>
                                     Nazwisko: <input type="text" ng-model="selected.surname"/>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     Grupa:
                                     <select ng-model="selected.groupId">
@@ -46,9 +51,6 @@
                                                 ng-click="selected.name = emp.name; selected.surname = emp.surname; selected.login = generateLogin(emp)">
                                             {{emp.surname}} {{emp.name}}</option>
                                     </select>
-                                </td>
-                                <td>
-                                    <input type="submit" ng-click="save()" value="Zapisz zmiany">
                                 </td>
                             </tr>
                         </table>

@@ -31,7 +31,7 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
         var date = new Date();
         var curDate = null;
         do { curDate = new Date(); }
-        while(curDate-date < 1000);
+        while(curDate-date < 1500);
   
         $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);
         loadDataPromise = $scope.get;
@@ -65,7 +65,7 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
     };
 
     $scope.create = function() {
-        $scope.selected = "";
+        $scope.selected = new Object();
         $scope.editMode = true;
 
     };
@@ -84,7 +84,7 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
     
     $scope.generateLogin = function(emp) {
         var login = emp.name.substring(0,1) + emp.surname.substring(0,emp.surname.length);
-        var login = login.toLowerCase();
+        login = login.toLowerCase();
         return login;
     };
     
