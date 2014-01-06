@@ -84,7 +84,7 @@
         <div class="container">
             <div class="top-green"></div>
             <div class="top-nav">
-                <a href="/CMS/login.htm"><div class="logo"></div></a>
+                <div class="logo"></div>
 
                 <div class="logout-button">
                     <form action="/CMS/logout.htm" method="POST">
@@ -106,23 +106,17 @@
 
             </div> <!-- end of top-nav -->
 
-            <div class="top-search">
+         
+                
 
-                <div class="zasoby">
-                    <div class="zasoby-ico"><img src="/CMS/resources/images/zarzadanie-ico.png" width="22" height="26"  alt=""/></div>
-                    <div class="zasoby-tekst">Zarządzanie zasobami</div>
-                </div>
-
-                <div class="more-button" id="flip"></div>
-                <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
-
-            </div> <!-- end of top-search -->
+            
 
             <div class="content">
                 <div class="left-nav">
+                 
 
                     <ul>
-
+                        <li id="nav14">Zarządzanie zasobami</li>
                         <c:if test="${user.privilegeKeyCodes.contains('all') || 
                                       user.privilegeKeyCodes.contains('ViewCustomers')}">
                               <a href="/CMS/customerList.htm"><li id="nav0">Klienci</li></a>
@@ -186,53 +180,16 @@
                     </ul>
 
 
-                </div> <!-- end of left-nav -->
-                <!--<div class="right-addNew" id="panel">
-                    <div class="addNew-header">Dodaj nowego pracownika</div>
-                    <div class="addNew-line"></div>
-                    <div class="addNew-inputs">
-                        <div class="addNew-input"><input class="imie-field" type="text" placeholder="Imię..."/></div>
-                        <div class="addNew-input"><input class="nazwisko-field" type="text" placeholder="Nazwisko..."/></div>
-                        <div class="addNew-input"><input class="pesel-field" type="text" placeholder="Numer PESEL..."/></div>
-                        <div class="addNew-input"><input class="telefon-field" type="text" placeholder="Telefon..."/></div>
-                        <div class="addNew-input"><input class="kraj-field" type="text" placeholder="Kraj..."/></div>
-                        <div class="addNew-input"><input class="ulica-field" type="text" placeholder="Nazwa ulicy..."/></div>
-                        <div class="addNew-input"><input class="budynek-field" type="text" placeholder="Numer budynku..."/></div>
-                        <div class="addNew-input"><input class="mieszkanie-field" type="text" placeholder="Numer mieszkania..."/></div>
-                        <div class="addNew-input"><input class="miejscowosc-field" type="text" placeholder="Miejscowość..."/></div>
-
-                        <div class="addNew-input">
-                            <div class="stanowisko-select"> 
-                                <select> 
-                                    <option selected="selected">Stanowisko...</option>
-                                    <option>Firefox</option> 
-                                    <option>Webkit</option> 
-                                </select> 
-                            </div>
-                        </div>
-
-                        <div class="addNew-input">
-                            <div class="wydzial-select"> 
-                                <select> 
-                                    <option selected="selected">Wydział...</option>
-                                    <option>Firefox</option> 
-                                    <option>Webkit</option> 
-                                </select> 
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div> --> <!-- end of right-addNew -->
+                </div> 
                 <div class="content-table">
                     <jsp:doBody/>
 
 
-                </div> <!-- end of content-table -->
-            </div><!-- end of content -->
+                
+            </div><!-- end of content-table -->
 
-        </div> <!-- end of container --> 
-
+        </div> <!-- end of content --> 
+</div>
 
 
 

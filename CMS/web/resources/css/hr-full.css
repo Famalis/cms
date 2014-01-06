@@ -38,6 +38,10 @@ body {
     height: 5px;
     background-color: #32b38c;
 }
+.top-right {
+    background-color: #d4d4d4;
+    height: 75px;
+}
 
 .top-nav {
     width: 100%;
@@ -54,13 +58,9 @@ body {
     margin: 43px 0 0 30px;
 }
 
-.logo:hover {
-    background-image: url(/CMS/resources/images/logo-after.png);
-    cursor: pointer;
-}
-
 .top-search {
-    width: 100%;
+    float:left;
+    width: 290px;
     height: 75px;
     background-color: #d4d4d4;
 }
@@ -123,7 +123,7 @@ body {
 
 /* Wyszukiwarka */
 input.wyszukiwarka {
-    margin: 17px 17px 0 0;
+    margin: 18px 17px 0 0;
     float: right;
     font-family: 'Open Sans';
     font-size: 15px;
@@ -202,8 +202,8 @@ input.wyszukiwarka:-ms-input-placeholder {
 }
 
 .left-nav {
-    border-top: 1px solid #f9f9f9;
-    border-right: 1px solid #f9f9f9;
+    border-top: 0px solid #f9f9f9;
+    border-right: 0px solid #f9f9f9;
     float: left;
     width: 290px;
     background-color: #ececec;
@@ -339,10 +339,12 @@ input.miejscowosc-field {
     padding-top: 23px;
     height: 47px;
     border-bottom: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+    border-top: 0px;
 }
 
 #nav0, #nav0:hover,#nav1, #nav1:hover, #nav2, #nav2:hover, #nav3, #nav3:hover, #nav4, #nav4:hover, #nav5, #nav5:hover,
-#nav6, #nav6:hover, #nav7, #nav7:hover, #nav8, #nav8:hover, #nav9, #nav9:hover, #nav10, #nav10:hover, #nav11, #nav11:hover, #nav12, #nav12:hover, #nav13, #nav13:hover {
+#nav6, #nav6:hover, #nav7, #nav7:hover, #nav8, #nav8:hover, #nav9, #nav9:hover, #nav10, #nav10:hover, #nav11, #nav11:hover, #nav12, #nav12:hover, #nav13, #nav13:hover, #nav14, #nav14:hover {
     background-repeat: no-repeat;
 }
 
@@ -408,6 +410,16 @@ input.miejscowosc-field {
     color: #909497;
     background-color: #d4d4d4;
     background-image: url(/CMS/resources/images/konfiguracja-ico.png);
+}
+#nav14 {
+    color: #909497;
+    background-color: #d4d4d4;
+    background-image: url(/CMS/resources/images/zarzadanie-ico.png);
+    background-position: 27px 24px;
+    border-right: 1px solid #d4d4d4;
+    height: 49px;
+    padding-top:26px;
+    
 }
 
 #nav7 {
@@ -630,7 +642,7 @@ input.miejscowosc-field {
 .content-table {
     margin-bottom:74px;
     overflow: hidden;
-    background-color: #ececec;
+    background-color: #d4d4d4;
 }
 
 .genericTable {
