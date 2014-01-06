@@ -70,6 +70,7 @@ public class LoginController extends BaseController {
             //userConfig.setUserId(currentUser.getId());
             userConfig.loadObject("userId=" + user.getId());
         } else {
+            model.put("error", "Błędne dane logowania");
             return "home";
         }
 

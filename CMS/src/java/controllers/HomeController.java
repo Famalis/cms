@@ -60,7 +60,6 @@ public class HomeController extends BaseController {
                 //model.put("user", user);
                 return "login";
             } else {
-                model.put("","");
                 return "home";
             }
         } else {
