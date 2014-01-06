@@ -6,11 +6,15 @@ cmsModule.factory('saveEditDelete', function() {
             if ($scope.selected.id != null) {
                 $scope[$scope.objectsName].push($scope.selected);
             }
-            
+
             return $http.post(
                     link,
                     {object: $scope.selected}).success(function() {
+                $scope.showOperationMessage = true;
+                $scope.operationMessage = "Operacja zapisywania udana"
             }).error(function(error) {
+                $scope.showOperationMessage = true;
+                $scope.operationMessage = "Operacja zapisywania nie udana"
                 alert(error);
             });
         },
@@ -39,9 +43,11 @@ cmsModule.factory('saveEditDelete', function() {
                 }
                 $scope[$scope.objectsName].splice(index, 1);
                 $scope.selected = "";
-                alert("Usunąłeś go kurwA!! Ty chuju!!");
+                $scope.showOperationMessage = true;
+                $scope.operationMessage = "Operacja usuwania udana"
             }).error(function(error) {
-
+                $scope.showOperationMessage = true;
+                $scope.operationMessage = "Operacja zapisywania nie udana"
             });
         }
     };
@@ -59,19 +65,18 @@ cmsModule.factory('pagination', function() {
                 }
             };
         },
-        
         pageMaxSmallerThenSize: function($scope) {
-          return function() {
-              //alert($scope[$scope.objectsName].length);
-              if($scope[$scope.objectsName].length<=10) {
-                  return false;
-              }
-              if($scope.pageMax > $scope[$scope.objectsName].length) {
-                  return false;
-              } else {
-                  return true;
-              }
-          };  
+            return function() {
+                //alert($scope[$scope.objectsName].length);
+                if ($scope[$scope.objectsName].length <= 10) {
+                    return false;
+                }
+                if ($scope.pageMax > $scope[$scope.objectsName].length) {
+                    return false;
+                } else {
+                    return true;
+                }
+            };
         }
     };
 });
