@@ -103,12 +103,12 @@ public class LoginController extends BaseController {
             FileItem item = items.get(0);
             if (item.getSize() == 0) {
                 model.put("error", "Nie wybrano żadnego pliku");
-                return "redirect:/login.htm";
+                return "login";
                 //System.out.println("no file");
             }
             if (!item.getContentType().equals("image/jpeg")) {
                 model.put("error", "Plik musi posiadać rozszerzenie jpg");
-                return "redirect:/login.htm";
+                return "login";
             }
             SystemFile r = new SystemFile();
             UserDTO user = (UserDTO) request.getSession().getAttribute("user");
