@@ -48,9 +48,9 @@
     </tbody>
 
 </table>
-<div class="footer">
-
-
+<div class="footer" ng-show="checkMax() || pageMin > 0">
+    
+    
 
     <input type="button" class="dodaj-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" value="DODAJ">
     <input type="button" class="edytuj-button" ng-show="selected && !editMode && checkEditPrivileges()" ng-click="edit()" value="EDYTUJ">

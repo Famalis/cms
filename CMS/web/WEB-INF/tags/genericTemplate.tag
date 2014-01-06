@@ -187,7 +187,7 @@
 
 
                 </div> <!-- end of left-nav -->
-                <div class="right-addNew" id="panel">
+                <!--<div class="right-addNew" id="panel">
                     <div class="addNew-header">Dodaj nowego pracownika</div>
                     <div class="addNew-line"></div>
                     <div class="addNew-inputs">
@@ -223,7 +223,7 @@
 
 
                     </div>
-                </div> <!-- end of right-addNew -->
+                </div> --> <!-- end of right-addNew -->
                 <div class="content-table">
                     <jsp:doBody/>
 
