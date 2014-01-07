@@ -4,14 +4,14 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/fileListCtrl.js"></script>
-        <div ng-controller="FileListCtrl">
-            <div ng-show="fileListDownload" class="top-right">
-                    
-                    <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
+        <div ng-init="fileListDownload = true" ng-controller="FileListCtrl">
+            <div  class="top-right">
 
-                </div>
-           
-                        <t:dataTable/>
+                <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
+
+            </div>
+
+            <t:dataTable/>
         </div>
     </jsp:body>
 </t:genericTemplate>
