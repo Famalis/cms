@@ -26,8 +26,6 @@ public class UserDTO implements Serializable {
 
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
-        this.name = user.getName();
-        this.surname = user.getSurname();
         this.groupId = userConfig.getGroupId();
         this.login = user.getLogin();
         if (user.getEmployeeId() != null) {

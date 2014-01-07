@@ -27,10 +27,10 @@ public class UserDao extends GenericDao<User> {
         if(conditions.length()>0) {
             conditions+=" AND "; 
         }
-        String query = "SELECT user.id as id, user.name as name, user.surname as surname,"
+        String query = "SELECT user.id as id, emp.name as name, emp.surname as surname, "
                 + "user.login as login, user.password as password, user.employeeId as employeeId, "
-                + "user_configuration.groupId as groupId FROM user, user_configuration "
-                + "WHERE " + conditions + "user.id = user_configuration.userId";
+                + "user_configuration.groupId as groupId FROM user, user_configuration, employee as emp "
+                + "WHERE " + conditions + "user.id = user_configuration.userId AND user.employeeId = emp.id";
         ResultSet resultSet = this.connectionManager.select(query);
         PrivilegeGroupDao privGroupDao = new PrivilegeGroupDao();
         List<PrivilegeGroup> groups = privGroupDao.select();

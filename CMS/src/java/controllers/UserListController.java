@@ -61,8 +61,6 @@ public class UserListController extends BaseController{
             if(userDto.getLogin().length()<=0 || userDto.getPassword().length()<=0) {
                 throw new NullPointerException("Brak hasła albo loginu");
             }
-            actualUser.setName(userDto.getName());
-            actualUser.setSurname(userDto.getSurname());
             actualUser.setPassword(userDto.getPassword());
             actualUser.setLogin(userDto.getLogin());            
             actualUser.setEmployeeId(userDto.getEmployeeId());

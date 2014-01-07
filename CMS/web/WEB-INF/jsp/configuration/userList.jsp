@@ -18,8 +18,6 @@
                 </div>
         
             <t:dataTable/>
-            
-                        <t:jsonOperations/>
                 
             <table>
                 <tr>
@@ -31,12 +29,6 @@
                                 </td>
                                 <td>
                                     Hasło: <input type="text" ng-model="selected.password"/>
-                                </td>
-                                <td>
-                                    Imię: <input type="text" ng-model="selected.name"/>
-                                </td>
-                                <td>
-                                    Nazwisko: <input type="text" ng-model="selected.surname"/>
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +45,7 @@
                                     Pracownik posiadający konto:
                                     <select ng-model="selected.employeeId">
                                         <option ng-repeat="emp in employees" value="{{emp.id}}" ng-selected="selected.employeeId == emp.id"
-                                                ng-click="selected.name = emp.name; selected.surname = emp.surname; selected.login = generateLogin(emp)">
+                                                ng-click="selected.login = generateLogin(emp)">
                                             {{emp.surname}} {{emp.name}}</option>
                                     </select>
                                 </td>

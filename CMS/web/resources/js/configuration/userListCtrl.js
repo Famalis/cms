@@ -8,17 +8,13 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "users";
     $scope.attributes = [];
-    $scope.attributes[0] = 'surname';
-    $scope.attributes[1] = 'name';
-    $scope.attributes[2] = 'login';
-    $scope.attributes[3] = 'groupName';
-    $scope.attributes[4] = 'employeeId';
+    $scope.attributes[0] = 'login';
+    $scope.attributes[1] = 'groupName';
+    $scope.attributes[2] = 'employeeId';
     $scope.columns = {
-      'employeeId' : "Pracownik",
+      'employeeId' : "ID Pracownika",
       'groupName' : "Grupa",
-      'login' : "Login",      
-      'name' : "Imię",
-      'surname' : "Nazwisko"      
+      'login' : "Login"      
     };
     $scope.selected = "";
     $scope.editMode = false;
