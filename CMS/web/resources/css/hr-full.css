@@ -495,6 +495,26 @@ input.miejscowosc-field {
         min-width:220px;
 
     }
+    .file-name {
+        text-align:left;
+        padding-left:17px;
+        width:20%;
+        min-width:220px;
+
+    }
+    .file-opis {
+        text-align:left;
+        padding-left:17px;
+        width:35%;
+        min-width:350px;
+       
+
+    }
+    .file-type {
+        text-align:left;
+        padding-left:17px;
+
+    }
     .pracownik-name {
         text-align:left;
         padding-left:17px;
@@ -601,6 +621,29 @@ input.miejscowosc-field {
 
 @media screen and (min-width: 600px) and (max-width: 1280px) {
     /* Klienci tabela danych */
+    
+    .klient-name {
+        text-align:left;
+        padding-left:17px;
+        width:23%;
+        min-width:220px;
+
+    }
+    .file-name {
+        text-align:left;
+        padding-left:17px;
+        width:20%;
+        min-width:220px;
+
+    }
+    .file-opis {
+        text-align:left;
+        padding-left:17px;
+        width:35%;
+        min-width:220px;
+       
+
+    }
 
     .klient-name {
         text-align:left;
@@ -807,6 +850,28 @@ bottom:0;
     float:right;
     padding-right: 20px;
     padding-top: 14px;
+}
+input.pobierz-button {
+  padding: 0 15px 0 16px;
+  height: 36px;
+  margin: 19px 5px 0 21px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+input.pobierz-button:hover, input.pobierz-button:active {
+  background-color: #ef8e71;
 }
 input.dodaj-button {
   padding: 0 0 0 2px;

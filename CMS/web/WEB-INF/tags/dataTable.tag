@@ -124,13 +124,13 @@
     <div ng-show="fileListDownload && selected">
         <form action="fileList/download.htm">
             <input ng-hide="true" type="text" name="id" value="{{selected.id}}">
-            <input type="submit" value="Pobierz {{selected.name}}"/>
+            <input class="pobierz-button" type="submit" value="Pobierz {{selected.name}}"/>
         </form>
     </div>
     <div ng-show="configFileListDownload && selected">
         <form action="reportList/download.htm">
             <input ng-show="false" type="text" value="{{selected.id}}" name="id"/>
-            <input type="submit" value="Pobierz {{selected.name}}"/>
+            <input class="pobierz-button" type="submit" value="Pobierz {{selected.name}}"/>
         </form>
     </div>
     <div ng-show="reportDownload && selected">
