@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="right-addNew" id="addNew" ng-show="editMode">
-                    <div class="addNew-header">Dodaj lub edytuj dane umowy</div>
+                    <div class="addNew-header">Dodaj lub edytuj dane wydziału</div>
                     <div class="addNew-line"></div>
                     <div class="addNew-inputs">
 
