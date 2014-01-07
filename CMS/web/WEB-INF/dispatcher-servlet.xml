@@ -32,6 +32,7 @@
                 <prop key="userList.htm">userListrController</prop>
                 <prop key="userList/users.htm">userListrController</prop>
                 <prop key="userList/save/:object.htm">userListrController</prop>
+                <prop key="userList/delete/:object.htm">userListrController</prop>
                 
                 <prop key="groupList.htm">groupListrController</prop>
                 <prop key="groupList/groups.htm">groupListrController</prop>

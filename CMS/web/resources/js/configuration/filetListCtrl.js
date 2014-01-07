@@ -1,5 +1,6 @@
 function FileListCtrl($scope, $http, saveEditDelete, pagination) {
-    
+    $scope.fileListUpload = true;
+
     $scope.indexOnPage = pagination.indexOnPage($scope);
     $scope.pageMin = 0;
     $scope.pageMax = 14;
@@ -9,11 +10,11 @@ function FileListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
     $scope.attributes[1] = 'description';
-    $scope.attributes[2] = 'fileType';
+    $scope.attributes[2] = 'mimeType';
     $scope.columns = {
       'description' : "Opis",
       'name' : "Nazwa",
-      'fileType' : "Rodzaj pliku"
+      'mimeType' : "Rodzaj pliku"
     };
     $scope.selected = "";
     $scope.reports = "";

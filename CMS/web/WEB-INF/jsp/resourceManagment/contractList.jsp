@@ -25,6 +25,7 @@
                         <div class="addNew-input">
                             <div class="stanowisko-select"> 
                                 <select name="pracownik" required="required" ng-model="selected.employeeId">
+                                    <option value="-1">Pracownik...</option>
                                     <option ng-repeat="employee in employees"
                                             value="{{employee.id}}" 
                                             ng-selected="selected.employeeId == employee.id">
@@ -38,6 +39,7 @@
                         <div class="addNew-input">
                             <div class="stanowisko-select"> 
                                 <select name="klient" required="required" ng-model="selected.customerId">
+                                    <option value="-1">Klient...</option>
                                     <option ng-repeat="customer in customers" 
                                             value="{{customer.id}}"
                                             ng-selected="selected.customerId == customer.id">

@@ -74,11 +74,7 @@
 
 
 </script>
-<div class="komunikat-powodzenia-operacji">
-    <h1 ng-show="showOperationMessage">
-        {{operationMessage}}
-    </h1>
-</div>
+
 
 <table class="genericTable">
     <tr class="table-header">
@@ -121,6 +117,10 @@
     <input type="button" class="anuluj-button" ng-show="editMode && checkEditPrivileges()" ng-click="cancel()" value="ANULUJ">
     <input type="button" class="wyswietl-button" ng-show="displayPage && selected && !editMode" onclick="location.href ='{{displayPageName}}/{{selected.id}}.htm'" value="WYŚWIETL">
     <input type="button" class="usun-button" ng-show="selected.id != undefined && !editMode && checkEditPrivileges()" ng-click="delete()" value="USUŃ">
+    <div class="komunikat-operacji" ng-show="showOperationMessage">
+
+        {{operationMessage}}  
+    </div>
     <div ng-show="fileListDownload && selected">
         <form action="fileList/download.htm">
             <input ng-hide="true" type="text" name="id" value="{{selected.id}}">
@@ -137,7 +137,21 @@
         <div ng-include="selected.formCode">
 
         </div>
-    </div>   
+    </div>
+    <div ng-show="fileListUpload">
+        <form action="fileListUpload/upload.htm" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file"/>
+            <select name="fileExt">
+                <option ng-repeat="(key, value) in mimetypes" value="{{value}}">
+                    {{key}}
+                </option>
+            </select>
+            <textarea  name="description"></textarea>      
+            <input type="submit" value="Zapisz plik"/>
+        </form>
+    </div>
+
+
     <div class="pageMax">
         <input ng-show="pageMin > 0" type="button" class="wstecz-button" ng-click="pageMax = pageMax - 15;
                     pageMin = pageMin - 10" value="WSTECZ"/>

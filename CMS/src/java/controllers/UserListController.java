@@ -7,6 +7,8 @@ package controllers;
 import controllers.general.BaseController;
 import dao.EmployeeDao;
 import dao.PrivilegeGroupDao;
+import dao.TaskDao;
+import dao.UserConfigurationDao;
 import dto.UserDTO;
 import javax.servlet.http.HttpSession;
 import model.UserConfiguration;
@@ -93,5 +95,23 @@ public class UserListController extends BaseController{
         initData.put("groups", groupDao.select());
         //List<UserDTO> userDtos = userDao.getUserWithConfig();
         return Utils.createResponseEntity(session, initData);
+    }
+    
+    @RequestMapping(value = "/userList/delete/:object.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    void deleteData(@RequestBody String object) {
+        System.out.println("delete");
+        UserDTO dto = (UserDTO) Utils.convertJSONStringToObject(object, "object", UserDTO.class);
+        if (dto != null) {
+            UserDao usDao = new UserDao();
+            User actualUser = new User();
+            actualUser.loadObject("id="+dto.getId());
+            
+            UserConfigurationDao conf = new UserConfigurationDao();
+            conf.deleteAllMatching("userId", actualUser.getId()+"");
+            
+            usDao.deleteAllWithId(dto.getId()+"");
+        }
+
     }
 }
