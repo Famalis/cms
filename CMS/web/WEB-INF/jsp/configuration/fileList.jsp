@@ -47,7 +47,7 @@
                 </div>
             <table>
                 <t:dataTable/>
-                <tr>
+                <!--<tr>
                     <th style="text-align :left; " ng-click="uploadFile = !uploadFile"/>
                     Dodawanie pliku (klik)
                     </th>
@@ -77,7 +77,7 @@
                             </tr>
                         </table>
                     </td>
-                </tr>
+                </tr>-->
             </table>
         </div>
     </jsp:body>

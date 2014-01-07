@@ -424,9 +424,13 @@ input.anuluj-button:hover, input.zaloguj-button:active {
   background-color: #8a8f95;
 }
 .request-sent {
+    text-align: center;
     margin: 0 0 15px 0;
+    font-size: 17px;
+    font-weight: 700;
 width:440px;
 height:45px;
+
 background-color: #32b38c;
 }
 .stay-logged input[type="checkbox"] + label {

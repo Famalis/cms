@@ -7,8 +7,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericTemplate>
+
     <jsp:body>
         <script src="/CMS/resources/js/loginCtrl.js"></script>
+        <script type="text/javascript">
+            function getFile() {
+                document.getElementById("upfile").click();
+            }
+            function sub(obj) {
+                var file = obj.value;
+                var fileName = file.split("\\");
+                document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
+                document.myForm.submit();
+                event.preventDefault();
+            }
+        </script>
         <div ng-controller="LoginCtrl">
             <div class="top-right">
                 <div class="more-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" id="flip"></div>
@@ -43,9 +56,19 @@
                                 <input class="telefon-field" placeholder="Telefon..." type="text" ng-model="employee.phone"/>
                             </div>
                         </div>
-                            <div style="margin-left: 30px;float: left;clear: right;width:1px;height:220px;background-color:#31a984;"></div>
-                       
+                        <div style="margin-left: 30px;float: left;clear: right;width:1px;height:220px;background-color:#31a984;"></div>
+
                         <div style="float:left;clear: right;margin-top: 0px;margin-left:30px;color: #218164;font-weight: 700;">
+
+
+
+                            <!--<form action="/CMS/uploadPhoto.htm" method="POST" enctype="multipart/form-data" name="myForm">
+                                <div id="yourBtn" onclick="getFile()"><span style="margin-top:10px;">WYBIERZ ZDJĘCIE</span></div>
+                              
+                                <div style='height: 0px;width: 0px; overflow:hidden;'><input id="upfile" type="file" value="upload" name="file" onchange="sub(this)"/></div>
+                                
+                                <input type="submit" value="Wyślij plik">
+                            </form>-->
                             <form action="/CMS/uploadPhoto.htm" method="POST" enctype="multipart/form-data">
                                 Plik: <input type="file" name="file"/>
                                 <input type="submit" value="Wyslij plik"/>

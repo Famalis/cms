@@ -22,7 +22,7 @@
 
             <c:if test="${mailSent == true}">
                 <div class="request-sent">
-                    Wysłano prośbę </div>
+                    <span style="float:left;color:#d4d4d4;margin-left:155px;margin-top: 10px;">Wysłano prośbę<span> </div>
                 </c:if>
                 ${error}
 
