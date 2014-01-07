@@ -1,14 +1,14 @@
 function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
-    
+
     $scope.indexOnPage = pagination.indexOnPage($scope);
     $scope.pageMin = 0;
     $scope.pageMax = 14;
     $scope.checkMax = pagination.pageMaxSmallerThenSize($scope);
-    
+
     $scope.status = "Ładowanie danych";
     $scope.displayPage = true;
     $scope.displayPageName = "employeePage";
-    
+
     $scope.objectsName = "employees";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
@@ -18,18 +18,28 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.attributes[4] = 'departmentName';
     $scope.attributes[5] = 'country';
     $scope.attributes[6] = 'city';
-    
+
     $scope.columns = {
-        'name' : "Imię",
+        'name': "Imię",
         'surname': "Nazwisko",
         'departmentName': "Wydział",
         'country': "Kraj",
         'city': "Miasto",
         'phone': "Telefon",
-        'positionName' : "Stanowisko"
+        'positionName': "Stanowisko"
     };
-  
-    
+    $scope.columnClasses = {
+        'name': "pracownik-name",
+        'surname': "pracownik-surname",
+        'departmentName': "pracownik-wydzial",
+        'country': "pracownik-kraj",
+        'city': "pracownik-miasto",
+        'phone': "pracownik-telefon",
+        'positionName': "pracownik-stanowisko"
+       
+    };
+
+
     $scope.selected = "";
     $scope.employees = "";
     $scope.departments = "";
@@ -41,14 +51,16 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        if(($scope.selected.name == null) || $scope.selected.surname == null || $scope.selected.phone == null || $scope.selected.departmentName == null || $scope.selected.positionName == null || $scope.selected.country == null || $scope.selected.city == null) {
+        if (($scope.selected.name == null) || $scope.selected.surname == null || $scope.selected.phone == null || $scope.selected.departmentName == null || $scope.selected.positionName == null || $scope.selected.country == null || $scope.selected.city == null) {
             alert("Sprawdź poprowność wprowadzonych danych");
         } else {
             saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope);
             var date = new Date();
             var curDate = null;
-            do { curDate = new Date(); }
-            while(curDate-date < 1000);
+            do {
+                curDate = new Date();
+            }
+            while (curDate - date < 1000);
 
             $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
             loadDataPromise = $scope.get;
@@ -92,61 +104,61 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.delete = function() {
         saveEditDelete.remove($http, '/CMS/employeeList/delete/:object.htm', $scope);
     };
-    
+
     $scope.getPositionName = function(posId) {
-        for (var i = 0; i<$scope.positions.length; i++) {
-            if($scope.positions[i].id == posId) {
+        for (var i = 0; i < $scope.positions.length; i++) {
+            if ($scope.positions[i].id == posId) {
                 return $scope.positions[i].name;
             }
         }
     };
-    
+
     $scope.getPositionName = function(posId) {
-        for (var i = 0; i<$scope.positions.length; i++) {
-            if($scope.positions[i].id == posId) {
+        for (var i = 0; i < $scope.positions.length; i++) {
+            if ($scope.positions[i].id == posId) {
                 return $scope.positions[i].name;
             }
         }
     };
-    
+
     $scope.getPositionHierarhy = function(posId) {
-        for (var i = 0; i<$scope.positions.length; i++) {
-            if($scope.positions[i].id == posId) {
+        for (var i = 0; i < $scope.positions.length; i++) {
+            if ($scope.positions[i].id == posId) {
                 return $scope.positions[i].hierarhy;
             }
         }
     };
-    
+
     $scope.getDepartmentName = function(depId) {
-        for (var i = 0; i<$scope.departments.length; i++) {
-            if($scope.departments[i].id == depId) {
+        for (var i = 0; i < $scope.departments.length; i++) {
+            if ($scope.departments[i].id == depId) {
                 return $scope.departments[i].name;
             }
         }
     };
-    
+
     $scope.checkEditPrivileges = function() {
-        for (var i = 0; i<$scope.privileges.length; i++) {
-            if($scope.privileges[i] == "all") {
+        for (var i = 0; i < $scope.privileges.length; i++) {
+            if ($scope.privileges[i] == "all") {
                 return true;
             }
-            if($scope.privileges[i] == "ManageEmployees") {
-                if($scope.getPositionHierarhy($scope.selected.positionId) == "1") {
+            if ($scope.privileges[i] == "ManageEmployees") {
+                if ($scope.getPositionHierarhy($scope.selected.positionId) == "1") {
                     return true;
                 }
             }
-            if($scope.privileges[i] == "ManageManagers") {
-                if($scope.getPositionHierarhy($scope.selected.positionId) == "2") {
+            if ($scope.privileges[i] == "ManageManagers") {
+                if ($scope.getPositionHierarhy($scope.selected.positionId) == "2") {
                     return true;
                 }
             }
-            if($scope.privileges[i] == "ManagePresidents") {
-                if($scope.getPositionHierarhy($scope.selected.positionId) == "3") {
+            if ($scope.privileges[i] == "ManagePresidents") {
+                if ($scope.getPositionHierarhy($scope.selected.positionId) == "3") {
                     return true;
                 }
             }
-            if(!$scope.selected){
-                if($scope.privileges[i] == "ManageEmployees"){
+            if (!$scope.selected) {
+                if ($scope.privileges[i] == "ManageEmployees") {
                     return true;
                 }
             }

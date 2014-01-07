@@ -246,7 +246,7 @@ input.wyszukiwarka:-ms-input-placeholder {
 }
 
 input.imie-field, input.nazwisko-field, input.pesel-field, input.telefon-field, input.kraj-field, input.ulica-field,
-input.budynek-field, input.mieszkanie-field, input.miejscowosc-field, input.email-field, input.firma-field, input.kod-field {
+input.budynek-field, input.mieszkanie-field, input.miejscowosc-field, input.email-field, input.firma-field, input.kod-field, input.wynagrodzenie-field {
     font-family: 'Open Sans';
     font-size: 15px;
     font-weight: 700;
@@ -268,7 +268,7 @@ input.nazwisko-field {
 }
 
 input.pesel-field {
-    width: 129px;
+    width: 150px;
     height: 37px;
 }
 
@@ -307,6 +307,10 @@ input.budynek-field {
 
 input.mieszkanie-field {
     width: 195px;
+    height: 37px;
+}
+input.wynagrodzenie-field {
+    width: 165px;
     height: 37px;
 }
 
@@ -487,6 +491,13 @@ input.miejscowosc-field {
         min-width:220px;
 
     }
+    .pracownik-name {
+        text-align:left;
+        padding-left:17px;
+        width:15%;
+        min-width:220px;
+
+    }
     .klient-surname {
         text-align:left;
         padding-left:17px;
@@ -494,13 +505,31 @@ input.miejscowosc-field {
         min-width:220px;
 
     }
-    .klient-phone {
+    .pracownik-surname {
+        text-align:left;
+        padding-left:17px;
+        width:15%;
+        min-width:220px;
+
+    }
+    .klient-phone, .pracownik-telefon {
         text-align:left;
         padding-left:17px;
         width:8%;
         max-width:100px;
         min-width:100px;
 
+    }
+    .pracownik-kraj {
+        text-align: left;
+        padding-left: 17px;
+        min-width: 75px;
+    }
+    .pracownik-wydzial {
+        min-width: 200px;
+        text-align:left;
+        padding-left:17px;
+        width:20%;
     }
     .klient-email {
         text-align:left;
@@ -681,18 +710,18 @@ select {
 div.stanowisko-select {
     float: left;
     clear: right;
-    height: 39px;
+    height: 37px;
     overflow: hidden;
     /* this hides the select's drop button */
     padding: 0;
     margin: 0;
-    background: #ececec url(/CMS/resources/formelements-select.png) no-repeat bottom right;
+    background: #ececec url(/CMS/resources/images/select.png) no-repeat bottom right;
     /* this is the new drop button, in image form */
     width: 200px;
 }
 
 div.stanowisko-select select {
-    height: 39px;
+    height: 37px;
     color: #ababab;
     font-family: 'Open Sans';
     font-size: 15px;
@@ -709,18 +738,18 @@ div.stanowisko-select select {
 div.wydzial-select {
     float: left;
     clear: right;
-    height: 39px;
+    height: 37px;
     overflow: hidden;
     /* this hides the select's drop button */
     padding: 0;
     margin: 0;
-    background: #ececec url(/CMS/resources/formelements-select.png) no-repeat bottom right;
+    background: #ececec url(/CMS/resources/images/select.png) no-repeat bottom right;
     /* this is the new drop button, in image form */
     width: 200px;
 }
 
 div.wydzial-select select {
-    height: 39px;
+    height: 37px;
     color: #ababab;
     font-family: 'Open Sans';
     font-size: 15px;

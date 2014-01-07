@@ -33,7 +33,7 @@ function CustomerListCtrl($scope, $http, saveEditDelete, pagination) {
         'phone': "klient-phone",
         'email': "klient-email",
         'companyName': "klient-companyName"
-    }
+    };
         
     $scope.get = saveEditDelete.get($http, '/CMS/customerList/customers.htm', $scope);
     var loadDataPromise = $scope.get;
