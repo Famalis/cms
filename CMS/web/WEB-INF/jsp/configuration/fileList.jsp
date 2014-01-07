@@ -4,7 +4,7 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/configuration/filetListCtrl.js"></script>
-        <div ng-controller="FileListCtrl">
+        <div ng-init="configFileListDownload" ng-controller="FileListCtrl">
             <div class="top-right">
                     <div class="more-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" id="flip"></div>
                     <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
@@ -12,15 +12,6 @@
                 </div>
           
                         <t:dataTable/>
-                               
-                <tr ng-show="selected != ''">
-                    <td>                        
-                        <form action="reportList/download.htm">
-                            <input ng-show="false" type="text" value="{{selected.id}}" name="id"/>
-                            <input type="submit" value="Pobierz {{selected.name}}"/>
-                        </form>
-                    </td>
-                </tr>
                 <tr>
                     <th style="text-align :left; " ng-click="uploadFile = !uploadFile"/>
                         Dodawanie pliku (klik)
