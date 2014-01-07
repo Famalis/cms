@@ -10,6 +10,41 @@
                 <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
 
             </div>
+            <div class="right-addNew" id="addNew" ng-show="editMode">
+                    <div class="addNew-header">Dodaj nowy plik</div>
+                    <div class="addNew-line"></div>
+                    <div class="addNew-inputs">
+
+                        <div class="addNew-input">
+                            <input class="imie-field" placeholder="Imię..." name="imie" type="text" maxlength="21" required="required" ng-pattern="/^[A-Za-ząęółżćźńśĄĘÓŁŻŹĆŚŃ]+$/" ng-model="selected.name"/>
+                          
+                        </div>
+
+
+                        <!--<div class="addNew-input">
+                            <div class="stanowisko-select"> 
+                                <select> 
+                                    <option selected="selected">Stanowisko...</option>
+                                    <option>Firefox</option> 
+                                    <option>Webkit</option> 
+                                </select> 
+                            </div>
+                        </div> -->
+
+                        <!--<div class="addNew-input">
+                            <div class="wydzial-select"> 
+                                <select> 
+                                    <option selected="selected">Wydział...</option>
+                                    <option>Firefox</option> 
+                                    <option>Webkit</option> 
+                                </select> 
+                            </div>
+                        </div>-->
+
+
+                    </div>
+                    <div style="float:right;padding-right:33px;padding-top: 20px;padding-bottom: 33px;"> <t:jsonOperations/></div>
+                </div>
             <table>
                 <t:dataTable/>
                 <tr>

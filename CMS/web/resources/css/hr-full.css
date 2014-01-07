@@ -1112,6 +1112,30 @@ input.edytuj-button:hover, input.edytuj-button:active {
   background-color: #ef8e71;
 }
 
+.right-addNew input.zapisz-dane {
+  padding: 0 0 0 2px;
+  width: 90px;
+  height: 36px;
+  margin: 0 0px 0 0px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  font-smooth: auto;
+  color: #FFF;
+  cursor: pointer;
+  background: #ff9879;
+  border: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.right-addNew input.zapisz-dane:hover, input.zapisz-dane:active {
+  background-color: #ef8e71;
+}
+
 input.zapisz-button {
   padding: 0 0 0 2px;
   width: 90px;
