@@ -433,6 +433,15 @@ height:45px;
 
 background-color: #32b38c;
 }
+.request-sent-error {
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 17px;
+    font-weight: 700;
+width:440px;
+height:45px;
+background-color: #b52349;
+}
 .stay-logged input[type="checkbox"] + label {
 	font-size: 14px;
 	font-weight: 700;
