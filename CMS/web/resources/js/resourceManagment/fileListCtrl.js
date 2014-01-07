@@ -16,6 +16,11 @@ function FileListCtrl($scope, $http, saveEditDelete, pagination) {
       'description' : "Opis",
       'mimeType' : "Rodzaj pliku"
     };
+    $scope.columnClasses = {
+        'name' : "file-name",
+        'surname': "file-opis",
+        'phone': "file-type"
+    };
     $scope.selected = "";
     $scope.files = "";
     $scope.get = saveEditDelete.get($http, '/CMS/fileList/files.htm', $scope);
