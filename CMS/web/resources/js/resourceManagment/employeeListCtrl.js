@@ -93,10 +93,13 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.cancel = function() {
         $scope.editMode = false;
+        $scope.selected = "";
     };
 
     $scope.create = function() {
-        $scope.selected = "";
+        $scope.selected = new Object();
+        $scope.selected.positionId = -1;
+        $scope.selected.departmentId = -1;
         $scope.editMode = true;
 
     };

@@ -70,6 +70,7 @@
                         <div class="addNew-input">
                             <div class="stanowisko-select"> 
                                 <select name="stanowisko" ng-model="selected.positionId" required="required" ng-click='selected.positionName = getPositionName(selected.positionId)'> 
+                                    <option value="-1">Wybierz stanowisko...</option>
                                     <option ng-repeat="position in positions" ng-selected="selected.positionId == position.id" value="{{position.id}}">
                                         {{position.name}}
                                     </option>
@@ -81,6 +82,7 @@
                         <div class="addNew-input">
                             <div class="wydzial-select"> 
                                 <select name="wydzial" ng-model="selected.departmentId" required="required" ng-click='selected.departmentName = getDepartmentName(selected.departmentId)'> 
+                                    <option value="-1">Wybierz wydział...</option>
                                     <option ng-repeat="department in departments" ng-selected="selected.departmentId == department.id" value="{{department.id}}">
                                         {{department.name}}
                                     </option>

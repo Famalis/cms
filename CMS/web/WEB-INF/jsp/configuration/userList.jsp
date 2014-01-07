@@ -35,6 +35,7 @@
                                 <td>
                                     Grupa:
                                     <select ng-model="selected.groupId">
+                                        <option value="-1">Wybierz grupę...</option>
                                         <option ng-repeat="group in groups" value="{{group.id}}" ng-click="selected.groupName = getGroupName(group.id)"
                                                 ng-selected="selected.groupId == group.id">
                                             {{group.name}}
@@ -44,6 +45,7 @@
                                 <td>
                                     Pracownik posiadający konto:
                                     <select ng-model="selected.employeeId">
+                                        <option value="-1">Wybierz pracownika...</option>
                                         <option ng-repeat="emp in employees" value="{{emp.id}}" ng-selected="selected.employeeId == emp.id"
                                                 ng-click="selected.login = generateLogin(emp)">
                                             {{emp.surname}} {{emp.name}}</option>

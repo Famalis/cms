@@ -58,10 +58,13 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.cancel = function() {
         $scope.editMode = false;
+        $scope.selected = "";
     };
 
     $scope.create = function() {
         $scope.selected = new Object();
+        $scope.selected.groupId = -1;
+        $scope.selected.employeeId = -1;
         $scope.editMode = true;
 
     };

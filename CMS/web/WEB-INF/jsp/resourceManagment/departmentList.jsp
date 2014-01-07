@@ -28,6 +28,7 @@
                         </td>
                         <td>
                             Prowadzący: <select name="prowadzacy" required="required" ng-model="selected.managerId">
+                                <option value="-1">Wybierz pracownika...</option>
                                 <option ng-repeat="employee in employees"
                                         value="{{employee.id}}" 
                                         ng-selected="selected.managerId == employee.id">
