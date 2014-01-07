@@ -27,7 +27,7 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
         var date = new Date();
         var curDate = null;
         do { curDate = new Date(); }
-        while(curDate-date < 1500);
+        while(curDate-date < 2000);
   
         $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);
         loadDataPromise = $scope.get;

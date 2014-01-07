@@ -49,6 +49,7 @@ public class ContractDao extends GenericDao<Contract>{
                 dto.setEmployeeId(set.getString("empId"));
                 dto.setDate(set.getString("date"));
                 dto.setDescription(set.getString("description"));
+                dto.setPrice(set.getString("price"));
                 
                 Customer c = getConCustomer(custs, dto.getCustomerId());
                 dto.setCustomerName(c.getName());
