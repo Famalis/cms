@@ -44,7 +44,7 @@ public class TestReportTemplateController extends BaseTemplateController {
         if (inputParams.get("msg3") != null) {
             params.put("${msg3}", new String(inputParams.get("msg3")[0].getBytes("ISO-8859-1"),"UTF-8"));
         }
-        generatePdf(response, request, params);        
+        generatePdf(response, request, params, "\\WEB-INF\\templates\\testReportTemplate.html");        
     }
 
 }

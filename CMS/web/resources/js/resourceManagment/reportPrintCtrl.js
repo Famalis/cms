@@ -5,6 +5,10 @@ function ReportPrintCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.pageMax = 14;
     $scope.checkMax = pagination.pageMaxSmallerThenSize($scope);
     
+    $scope.employees = "";
+    $scope.contract = "";
+    $scope.customers = "";
+    
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "reports";
     $scope.attributes = [];
@@ -21,6 +25,9 @@ function ReportPrintCtrl($scope, $http, saveEditDelete, pagination) {
 
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
+            $scope.employees = $scope.initData.employees;
+            $scope.contract = $scope.initData.contract;
+            $scope.customers = $scope.initData.customers;
         } else {
             $scope.status = "Błąd:";
             alert('err');

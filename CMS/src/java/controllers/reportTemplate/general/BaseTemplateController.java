@@ -38,13 +38,12 @@ public class BaseTemplateController extends BaseController {
     }
 
     protected void generatePdf(HttpServletResponse response, HttpServletRequest request,
-            Map<String, String> params) {
+            Map<String, String> params, String filePath) {
         File newFile = new File("file");
         response.setHeader("Content-Disposition", "attachment;filename=report.pdf");
         response.setContentType("application/pdf");
         ServletContext context = request.getServletContext();
         String appPath = context.getRealPath("");
-        String filePath = "\\WEB-INF\\templates\\testReportTemplate.html";
         File sourceFile = new File(appPath + filePath);
         
         try {

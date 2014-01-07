@@ -99,7 +99,8 @@
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
                 
-                <prop key="testReportTemplate.htm">testReportTemplate</prop>                
+                <prop key="testReportTemplate.htm">testReportTemplate</prop>   
+                <prop key="contractReportTemplate.htm">contractReportTemplate</prop>             
                 
                 <prop key="testingPage.htm">testingController</prop>                
             </props>
@@ -113,6 +114,8 @@
     
     <bean name="testReportTemplate"
           class="controllers.reportTemplate.TestReportTemplateController"/> 
+    <bean name="contractReportTemplate"
+          class="controllers.reportTemplate.ContractReportTemplateController"/>
     
     <bean name="testingController" 
           class="controllers.TestingPageController"/>

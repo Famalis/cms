@@ -5,13 +5,14 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.ContractDao;
+import dao.CustomerDao;
+import dao.EmployeeDao;
 import dao.ReportDao;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Report;
 import model.SystemFile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,8 +51,14 @@ public class ReportPrintController extends BaseController {
     public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         Map<String, Object> initData = new HashMap<String, Object>();
         ReportDao reportDao = new ReportDao();
+        EmployeeDao empDao = new EmployeeDao();
+        ContractDao conDao = new ContractDao();
+        CustomerDao cusDao = new CustomerDao();
         //List<Report> reports = reportDao.select();
         initData.put("reports", reportDao.select());
+        initData.put("employees", empDao.getEmployeeDTOList());
+        initData.put("contract", conDao.getContractDTOList());
+        initData.put("customers", cusDao.getCustomerDTOList());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");
         return new ResponseEntity<String>(Utils.convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
