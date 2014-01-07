@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -170,16 +171,17 @@ public class LoginController extends BaseController {
     }
     
     @RequestMapping(value = "/getEmpData")
-    public @ResponseBody ResponseEntity<String> getPhoto(HttpSession session, 
+    public @ResponseBody ResponseEntity<String> getEmpData(HttpSession session, 
             ModelMap model, 
             HttpServletRequest request, 
             HttpServletResponse response) {
-        System.out.println("get Photo");
         UserDTO user = (UserDTO) request.getSession().getAttribute("user");
         //SystemFile photo = new SystemFile();
         EmployeeDao empDao = new EmployeeDao();
-        Map params = new HashMap<String, String>();
-        params.put("id", user.getEmployeeId()+"");
+        Map<String, List<String>> params = new HashMap<>();
+        List<String> idParamList = new ArrayList<>();
+        idParamList.add(user.getEmployeeId()+"");
+        params.put("id", idParamList);
         EmployeeDTO emp = (EmployeeDTO) empDao.getEmployeeDTOList(params).get(0);
         Map<String, Object> initData = new HashMap<>();
         initData.put("employee", emp);

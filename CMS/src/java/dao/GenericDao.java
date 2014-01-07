@@ -316,7 +316,7 @@ public class GenericDao<T extends DatabaseObject> {
                 query += key + " IN (";
                 for (int i = 0; i < params.get(key).size(); i++) {
                     query += params.get(key).get(i);
-                    if (i < params.get(key).size()) {
+                    if (i < params.get(key).size() && params.get(key).size()>1) {
                         query += ",";
                     }
                     query += ")";

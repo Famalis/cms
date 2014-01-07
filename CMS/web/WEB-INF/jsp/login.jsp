@@ -10,7 +10,7 @@
     <jsp:body>
         <script src="/CMS/resources/js/loginCtrl.js"></script>
         <div ng-controller="LoginCtrl">
-            <c:if test="${user.name != null}">
+            <c:if test="${user.employeeId != null}">
                 <table>
                     <tr>
                         <td rowspan="6">
@@ -59,7 +59,7 @@
 
                 ${error}
             </h2>
-            <c:if test="${user.name == null}">
+            <c:if test="${user.employeeId == null}">
                 <form action="/CMS/login.htm" method="POST">
                     Login <input type="text" name="login"/>
                     Hasło <input type="password" name="password"/>
