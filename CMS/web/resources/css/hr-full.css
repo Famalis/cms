@@ -247,7 +247,7 @@ input.wyszukiwarka:-ms-input-placeholder {
 
 input.imie-field, input.nazwisko-field, input.pesel-field, input.telefon-field, input.kraj-field, input.ulica-field,
 input.budynek-field, input.mieszkanie-field, input.miejscowosc-field, input.email-field, input.firma-field, input.kod-field, input.wynagrodzenie-field, input.opis-field,
-input.cena-field, .opis-long-field {
+input.cena-field, .opis-long-field, .wartosc-field {
     font-family: 'Open Sans';
     font-size: 15px;
     font-weight: 700;
@@ -262,6 +262,10 @@ input.cena-field {
     height: 37px;
 }
 input.imie-field {
+    width: 220px;
+    height: 37px;
+}
+input.wartosc-field {
     width: 220px;
     height: 37px;
 }
