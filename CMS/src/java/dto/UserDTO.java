@@ -9,6 +9,7 @@ import dao.PrivilegeKeyDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import model.Employee;
 import model.Privilege;
 import model.PrivilegeKey;
 import model.User;
@@ -33,6 +34,10 @@ public class UserDTO implements Serializable {
                 this.employeeId = user.getEmployeeId();
             }
         }
+        Employee emp = new Employee();
+        emp.loadObject("id="+user.getEmployeeId());
+        this.name = emp.getName();
+        this.surname = emp.getSurname();
         PrivilegeDao privilegeDao = new PrivilegeDao();
         PrivilegeKeyDao privilegeKeyDao = new PrivilegeKeyDao();
         List<String> keyIds = new ArrayList<>();
