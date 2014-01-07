@@ -55,8 +55,12 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping
-    public String home(ModelMap model) {
-
+    public String home(ModelMap model, HttpSession session) {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if(user.getId() == null) {
+            System.out.println("nie zalogowany");
+            return "home";
+        }
         return "login";
     }
 
@@ -176,6 +180,9 @@ public class LoginController extends BaseController {
             HttpServletRequest request, 
             HttpServletResponse response) {
         UserDTO user = (UserDTO) request.getSession().getAttribute("user");
+        if(user.getId() == null) {
+            return null;
+        }
         //SystemFile photo = new SystemFile();
         EmployeeDao empDao = new EmployeeDao();
         Map<String, List<String>> params = new HashMap<>();
