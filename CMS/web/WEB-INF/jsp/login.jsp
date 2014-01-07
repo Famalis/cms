@@ -21,12 +21,12 @@
                     </tr>
                     <tr>
                         <td>
-                            Imię: {{employee.name}}
+                            Imię: <input type="text" ng-model="employee.name"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Nazwisko: {{employee.surname}}
+                            Nazwisko: <input type="text" ng-model="employee.surname"/>
                         </td>
                     </tr>
                     <tr>
@@ -36,16 +36,16 @@
                     </tr>
                     <tr>
                         <td>
-                            Telefon: {{employee.phone}}
+                            Telefon: <input type="text" ng-model="employee.phone"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Wypłata: {{employee.salary}}
+                            <input type="button" ng-click="save()" value="Zapisz dane"/>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td>Załąduj plik zdjęcia
                             <form action="/CMS/uploadPhoto.htm" method="POST"
                                   enctype="multipart/form-data">
                                 Plik: <input type="file" name="file"/>
