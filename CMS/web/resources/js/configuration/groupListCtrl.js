@@ -9,10 +9,8 @@ function GroupListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.objectsName = "groups";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
-    $scope.attributes[1] = '%privilegeKeyNames';
     $scope.columns = {
         'name': "Nazwa",
-        '%privilegeKeyNames' : "Klucze"
     };
     $scope.editMode = false;
     $scope.selected = "";

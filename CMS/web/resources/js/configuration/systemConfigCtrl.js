@@ -9,11 +9,11 @@ function SystemConfigCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.objectsName = "systemConfigs";
     $scope.attributes = [];
     $scope.attributes[0] = 'name';
-    $scope.attributes[1] = 'description';
     $scope.attributes[1] = 'value';
+    $scope.attributes[2] = 'description';
     $scope.columns = {
         'description' : "Opis" ,
-        'code' : "Kod",
+        'name' : "Nazwa",
         'value' : "Wartość"
     };
     $scope.editMode = false;
