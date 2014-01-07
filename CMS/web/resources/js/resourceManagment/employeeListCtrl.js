@@ -51,7 +51,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     var loadDataPromise = $scope.get;
 
     $scope.save = function() {
-        if (($scope.selected.name == null) || $scope.selected.surname == null || $scope.selected.phone == null || $scope.selected.departmentName == null || $scope.selected.positionName == null || $scope.selected.country == null || $scope.selected.city == null) {
+        if (($scope.selected.name == null) || $scope.selected.surname == null || $scope.selected.phone == null || $scope.selected.departmentId == -1 || $scope.selected.positionId == -1 || $scope.selected.departmentId == null || $scope.selected.positionId == null || $scope.selected.country == null || $scope.selected.city == null) {
             alert("Sprawdź poprowność wprowadzonych danych");
         } else {
             saveEditDelete.save($http, '/CMS/employeeList/save/:object.htm', $scope);

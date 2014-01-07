@@ -64,10 +64,12 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.cancel = function() {
         $scope.editMode = false;
+        $scope.selected = "";
     };
 
     $scope.create = function() {
-        $scope.selected = "";
+        $scope.selected = new Object();
+        $scope.selected.hierarhy = 1;
         $scope.editMode = true;
 
     };

@@ -37,7 +37,7 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         
-        if(($scope.selected.employeeName == null) || $scope.selected.employeeSurname == null || $scope.selected.customerName == null || $scope.selected.customerSurname == null || $scope.selected.price == null || $scope.selected.description == null) {
+        if($scope.selected.employeeId == null || $scope.selected.employeeId == -1 || $scope.selected.customerId == null || $scope.selected.customerId == -1 || $scope.selected.price == null || $scope.selected.description == null) {
             alert("Sprawdź poprowność wprowadzonych danych");
         } else {
             saveEditDelete.save($http, '/CMS/contractList/save/:object.htm', $scope);
@@ -79,10 +79,13 @@ function ContractListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.cancel = function() {
         $scope.editMode = false;
+        $scope.selected = "";
     };
 
     $scope.create = function() {
-        $scope.selected = "";
+        $scope.selected = new Object();
+        $scope.selected.employeeId = -1;
+        $scope.selected.customerId = -1;
         $scope.editMode = true;
 
     };
