@@ -4,7 +4,12 @@
 <t:genericTemplate>
     <jsp:body>
         <script src="/CMS/resources/js/resourceManagment/fileListCtrl.js"></script>
-        <div ng-controller="FileListCtrl">  
+        <div ng-controller="FileListCtrl">
+            <div class="top-right">
+                    
+                    <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
+
+                </div>
            
                         <t:dataTable/>
                   

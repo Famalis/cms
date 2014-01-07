@@ -1106,3 +1106,9 @@ input.usun-button:hover, input.usun-button:active {
 .idletimeout-tekst a:hover {
     color: #790020; 
 }
+.ladowanie {
+   font-size: 17px;
+   line-height: 40px;
+   color: #9fa3a7;
+  
+}
