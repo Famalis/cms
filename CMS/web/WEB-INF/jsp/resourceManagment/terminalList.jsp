@@ -10,12 +10,31 @@
                     <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
 
                 </div>
+            <div class="right-addNew" id="addNew" ng-show="editMode">
+                    <div class="addNew-header">Dodaj lub edytuj terminal</div>
+                    <div class="addNew-line"></div>
+                    <div class="addNew-inputs">
+
+                        
+
+                        <div class="addNew-input">
+                            
+                            <input class="opis-field" placeholder="Opis..." type="text" ng-model="selected.description"/>
+                        </div>
+              
+
+
+
+
+                    </div>
+                    <div style="float:right;padding-right:33px;padding-top: 20px;padding-bottom: 33px;"> <t:jsonOperations/></div>
+                </div>
             
                         <t:dataTable/>
                 
-                        <t:jsonOperations/>
+                        
                   
-                        <div ng-show="editMode">
+                        <!--<div ng-show="editMode">
                     
                         <table class="genericTable">
                             <tr>
@@ -55,6 +74,6 @@
                         
                         </table>
                    
-        </div>
+        </div>-->
     </jsp:body>
 </t:genericTemplate>
