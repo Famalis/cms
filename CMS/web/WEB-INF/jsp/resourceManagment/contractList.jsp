@@ -38,6 +38,7 @@
                         
                         <div class="addNew-input">
                             <div class="stanowisko-select"> 
+                                
                                 <select name="klient" required="required" ng-model="selected.customerId">
                                     <option value="-1">Klient...</option>
                                     <option ng-repeat="customer in customers" 
@@ -51,8 +52,9 @@
                         </div>
 
                         <div class="addNew-input">
+                            <label for="opis">Opis:</label>
                             <input class="opis-field" placeholder="Opis..." name="opis" required="required" type="text" ng-model="selected.description"/>
-
+                            
                         </div>
 
                         
