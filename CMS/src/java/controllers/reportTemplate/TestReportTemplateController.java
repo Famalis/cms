@@ -31,13 +31,12 @@ public class TestReportTemplateController extends BaseTemplateController {
     }
 
     @RequestMapping("/testReportTemplate")
-    public String getTemplate(HttpSession session,
+    public String print(HttpSession session,
             HttpServletResponse response, HttpServletRequest request, Model model) {
         if (!this.checkPrivileges(session)) {
             return null;
         }
         Map<String, String[]> inputParams = request.getParameterMap();
-        Map<String, String> params = new HashMap<>();
 
         if (inputParams.get("msg1") != null) {
             model.addAttribute("msg1", inputParams.get("msg1")[0]);
