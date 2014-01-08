@@ -45,7 +45,7 @@ public class EmpListReportTemplateController extends BaseTemplateController {
 
         if (inputParams.get("deptNumber") != null) {
             String num = inputParams.get("deptNumber")[0];
-            Department d = deptDao.findById(num).get(0);
+            Department d = deptDao.findById(num);
             List<EmployeeDTO> empDto = empDao.getEmployeeDTOList("id", num);
             params.put("employees", empDto);
             params.put("deptName", d.getName());

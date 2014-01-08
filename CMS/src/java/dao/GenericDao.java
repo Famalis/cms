@@ -45,8 +45,8 @@ public class GenericDao<T extends DatabaseObject> {
         return select("");
     }
 
-    public List<T> findById(String id) {
-        return findByField("id", id);
+    public T findById(String id) {
+        return findByField("id", id).get(0);
     }
 
     /**

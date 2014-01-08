@@ -125,7 +125,7 @@ public class LoginController extends BaseController {
             UserDTO user = (UserDTO) request.getSession().getAttribute("user");
             System.out.println(items.get(0).getContentType() + " " + item.getSize());
             EmployeeDao empDao = new EmployeeDao();
-            Employee emp = empDao.findById(user.getEmployeeId()).get(0);
+            Employee emp = empDao.findById(user.getEmployeeId());
             if (r.loadObject("name='" + emp.getPESEL() + "Photo'")) {
 
             } else {

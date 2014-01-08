@@ -45,7 +45,7 @@ public class ContractReportTemplateController extends BaseTemplateController {
 
         if (inputParams.get("contractNumber") != null) {
             String num = inputParams.get("contractNumber")[0];
-            c = contractDao.findById(num).get(0);
+            c = contractDao.findById(num);
             params.put("contractNumber", num);
             Employee emp = new Employee();
             emp.loadObject("id=" + c.getEmployeeId());

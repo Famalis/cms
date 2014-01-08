@@ -29,7 +29,7 @@ public class PhotoShowServlet extends HttpServlet {
                 photo = fileDao.findByField("name", pesel + "Photo").get(0);
             } else if (empId != null){
                 EmployeeDao employeeDao = new EmployeeDao();           
-                Employee emp = employeeDao.findById(empId).get(0);
+                Employee emp = employeeDao.findById(empId);
                 photo = fileDao.findByField("name",emp.getPESEL() + "Photo").get(0);
             }
 
