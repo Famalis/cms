@@ -101,6 +101,7 @@
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
                 
                 <prop key="testReportTemplate.htm">testReportTemplate</prop>   
+                <prop key="testReportTemplate/print.htm">testReportTemplate</prop>   
                 <prop key="contractReportTemplate.htm">contractReportTemplate</prop>             
                 
                 <prop key="testingPage.htm">testingController</prop>                

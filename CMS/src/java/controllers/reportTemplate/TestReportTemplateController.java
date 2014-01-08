@@ -5,14 +5,18 @@
 package controllers.reportTemplate;
 
 import controllers.reportTemplate.general.BaseTemplateController;
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -27,24 +31,24 @@ public class TestReportTemplateController extends BaseTemplateController {
     }
 
     @RequestMapping("/testReportTemplate")
-    public void home(HttpSession session,
-            HttpServletResponse response, HttpServletRequest request) throws UnsupportedEncodingException{
+    public String getTemplate(HttpSession session,
+            HttpServletResponse response, HttpServletRequest request, Model model) {
         if (!this.checkPrivileges(session)) {
-            return;
+            return null;
         }
         Map<String, String[]> inputParams = request.getParameterMap();
         Map<String, String> params = new HashMap<>();
 
         if (inputParams.get("msg1") != null) {
-            params.put("${msg1}", new String(inputParams.get("msg1")[0].getBytes("ISO-8859-1"),"UTF-8"));
+            model.addAttribute("msg1", inputParams.get("msg1")[0]);
         }
         if (inputParams.get("msg2") != null) {
-            params.put("${msg2}", new String(inputParams.get("msg2")[0].getBytes("ISO-8859-1"),"UTF-8"));
+            model.addAttribute("msg2", inputParams.get("msg2")[0]);
         }
         if (inputParams.get("msg3") != null) {
-            params.put("${msg3}", new String(inputParams.get("msg3")[0].getBytes("ISO-8859-1"),"UTF-8"));
+            model.addAttribute("msg3", inputParams.get("msg3")[0]);
         }
-        generatePdf(response, request, params, "\\WEB-INF\\templates\\testReportTemplate.html");        
-    }
+        return "templates/testReportTemplate";
 
+    }
 }
