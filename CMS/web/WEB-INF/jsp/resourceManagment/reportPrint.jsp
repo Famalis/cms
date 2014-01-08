@@ -10,8 +10,6 @@
                 <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
 
             </div>
-
-
             <t:dataTable/>
         </div>
     </jsp:body>

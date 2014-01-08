@@ -8,6 +8,7 @@ function ReportPrintCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.employees = "";
     $scope.contract = "";
     $scope.customers = "";
+    $scope.departments = "";
     
     $scope.status = "Ładowanie danych";
     $scope.objectsName = "reports";
@@ -28,6 +29,7 @@ function ReportPrintCtrl($scope, $http, saveEditDelete, pagination) {
             $scope.employees = $scope.initData.employees;
             $scope.contract = $scope.initData.contract;
             $scope.customers = $scope.initData.customers;
+            $scope.departments = $scope.initData.departments;
         } else {
             $scope.status = "Błąd:";
             alert('err');
