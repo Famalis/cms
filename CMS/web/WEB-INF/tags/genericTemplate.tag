@@ -1,4 +1,5 @@
 <%@tag import="dto.UserDTO"%>
+<%@tag import="services.SystemConfigurationService"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
@@ -22,9 +23,14 @@
         <%
 
             UserDTO user = (UserDTO) jspContext.getAttribute("user", PageContext.SESSION_SCOPE);
+            SystemConfigurationService sysConfig = (SystemConfigurationService) jspContext.getAttribute("sysConfig", PageContext.SESSION_SCOPE);
             if (user == null) {
                 jspContext.setAttribute("user", new UserDTO());
             }
+            if (sysConfig == null) {
+                jspContext.setAttribute("sysConfig", new SystemConfigurationService());
+            }
+            
         %> 
 
         <c:if test="${user.id != null}">
@@ -59,7 +65,7 @@
             <script src="/CMS/resources/js/idleTimer.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $.idleTimeout('#idletimeout', '#idletimeout a', {
-                    idleAfter: 600,
+                    idleAfter: ${sysConfig.idleTimeout},
                     pollingInterval: 2,
                     serverResponseEquals: 'OK',
                     onTimeout: function() {
