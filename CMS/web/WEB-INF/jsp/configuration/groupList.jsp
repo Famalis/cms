@@ -55,12 +55,8 @@
             <t:dataTable/>
 
 
-       <!--<table ng-show="editMode" class="genericTable">
-                <tr>
-                    <td>
-                        Nazwa: <input type="text" ng-model="selected.name"/>
-                    </td>
-                </tr>
+       <table ng-show="editMode" class="genericTable">
+               
                 <tr ng-show="selected.id">
                     <td>Klucze:
                         <p ng-repeat="groupPrivKey in privilegeKeys" ng-show="selectedGroupHasKey(groupPrivKey.id)">{{groupPrivKey.code}}</p>
@@ -78,7 +74,7 @@
                         <input type="button" ng-click="removeKey()" value="Usuń"/>
                     </td>
                 </tr>
-            </table>-->
+            </table>
         </div>
     </jsp:body>
 </t:genericTemplate>

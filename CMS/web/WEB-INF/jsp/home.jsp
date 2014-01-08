@@ -24,7 +24,8 @@
                 <div class="request-sent">
                     <span style="float:left;color:#d4d4d4;margin-left:155px;margin-top: 10px;">Wysłano prośbę<span> </div>
                 </c:if>
-            <div class="request-sent-error"><span style="float:left;color:#d4d4d4;margin-left:130px;margin-top: 10px;">${error}<span></div>
+            <c:if test="${error == false}">
+                <div class="request-sent-error"><span style="float:left;color:#d4d4d4;margin-left:130px;margin-top: 10px;">${error}<span></div></c:if>
 
 
             <div class="top-container">
