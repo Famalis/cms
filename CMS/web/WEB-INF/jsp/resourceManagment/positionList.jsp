@@ -27,7 +27,7 @@
 
                         <div class="addNew-input">
                             <div class="stanowisko-select"> 
-                                <select ng-model="selected.hierarhy">
+                                <select ng-model="selected.hierarchy">
                                         <option value="1">Pracownik</option>
                                         <option value="2">Menadżer</option>
                                         <option value="3">Prezes</option>

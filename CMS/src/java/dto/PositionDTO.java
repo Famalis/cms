@@ -5,7 +5,7 @@ import model.Position;
 public class PositionDTO{
     
     private Long id;
-    public String description, name, hierarhy;
+    public String description, name, hierarchy;
     
     public PositionDTO() {
         super();
@@ -15,7 +15,7 @@ public class PositionDTO{
         this.id = position.getId();
         this.name = position.getName();
         this.description = position.getDescription();
-        this.hierarhy = position.getHierarhy();
+        this.hierarchy = position.getHierarchy();
     }
 
     public Long getId() {
@@ -42,12 +42,12 @@ public class PositionDTO{
         this.name = name;
     }
 
-    public String getHierarhy() {
-        return hierarhy;
+    public String getHierarchy() {
+        return hierarchy;
     }
 
-    public void setHierarhy(String hierarhy) {
-        this.hierarhy = hierarhy;
+    public void setHierarchy(String hierarhy) {
+        this.hierarchy = hierarhy;
     }
     
 }

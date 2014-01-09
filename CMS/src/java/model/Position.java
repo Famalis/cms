@@ -4,7 +4,7 @@ import model.general.DatabaseObject;
 
 public class Position extends DatabaseObject{
     
-    private String name, description, hierarhy;
+    private String name, description, hierarchy;
 
     public String getName() {
         return name;
@@ -22,12 +22,12 @@ public class Position extends DatabaseObject{
         this.description = description;
     }
 
-    public String getHierarhy() {
-        return hierarhy;
+    public String getHierarchy() {
+        return hierarchy;
     }
 
-    public void setHierarhy(String hierarhy) {
-        this.hierarhy = hierarhy;
+    public void setHierarchy(String hierarhy) {
+        this.hierarchy = hierarhy;
     }
     
     public Position(){

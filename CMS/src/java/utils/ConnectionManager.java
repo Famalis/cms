@@ -19,9 +19,9 @@ import java.util.Map;
  */
 public class ConnectionManager {
 
-    public static String staticUrl = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8&collation=utf8_polish_ci";
-    public static String staticLogin = "admin";
-    public static String staticPass = "cmsadmin";
+    public static String staticUrl = "jdbc:mysql://famalis.no-ip.biz:3306/cms?useUnicode=true&characterEncoding=UTF-8&collation=utf8_polish_ci";
+    public static String staticLogin = "Sergio";
+    public static String staticPass = "quovadis1";
     
     private String url = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
     private String login = "admin";

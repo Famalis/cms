@@ -50,7 +50,7 @@ public class PositionListController extends BaseController{
             }
             actualPos.setName(posDto.getName());
             actualPos.setDescription(posDto.getDescription());
-            actualPos.setHierarhy(posDto.getHierarhy());
+            actualPos.setHierarchy(posDto.getHierarchy());
              if(actualPos.getId()!=null) {
                 actualPos.update();
             } else {
