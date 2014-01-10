@@ -21,23 +21,13 @@ function SystemConfigCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.selected = null;
 
     $scope.get = saveEditDelete.get($http, '/CMS/systemConfig/configs.htm', $scope);
-    var loadDataPromise = $scope.get;
+    $scope.loadDataPromise = $scope.get;
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/systemConfig/save/:object.htm', $scope);
-        
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 500);
-  
-        $scope.get = saveEditDelete.get($http, '/CMS/systemConfig/configs.htm', $scope);
-        loadDataPromise = $scope.get;
-        $scope.selected = null;
-        $scope.editMode = false;
     };
 
-    loadDataPromise.then(function(returnData) {
+    $scope.loadDataPromise.then(function(returnData) {
         if (returnData != null) {
             
         } else {

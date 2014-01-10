@@ -6,8 +6,9 @@
         <script src="/CMS/resources/js/configuration/systemConfigCtrl.js"></script>
         <div ng-controller="SystemConfigCtrl">
             <div class="top-right">
+                
                 <div class="more-button" ng-show="(!selected && !editMode) && checkEditPrivileges()" ng-click="create()" id="flip"></div>
-                <input class="wyszukiwarka" placeholder="wyszukaj..." type="text" ng-model="searchText"/>
+                <input class="wyszukiwarka" placeholder="{{selected.id}} type="text" ng-model="searchText"/>
 
             </div>
 

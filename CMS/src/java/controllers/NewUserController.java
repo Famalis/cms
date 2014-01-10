@@ -51,7 +51,7 @@ public class NewUserController extends BaseController {
         u.setEmail(email);
         u.setLogin(login);
         u.setPassword(password);
-        if (u.insert()) {
+        if (u.insert()>-1) {
             UserConfiguration uc = new UserConfiguration();
             u.loadObject("login='" + u.getLogin() + "'");
             uc.setUserId(u.getId() + "");

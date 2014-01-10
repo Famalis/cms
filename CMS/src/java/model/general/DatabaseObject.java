@@ -90,7 +90,7 @@ public class DatabaseObject {
      *
      * @return
      */
-    public boolean insert() {
+    public Long insert() {
         try {
             String query = "INSERT INTO " + tableName + " (";
             Field[] fields = this.getClass().getDeclaredFields();
@@ -119,13 +119,13 @@ public class DatabaseObject {
                 } catch (SQLException ex) {
                     Logger.getLogger(DatabaseObject.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                return true;
+                return this.id;
             } else {
-                return false;
+                return -1L;
             }
         } catch (IllegalAccessException ex) {
             ex.printStackTrace();
-            return false;
+            return -1L;
         }
     }
 

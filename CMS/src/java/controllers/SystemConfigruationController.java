@@ -56,12 +56,18 @@ public class SystemConfigruationController extends BaseController {
 
     @RequestMapping(value = "/systemConfig/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String object) {
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
         SystemConfiguration sc = (SystemConfiguration) Utils.convertJSONStringToObject(object, "object", SystemConfiguration.class);
         if (sc.getId() == null) {
-            sc.insert();
+            Long id = sc.insert();
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", id);
+            return Utils.createResponseEntity(session, data);
         } else {
             sc.update();
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", sc.getId());
+            return Utils.createResponseEntity(session, data);
         }
         //System.out.println(sc.getName());
     }

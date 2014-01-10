@@ -3,15 +3,20 @@ var cmsModule = angular.module('cms', []);
 cmsModule.factory('saveEditDelete', function() {
     return {
         save: function($http, link, $scope) {
-            if ($scope.selected.id == null || $scope.selected.id <1) {
+            if ($scope.selected.id == null || $scope.selected.id < 1) {
                 $scope[$scope.objectsName].push($scope.selected);
             }
 
             return $http.post(
                     link,
-                    {object: $scope.selected}).success(function() {
+                    {object: $scope.selected}).success(function(returnId) {
                 $scope.showOperationMessage = true;
                 $scope.operationMessage = "Operacja zapisywania udana"
+                
+                if(returnId!=null) {
+                    $scope.selected.id = returnId.id;
+                }                
+                $scope.selected = null;
             }).error(function(error) {
                 $scope.showOperationMessage = true;
                 $scope.operationMessage = "Operacja zapisywania nie udana"
