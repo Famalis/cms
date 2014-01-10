@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Contract;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,52 +23,59 @@ import utils.Utils;
  *
  * @author Macha
  */
-
 @Controller
 @RequestMapping("/contractList")
-public class ContractListController extends BaseController{
+public class ContractListController extends BaseController {
 
     public ContractListController() {
-        super("all","ViewContracts");
+        super("all", "ViewContracts");
     }
-    
+
     @RequestMapping("/contractList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
-        if(!this.checkPrivileges(session)) {
+        if (!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
         return "resourceManagment/contractList";
     }
-    
+
     @RequestMapping(value = "/contractList/save/:object", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String object) {
+    public @ResponseBody
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
         ContractDTO conDTO = (ContractDTO) Utils.convertJSONStringToObject(object, "object", ContractDTO.class);
         System.out.println(object);
-        if (conDTO!=null) {
+        if (conDTO != null) {
             Contract actualCon = new Contract();
-            if(conDTO.getId()!=null) {
-                actualCon.loadObject("id="+conDTO.getId());
-            }else{
-               Timestamp sqlDate = new Timestamp(new java.util.Date().getTime());
-                actualCon.setDate(sqlDate.toString()); 
+            if (conDTO.getId() != null) {
+                actualCon.loadObject("id=" + conDTO.getId());
+            } else {
+                Timestamp sqlDate = new Timestamp(new java.util.Date().getTime());
+                actualCon.setDate(sqlDate.toString());
             }
             actualCon.setEmployeeId(conDTO.getEmployeeId());
             actualCon.setCustomerId(conDTO.getCustomerId());
             actualCon.setDescription(conDTO.getDescription());
             actualCon.setPrice(conDTO.getPrice());
-            
-            if(actualCon.getId()!=null) {
+
+            if (actualCon.getId() != null) {
                 actualCon.update();
+                Map<String, Object> data = new HashMap<>();
+                data.put("id", actualCon.getId());
+                return Utils.createResponseEntity(session, data);
             } else {
                 actualCon.insert();
+                Map<String, Object> data = new HashMap<>();
+                data.put("id", actualCon.getId());
+                return Utils.createResponseEntity(session, data);
             }
         }
+        return null;
     }
-    
+
     @RequestMapping(value = "/contractList/contracts")
     @ResponseBody
-    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {        
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         ContractDao conDao = new ContractDao();
         EmployeeDao empDao = new EmployeeDao();
         CustomerDao cusDao = new CustomerDao();
@@ -80,7 +85,7 @@ public class ContractListController extends BaseController{
         initData.put("customers", cusDao.select());
         return Utils.createResponseEntity(session, initData);
     }
-    
+
     @RequestMapping(value = "/contractList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
     void deleteData(@RequestBody String object) {
@@ -88,8 +93,8 @@ public class ContractListController extends BaseController{
         ContractDTO conDTO = (ContractDTO) Utils.convertJSONStringToObject(object, "object", ContractDTO.class);
         if (conDTO != null) {
             ContractDao conDao = new ContractDao();
-            
-            conDao.deleteAllWithId(conDTO.getId()+"");
+
+            conDao.deleteAllWithId(conDTO.getId() + "");
         }
     }
 }

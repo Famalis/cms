@@ -38,13 +38,13 @@ import utils.Utils;
 public class GroupListController extends BaseController {
 
     public GroupListController() {
-        super("all","ManageGroups");
+        super("all", "ManageGroups");
     }
 
     @RequestMapping("/groupList")
     public String home(HttpSession session, ModelMap model) {
         System.out.println("home");
-        if(!this.checkPrivileges(session)) {
+        if (!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
         return "configuration/groupList";
@@ -52,7 +52,7 @@ public class GroupListController extends BaseController {
 
     @RequestMapping(value = "/groupList/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String object) {
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
         GroupDTO dto = (GroupDTO) Utils.convertJSONStringToObject(object, "object", GroupDTO.class);
         if (dto != null) {
             PrivilegeGroup actualGroup = new PrivilegeGroup();
@@ -74,8 +74,12 @@ public class GroupListController extends BaseController {
                     p.insert();
                 }
             }
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", actualGroup.getId());
+            return Utils.createResponseEntity(session, data);
 
         }
+        return null;
 
     }
 
@@ -91,7 +95,7 @@ public class GroupListController extends BaseController {
             privilegeDao.delete("groupId=" + dto.getId());
             privilegeGroupDao.delete("id=" + dto.getId());
             userConfigDao.updateFieldForAllElementsWithId(
-                    "groupId", dto.getId()+"", 
+                    "groupId", dto.getId() + "",
                     "groupId", null);
 
         }

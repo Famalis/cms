@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Terminal;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,39 +19,44 @@ import utils.Utils;
 
 @Controller
 @RequestMapping("/terminalList")
-public class TerminalListController extends BaseController{
- 
+public class TerminalListController extends BaseController {
+
     public TerminalListController() {
         super("all", "ViewTerminals");
     }
-    
+
     @RequestMapping("/terminalList")
     public String home(HttpSession session, ModelMap model) {
-        if(!this.checkPrivileges(session)) {
+        if (!this.checkPrivileges(session)) {
             return "terminalList";
         }
         System.out.println("home");
         return "resourceManagment/terminalList";
-    } 
-    
+    }
+
     @RequestMapping(value = "/terminalList/save/:object", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String object) {
+    public @ResponseBody
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
         TerminalDTO terDto = (TerminalDTO) Utils.convertJSONStringToObject(object, "object", TerminalDTO.class);
         System.out.println(object);
-        if (terDto!=null) {
+        if (terDto != null) {
             Terminal actualTer = new Terminal();
-            if(terDto.getId()!=null) {
-                actualTer.loadObject("id="+terDto.getId());
+            if (terDto.getId() != null) {
+                actualTer.loadObject("id=" + terDto.getId());
             }
             actualTer.setDescription(terDto.getDescription());
-             if(actualTer.getId()!=null) {
+            if (actualTer.getId() != null) {
                 actualTer.update();
             } else {
                 actualTer.insert();
             }
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", actualTer.getId());
+            return Utils.createResponseEntity(session, data);
         }
+        return null;
     }
-    
+
     @RequestMapping(value = "/terminalList/terminals")
     @ResponseBody
     public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
@@ -62,7 +65,7 @@ public class TerminalListController extends BaseController{
         initData.put("terminals", terminalDao.getTerminalDtos());
         return Utils.createResponseEntity(session, initData);
     }
-    
+
     @RequestMapping(value = "/terminalList/delete/:object", method = RequestMethod.POST)
     public @ResponseBody
     void deleteData(@RequestBody String object) {
@@ -71,10 +74,10 @@ public class TerminalListController extends BaseController{
         if (ter != null) {
             TerminalDao terDao = new TerminalDao();
             LogDao logDao = new LogDao();
-            terDao.deleteAllWithId(ter.getId()+"");
-            logDao.deleteAllMatching("terminalId", ter.getId()+"");
+            terDao.deleteAllWithId(ter.getId() + "");
+            logDao.deleteAllMatching("terminalId", ter.getId() + "");
         }
 
     }
-    
+
 }

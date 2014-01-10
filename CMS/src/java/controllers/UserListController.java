@@ -7,7 +7,6 @@ package controllers;
 import controllers.general.BaseController;
 import dao.EmployeeDao;
 import dao.PrivilegeGroupDao;
-import dao.TaskDao;
 import dao.UserConfigurationDao;
 import dto.UserDTO;
 import javax.servlet.http.HttpSession;
@@ -31,60 +30,64 @@ import utils.Utils;
  */
 @Controller
 @RequestMapping("/userList")
-public class UserListController extends BaseController{
-    
+public class UserListController extends BaseController {
+
     public UserListController() {
         super("all", "ManageUsers");
     }
-    
+
     @RequestMapping("/userList")
     public String home(HttpSession session, ModelMap model) {
-        if(!this.checkPrivileges(session)) {
+        if (!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
         System.out.println("home");
         return "configuration/userList";
-    } 
-    
+    }
+
     @RequestMapping(value = "/userList/save/:object", method = RequestMethod.POST)
-    public @ResponseBody void saveData(@RequestBody String object) {
-        UserDTO userDto = (UserDTO)Utils.convertJSONStringToObject(object, "object", UserDTO.class);
-        if(userDto!=null) {
-            System.out.println(userDto.getId()+" "+userDto.getName());
-            User actualUser = new User();            
+    public @ResponseBody
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
+        UserDTO userDto = (UserDTO) Utils.convertJSONStringToObject(object, "object", UserDTO.class);
+        if (userDto != null) {
+            System.out.println(userDto.getId() + " " + userDto.getName());
+            User actualUser = new User();
             UserConfiguration userConfig = new UserConfiguration();
-                        
+
             //actualUser.loadObject("id="+userDto.getId());
-            
-            if(userDto.getId() != null) {
-                actualUser.loadObject("id="+userDto.getId());
-                userConfig.loadObject("userId="+userDto.getId());
+            if (userDto.getId() != null) {
+                actualUser.loadObject("id=" + userDto.getId());
+                userConfig.loadObject("userId=" + userDto.getId());
             }
-            if(userDto.getLogin().length()<=0 || userDto.getPassword().length()<=0) {
+            if (userDto.getLogin().length() <= 0 || userDto.getPassword().length() <= 0) {
                 throw new NullPointerException("Brak hasła albo loginu");
             }
             actualUser.setPassword(userDto.getPassword());
-            actualUser.setLogin(userDto.getLogin());            
+            actualUser.setLogin(userDto.getLogin());
             actualUser.setEmployeeId(userDto.getEmployeeId());
-            
-            userConfig.setGroupId(userDto.getGroupId());            
-            
-            if(userDto.getId() != null) {
+
+            userConfig.setGroupId(userDto.getGroupId());
+
+            if (userDto.getId() != null) {
                 actualUser.update();
-                userConfig.setUserId(actualUser.getId()+"");
+                userConfig.setUserId(actualUser.getId() + "");
                 userConfig.update();
             } else {
                 actualUser.insert();
-                userConfig.setUserId(actualUser.getId()+"");
+                userConfig.setUserId(actualUser.getId() + "");
                 userConfig.insert();
             }
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", actualUser.getId());
+            return Utils.createResponseEntity(session, data);
         }
-        
+        return null;
+
     }
-    
+
     @RequestMapping(value = "/userList/users")
     @ResponseBody
-    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {   
+    public ResponseEntity<String> getData(HttpSession session, ModelMap model) {
         //UserConfigurationDao userConfigDao = new UserConfigurationDao();
         UserDao userDao = new UserDao();
         EmployeeDao empDao = new EmployeeDao();
@@ -96,7 +99,7 @@ public class UserListController extends BaseController{
         //List<UserDTO> userDtos = userDao.getUserWithConfig();
         return Utils.createResponseEntity(session, initData);
     }
-    
+
     @RequestMapping(value = "/userList/delete/:object.htm", method = RequestMethod.POST)
     public @ResponseBody
     void deleteData(@RequestBody String object) {
@@ -105,12 +108,12 @@ public class UserListController extends BaseController{
         if (dto != null) {
             UserDao usDao = new UserDao();
             User actualUser = new User();
-            actualUser.loadObject("id="+dto.getId());
-            
+            actualUser.loadObject("id=" + dto.getId());
+
             UserConfigurationDao conf = new UserConfigurationDao();
-            conf.deleteAllMatching("userId", actualUser.getId()+"");
-            
-            usDao.deleteAllWithId(dto.getId()+"");
+            conf.deleteAllMatching("userId", actualUser.getId() + "");
+
+            usDao.deleteAllWithId(dto.getId() + "");
         }
 
     }

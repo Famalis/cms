@@ -7,12 +7,9 @@ package controllers;
 import controllers.general.BaseController;
 import dao.PrivilegeKeyDao;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.PrivilegeKey;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,7 +42,7 @@ public class PrivilegeKeyListController extends BaseController {
 
     @RequestMapping(value = "/privilegeKeyList/save/:object", method = RequestMethod.POST)
     public @ResponseBody
-    void saveData(@RequestBody String object) {
+    ResponseEntity<String> saveData(@RequestBody String object, HttpSession session) {
         PrivilegeKey privilegeKey = (PrivilegeKey) Utils.convertJSONStringToObject(object, "object", PrivilegeKey.class);
         if (privilegeKey != null) {
             if (privilegeKey.getId() == null) {
@@ -53,8 +50,11 @@ public class PrivilegeKeyListController extends BaseController {
             } else {
                 privilegeKey.update();
             }
+            Map<String, Object> data = new HashMap<>();
+            data.put("id", privilegeKey.getId());
+            return Utils.createResponseEntity(session, data);
         }
-
+        return null;
 
     }
 
