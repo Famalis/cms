@@ -24,16 +24,6 @@ function TerminalListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/terminalList/save/:object.htm', $scope);
-        
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 500);
-        
-        $scope.get = saveEditDelete.get($http, '/CMS/terminalList/terminals.htm', $scope);
-        loadDataPromise = $scope.get;
-        $scope.selected = null;
-        $scope.editMode = false;
     };
 
     loadDataPromise.then(function(returnData) {

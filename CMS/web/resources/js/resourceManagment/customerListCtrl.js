@@ -44,15 +44,6 @@ function CustomerListCtrl($scope, $http, saveEditDelete, pagination) {
             alert("Sprawdź poprowność wprowadzonych danych");
         } else {
             saveEditDelete.save($http, '/CMS/customerList/save/:object.htm', $scope);
-            var date = new Date();
-            var curDate = null;
-            do { curDate = new Date(); }
-            while(curDate-date < 1500);
-
-            $scope.get = saveEditDelete.get($http, '/CMS/customerList/customers.htm', $scope);
-            loadDataPromise = $scope.get;
-            $scope.selected = null;
-            $scope.editMode = false;
         }
     };
 

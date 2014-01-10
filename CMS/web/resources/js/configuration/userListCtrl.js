@@ -23,16 +23,6 @@ function UserListCtrl($scope, $http, saveEditDelete, pagination) {
 
     $scope.save = function() {
         saveEditDelete.save($http, '/CMS/userList/save/:object.htm', $scope);
-        
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 2000);
-  
-        $scope.get = saveEditDelete.get($http, '/CMS/userList/users.htm', $scope);
-        loadDataPromise = $scope.get;
-        $scope.selected = null;
-        $scope.editMode = false;
     };
 
     loadDataPromise.then(function(returnData) {

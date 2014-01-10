@@ -17,6 +17,7 @@ cmsModule.factory('saveEditDelete', function() {
                     $scope.selected.id = returnId.id;
                 }                
                 $scope.selected = null;
+                $scope.editMode = false;
             }).error(function(error) {
                 $scope.showOperationMessage = true;
                 $scope.operationMessage = "Operacja zapisywania nie udana"

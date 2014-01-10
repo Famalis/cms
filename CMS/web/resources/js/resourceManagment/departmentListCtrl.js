@@ -27,16 +27,6 @@ function DepartmentListCtrl($scope, $http, saveEditDelete, pagination) {
             alert("Sprawdź poprowność wprowadzonych danych");
         } else {
         saveEditDelete.save($http, '/CMS/departmentList/save/:object.htm', $scope);
-        
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 1000);
-  
-        $scope.get = saveEditDelete.get($http, '/CMS/departmentList/deps.htm', $scope);
-        loadDataPromise = $scope.get;
-        $scope.selected = null;
-        $scope.editMode = false;
     }
     };
 

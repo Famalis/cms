@@ -29,15 +29,6 @@ function PositionListCtrl($scope, $http, saveEditDelete, pagination) {
         } else {
             saveEditDelete.save($http, '/CMS/positionList/save/:object.htm', $scope);
 
-            var date = new Date();
-            var curDate = null;
-            do { curDate = new Date(); }
-            while(curDate-date < 500);
-
-            $scope.get = saveEditDelete.get($http, '/CMS/positionList/positions.htm', $scope);
-            loadDataPromise = $scope.get;
-            $scope.selected = null;
-            $scope.editMode = false;
         }
     };
 
