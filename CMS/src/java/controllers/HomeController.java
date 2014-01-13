@@ -121,7 +121,7 @@ public class HomeController extends BaseController {
                     + "<input type='text' value='"+email+"' name='email'</input>"
                     + "<input type='submit'/>"
                     + "</form>";
-            message.setContent(msgText, "text/html");
+            message.setContent(msgText, "text/html; charset=utf-8");
             Transport.send(message);
             System.out.println("Sent message successfully....");
             model.put("mailSent", true);
