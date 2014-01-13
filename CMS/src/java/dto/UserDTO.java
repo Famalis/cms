@@ -22,13 +22,14 @@ import model.UserConfiguration;
 public class UserDTO implements Serializable {
 
     private Long id;
-    private String name, surname, groupId, login, password, groupName, employeeId;
+    private String name, surname, groupId, login, password, groupName, employeeId, mail;
     private List<String> privilegeKeyCodes = new ArrayList<>();
 
     public UserDTO(User user, UserConfiguration userConfig) {
         this.id = user.getId();
         this.groupId = userConfig.getGroupId();
         this.login = user.getLogin();
+        this.mail = user.getEmail();
         if (user.getEmployeeId() != null) {
             if (!user.getEmployeeId().isEmpty()) {
                 this.employeeId = user.getEmployeeId();
@@ -123,6 +124,14 @@ public class UserDTO implements Serializable {
 
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
 }

@@ -80,7 +80,7 @@ public class HomeController extends BaseController {
             model.put("error", "Dany login jest już zajęty");
             return "home";
         }
-        SystemConfigurationDao sysDao = new SystemConfigurationDao();
+        final SystemConfigurationDao sysDao = new SystemConfigurationDao();
         String to = sysDao.getAccountRequestEmail();
         String from = sysDao.getAccountRequestEmail();
         String host = sysDao.getAccountRequestSMTP();
@@ -95,8 +95,9 @@ public class HomeController extends BaseController {
         props.setProperty("mail.smtp.ssl.trust", host);
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("accreqehr", "easyhr12345");
+                return new PasswordAuthentication(sysDao.getAccountRequestLogin(), sysDao.getAccountRequestPassword());
             }
         });
 
@@ -106,12 +107,21 @@ public class HomeController extends BaseController {
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(to));
             message.setSubject("Prosba o konto: "+login);
-            String msgText = "Dane konta:\n";
-            msgText += "Login: "+login;
-            msgText += "\nImię i nazwisko: "+name+" "+surname;
-            msgText += "\nHasło: "+password;
-            msgText += "\nMail: "+email;
-            message.setText(msgText);
+            String msgText = "<table><tr><th>Dane konta:</th><th></th></tr><tr>";
+            msgText += "<td>Login: "+login+"</td></tr><tr>";
+            msgText += "<td>Imię i nazwisko: "+name+" "+surname+"</td></tr><tr>";
+            msgText += "<td>Hasło: "+password+"</td></tr><tr>";
+            msgText += "<td>Mail: "+email+"</td></tr>";
+            msgText += "</table><br/>"
+                    + "<form action='http://localhost:8080/CMS/userList/createAccountFromMail.htm' method='POST'>"
+                    + "<input type='text' value='"+login+"' name='login'</input>"
+                    + "<input type='text' value='"+name+"' name='name'</input>"
+                    + "<input type='text' value='"+surname+"' name='surname'</input>"
+                    + "<input type='text' value='"+password+"' name='password'</input>"
+                    + "<input type='text' value='"+email+"' name='email'</input>"
+                    + "<input type='submit'/>"
+                    + "</form>";
+            message.setContent(msgText, "text/html");
             Transport.send(message);
             System.out.println("Sent message successfully....");
             model.put("mailSent", true);

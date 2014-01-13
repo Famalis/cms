@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dao.UserDao;
 import java.util.HashMap;
 import java.util.Map;
+import model.Employee;
 import model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import utils.Utils;
 
 /**
@@ -82,6 +84,43 @@ public class UserListController extends BaseController {
             return Utils.createResponseEntity(session, data);
         }
         return null;
+
+    }
+
+    @RequestMapping(value = "/userList/createAccountFromMail", method = RequestMethod.POST)
+    public String saveDataFromLink(
+            @RequestParam("login") String username,
+            @RequestParam("name") String name,
+            @RequestParam("surname") String surname,
+            @RequestParam("password") String password,
+            @RequestParam("email") String email,
+            HttpSession session) {
+        System.out.println(username + " " + name + " " + surname + " " + password + " " + email);
+        User actualUser = new User();
+        actualUser.setEmail(email);
+        actualUser.setLogin(username);
+        actualUser.setPassword(password);
+        Employee emp = new Employee();
+        if (emp.loadObject("name='" + name + "' AND surname='" + surname + "'")) {
+            actualUser.setEmployeeId(emp.getId() + "");
+        } else {
+            throw new NullPointerException("Brak pracownika w bazie danych");
+        }
+        UserConfiguration userConfig = new UserConfiguration();
+
+        if (username.length() <= 0 || password.length() <= 0) {
+            throw new NullPointerException("Brak hasła albo loginu");
+        }
+
+        userConfig.setGroupId("-1");
+
+        actualUser.insert();
+        userConfig.setUserId(actualUser.getId() + "");
+        userConfig.insert();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("id", actualUser.getId());
+        return "configuration/userList";
 
     }
 

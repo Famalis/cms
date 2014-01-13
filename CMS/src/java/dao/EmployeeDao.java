@@ -88,12 +88,14 @@ public class EmployeeDao extends GenericDao<Employee> {
                 Position p = getEmpPosition(pos, empDto.getPositionId());
                 empDto.setDepartmentName(d.getName());
                 empDto.setPositionName(p.getName());
-                empDto.setApartmentNumber(a.getApartmentNumber());
-                empDto.setCountry(a.getCountry());
-                empDto.setCity(a.getCity());
-                empDto.setStreetName(a.getStreetName());
-                empDto.setStreetNumber(a.getStreetNumber());
-                empDto.setPostalCode(a.getPostalCode());
+                if (a != null) {
+                    empDto.setApartmentNumber(a.getApartmentNumber());
+                    empDto.setCountry(a.getCountry());
+                    empDto.setCity(a.getCity());
+                    empDto.setStreetName(a.getStreetName());
+                    empDto.setStreetNumber(a.getStreetNumber());
+                    empDto.setPostalCode(a.getPostalCode());
+                }
                 empDtos.add(empDto);
             }
         } catch (SQLException ex) {
