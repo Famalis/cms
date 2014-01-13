@@ -61,8 +61,13 @@ public class UserListController extends BaseController {
                 actualUser.loadObject("id=" + userDto.getId());
                 userConfig.loadObject("userId=" + userDto.getId());
             }
-            if (userDto.getLogin().length() <= 0 || userDto.getPassword().length() <= 0) {
-                throw new NullPointerException("Brak hasła albo loginu");
+            if(userDto.getPassword() == null) {
+                userDto.setPassword(actualUser.getPassword());
+            }
+            if (userDto.getLogin() != null) {
+                if (userDto.getLogin().length() <= 0 || userDto.getPassword().length() <= 0) {
+                    throw new NullPointerException("Brak hasła albo loginu");
+                }
             }
             actualUser.setPassword(userDto.getPassword());
             actualUser.setLogin(userDto.getLogin());
@@ -117,9 +122,7 @@ public class UserListController extends BaseController {
         actualUser.insert();
         userConfig.setUserId(actualUser.getId() + "");
         userConfig.insert();
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("id", actualUser.getId());
+        
         return "configuration/userList";
 
     }
