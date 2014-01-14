@@ -1,0 +1,178 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+ 
+/*----------------------------------------------*/
+/* SASS */
+$bg-body: #d4d4d4;
+$bg-zielony: #32b38c; 
+$bg-szary: #5c6672;
+$bg-form: #ececec;
+$input-color: #aaabac;
+$button-color: #ff9879;
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+ 
+ 
+ 
+/*----------------------------------------------*/
+/* Czcionki */
+/* @font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('webfonts/opensans.eot');
+  src: local('Open Sans'), local('OpenSans'), url(webfonts/opensans.woff) format('woff');
+} *
+/*----------------------------------------------*/
+/* Clear-fix */
+/* For modern browsers */
+.container:before,
+.container:after {
+    content:"";
+    display:table;
+}
+.container:after {
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.container {
+    zoom:1;
+}
+
+/*----------------------------------------------*/
+/* Podstawowe */
+
+body {
+	font-family: 'Open Sans';
+	background-color: $bg-body;
+	
+}
+.container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -155px 0px 0px -220px;
+	width: 440px;
+}
+.top-container {
+	background-color: $bg-zielony;
+	width:440px;
+	height:85px;
+}
+.form-container {
+	background-color: $bg-szary;
+	width:440px;
+	height:225px;
+}
+.logo {
+	float:left;
+	padding: 23px 0px 0px 39px;
+}
+.button-tekst {
+	font-smooth: auto;
+	float:right;
+	padding: 24px 20px 0px 0px;
+	line-height:18px;
+	font-size:15px;
+	color:#218164;
+	
+}
+.strzalka {
+	float:right;
+	padding: 34px 25px 0 0;
+
+}
+
+/*----------------------------------------------*/
+/* User input */
+.user-form {
+	float:left;
+	margin: 34px 0 0 39px;
+	
+}
+.user-icon {
+	float:left;
+	position:absolute;
+	padding-left:57px;
+	padding-top:46px;
+}
+input.user-name {
+	float:left;
+	margin: 34px 0 0 39px;
+	font-family: 'Open Sans';
+	font-size: 15px;
+	font-weight:700;
+	background-color: $bg-body;
+	color: $input-color;
+	padding-left:50px;
+	width:311px;
+	height:38px;
+	border: 1px solid $bg-szary;
+	@include border-radius(3px);
+	outline: 0;
+}
+input.user-name:focus {
+	border-color: $bg-body;
+}
+/*----------------------------------------------*/
+/* Password input */
+.password-form {
+	float:left;
+	margin: 16px 0 0 39px;
+}
+.password-icon {
+	float:left;
+	position:absolute;
+	padding-left:57px;
+	padding-top:105px;
+}
+input.password-input {
+	float:left;
+	font-family: 'Open Sans';
+	font-size: 15px;
+	font-weight:700;
+	background-color: $bg-body;
+	color: $input-color;
+	padding-left:50px;
+	margin: 16px 0 0 39px;
+	width:311px;
+	height:38px;
+	border: 1px solid $bg-szary;
+	@include border-radius(3px);
+	outline: 0;
+	-webkit-appearance: none;
+}
+input.password-input:focus {
+	border-color: $bg-body;
+}
+/*----------------------------------------------*/
+
+input.zaloguj-button {
+	float:right;
+	padding: 0 0 0 3px;
+	width: 90px;
+	height: 36px;
+	margin: 25px 39px 0 0;
+	font-family: 'Open Sans';
+	font-size:14px;
+	font-weight:700;
+	font-smooth: auto;
+	color: #FFF;
+	cursor: pointer;
+	background: $button-color;
+	border: 0px;
+	@include border-radius(3px);
+
+}
+input.zaloguj-button:hover, input.zaloguj-button:active {
+	background-color : #ef8e71;
+}

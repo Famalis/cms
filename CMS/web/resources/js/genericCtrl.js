@@ -1,3 +1,0 @@
-function GenericCtrl($scope, $http) {
-    
-}

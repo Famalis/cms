@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    -->
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="home.htm">homeController</prop>
+                <prop key="home/{id}.htm">homeController</prop>
+                <prop key="login.htm">loginController</prop>
+                <prop key="logout.htm">loginController</prop>
+                <prop key="bgcolor.htm">loginController</prop>
+                <prop key="uploadPhoto.htm">loginController</prop>
+                <prop key="getPhoto.htm">loginController</prop>
+                <prop key="getEmpData.htm">loginController</prop>
+                <prop key="newUser.htm">newUserController</prop>
+                <prop key="home/sendMail.htm">homeController</prop>
+                
+                <prop key="userList.htm">userListrController</prop>
+                <prop key="userList/users.htm">userListrController</prop>
+                <prop key="userList/save/:object.htm">userListrController</prop>
+                <prop key="userList/delete/:object.htm">userListrController</prop>
+                <prop key="userList/createAccountFromMail.htm">userListrController</prop>
+                
+                <prop key="groupList.htm">groupListrController</prop>
+                <prop key="groupList/groups.htm">groupListrController</prop>
+                <prop key="groupList/save/:object.htm">groupListrController</prop>
+                <prop key="groupList/delete/:object.htm">groupListrController</prop>
+                
+                <prop key="employeeList.htm">employeeListrController</prop>
+                <prop key="employeeList/emps.htm">employeeListrController</prop>
+                <prop key="employeeList/save/:object.htm">employeeListrController</prop>
+                <prop key="employeeList/delete/:object.htm">employeeListrController</prop>
+                
+                <prop key="departmentList.htm">departmentListrController</prop>
+                <prop key="departmentList/deps.htm">departmentListrController</prop>
+                <prop key="departmentList/save/:object.htm">departmentListrController</prop>
+                <prop key="departmentList/delete/:object.htm">departmentListrController</prop>
+                
+                <prop key="positionList.htm">positionListrController</prop>
+                <prop key="positionList/positions.htm">positionListrController</prop>
+                <prop key="positionList/save/:object.htm">positionListrController</prop>  
+                <prop key="positionList/delete/:object.htm">positionListrController</prop>
+                          
+                <prop key="privilegeKeyList.htm">privilegeKeyListController</prop>
+                <prop key="privilegeKeyList/privKeys.htm">privilegeKeyListController</prop>
+                <prop key="privilegeKeyList/save/:object.htm">privilegeKeyListController</prop>
+                <prop key="privilegeKeyList/delete/:object.htm">privilegeKeyListController</prop>
+                
+                <prop key="terminalList.htm">terminalListController</prop>
+                <prop key="terminalList/terminals.htm">terminalListController</prop>
+                <prop key="terminalList/save/:object.htm">terminalListController</prop>
+                <prop key="terminalList/delete/:object.htm">terminalListController</prop>
+                
+                <prop key="fileListUpload.htm">fileUploadController</prop>
+                <prop key="fileListUpload/reports.htm">fileUploadController</prop>
+                <prop key="fileListUpload/upload.htm">fileUploadController</prop>
+                <prop key="fileListUpload/download.htm">fileUploadController</prop>
+                <prop key="fileListUpload/save/:object.htm">fileUploadController</prop>
+                <prop key="fileListUpload/delete/:object.htm">fileUploadController</prop>
+                
+                <prop key="reportPrint.htm">reportPrintController</prop>
+                <prop key="reportPrint/reports.htm">reportPrintController</prop>
+                <prop key="reportPrint/print.htm">reportPrintController</prop>
+                <prop key="reportPrint/form/{form}.htm">reportPrintController</prop>
+                
+                <prop key="fileList.htm">fileListController</prop>
+                <prop key="fileList/files.htm">fileListController</prop>
+                <prop key="fileList/download.htm">fileListController</prop>
+                
+                <prop key="customerList.htm">customerListController</prop>
+                <prop key="customerList/customers.htm">customerListController</prop>
+                <prop key="customerList/save/:object.htm">customerListController</prop>
+                <prop key="customerList/delete/:object.htm">customerListController</prop>
+                
+                <prop key="contractList.htm">contractListController</prop>
+                <prop key="contractList/contracts.htm">contractListController</prop>
+                <prop key="contractList/save/:object.htm">contractListController</prop>
+                <prop key="contractList/delete/:object.htm">contractListController</prop>
+                
+                <prop key="systemConfig.htm">systemConfigController</prop>
+                <prop key="systemConfig/configs.htm">systemConfigController</prop>
+                <prop key="systemConfig/save/:object.htm">systemConfigController</prop>
+                <prop key="systemConfig/delete/:object.htm">systemConfigController</prop>
+                
+                <prop key="employeePage/{id}.htm">employeePageController</prop>
+                <prop key="customerPage/{id}.htm">customerPageController</prop>
+                
+                <prop key="reportPrint/testForm.htm">reportPrintController</prop>
+                
+                <prop key="testReportTemplate.htm">testReportTemplate</prop>     
+                <prop key="contractReportTemplate.htm">contractReportTemplate</prop>             
+                <prop key="empListReportTemplate.htm">empListReportTemplate</prop>             
+                
+                <prop key="testingPage.htm">testingController</prop>                
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+    
+    <bean name="testReportTemplate"
+          class="controllers.reportTemplate.TestReportTemplateController"/> 
+    <bean name="contractReportTemplate"
+          class="controllers.reportTemplate.ContractReportTemplateController"/>
+    <bean name="empListReportTemplate"
+          class="controllers.reportTemplate.EmpListReportTemplateController"/>
+    
+    <bean name="testingController" 
+          class="controllers.TestingPageController"/>
+    <bean name="systemConfigController" 
+          class="controllers.SystemConfigruationController"/>
+    <bean name="contractListController" 
+          class="controllers.ContractListController"/>
+    <bean name="customerListController" 
+          class="controllers.CustomerListController"/>
+    <bean name="customerPageController"
+          class="controllers.CustomerPageController"/>   
+    <bean name="fileListController" 
+          class="controllers.FileListController"/>
+    <bean name="employeePageController"
+          class="controllers.EmployeePageController"/>       
+    <bean name="reportPrintController"
+          class="controllers.ReportPrintController"/> 
+    <bean name="fileUploadController"
+          class="controllers.FileListUploadController"/> 
+    <bean name="terminalListController"
+          class="controllers.TerminalListController"/>  
+    <bean name="privilegeKeyListController"
+          class="controllers.PrivilegeKeyListController"/>   
+    <bean name="terminalListrController"
+          class="controllers.TerminalListController"/>
+    <bean name="positionListrController"
+          class="controllers.PositionListController"/>
+    <bean name="departmentListrController"
+          class="controllers.DepartmentListController"/>
+    <bean name="employeeListrController"
+          class="controllers.EmployeeListController"/>
+    <bean name="groupListrController"
+          class="controllers.GroupListController"/>
+    <bean name="homeController"
+          class="controllers.HomeController"/>    
+    <bean name="loginController"
+          class="controllers.LoginController"/>
+    <bean name="newUserController"
+          class="controllers.NewUserController"/>
+    <bean name="userListrController"
+          class="controllers.UserListController"/>
+
+
+</beans>
