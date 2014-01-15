@@ -22,6 +22,7 @@ import utils.Utils;
 /**
  *
  * @author Macha
+ * 
  */
 @Controller
 @RequestMapping("/contractList")
