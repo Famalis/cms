@@ -1,3 +1,7 @@
 /CMS/nbproject/private
 /CMS/dist/
 /CMS/build/
+*.class
+*.jar
+*.war
+*.ear
