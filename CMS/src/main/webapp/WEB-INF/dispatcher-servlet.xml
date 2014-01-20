@@ -96,6 +96,11 @@
                 <prop key="systemConfig/save/:object.htm">systemConfigController</prop>
                 <prop key="systemConfig/delete/:object.htm">systemConfigController</prop>
                 
+                <prop key="dictionaryTypeList.htm">dictionaryTypeController</prop>
+                <prop key="dictionaryTypeList/dictTypes.htm">dictionaryTypeController</prop>
+                <prop key="dictionaryTypeList/save/:object.htm">dictionaryTypeController</prop>
+                <prop key="dictionaryTypeList/delete/:object.htm">dictionaryTypeController</prop>
+                
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
                 <prop key="customerPage/{id}.htm">customerPageController</prop>
                 
@@ -122,6 +127,8 @@
     <bean name="empListReportTemplate"
           class="controllers.reportTemplate.EmpListReportTemplateController"/>
     
+    <bean name="dictionaryTypeController"
+          class="controllers.DictionaryTypeController"/>
     <bean name="testingController" 
           class="controllers.TestingPageController"/>
     <bean name="systemConfigController" 

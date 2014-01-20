@@ -30,25 +30,25 @@
             if (sysConfig == null) {
                 jspContext.setAttribute("sysConfig", new SystemConfigurationService());
             }
-            
+
         %> 
 
         <c:if test="${user.id != null}">
-            
+
             <div id="idletimeout">
-            <div class="idletimeout-top">
-                <div class="idletimeout-sign"><img src="/CMS/resources/images/warning.png" alt=""/></div>
-                <span style="font-weight:700;" class="idletimeout-header">Twoja sesja wkrótce wygaśnie...</span></div>
-                
+                <div class="idletimeout-top">
+                    <div class="idletimeout-sign"><img src="/CMS/resources/images/warning.png" alt=""/></div>
+                    <span style="font-weight:700;" class="idletimeout-header">Twoja sesja wkrótce wygaśnie...</span></div>
+
                 <div class="idletimeout-tekst">Zostaniesz wylogowany za <span style="font-weight:700;" id="odliczanie"><!-- countdown place holder --></span> sekund z powodu braku aktywności.
                     <br>Aby kontynuować pracę <a id="idletimeout-resume" href="#">kliknij tutaj</a> i zapomnij o sprawie... na jakiś czas... :)</div>
-               
-            
-            
+
+
+
             </div>
-            
-                
-           
+
+
+
             <!--<div id="dialog" title="Your session is about to expire!">
                 <p>
                     <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
@@ -74,8 +74,8 @@
                     },
                     onIdle: function() {
                         $(this).fadeIn(); // show the warning bar
-                        $.blockUI({ message: null }); 
-                        
+                        $.blockUI({message: null});
+
                     },
                     onCountdown: function(counter) {
                         $(this).find("#odliczanie").html(counter); // update the counter
@@ -215,11 +215,13 @@
                                                 user.privilegeKeyCodes.contains('ManageUsers')}">
                               <a href="/CMS/userList.htm"><li id="nav7">Użytkownicy</li></a>
                                   </c:if>
-
-
-                        <c:if test="${user.privilegeKeyCodes.contains('all') || 
-                                      user.privilegeKeyCodes.contains('ManageFiles')}">
+                                  <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                                user.privilegeKeyCodes.contains('ManageFiles')}">
                               <a href="/CMS/fileListUpload.htm"><li id="nav10">Zarządzanie plikami</li></a>
+                                  </c:if>
+                                  <c:if test="${user.privilegeKeyCodes.contains('all') || 
+                                                user.privilegeKeyCodes.contains('ViewDictType')}">
+                              <a href="/CMS/dictionaryTypeList.htm"><li id="nav10">Rodzaje słowników</li></a>
                                   </c:if>
                     </ul>
 
