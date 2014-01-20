@@ -5,6 +5,7 @@ import dao.AddressDao;
 import dao.ContractDao;
 import dao.DepartmentDao;
 import dao.EmployeeDao;
+import dao.EmploymentDao;
 import dao.LogDao;
 import dao.PositionDao;
 import dao.TaskDao;
@@ -102,10 +103,12 @@ public class EmployeeListController extends BaseController {
         EmployeeDao empDao = new EmployeeDao();
         DepartmentDao depDao = new DepartmentDao();
         PositionDao posDao = new PositionDao();
+        EmploymentDao emplDao = new EmploymentDao();
         Map<String, Object> initData = new HashMap<String, Object>();
         initData.put("employees", empDao.getEmployeeDTOList());
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
+        initData.put("employments", emplDao.getEmploymentDTOList());
         return Utils.createResponseEntity(session, initData);
     }
 

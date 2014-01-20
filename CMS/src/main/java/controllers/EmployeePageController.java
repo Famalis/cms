@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.EmploymentDao;
 import dto.EmployeeDTO;
 import javax.servlet.http.HttpSession;
 import model.Employee;
@@ -34,7 +35,9 @@ public class EmployeePageController extends BaseController {
         Employee emp = new Employee();
         emp.loadObject("id="+id);
         EmployeeDTO employeeDto = new EmployeeDTO(emp);
+        EmploymentDao emplDao = new EmploymentDao();
         model.put("employee", employeeDto);
+        model.put("employments", emplDao.getEmploymentDTOList());
         return "resourceManagment/employeePage";
     }
 

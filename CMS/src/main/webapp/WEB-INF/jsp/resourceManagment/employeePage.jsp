@@ -50,7 +50,16 @@
                         <div style="margin-left: 30px;float: left;clear: right;width:1px;height:220px;background-color:#31a984;"></div>
 
                         <div style="float:left;clear: right;margin-top: 0px;margin-left:30px;color: #218164;font-weight: 700;"></div>
-
+                        <div>
+                            Zatrudnienia
+                            <select>
+                                <c:forEach items="${employments}" var="employment">
+                                    <option>
+                                        ${employment.employmentTypeName}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
 
 
                      

@@ -45,6 +45,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.departments = "";
     $scope.positions = "";
     $scope.privileges = "";
+    $scope.employments = "";
     $scope.editMode = false;
 
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
@@ -63,6 +64,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
             $scope.departments = $scope.initData.departments;
             $scope.positions = $scope.initData.positions;
             $scope.privileges = $scope.initData.privileges;
+            $scope.employments = $scope.initData.employments;
         } else {
             alert('err');
         }
