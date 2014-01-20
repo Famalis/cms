@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Klasa zarządzająca połączeniem z bazą danych; Aby wykonywać połączenia z 
@@ -23,6 +24,7 @@ public class ConnectionManager {
     public static String staticLogin = "Sergio";
     public static String staticPass = "quovadis1";
     
+    private final static Logger LOGGER = Logger.getGlobal();
     private String url = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
     private String login = "admin";
     private String pass = "cmsadmin";
@@ -112,7 +114,8 @@ public class ConnectionManager {
      */
     public ResultSet select(String query) {
         ResultSet rs = null;
-        System.out.println("DEBUG: Execute query - "+query);
+        //System.out.println("DEBUG: Execute query - "+query);
+        LOGGER.info("Execute query - "+query);
         try {
             Statement s = getConnection().createStatement();
             rs = s.executeQuery(query);            
@@ -129,7 +132,8 @@ public class ConnectionManager {
      * @return 
      */
     public boolean update(String query) {
-        System.out.println("DEBUG: Execute query - "+query);
+        //System.out.println("DEBUG: Execute query - "+query);
+        LOGGER.info("Execute query - "+query);
         try {
             Statement s = getConnection().createStatement();
             s.executeUpdate(query);            

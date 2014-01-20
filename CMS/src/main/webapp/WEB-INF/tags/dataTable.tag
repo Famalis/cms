@@ -75,7 +75,9 @@
 
 </script>
 
+<div ng-include="templates\operationMessage.html">
 
+</div>
 <table class="genericTable">
     <tr class="table-header">
 
