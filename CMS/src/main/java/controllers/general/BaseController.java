@@ -7,6 +7,7 @@ package controllers.general;
 import dto.UserDTO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 public class BaseController {
 
+    protected Logger LOGGER;
     /**
      * Zalogowany użytkownik
      */
@@ -31,6 +33,7 @@ public class BaseController {
             this.privileges.add(priv);
         }
         currentUserDto = new UserDTO();
+        LOGGER = Logger.getLogger(this.getClass().getName());
     }
 
     /**

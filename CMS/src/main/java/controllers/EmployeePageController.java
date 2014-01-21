@@ -5,14 +5,22 @@
 package controllers;
 
 import controllers.general.BaseController;
+import dao.EmployeeDao;
 import dao.EmploymentDao;
 import dto.EmployeeDTO;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import model.Employee;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import utils.Utils;
 
 /**
  *
@@ -28,7 +36,8 @@ public class EmployeePageController extends BaseController {
 
     @RequestMapping(value = "/employeePage/{id}")
     public String home(@PathVariable("id") Long id, HttpSession session, ModelMap model) {
-        System.out.println("emp page");
+        LOGGER.info(LOGGER.getName());
+        LOGGER.info("Emp page");
         if (!this.checkPrivileges(session)) {
             return "missingPrivilege";
         }
@@ -39,6 +48,25 @@ public class EmployeePageController extends BaseController {
         model.put("employee", employeeDto);
         model.put("employments", emplDao.getEmploymentDTOList());
         return "resourceManagment/employeePage";
+    }
+    
+    @RequestMapping(value = "/employeePage/{id}/data")
+    public @ResponseBody
+    ResponseEntity<String> getData(@PathVariable("id") Long id, HttpSession session, ModelMap model) {
+         LOGGER.info(LOGGER.getName());
+        LOGGER.info("Get employee data");
+        EmployeeDao empDao = new EmployeeDao();
+        EmployeeDTO empDTO = empDao.getEmployeeDTOList("id", id+"").get(0);
+        EmploymentDao emplDao = new EmploymentDao();
+        Map<String, List<String>> params = new HashMap();
+        List<String> paramList = new ArrayList<>();
+        paramList.add(empDTO.getId()+"");        
+        params.put("employeeId", paramList);        
+        
+        Map<String, Object> initData = new HashMap<>();
+        initData.put("employee", empDTO);
+        initData.put("employments", emplDao.getEmploymentDTOList(params));
+        return Utils.createResponseEntity(session, initData);
     }
 
 }

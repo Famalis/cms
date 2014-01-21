@@ -24,7 +24,7 @@ public class ConnectionManager {
     public static String staticLogin = "Sergio";
     public static String staticPass = "quovadis1";
     
-    private final static Logger LOGGER = Logger.getGlobal();
+    private final static Logger LOGGER = Logger.getLogger("utils.ConnectionManager");
     private String url = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
     private String login = "admin";
     private String pass = "cmsadmin";

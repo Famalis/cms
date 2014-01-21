@@ -107,6 +107,7 @@
                 <prop key="dictionaryList/delete/:object.htm">dictionaryController</prop>
                 
                 <prop key="employeePage/{id}.htm">employeePageController</prop>
+                <prop key="employeePage/{id}/data.htm">employeePageController</prop>
                 <prop key="customerPage/{id}.htm">customerPageController</prop>
                 
                 <prop key="reportPrint/testForm.htm">reportPrintController</prop>
