@@ -33,7 +33,8 @@ public class EmploymentDao extends GenericDao<Employment> {
                 + "emp.employeeId as employeeId, "
                 + "emp.dateFrom as dateFrom, "
                 + "emp.dateTo as dateTo, "
-                + "dict.value as dictValue ";
+                + "dict.value as dictValue, "
+                + "dict.description as dictDesc ";
         String from = "FROM employment as emp, "
                 + "employment_type as empType, "
                 + "dictionary as dict ";
@@ -47,7 +48,7 @@ public class EmploymentDao extends GenericDao<Employment> {
         try {
             while (set.next()) {
                 EmploymentDTO newEmpDto = new EmploymentDTO();
-                newEmpDto.setEmploymentTypeName(set.getString("dictValue"));
+                newEmpDto.setEmploymentTypeName(set.getString("dictDesc"));
                 newEmpDto.setId(set.getLong("id"));
                 newEmpDto.setDateFrom(set.getString("dateFrom"));
                 newEmpDto.setDateTo(set.getString("dateTo"));

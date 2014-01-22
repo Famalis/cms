@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 public class BaseController {
 
-    protected static Logger LOGGER;
+    protected Logger LOGGER;
     /**
      * Zalogowany użytkownik
      */

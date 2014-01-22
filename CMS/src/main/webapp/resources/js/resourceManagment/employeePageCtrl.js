@@ -1,12 +1,19 @@
 function EmployeePageCtrl($scope, $http, saveEditDelete) {
     
-    $scope.getInfoLink = "";
-    $scope.get = saveEditDelete.get($http, $scope.getInfoLink, $scope);
+    $scope.selectedEmployment = "";
+    $scope.empId = "";
+    $scope.get = $http.post(
+            '/CMS/employeePage/loadData/:id.htm',
+            {id:35}).success(function(data) {
+                $scope.employee = data.employee;                
+                $scope.employments = data.employments;
+            }).error(function(error) {
+               alert("error\n"+error) ;
+            });
     var loadDataPromise = $scope.get;
     loadDataPromise.then(function(returnData) {
         if (returnData != null) {
-            $scope.employee = $scope.initData.employee;
-            $scope.employments = $scope.initData.employments;
+            
         } else {
             alert('err');
         }

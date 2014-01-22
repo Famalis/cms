@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.SystemConfiguration;
@@ -57,7 +59,7 @@ public abstract class Utils {
      * (innymi słowy nazwa zmiennej ktora jest podana jako pierwszy paramter)
      * @param javaClass - Klasa na podstawie której ma zostać stworzony zwracany
      * obiekt
-     * @return
+     * @return Obiekt java typu <Object>
      */
     public static Object convertJSONStringToObject(String json, String objectName, Class javaClass) {
         String actualJsonString = json.substring(
@@ -149,6 +151,12 @@ public abstract class Utils {
         }
     }
     
+    /**
+     * Metoda służąca do odpowiedniego przygotowania JSONa z danymi aby prawidłowo przekazać je do klienta (np. do angulara).
+     * @param session <HttpSession> 
+     * @param initData Dane, które mają zostać zamienione w JSON
+     * @return dane odpowiedzi serwera
+     */
     public static ResponseEntity<String> createResponseEntity(HttpSession session, Map<String, Object> initData){
         HttpHeaders responseHeaders = new HttpHeaders();
         SystemConfigurationDao sysConfigDao = new SystemConfigurationDao();
@@ -157,8 +165,8 @@ public abstract class Utils {
         UserDTO user = (UserDTO)(session.getAttribute("user"));
         initData.put("privileges", user.getPrivilegeKeyCodes());
         
-        System.out.println("SEND: "+Utils.convertOMapToJSON(initData));
+        Logger.getLogger(Utils.class.getName()).log(Level.INFO, "SEND: {0}", Utils.convertOMapToJSON(initData));
         
-        return new ResponseEntity<String>(convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(convertOMapToJSON(initData), responseHeaders, HttpStatus.OK);
     }
 }

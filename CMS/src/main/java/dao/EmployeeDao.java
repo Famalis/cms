@@ -100,7 +100,7 @@ public class EmployeeDao extends GenericDao<Employee> {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return null;
+            return empDtos;
         }
 
         return empDtos;
