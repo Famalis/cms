@@ -37,7 +37,7 @@ public class EmployeeDTO {
             departmentName;
     
     List<EmploymentDTO> employments = new ArrayList<EmploymentDTO>();
-
+  
     public EmployeeDTO() {
         super();
     }
