@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dto;
 
 import java.util.ArrayList;
@@ -18,30 +17,30 @@ import model.Position;
  * @author Sergio
  */
 public class EmployeeDTO {
-    
+
     private Long id;
-    private String name, 
-            surname, 
-            PESEL, 
-            phone, 
-            salary, 
-            country, 
-            city, 
-            streetName, 
-            streetNumber, 
-            apartmentNumber, 
+    private String name,
+            surname,
+            PESEL,
+            phone,
+            salary,
+            country,
+            city,
+            streetName,
+            streetNumber,
+            apartmentNumber,
             postalCode,
-            positionId, 
+            positionId,
             departmentId,
             positionName,
             departmentName;
-    
+
     List<EmploymentDTO> employments = new ArrayList<EmploymentDTO>();
-  
+
     public EmployeeDTO() {
         super();
     }
-    
+
     public EmployeeDTO(Employee employee) {
         //this.id = employee.getId();
         this.setId(employee.getId());
@@ -54,7 +53,7 @@ public class EmployeeDTO {
         this.positionId = employee.getPositionId();
         this.departmentId = employee.getDepartmentId();
         Address address = new Address();
-        if(address.loadObject("id="+employee.getAddressId())){
+        if (address.loadObject("id=" + employee.getAddressId())) {
             this.country = address.getCountry();
             this.city = address.getCity();
             this.streetName = address.getStreetName();
@@ -63,16 +62,14 @@ public class EmployeeDTO {
             this.postalCode = address.getPostalCode();
         }
         Position position = new Position();
-        position.loadObject("id="+positionId);
+        position.loadObject("id=" + positionId);
         this.positionName = position.getName();
         Department department = new Department();
-        department.loadObject("id="+departmentId);
+        department.loadObject("id=" + departmentId);
         this.departmentName = department.getName();
-        
-        
+
     }
 
-    //@JsonIgnore <-blokuje przekazywanie id w EmployeeListController co psuje dodawanie i edycję pracowników
     public Long getId() {
         return id;
     }
@@ -95,8 +92,8 @@ public class EmployeeDTO {
 
     public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
-    }      
-    
+    }
+
     public String getName() {
         return name;
     }
@@ -208,5 +205,5 @@ public class EmployeeDTO {
     public void setEmployments(List<EmploymentDTO> employments) {
         this.employments = employments;
     }
-    
+
 }
