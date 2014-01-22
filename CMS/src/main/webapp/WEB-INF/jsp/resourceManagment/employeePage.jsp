@@ -54,11 +54,10 @@
                         Zatrudnienia
                         <select>
                             <option ng-repeat="empl in employments" value="{{empl.id}}" 
-                                    ng-click="selectedEmployment = empl">
+                                    ng-click="selectEmployment(empl.id)">
                                 {{empl.employmentTypeName}}
                             </option>
                         </select>
-                        {{selectedEmployment.employmentTypeName}}
                         <table>
                             <tr>
                                 <th>

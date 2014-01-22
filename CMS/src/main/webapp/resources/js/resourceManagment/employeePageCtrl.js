@@ -18,4 +18,13 @@ function EmployeePageCtrl($scope, $http, saveEditDelete) {
             alert('err');
         }
     });
+    
+    $scope.selectEmployment = function(id) {
+      for (var i = 0; $scope.employments.length; i++) {
+          if($scope.employments[i].id == id) {
+              $scope.selectedEmployment = $scope.employments[i];
+              return $scope.employments[i];
+          }
+      }  
+    };
 }
