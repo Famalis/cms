@@ -1,6 +1,7 @@
 package dao;
 
 import dto.EmployeeDTO;
+import dto.EmploymentDTO;
 import java.lang.String;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,8 +103,30 @@ public class EmployeeDao extends GenericDao<Employee> {
             ex.printStackTrace();
             return empDtos;
         }
-
         return empDtos;
+    }
+    
+    public List<EmployeeDTO> getEmployeeDTOListWithEmployments() {
+        return getEmployeeDTOListWithEmployments(new HashMap<String, List<String>>());
+    }
+    
+    public List<EmployeeDTO> getEmployeeDTOListWithEmployments(Map<String, List<String>> params) {
+        List<EmployeeDTO> empDTOs;
+        if(params.isEmpty()) {
+            empDTOs = getEmployeeDTOList();
+        } else {
+            empDTOs = getEmployeeDTOList(params);
+        }        
+        EmploymentDao employmentDao = new EmploymentDao();
+        List<EmploymentDTO> emplDtos = employmentDao.getEmploymentDTOList();
+        for (EmploymentDTO employmentDTO : emplDtos) {
+            for (EmployeeDTO empDTO : empDTOs) {
+                if(empDTO.getId() == Long.parseLong(employmentDTO.getEmployeeId())) {
+                    empDTO.getEmployments().add(employmentDTO);
+                }
+            }
+        }
+        return empDTOs;
     }
 
     private Address getEmpAddress(List<Address> addresses, String id) {

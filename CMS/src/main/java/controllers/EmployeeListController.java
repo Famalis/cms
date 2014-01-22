@@ -105,7 +105,7 @@ public class EmployeeListController extends BaseController {
         PositionDao posDao = new PositionDao();
         EmploymentDao emplDao = new EmploymentDao();
         Map<String, Object> initData = new HashMap<String, Object>();
-        initData.put("employees", empDao.getEmployeeDTOList());
+        initData.put("employees", empDao.getEmployeeDTOListWithEmployments());
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
         initData.put("employments", emplDao.getEmploymentDTOList());

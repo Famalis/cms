@@ -6,12 +6,12 @@
 
 package dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Address;
 import model.Department;
 import model.Employee;
 import model.Position;
-import model.User;
-import model.UserConfiguration;
 
 /**
  *
@@ -35,6 +35,8 @@ public class EmployeeDTO {
             departmentId,
             positionName,
             departmentName;
+    
+    List<EmploymentDTO> employments = new ArrayList<EmploymentDTO>();
 
     public EmployeeDTO() {
         super();
@@ -197,6 +199,14 @@ public class EmployeeDTO {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public List<EmploymentDTO> getEmployments() {
+        return employments;
+    }
+
+    public void setEmployments(List<EmploymentDTO> employments) {
+        this.employments = employments;
     }
     
 }
