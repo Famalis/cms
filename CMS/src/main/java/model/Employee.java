@@ -12,7 +12,7 @@ public class Employee extends DatabaseObject {
             salary, 
             positionId, 
             departmentId, 
-            addressId;    
+            mainAddressId;    
 
     public String getName() {
         return name;
@@ -71,11 +71,11 @@ public class Employee extends DatabaseObject {
     }
 
     public String getAddressId() {
-        return addressId;
+        return mainAddressId;
     }
 
     public void setAddressId(String addressId) {
-        this.addressId = addressId;
+        this.mainAddressId = addressId;
     }
     
     
