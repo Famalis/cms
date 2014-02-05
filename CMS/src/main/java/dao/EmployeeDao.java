@@ -59,7 +59,7 @@ public class EmployeeDao extends GenericDao<Employee> {
     public List<EmployeeDTO> getEmployeeDTOList(Map<String, List<String>> params) {
         String query = "SELECT emp.name as name, emp.surname as surname, emp.id as id, emp.phone as phone,"
                 + "emp.pesel as pesel, emp.salary as salary, emp.positionId as positionId, "
-                + "emp.departmentId as departmentId, emp.addressId as addressId ";
+                + "emp.departmentId as departmentId, emp.mainAddressId as addressId ";
         query += "FROM employee as emp ";
         if (!params.isEmpty()) {
             query += "WHERE";
