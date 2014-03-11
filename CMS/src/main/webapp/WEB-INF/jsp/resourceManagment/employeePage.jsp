@@ -4,7 +4,7 @@
 
 </div>
 <div class="right-addNew">
-    <div class="addNew-header">Profil pracownika {{empId}}</div>
+    <div class="addNew-header">Profil pracownika</div>
     <div class="addNew-line"></div>
     <div class="addNew-inputs">
         <div style="float:left;clear:right;margin-bottom: 30px;margin-right: 30px;" class="zdjecie-uzytkownika">
@@ -46,12 +46,15 @@
         <div>
             Zatrudnienia
             <select>
+                <option ng-click="selectEmployment('a')">
+                    ---
+                </option>
                 <option ng-repeat="empl in selected.employments" value="{{empl.id}}" 
                         ng-click="selectEmployment(empl.id)">
                     {{empl.employmentTypeName}}
                 </option>
             </select>
-            <table>
+            <table width="100%">
                 <tr>
                     <th>
                         Rodzaj umowy:

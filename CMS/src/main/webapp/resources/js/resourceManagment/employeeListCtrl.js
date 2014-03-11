@@ -36,7 +36,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
         'city': "pracownik-miasto",
         'phone': "pracownik-telefon",
         'positionName': "pracownik-stanowisko"
-       
+
     };
 
 
@@ -47,7 +47,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.privileges = "";
     $scope.employments = "";
     $scope.editMode = false;
-    $scope.selectedEmployment="";
+    $scope.selectedEmployment = "";
 
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
     var loadDataPromise = $scope.get;
@@ -159,5 +159,20 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
             }
         }
         return false;
+    };
+
+    $scope.selectEmployment = function(id) {
+        if(id=='a') {
+            //alert("aaa");
+            $scope.selectedEmployment = new Object();
+            return;
+        }
+        for (var i = 0; $scope.employments.length; i++) {
+            if ($scope.employments[i].id == id) {
+                $scope.selectedEmployment = $scope.employments[i];
+                //alert(id);
+                return;
+            }
+        }        
     };
 }
