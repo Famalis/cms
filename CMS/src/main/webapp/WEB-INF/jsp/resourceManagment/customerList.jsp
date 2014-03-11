@@ -103,7 +103,17 @@
                 
 
                 <t:dataTable/>
+                <div>
+                <table width="100%" ng-show="selected">
+                    <tr>
+                        <td colspan="10" width="100%">
+                            <div ng-include="'customerPage/'+selected.id+'.htm'">
 
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
                
                 <!--<div ng-show="editMode">
                     <table class="genericTable">
