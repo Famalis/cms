@@ -6,8 +6,8 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.checkMax = pagination.pageMaxSmallerThenSize($scope);
 
     $scope.status = "Ładowanie danych";
-    $scope.displayPage = true;
-    $scope.displayPageName = "employeePage";
+    //$scope.displayPage = true;
+    //$scope.displayPageName = "employeePage";
 
     $scope.objectsName = "employees";
     $scope.attributes = [];
@@ -47,6 +47,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.privileges = "";
     $scope.employments = "";
     $scope.editMode = false;
+    $scope.selectedEmployment="";
 
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
     var loadDataPromise = $scope.get;

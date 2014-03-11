@@ -90,28 +90,16 @@
 
             <t:dataTable/>
             <div>
-                <table>
+                <table width="100%" ng-show="selected">
                     <tr>
-                        <th ng-click="showEmpContracts = !showEmpContracts">
-                            Umowy
-                        </th>
-                    </tr>
-                    <tr>
-                        <td ng-show="showEmpContracts">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <select>
-                                            <option ng-repeat="empl in selected.employments" value="{{empl.id}}">
-                                                {{empl.employmentTypeName}}
-                                            </option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
+                        <td colspan="10" width="100%">
+                            <div ng-include="'employeePage/'+selected.id+'.htm'">
+
+                            </div>
                         </td>
                     </tr>
                 </table>
             </div>
+
         </jsp:body>
     </t:genericTemplate>

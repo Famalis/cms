@@ -1,7 +1,7 @@
 function EmployeePageCtrl($scope, $http, saveEditDelete) {
     
     $scope.selectedEmployment = "";
-    $scope.empId = "";
+    //$scope.empId="";
     $scope.get = $http.post(
             '/CMS/employeePage/loadData/:id.htm',
             {id:35}).success(function(data) {

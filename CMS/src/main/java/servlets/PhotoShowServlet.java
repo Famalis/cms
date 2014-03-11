@@ -9,14 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.SystemFileDao;
+import java.util.logging.Logger;
 import model.Employee;
 import model.SystemFile;
 import utils.HexConverter;
 
 public class PhotoShowServlet extends HttpServlet {
 
+    private Logger LOGGER; 
     private static final long serialVersionUID = 1L;
 
+    public PhotoShowServlet() {
+        super();
+        LOGGER = Logger.getLogger(this.getClass().getCanonicalName());
+    }
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +49,9 @@ public class PhotoShowServlet extends HttpServlet {
             response.getOutputStream().flush();
             response.getOutputStream().close();
         } catch (NullPointerException nullEx) {
-            nullEx.printStackTrace();
+            LOGGER.warning(nullEx.getLocalizedMessage());
+        } catch (IndexOutOfBoundsException indexEx) {
+            LOGGER.warning(indexEx.getLocalizedMessage());
         }
     }
 

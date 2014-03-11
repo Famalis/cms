@@ -53,7 +53,7 @@ public class EmployeeDTO {
         this.positionId = employee.getPositionId();
         this.departmentId = employee.getDepartmentId();
         Address address = new Address();
-        if (address.loadObject("id=" + employee.getAddressId())) {
+        if (address.loadObject("personId=" + employee.getId())) {
             this.country = address.getCountry();
             this.city = address.getCity();
             this.streetName = address.getStreetName();
