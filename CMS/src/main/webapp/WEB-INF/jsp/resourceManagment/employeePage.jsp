@@ -46,7 +46,7 @@
         <div>
             <br/>
             Adres
-            <select ng-init="selectAddress(selected.addresses[0])">
+            <select ng-init="getMainAddress()">
                 <option ng-repeat="addr in selected.addresses"
                         ng-click="selectAddress(addr)">
                     {{addr.dictName}}

@@ -170,4 +170,13 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.selectAddress = function(addr) {
         $scope.selectedAddress = addr;
     };
+    
+    $scope.getMainAddress = function() {        
+        for (var i = 0; i<$scope.selected.addresses.length; i++) {
+            //alert($scope.selected.addresses.length);
+            if ($scope.selected.addresses[i].id == $scope.selected.mainAddressId) {
+                $scope.selectedAddress = $scope.selected.addresses[i];
+            }
+        }
+    }
 }

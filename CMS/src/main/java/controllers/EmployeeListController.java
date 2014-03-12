@@ -11,6 +11,7 @@ import dao.PositionDao;
 import dao.TaskDao;
 import dao.UserConfigurationDao;
 import dao.UserDao;
+import dto.AddressDTO;
 import dto.EmployeeDTO;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,13 +69,14 @@ public class EmployeeListController extends BaseController {
             if (empDto.getPositionId().length() > 0) {
                 actualEmp.setPositionId(empDto.getPositionId());
             }
-
-            actualAdr.setCity(empDto.getCity());
-            actualAdr.setCountry(empDto.getCountry());
-            actualAdr.setStreetName(empDto.getStreetName());
-            actualAdr.setStreetNumber(empDto.getStreetNumber());
-            actualAdr.setApartmentNumber(empDto.getApartmentNumber());
-            actualAdr.setPostalCode(empDto.getPostalCode());
+            
+            AddressDTO addrDto = empDto.getMainAddress();
+            actualAdr.setCity(addrDto.getCity());
+            actualAdr.setCountry(addrDto.getCountry());
+            actualAdr.setStreetName(addrDto.getStreetName());
+            actualAdr.setStreetNumber(addrDto.getStreetNumber());
+            actualAdr.setApartmentNumber(addrDto.getApartmentNumber());
+            actualAdr.setPostalCode(addrDto.getPostalCode());
 
             if (actualAdr.getId() != null) {
                 actualAdr.update();

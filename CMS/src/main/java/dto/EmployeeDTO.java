@@ -8,7 +8,6 @@ package dto;
 import dao.AddressDao;
 import java.util.ArrayList;
 import java.util.List;
-import model.Address;
 import model.Department;
 import model.Employee;
 import model.Position;
@@ -25,16 +24,11 @@ public class EmployeeDTO {
             PESEL,
             phone,
             salary,
-            country,
-            city,
-            streetName,
-            streetNumber,
-            apartmentNumber,
-            postalCode,
             positionId,
             departmentId,
             positionName,
-            departmentName;
+            departmentName,
+            mainAddressId;
 
     List<EmploymentDTO> employments = new ArrayList<EmploymentDTO>();
     List<AddressDTO> addresses = new ArrayList<>();
@@ -58,12 +52,6 @@ public class EmployeeDTO {
         for (AddressDTO addr : addressDao.getAddressDTOList("personId", this.getId()+"")) {
             addresses.add(addr);
             if(addr.getDictId().equals(AddressDao.ZAMELDOWANIA)) {
-                this.apartmentNumber = addr.getApartmentNumber();
-                this.city = addr.getCity();
-                this.country = addr.getCountry();
-                this.postalCode = addr.getPostalCode();
-                this.streetName = addr.getStreetName();
-                this.streetNumber = addr.getStreetNumber();
             }
         }        
         Position position = new Position();
@@ -139,54 +127,6 @@ public class EmployeeDTO {
         this.salary = salary;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
-
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
     public String getPositionName() {
         return positionName;
     }
@@ -218,7 +158,22 @@ public class EmployeeDTO {
     public void setAddresses(List<AddressDTO> addresses) {
         this.addresses = addresses;
     }
+
+    public String getMainAddressId() {
+        return mainAddressId;
+    }
+
+    public void setMainAddressId(String mainAddressId) {
+        this.mainAddressId = mainAddressId;
+    }
     
-    
+    public AddressDTO getMainAddress() {
+        for (AddressDTO aDto : addresses) {
+            if(aDto.getId() == Long.parseLong(this.mainAddressId)) {
+                return aDto;
+            }
+        }
+        return null;
+    }
 
 }
