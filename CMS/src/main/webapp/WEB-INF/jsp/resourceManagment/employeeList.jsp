@@ -89,17 +89,8 @@
             </div>
 
             <t:dataTable/>
-            <div>
-                <table width="100%" ng-show="selected">
-                    <tr>
-                        <td colspan="10" width="100%">
-                            <div ng-include="'employeePage/'+selected.id+'.htm'">
+            <div ng-show="selected" ng-include="'employeePage/' + selected.id + '.htm'">
 
-                            </div>
-                        </td>
-                    </tr>
-                </table>
             </div>
-
         </jsp:body>
     </t:genericTemplate>
