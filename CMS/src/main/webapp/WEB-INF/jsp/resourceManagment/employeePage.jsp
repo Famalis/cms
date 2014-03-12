@@ -40,10 +40,10 @@
                 <div>
                     <table ng-init="selectedTab = 'address'" width="100%" height="100%">
                         <tr>
-                            <th width="10%" ng-click="selectedTab = 'address'">
+                            <th style="width:10%" ng-click="selectedTab = 'address'">
                                 Adresy
                             </th>
-                            <th width="10%" ng-click="selectedTab = 'contracts'">
+                            <th style="width:10%" ng-click="selectedTab = 'contracts'">
                                 Umowy
                             </th>
                         </tr>
