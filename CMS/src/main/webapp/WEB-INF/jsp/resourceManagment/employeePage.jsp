@@ -62,6 +62,7 @@
                                 Numer budynku: <input type="text" ng-model="selectedAddress.streetNumber"/>
                                 Numer lokalu: <input type="text" ng-model="selectedAddress.apartmentNumber"/>
                                 Kod pocztowy: <input type="text" ng-model="selectedAddress.postalCode"/>
+                                <input type="button" value="Ustaw jako główny" ng-click="selected.mainAddressId=selectedAddress.id"/>
                             </td>
                             <td colspan="5" ng-show="selectedTab == 'contracts'">
                                 <select>
@@ -80,32 +81,6 @@
                             </td>
                         </tr>
                     </table>  
-                    <!--
-                    <table width="100%">
-                        <tr>
-                            <th>
-                                Rodzaj umowy:
-                            </th>
-                            <th>
-                                Od:
-                            </th>
-                            <th>
-                                Do:
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                {{selectedEmployment.employmentTypeName}}
-                            </td>
-                            <td>
-                                {{selectedEmployment.dateFrom}}
-                            </td>
-                            <td>
-                                {{selectedEmployment.dateTo}}
-                            </td>
-                        </tr>
-                    </table>
-                    -->
                 </div>
             </td>
         </tr>
