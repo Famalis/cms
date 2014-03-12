@@ -57,7 +57,11 @@ public class LoginController extends BaseController {
     @RequestMapping
     public String home(ModelMap model, HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
-        if(user.getId() == null) {
+        if (user == null) {
+            System.out.println("nie zalogowany");
+            return "home";
+        }
+        if (user.getId() == null) {
             System.out.println("nie zalogowany");
             return "home";
         }
@@ -131,14 +135,14 @@ public class LoginController extends BaseController {
             } else {
                 r.setName(emp.getPESEL() + "Photo");
                 r.setMimeType(item.getContentType());
-                r.setDescription("Zdjęcie użytkownika "+user.getLogin());
+                r.setDescription("Zdjęcie użytkownika " + user.getLogin());
             }
             InputStream input = item.getInputStream();
             byte[] barr = new byte[(int) item.getSize()];
             input.read(barr);
             String s = HexConverter.toHexFromBytes(barr);
             r.setHashCode(s);
-            if(r.getId()!=null) {
+            if (r.getId() != null) {
                 r.update();
             } else {
                 r.insert();
@@ -152,13 +156,13 @@ public class LoginController extends BaseController {
         return "redirect:/login.htm";
 
     }
-    
+
     @RequestMapping(value = "/getPhoto")
     public String getPhoto(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("get Photo");
         UserDTO user = (UserDTO) request.getSession().getAttribute("user");
         SystemFile photo = new SystemFile();
-        if(photo.loadObject("name='"+user.getName()+"Photo'")) {
+        if (photo.loadObject("name='" + user.getName() + "Photo'")) {
             try {
                 File photoFile = new File("userPhoto.jpg");
                 FileOutputStream fos = new FileOutputStream(photoFile);
@@ -168,28 +172,29 @@ public class LoginController extends BaseController {
             } catch (IOException io) {
                 io.printStackTrace();
             }
-            
+
         }
         return "userPicture";
 
     }
-    
+
     @RequestMapping(value = "/getEmpData")
-    public @ResponseBody ResponseEntity<String> getEmpData(HttpSession session, 
-            ModelMap model, 
-            HttpServletRequest request, 
+    public @ResponseBody
+    ResponseEntity<String> getEmpData(HttpSession session,
+            ModelMap model,
+            HttpServletRequest request,
             HttpServletResponse response) {
         UserDTO user = (UserDTO) request.getSession().getAttribute("user");
-        if(user.getId() == null) {
+        if (user.getId() == null) {
             return null;
         }
         //SystemFile photo = new SystemFile();
         EmployeeDao empDao = new EmployeeDao();
         Map<String, List<String>> params = new HashMap<>();
         List<String> idParamList = new ArrayList<>();
-        idParamList.add(user.getEmployeeId()+"");
+        idParamList.add(user.getEmployeeId() + "");
         params.put("id", idParamList);
-        EmployeeDTO emp = (EmployeeDTO) empDao.getEmployeeDTOList(params).get(0);
+        EmployeeDTO emp = (EmployeeDTO) empDao.getEmployeeDTOListWithEmploymentsAndAddresses(params).get(0);
         Map<String, Object> initData = new HashMap<>();
         initData.put("employee", emp);
         return Utils.createResponseEntity(session, initData);

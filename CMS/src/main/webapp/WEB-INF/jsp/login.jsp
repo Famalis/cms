@@ -29,7 +29,10 @@
 
             </div>
             <c:if test="${user.employeeId != null}">
-                <div class="right-addNew" id="addNew">
+                <span ng-show="status != null">
+                    <div id="loaderImage"></div>ładowanie danych...
+                </span>
+                <div ng-show="status == null" class="right-addNew" id="addNew">
                     <div class="addNew-header">Twój profil</div>
                     <div class="addNew-line"></div>
                     <div class="addNew-inputs">

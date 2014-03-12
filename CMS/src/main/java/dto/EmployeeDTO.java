@@ -5,6 +5,7 @@
  */
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dao.AddressDao;
 import java.util.ArrayList;
 import java.util.List;
@@ -167,6 +168,7 @@ public class EmployeeDTO {
         this.mainAddressId = mainAddressId;
     }
     
+    @JsonIgnore
     public AddressDTO getMainAddress() {
         for (AddressDTO aDto : addresses) {
             if(aDto.getId() == Long.parseLong(this.mainAddressId)) {
