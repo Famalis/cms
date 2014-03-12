@@ -104,11 +104,13 @@ public class EmployeeListController extends BaseController {
         DepartmentDao depDao = new DepartmentDao();
         PositionDao posDao = new PositionDao();
         EmploymentDao emplDao = new EmploymentDao();
+        AddressDao addressDao = new AddressDao();
         Map<String, Object> initData = new HashMap<String, Object>();
-        initData.put("employees", empDao.getEmployeeDTOListWithEmployments());
+        initData.put("employees", empDao.getEmployeeDTOListWithEmploymentsAndAddresses());
         initData.put("departments", depDao.select());
         initData.put("positions", posDao.select());
         initData.put("employments", emplDao.getEmploymentDTOList());
+        //initData.put("addresses", addressDao.getAddressDTOList());
         return Utils.createResponseEntity(session, initData);
     }
 

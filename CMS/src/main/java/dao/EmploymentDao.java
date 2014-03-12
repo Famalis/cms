@@ -39,10 +39,13 @@ public class EmploymentDao extends GenericDao<Employment> {
                 + "employment_type as empType, "
                 + "dictionary as dict ";
         String where = "";
-        if (!params.isEmpty()) {
+        if (!params.isEmpty()) {            
+            this.addParamConditions(select + from, params);
+        } else {
             where = "WHERE empType.id = emp.employmentTypeId "
                     + "AND dict.id = empType.dictId ";
         }
+            
         ResultSet set = this.connectionManager.select(select + from + where);
         List<EmploymentDTO> resultList = new ArrayList<>();
         try {

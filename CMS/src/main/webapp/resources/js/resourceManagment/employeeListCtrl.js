@@ -48,6 +48,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
     $scope.employments = "";
     $scope.editMode = false;
     $scope.selectedEmployment = "";
+    $scope.selectedAddress = "";
 
     $scope.get = saveEditDelete.get($http, '/CMS/employeeList/emps.htm', $scope);
     var loadDataPromise = $scope.get;
@@ -66,6 +67,7 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
             $scope.positions = $scope.initData.positions;
             $scope.privileges = $scope.initData.privileges;
             $scope.employments = $scope.initData.employments;
+            //$scope.addresses = $scope.initData.addresses;
         } else {
             alert('err');
         }
@@ -161,18 +163,11 @@ function EmployeeListCtrl($scope, $http, saveEditDelete, pagination) {
         return false;
     };
 
-    $scope.selectEmployment = function(id) {
-        if(id=='a') {
-            //alert("aaa");
-            $scope.selectedEmployment = new Object();
-            return;
-        }
-        for (var i = 0; $scope.employments.length; i++) {
-            if ($scope.employments[i].id == id) {
-                $scope.selectedEmployment = $scope.employments[i];
-                //alert(id);
-                return;
-            }
-        }        
+    $scope.selectEmployment = function(empl) {
+        $scope.selectedEmployment = empl;
+    };
+
+    $scope.selectAddress = function(addr) {
+        $scope.selectedAddress = addr;
     };
 }

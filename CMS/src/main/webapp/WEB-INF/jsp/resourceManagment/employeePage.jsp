@@ -33,24 +33,32 @@
                 Wydział: <span style="font-weight: 700;">{{selected.departmentName}}</span>
             </div>
             <div style="margin-top: 14px;">
-                Kraj: <span style="font-weight: 700;">{{selected.country}}</span>
+                Kraj: <span style="font-weight: 700;">{{selectedAddress.country}}</span>
             </div>
             <div style="margin-top: 14px;margin-bottom: 30px;">
-                Adres: <span style="font-weight: 700;">{{selected.city}} {{selected.postalCode}} <br/>
-                    {{selected.streetName}} {{selected.streetNumber}}/{{selected.apartmentNumber}}</span>
+                Adres: <span style="font-weight: 700;">{{selectedAddress.city}} {{selectedAddress.postalCode}} <br/>
+                    {{selectedAddress.streetName}} {{selectedAddress.streetNumber}}/{{selectedAddress.apartmentNumber}}</span>
             </div>
         </div>
         <div style="margin-left: 30px;float: left;clear: right;width:1px;height:220px;background-color:#31a984;"></div>
 
         <div style="float:left;clear: right;margin-top: 0px;margin-left:30px;color: #218164;font-weight: 700;"></div>
         <div>
+            <br/>
+            Adres
+            <select>
+                <option ng-repeat="addr in selected.addresses"
+                        ng-click="selectAddress(addr)">
+                    {{addr.dictName}}
+                </option>
+            </select>
             Zatrudnienia
             <select>
                 <option ng-click="selectEmployment('a')">
                     ---
                 </option>
                 <option ng-repeat="empl in selected.employments" value="{{empl.id}}" 
-                        ng-click="selectEmployment(empl.id)">
+                        ng-click="selectEmployment(empl)">
                     {{empl.employmentTypeName}}
                 </option>
             </select>

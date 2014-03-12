@@ -9,8 +9,8 @@ package model;
 import model.general.DatabaseObject;
 
 public class Address extends DatabaseObject {
-
-    private String country, city, streetName, streetNumber, apartmentNumber, postalCode, personId;
+    
+    private String country, city, streetName, streetNumber, apartmentNumber, postalCode, personId, dictId;
 
     public String getCountry() {
         return country;
@@ -66,6 +66,14 @@ public class Address extends DatabaseObject {
 
     public void setPersonId(String personId) {
         this.personId = personId;
+    }
+
+    public String getDictId() {
+        return dictId;
+    }
+
+    public void setDictId(String dictId) {
+        this.dictId = dictId;
     }
     
     public Address() {

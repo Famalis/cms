@@ -1,5 +1,6 @@
 package dao;
 
+import dto.AddressDTO;
 import dto.EmployeeDTO;
 import dto.EmploymentDTO;
 import java.lang.String;
@@ -123,6 +124,36 @@ public class EmployeeDao extends GenericDao<Employee> {
             for (EmployeeDTO empDTO : empDTOs) {
                 if(empDTO.getId() == Long.parseLong(employmentDTO.getEmployeeId())) {
                     empDTO.getEmployments().add(employmentDTO);
+                }
+            }
+        }
+        return empDTOs;
+    }
+    
+    public List<EmployeeDTO> getEmployeeDTOListWithEmploymentsAndAddresses() {
+        return getEmployeeDTOListWithEmploymentsAndAddresses(new HashMap<String, List<String>>());
+    }
+    
+    public List<EmployeeDTO> getEmployeeDTOListWithEmploymentsAndAddresses(Map<String, List<String>> params) {
+        List<EmployeeDTO> empDTOs;
+        if(params.isEmpty()) {
+            empDTOs = getEmployeeDTOList();
+        } else {
+            empDTOs = getEmployeeDTOList(params);
+        }        
+        EmploymentDao employmentDao = new EmploymentDao();
+        List<EmploymentDTO> emplDtos = employmentDao.getEmploymentDTOList();
+        AddressDao addressDao = new AddressDao();
+        List<AddressDTO> addDtos = addressDao.getAddressDTOList();
+        for (EmployeeDTO empDTO : empDTOs) {
+            for (EmploymentDTO employmentDTO : emplDtos) {
+                if(empDTO.getId() == Long.parseLong(employmentDTO.getEmployeeId())) {
+                    empDTO.getEmployments().add(employmentDTO);
+                }
+            }
+            for (AddressDTO dto : addDtos) {
+                if(empDTO.getId() == Long.parseLong(dto.getPersonId())) {
+                    empDTO.getAddresses().add(dto);
                 }
             }
         }

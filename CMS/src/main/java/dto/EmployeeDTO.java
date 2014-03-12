@@ -5,6 +5,7 @@
  */
 package dto;
 
+import dao.AddressDao;
 import java.util.ArrayList;
 import java.util.List;
 import model.Address;
@@ -36,6 +37,7 @@ public class EmployeeDTO {
             departmentName;
 
     List<EmploymentDTO> employments = new ArrayList<EmploymentDTO>();
+    List<AddressDTO> addresses = new ArrayList<>();
 
     public EmployeeDTO() {
         super();
@@ -52,15 +54,18 @@ public class EmployeeDTO {
         this.salary = employee.getSalary();
         this.positionId = employee.getPositionId();
         this.departmentId = employee.getDepartmentId();
-        Address address = new Address();
-        if (address.loadObject("personId=" + employee.getId())) {
-            this.country = address.getCountry();
-            this.city = address.getCity();
-            this.streetName = address.getStreetName();
-            this.streetNumber = address.getStreetNumber();
-            this.apartmentNumber = address.getApartmentNumber();
-            this.postalCode = address.getPostalCode();
-        }
+        AddressDao addressDao = new AddressDao();
+        for (AddressDTO addr : addressDao.getAddressDTOList("personId", this.getId()+"")) {
+            addresses.add(addr);
+            if(addr.getDictId().equals(AddressDao.ZAMELDOWANIA)) {
+                this.apartmentNumber = addr.getApartmentNumber();
+                this.city = addr.getCity();
+                this.country = addr.getCountry();
+                this.postalCode = addr.getPostalCode();
+                this.streetName = addr.getStreetName();
+                this.streetNumber = addr.getStreetNumber();
+            }
+        }        
         Position position = new Position();
         position.loadObject("id=" + positionId);
         this.positionName = position.getName();
@@ -205,5 +210,15 @@ public class EmployeeDTO {
     public void setEmployments(List<EmploymentDTO> employments) {
         this.employments = employments;
     }
+
+    public List<AddressDTO> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AddressDTO> addresses) {
+        this.addresses = addresses;
+    }
+    
+    
 
 }
