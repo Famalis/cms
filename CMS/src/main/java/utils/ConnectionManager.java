@@ -20,14 +20,14 @@ import java.util.logging.Logger;
  */
 public class ConnectionManager {
 
-    public static String staticUrl = "jdbc:mysql://78.46.82.172/paffel_cms?useUnicode=true&characterEncoding=UTF-8&collation=utf8_polish_ci";
-    public static String staticLogin = "paffel";
-    public static String staticPass = "leofram";
+    public static String staticUrl = "jdbc:mysql://famalis.no-ip.info/cms?useUnicode=true&characterEncoding=UTF-8&collation=utf8_polish_ci";
+    public static String staticLogin = "Sergio";
+    public static String staticPass = "quovadis1";
     
     private final static Logger LOGGER = Logger.getLogger("utils.ConnectionManager");
-    private String url = "jdbc:mysql://cms.cchl9cz5cp1p.us-west-2.rds.amazonaws.com:3306/cms?user=admin&password=cmsadmin&useUnicode=true&characterEncoding=UTF-8";
-    private String login = "admin";
-    private String pass = "cmsadmin";
+    private String url = staticUrl;
+    private String login = staticLogin;
+    private String pass = staticPass;
     private Connection connection;
     private static Map<String, ConnectionManager> activeConnections = new HashMap<>();
 
